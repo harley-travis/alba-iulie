@@ -10004,6 +10004,18 @@ a.text-dark:focus {
 
 /* screensize */
 
+a:hover {
+  text-decoration: none !important;
+}
+
+.page-content {
+  margin: 15px 0 0 30px;
+}
+
+.page-content h2 {
+  padding: 15px 0;
+}
+
 .navbar-laravel {
   background-color: #fff;
   -webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
