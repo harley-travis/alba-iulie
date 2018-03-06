@@ -1,0 +1,45 @@
+/* colors */
+$hot-pink:  #F91487;
+$magenta:   #D411D5;
+$indego:    #B21FEC;
+$purple:    #6711D5;
+
+$purple-1:  #9C4DCC;
+$purple-2:  #6A1B9A;
+$purple-3:  #38006B;
+
+$orange-1:  #FFA726;
+$orange-2:  #F57C00;
+
+/* black and whites */
+$black:     #111111;
+$black-1:   #1C1C1C;
+$black-2:   #232323;
+$black-3:   #343A40;
+$black-4:   #232323;
+
+$gray-1:    #95989A;
+$gray-2:    #EEEEEE;
+$gray-3:    #FAFAFA;
+
+$white:     #ffffff;
+
+/* text color*/
+$textColor: #95989A;
+
+/* text hover dark colors */
+$purple-hover:        darken($purple, 		10);
+$blue-hover:          darken($blue, 		10);
+$green-hover:         darken($green, 		10);
+$pink-hover:          darken($pink, 		10); 
+$black-hover:         darken($black, 		10);
+$white-hover:         darken($white, 		10);
+
+/* screensize */
+$lg-desktop:   		1500px;
+$md-desktop:    	1440px;
+$sm-desktop:    	1024px;
+$tablet:        	768px;
+$lg-mobile:     	425px;
+$md-mobile:     	375px;
+$sm-moblie:     	320px;
