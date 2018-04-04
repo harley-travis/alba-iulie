@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('layouts.master');
+    return view('layouts.app');
 });
 
 
@@ -86,19 +86,30 @@ Route::group(['prefix' => 'jobs'], function() {
 		'uses'	=> 'JobsController@getJobs',
 		'as'	=> 'jobs.overview'
 	]);
+
+	// send data to the db & redirect to the overview page
+    Route::post('add', [
+		'uses' => 'JobsController@addJob',
+		'as'   => 'jobs.add'
+	]);
     
     Route::get('add', [
-		'uses'	=> 'Job@addJob',
+		'uses'	=> 'JobsController@createJob',
 		'as'	=> 'jobs.create'
 	]);
 
-	Route::get('edit', [
-		'uses'	=> 'Job@editJob',
+	Route::get('edit/{id}', [
+		'uses'	=> 'JobsController@editJobByID',
+		'as'	=> 'jobs.update'
+	]);
+	
+	Route::post('edit', [
+		'uses'	=> 'JobsController@editJob', //postadminupdate
 		'as'	=> 'jobs.edit'
 	]);
 
 	Route::get('delete', [
-		'uses'	=> 'Job@deleteJob',
+		'uses'	=> 'JobsController@deleteJob',
 		'as'	=> 'jobs.delete'
 	]);
 
@@ -135,3 +146,11 @@ Route::group(['prefix' => 'users'], function() {
 });
 
 
+Route::get('humans.txt', function () {
+    return view('humans');
+});
+
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

@@ -23,6 +23,8 @@ class CreateApplicantsTable extends Migration
             $table->integer('stage');
             $table->date('dateApplied');
             
+            $table->integer('user_id');
+            
             // fk
             // job
             // company

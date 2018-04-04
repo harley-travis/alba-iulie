@@ -19,22 +19,22 @@ class CreateJobsTable extends Migration
             $table->string('title');
             $table->string('location');
             $table->string('department');
-            $table->integer('duration');
-            $table->integer('salary');
-            $table->integer('compensation');
+            $table->string('duration');
+            // $table->integer('salary');
+            $table->integer('compensationAmount');
             $table->string('description');
             $table->string('work');
             $table->string('qualifications');
             $table->string('skills');
-            $table->string('addInfo');
-            $table->integer('counter');
-            $table->integer('isActive');
-            $table->date('filled');
-            $table->date('timeFilled');
-            $table->date('closeDate');
+            // $table->integer('counter');
+            // $table->integer('isActive');
+            // $table->date('filled');
+            // $table->date('timeFilled');
+            // $table->date('closeDate');
+            
+            // $table->integer('user_id'); // adding a FK
             
             // company id
-            // user id
             
         });
     }
