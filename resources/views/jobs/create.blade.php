@@ -19,7 +19,7 @@
 
       <div class="form-group">
         <label for="jobTitle">Job Title</label>
-        <input type="text" class="form-control form-control-lg" id="title" name="title" placeholder="IE Frontend Developer">
+        <input type="text" class="form-control form-control-lg" id="title" name="title" value="{{ old('title') }}" placeholder="IE Frontend Developer">
       </div>
 
       <!-- todo: loop through company locations -->
@@ -72,28 +72,28 @@
           <div class="input-group-prepend">
             <div class="input-group-text">$</div>
           </div>
-          <input type="text" class="form-control form-control-lg" id="compensationAmount" name="compensationAmount" placeholder="65,000">
+          <input type="text" class="form-control form-control-lg" id="compensationAmount" name="compensationAmount" value="{{ old('compensationAmount') }}" placeholder="65,000">
         </div>
       </div>
 
       <div class="form-group">
         <label for="description">Description</label>
-        <textarea name="description" id="description"></textarea>
+        <textarea name="description" id="description"  value="{{ old('description') }}"></textarea>
       </div>
 
       <div class="form-group">
         <label for="work">What You'll Do</label>
-        <textarea name="work" id="work"></textarea>
+        <textarea name="work" id="work"  value="{{ old('work') }}"></textarea>
       </div>
 
       <div class="form-group">
         <label for="qualifications">Qualifications</label>
-        <textarea name="qualifications" id="qualifications"></textarea>
+        <textarea name="qualifications" id="qualifications"  value="{{ old('qualifications') }}"></textarea>
       </div>
 
       <div class="form-group">
         <label for="skills">Preferred Skills</label>
-        <textarea name="skills" id="skills"></textarea>
+        <textarea name="skills" id="skills" value="{{ old('skills') }}"></textarea>
       </div>
 
 

@@ -1,38 +1,29 @@
 @include('layouts.header')
 
         <div id="app">
-            <div class="page-container">
-                <md-app>
-                    <md-app-toolbar class="md-primary md-app-toolbar ">
-                        <header class="mdl-layout__header">
-                            <div class="mdl-layout__header-row">
-                                <span class="mdl-layout-title logo-font">White July</span>
+            <div class="header-bar black-4-bg white">
+                <div class="">
+                    <div class="logo">
+                        <span class="nav-logo">White July</span>
+                    </div>
+                    <div class="usernav">
+                        @include('layouts.usermenu')
+                    </div>
+                </div>
+            </div>
+            <div class="leftnav gray-3-bg">
+                @include('layouts.leftnav')
+            </div>
 
-                                <!-- Add spacer, to align navigation to the right -->
-                                <div class="mdl-layout-spacer"></div>
-                               
-                                <!-- usermenu -->
-                                @include('layouts.usermenu')
-                                
-                            </div>
-                        </header>
-                    </md-app-toolbar>
+            <div class="content">
 
-                    <!-- left nav -->
-                    @include('layouts.leftnav')
+                @yield('content')
 
-                    <md-app-content>
-                        <div class="content-display">
-                            <!-- all content will be pass here -->
-                            @yield('content')
-
-                            <div class="body-footer">
-                                <span class="copyright"><?php echo date('Y'); ?> &copy; WhiteJuly.com | All Rights Reserved</span>
-                            </div>
-                        </div>
-                    </md-app-content>
-                </md-app>
-              </div>
+                <div class="body-footer">
+                    <span class="copyright"><?php echo date('Y'); ?> &copy; WhiteJuly.com | All Rights Reserved</span>
+                </div>
+            </div>
+             
         </div><!-- #app -->
 
 @include('layouts.footer')

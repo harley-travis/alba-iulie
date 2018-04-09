@@ -12,3 +12,61 @@
 $font-family-sans-serif: 'Open Sans', sans-serif;
 $font-size-base: 0.9rem;
 $line-height-base: 1.6;
+
+
+// colors
+$blue: #3914F7;
+$pink: #F91487;
+$magenta: #D411D5;
+
+$purple-1: #6711D5;
+$purple-2: #B21FEC;
+$purple-3: #6a1b9a;
+$purple-4: #9c4dcc;
+$purple-5: #38006b;
+
+$black-1: #111111;
+$black-2: #1C1C1C;
+$black-3: #232323;
+$black-4: #343A40;
+
+$gray-1: #95989A;
+$gray-2: #EEEEEE;
+$gray-3: #FAFAFA;
+
+$white: #FFFFFF;
+
+$text: #95989A;
+
+
+/* text hover dark colors */
+$blue-hover:      darken($blue, 		10);
+$pink-hover:      darken($pink, 		10);
+$magenta-hover:   darken($magenta, 		10);
+
+$purple-1-hover:  darken($purple-1, 	10);
+$purple-2-hover:  darken($purple-2, 	10);
+$purple-3-hover:  darken($purple-3, 	10);
+$purple-4-hover:  darken($purple-4, 	10);
+$purple-5-hover:  darken($purple-5, 	10);
+
+$black-1-hover:   darken($black-1, 		10);
+$black-2-hover:   darken($black-2, 		10);
+$black-3-hover:   darken($black-3, 		10);
+$black-4-hover:   darken($black-4, 		10);
+
+$gray-1-hover:    darken($gray-1, 		10);
+$gray-2-hover:    darken($gray-2, 		10);
+$gray-3-hover:    darken($gray-3, 		10);
+
+$white-hover:     darken($white, 		10);
+
+
+/* screensize */
+$lg-desktop:   		1500px;
+$md-desktop:    	1440px;
+$sm-desktop:    	1024px;
+$tablet:        	768px;
+$lg-mobile:     	425px;
+$md-mobile:     	375px;
+$sm-moblie:     	320px;

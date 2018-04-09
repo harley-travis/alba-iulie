@@ -9,14 +9,16 @@
 	@endif
 
 	<h2>Positions</h2>
-	
+
+	<a href="{{ route('jobs.add') }}" class="btn btn-success">Add Job</a>
+
 	<nav aria-label="breadcrumb">
-  <ol class="breadcrumb">
-    <li class="breadcrumb-item"><a href="#">Home</a></li>
-    <li class="breadcrumb-item"><a href="#">Library</a></li>
-    <li class="breadcrumb-item active" aria-current="page">Data</li>
-  </ol>
-</nav>
+		<ol class="breadcrumb">
+			<li class="breadcrumb-item"><a href="#">Home</a></li>
+			<li class="breadcrumb-item"><a href="#">Library</a></li>
+			<li class="breadcrumb-item active" aria-current="page">Data</li>
+		</ol>
+	</nav>
 
 	<table class="table table-striped table-hover">
 		<thead>
@@ -42,7 +44,7 @@
 					<td>{{ $job->title}}</td>
 					<td>{{ $job->department}}</td>
 					<td>{{ $job->location}}</td>
-					<td><a href="{{ route('jobs.update', ['id' => $job->id ]) }}" class="btn btn-primary">Edit Job</a></td>
+					<td><a href="{{ route('jobs.update', ['id' => $job->id ]) }}" class="btn btn-purple-1">Edit Job</a></td>
 					<td><a href="" class="btn btn-danger">Archive Job</a></td>
 				</tr>
 			@endforeach
@@ -65,6 +67,6 @@
   </ul>
 </nav>
 
-	<jobs-overview></jobs-overview>	
+	<!-- <jobs-overview></jobs-overview>	 -->
 
 @endsection

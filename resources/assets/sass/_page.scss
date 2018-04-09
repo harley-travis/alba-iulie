@@ -1,21 +1,12 @@
-a:hover {
-    text-decoration: none !important;
+.leftnav {
+    width: 20%;
+    height: 100%;
+    position: fixed;
+    border-right: 1px solid #eee;
 }
 
-.page-content {
-    
-    h2 {
-        padding: 15px 0;
-    }
-    
-    margin: 15px 0 0 30px;
+.content {
+    float: right;
+    width: 80%;
+    padding: 20px;
 }
-
-// h2 {
-//     font-family: $wj-font;
-// }
-
-// .logo-font {
-//     font-family: $wj-font;
-// }
-

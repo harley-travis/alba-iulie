@@ -26,8 +26,8 @@ class JobsController extends Controller {
 
         // validate 
         $this->validate($request, [
-			'title' => 'required|min:5',
-			'compensationAmount' => 'required|min:5'
+			'title'                 => 'required|min:5',
+			'compensationAmount'    => 'required|min:5'
 		]);
 
 
