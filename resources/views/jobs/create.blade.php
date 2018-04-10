@@ -5,8 +5,6 @@
 
 @include('layouts.errors')
 
-  <!-- hi travis. you did it my man -->
-  <div class="travis"></div>
   <h2>Add New Job</h2>
   
   <nav aria-label="breadcrumb">
