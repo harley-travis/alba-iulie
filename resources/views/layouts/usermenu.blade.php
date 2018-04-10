@@ -18,6 +18,11 @@
     <a class="dropdown-item" href="#">Request Time Off</a>
 
     <div class="dropdown-divider"></div>
+    
+    <!-- todo: setup dark theme option -->
+    <a class="dropdown-item" href="#">Dark Theme: On</a>
+
+    <div class="dropdown-divider"></div>
 
     <a class="dropdown-item" href="#">Signout</a>
   </div>
