@@ -8,7 +8,6 @@
 		</div>
 	@endif
 
-<div class="travis"></div>
 	<h2>Positions</h2>
 
 	<a href="{{ route('jobs.add') }}" class="btn btn-success">Add Job</a>
