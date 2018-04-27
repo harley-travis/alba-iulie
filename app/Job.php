@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Job extends Model {
 
     // make these variables mass assignable
-    protected $fillable = ['title', 'location', 'department', 'duration', 'compensationType', 'compensationAmount', 'description', 'work', 'qualifications','skills'];
+    protected $fillable = ['title', 'location', 'department', 'duration', 'compensationType', 'compensationAmount', 'closeDate', 'description', 'work', 'qualifications','skills', 'filled', 'isActive'];
 
    public function getJobs($session) {
        if(!$session->has('jobs')){
@@ -30,10 +30,13 @@ class Job extends Model {
                 'duration'              => $duration,
                 'compensationType'      => $compensationType,
                 'compensationAmount'    => $compensationAmount,
+                'closeDate'             => $closeDate,
                 'description'           => $description,
                 'work'                  => $work,
                 'qualifications'        => $qualifications,
-                'skills'                => $skills
+                'skills'                => $skills,
+                'filled'                => $filled,
+                'isActive'              => $isActive
         ]);
        $session->put('jobs', $jobs);
 

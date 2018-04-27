@@ -27,7 +27,7 @@ class JobsController extends Controller {
         // validate 
         $this->validate($request, [
 			'title'                 => 'required|min:5',
-			'compensationAmount'    => 'required|min:5'
+			'compensationAmount'    => 'required|min:1'
 		]);
 
 
@@ -39,10 +39,13 @@ class JobsController extends Controller {
             'duration'              => $request->input('duration'),
             'compensationType'      => $request->input('compensationType'),
             'compensationAmount'    => $request->input('compensationAmount'),
+            'closeDate'             => $request->input('closeDate'),
             'description'           => $request->input('description'),
             'work'                  => $request->input('work'),
             'qualifications'        => $request->input('qualifications'),
-            'skills'                => $request->input('skills')
+            'skills'                => $request->input('skills'),
+            'filled'                => $request->input('closeDate'),
+            'isActive'              => $request->input('isActive')
         ]);
 
         $job->save(); // elqouent saves this to the db for us! 

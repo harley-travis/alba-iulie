@@ -77,6 +77,11 @@
       </div>
 
       <div class="form-group">
+        <label for="closeDate">Close Date</label>
+        <input type="date" name="closeDate">
+      </div>    
+
+      <div class="form-group">
         <label for="description">Description</label>
         <textarea name="description" id="description"></textarea>
       </div>
@@ -125,8 +130,7 @@
 
 
       
-      
-
+      <input type="hidden" name="isActive" value="1">
 
       <input type="hidden" name="_token" value="{{ csrf_token() }}">
 

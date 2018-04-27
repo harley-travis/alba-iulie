@@ -27,10 +27,12 @@ class CreateJobsTable extends Migration
             $table->string('qualifications');
             $table->string('skills');
             // $table->integer('counter');
-            // $table->integer('isActive');
-            // $table->date('filled');
-            // $table->date('timeFilled');
-            // $table->date('closeDate');
+            $table->integer('isActive');
+            $table->date('filled');
+            $table->date('closeDate');
+
+            // date filled?
+            // job filled??
             
             // $table->integer('user_id'); // adding a FK
             
