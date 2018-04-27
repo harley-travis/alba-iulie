@@ -28,7 +28,7 @@ Route::group(['prefix' => 'applicants'], function() {
 		'as'	=> 'applicants.create'
 	]);
 
-	Route::get('edit', [
+	Route::get('edit/{id}', [
 		'uses'	=> 'ApplicantsController@editApplicant',
 		'as'	=> 'applicants.edit'
 	]);
@@ -99,19 +99,21 @@ Route::group(['prefix' => 'jobs'], function() {
 	]);
 
 	Route::get('edit/{id}', [
-		'uses'	=> 'JobsController@editJobByID',
-		'as'	=> 'jobs.update'
+		'uses'	=> 'JobsController@getJobId',
+		'as'	=> 'jobs.edit'
 	]);
 	
 	Route::post('edit', [
-		'uses'	=> 'JobsController@editJob', //postadminupdate
-		'as'	=> 'jobs.edit'
+		'uses'	=> 'JobsController@updateJob', 
+		'as'	=> 'jobs.update'
 	]);
 
 	Route::get('delete', [
 		'uses'	=> 'JobsController@deleteJob',
 		'as'	=> 'jobs.delete'
 	]);
+
+	// learn basics WORKING WITH ROUTES -> CREATING AND USING POST ROUTES
 
 });
 

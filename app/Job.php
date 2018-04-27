@@ -42,10 +42,26 @@ class Job extends Model {
 
    }
 
-   public function editJob($session, $id, $title, $compensationAmount) {
+   public function editJob($session, $id, $title, $location, $department, $duration, $compensationType, $compensationAmount, $closeDate, $description, $work, $qualifications, $skills, $filled, $isActive) {
 
         $jobs = $session->get('jobs');
-        $jobs[$id] = ['title' => $title, 'compensationAmount' => $compensationAmount];
+        
+        $jobs[$id] = [
+            'title'                 => $title, 
+            'location'              => $location,
+            'department'            => $department,
+            'duration'              => $duration,
+            'compensationType'      => $compensationType,
+            'compensationAmount'    => $compensationAmount,
+            'closeDate'             => $closeDate,
+            'description'           => $description,
+            'work'                  => $work,
+            'qualifications'        => $qualifications,
+            'skills'                => $skills,
+            'filled'                => $filled,
+            'isActive'              => $isActive
+        ];
+
         $session->put('jobs', $jobs);
 
    }

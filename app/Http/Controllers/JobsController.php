@@ -54,34 +54,48 @@ class JobsController extends Controller {
 			->route('jobs.overview')
 			->with('info', 'Good news, your job was added!');
 
-
     }
 
-    public function editJob(Store $session, Request $request) {
+    
+    // this function is triggered when the click teh button. grabs the id and returns the EDIT view with the id in place.
+    // teh editJob() actually updates the info
+    public function getJobId(Store $session, Request $request, $id) {
+        
+        $job = new Job();
+        $job = $job->getJobs($session, $id);
+        // the jobId here is what connects the edit job page!!!!
+        return view('jobs.edit', ['job' => $job, 'jobId' => $id]);
+    }
+
+
+    // this updates the info in edit page
+    public function updateJob(Store $session, Request $request) {
         
         $this->validate($request, [
 			'title' => 'required|min:5',
 			'compensationAmount' => 'required|min:5'
 		]);
-        
-        // find the id of the job
-        $job = Job::find($request->input('id'));
+      
+        $job = new Job();
 
-        // update the data then save 
-        $job->title = $request->input('title');
-        $job->compensationAmount = $request->input('compensationAmount');
-        $job->save();
+        $job->editJob($session,
+            $request->input('id'),
+            $request->input('title'),
+            $request->input('location'),
+            $request->input('department'),
+            $request->input('duration'),
+            $request->input('compensationType'),
+            $request->input('compensationAmount'),
+            $request->input('closeDate'),
+            $request->input('description'),
+            $request->input('work'),
+            $request->input('qualifications'),
+            $request->input('skills'),
+            $request->input('filled'),
+            $request->input('isActive')
+        );
 
         return redirect()->route('jobs.overview')->with('info', 'The job was updated');
     }
-
-    public function editJobByID(Store $session, Request $request) {
-        
-        $job = new Job();
-        $job = $job->get($session, $id);
-        return view('jobs.edit', ['job' => $job, 'jobId' => $id]);
-    }
-    
-
     
 }
