@@ -20,7 +20,7 @@ class CreateJobsTable extends Migration
             $table->string('location');
             $table->string('department');
             $table->string('duration');
-            // $table->integer('salary');
+            $table->integer('compensationType');
             $table->integer('compensationAmount');
             $table->string('description');
             $table->string('work');

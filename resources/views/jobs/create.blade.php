@@ -57,11 +57,11 @@
 
       <div class="form-group">
         <div class="form-check form-check-inline">
-          <input class="form-check-input" type="radio" name="compensationType" id="salary" value="salary">
+          <input class="form-check-input" type="radio" name="compensationType" id="salary" value="0" checked>
           <label class="form-check-label" for="inlineRadio1">Salary</label>
         </div>
         <div class="form-check form-check-inline">
-          <input class="form-check-input" type="radio" name="compensationType" id="hourly" value="hourly">
+          <input class="form-check-input" type="radio" name="compensationType" id="hourly" value="1">
           <label class="form-check-label" for="inlineRadio2">Hourly</label>
         </div>
       </div>

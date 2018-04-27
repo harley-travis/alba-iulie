@@ -37,6 +37,7 @@ class JobsController extends Controller {
             'location'              => $request->input('location'),
             'department'            => $request->input('department'),
             'duration'              => $request->input('duration'),
+            'compensationType'      => $request->input('compensationType'),
             'compensationAmount'    => $request->input('compensationAmount'),
             'description'           => $request->input('description'),
             'work'                  => $request->input('work'),
