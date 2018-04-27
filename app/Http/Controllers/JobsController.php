@@ -58,11 +58,14 @@ class JobsController extends Controller {
 
     
     // this function is triggered when the click teh button. grabs the id and returns the EDIT view with the id in place.
-    // teh editJob() actually updates the info
-    public function getJobId(Store $session, Request $request, $id) {
-        
-        $job = new Job();
-        $job = $job->getJobs($session, $id);
+    // teh updateJob() actually updates the info
+    public function getJobId($id) {
+
+        $job = Post::find($id);
+       
+        // old wday
+       // $job = new Job();
+        //$job = $job->getJobs($session, $id);
         // the jobId here is what connects the edit job page!!!!
         return view('jobs.edit', ['job' => $job, 'jobId' => $id]);
     }
@@ -76,24 +79,43 @@ class JobsController extends Controller {
 			'compensationAmount' => 'required|min:5'
 		]);
       
-        $job = new Job();
+        $job = Job::find($request->input('id'));
 
-        $job->editJob($session,
-            $request->input('id'),
-            $request->input('title'),
-            $request->input('location'),
-            $request->input('department'),
-            $request->input('duration'),
-            $request->input('compensationType'),
-            $request->input('compensationAmount'),
-            $request->input('closeDate'),
-            $request->input('description'),
-            $request->input('work'),
-            $request->input('qualifications'),
-            $request->input('skills'),
-            $request->input('filled'),
-            $request->input('isActive')
-        );
+        $job->title =  $request->input('title'),
+        $job->location =  $request->input('location'),
+        $job->department =  $request->input('department'),
+        $job->duration =  $request->input('duration'),
+        $job->compensationType =  $request->input('compensationType'),
+        $job->compensationAmount =  $request->input('compensationAmount'),
+        $job->closeDate =  $request->input('closeDate'),
+        $job->description =  $request->input('description'),
+        $job->work =  $request->input('work'),
+        $job->qualifications =  $request->input('qualifications'),
+        $job->skills =  $request->input('skills'),
+        $job->filled =  $request->input('filled'),
+        $job->isActive =  $request->input('isActive')
+
+        $job->save();
+
+       //$job = new Job();
+
+        // OLD METHOD
+        // $job->editJob($session,
+        //     $request->input('id'),
+        //     $request->input('title'),
+        //     $request->input('location'),
+        //     $request->input('department'),
+        //     $request->input('duration'),
+        //     $request->input('compensationType'),
+        //     $request->input('compensationAmount'),
+        //     $request->input('closeDate'),
+        //     $request->input('description'),
+        //     $request->input('work'),
+        //     $request->input('qualifications'),
+        //     $request->input('skills'),
+        //     $request->input('filled'),
+        //     $request->input('isActive')
+        // );
 
         return redirect()->route('jobs.overview')->with('info', 'The job was updated');
     }
