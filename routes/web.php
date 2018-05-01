@@ -17,24 +17,25 @@ Route::get('/', function () {
 
 
 Route::group(['prefix' => 'applicants'], function() {
+	$c = 'ApplicantsController';
 
 	Route::get('', [
-		'uses'	=> 'ApplicantsController@getApplicants',
+		'uses'	=> "$c@getApplicants",
 		'as'	=> 'applicants.overview'
 	]);
     
     Route::get('add', [
-		'uses'	=> 'ApplicantsController@addApplicant',
+		'uses'	=> "$c@addApplicant",
 		'as'	=> 'applicants.create'
 	]);
 
 	Route::get('edit/{id}', [
-		'uses'	=> 'ApplicantsController@editApplicant',
+		'uses'	=> "$c@editApplicant",
 		'as'	=> 'applicants.edit'
 	]);
 
 	Route::get('delete', [
-		'uses'	=> 'ApplicantsController@deleteApplicant',
+		'uses'	=> "$c@deleteApplicant",
 		'as'	=> 'applicants.delete'
 	]);
 
@@ -42,9 +43,10 @@ Route::group(['prefix' => 'applicants'], function() {
 
 
 Route::group(['prefix' => 'billing'], function() {
+	$c = 'EmployeeController';
 
 	Route::get('', [
-		'uses'	=> 'EmployeeController@getEmployees',
+		'uses'	=> "$c@getEmployees",
 		'as'	=> 'employees.overview'
 	]);
 
@@ -56,24 +58,25 @@ Route::get('dashboard', function () {
 
 
 Route::group(['prefix' => 'employees'], function() {
+	$c = 'EmployeesController';
 
 	Route::get('', [
-		'uses'	=> 'EmployeesController@getEmployees',
+		'uses'	=> "$c@getEmployees",
 		'as'	=> 'employees.overview'
 	]);
     
     Route::get('add', [
-		'uses'	=> 'EmployeesController@addEmployee',
+		'uses'	=> "$c@addEmployee",
 		'as'	=> 'employees.create'
 	]);
 
 	Route::get('edit', [
-		'uses'	=> 'EmployeesController@editEmployee',
+		'uses'	=> "$c@editEmployee",
 		'as'	=> 'employees.edit'
 	]);
 
 	Route::get('delete', [
-		'uses'	=> 'EmployeesController@deleteEmployee',
+		'uses'	=> "$c@deleteEmployee",
 		'as'	=> 'employees.delete'
 	]);
 
@@ -81,35 +84,36 @@ Route::group(['prefix' => 'employees'], function() {
 
 
 Route::group(['prefix' => 'jobs'], function() {
+	$c = 'JobsController';
 
 	Route::get('', [
-		'uses'	=> 'JobsController@getJobs',
+		'uses'	=> "$c@getJobs",
 		'as'	=> 'jobs.overview'
 	]);
 
 	// send data to the db & redirect to the overview page
     Route::post('add', [
-		'uses' => 'JobsController@addJob',
+		'uses' => "$c@addJob",
 		'as'   => 'jobs.add'
 	]);
     
     Route::get('add', [
-		'uses'	=> 'JobsController@createJob',
+		'uses'	=> "$c@createJob",
 		'as'	=> 'jobs.create'
 	]);
 
 	Route::get('edit/{id}', [
-		'uses'	=> 'JobsController@getJobId',
+		'uses'	=> "$c@getJobId",
 		'as'	=> 'jobs.edit'
 	]);
 	
 	Route::post('edit', [
-		'uses'	=> 'JobsController@updateJob', 
+		'uses'	=> "$c@updateJob", 
 		'as'	=> 'jobs.update'
 	]);
 
 	Route::get('delete', [
-		'uses'	=> 'JobsController@deleteJob',
+		'uses'	=> "$c@deleteJob",
 		'as'	=> 'jobs.delete'
 	]);
 
@@ -119,9 +123,10 @@ Route::group(['prefix' => 'jobs'], function() {
 
 
 Route::group(['prefix' => 'reports'], function() {
+	$c = 'ReportsController';
 
 	Route::get('', [
-		'uses'	=> 'ReportsController@getReports',
+		'uses'	=> "$c@getReports",
 		'as'	=> 'reports.overview'
 	]);
 
@@ -129,19 +134,20 @@ Route::group(['prefix' => 'reports'], function() {
 
 
 Route::group(['prefix' => 'users'], function() {
+	$c = 'UsersController';
 
 	Route::get('create', [
-		'uses'	=> 'UsersController@createUser',
+		'uses'	=> "$c@createUser",
 		'as'	=> 'users.create'
 	]);
 
 	Route::get('edit', [
-		'uses'	=> 'UsersController@editUser',
+		'uses'	=> "$c@editUser",
 		'as'	=> 'users.edit'
 	]);
 
 	Route::get('overview', [
-		'uses'	=> 'UsersController@getUser',
+		'uses'	=> "$c@getUser",
 		'as'	=> 'users.overview'
 	]);
 
