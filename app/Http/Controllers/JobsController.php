@@ -61,7 +61,7 @@ class JobsController extends Controller {
     // teh updateJob() actually updates the info
     public function getJobId($id) {
 
-        $job = Post::find($id);
+        $job = Job::find($id);
        
         // old wday
        // $job = new Job();
@@ -81,19 +81,18 @@ class JobsController extends Controller {
       
         $job = Job::find($request->input('id'));
 
-        $job->title =  $request->input('title'),
-        $job->location =  $request->input('location'),
-        $job->department =  $request->input('department'),
-        $job->duration =  $request->input('duration'),
-        $job->compensationType =  $request->input('compensationType'),
-        $job->compensationAmount =  $request->input('compensationAmount'),
-        $job->closeDate =  $request->input('closeDate'),
-        $job->description =  $request->input('description'),
-        $job->work =  $request->input('work'),
-        $job->qualifications =  $request->input('qualifications'),
-        $job->skills =  $request->input('skills'),
-        $job->filled =  $request->input('filled'),
-        $job->isActive =  $request->input('isActive')
+        $job->title =  $request->input('title');
+        $job->location =  $request->input('location');
+        $job->department =  $request->input('department');
+        $job->duration =  $request->input('duration');
+        $job->compensationType =  $request->input('compensationType');
+        $job->compensationAmount =  $request->input('compensationAmount');
+        $job->closeDate =  $request->input('closeDate');
+        $job->description =  $request->input('description');
+        $job->work =  $request->input('work');
+        $job->qualifications =  $request->input('qualifications');
+        $job->skills =  $request->input('skills');
+        $job->isActive =  $request->input('isActive');
 
         $job->save();
 

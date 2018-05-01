@@ -44,8 +44,7 @@
 					<td>{{ $job->title}}</td>
 					<td>{{ $job->department}}</td>
 					<td>{{ $job->location}}</td>
-					<!-- <td><a href="{{ route('jobs.edit', ['id' => $job->id ]) }}" class="btn btn-purple-1">Edit Job</a></td> ORIGINAL ONE NOT SURE IF TO USE -->
-					<td><a href="{{ route('jobs.edit', ['id' => array_search($job, $jobs) ]) }}" class="btn btn-purple-1">Edit Job</a></td>
+					<td><a href="{{ route('jobs.edit', ['id' => $job->id ]) }}" class="btn btn-purple-1">Edit Job</a></td> 
 					<td><a href="" class="btn btn-danger">Archive Job</a></td>
 				</tr>
 			@endforeach

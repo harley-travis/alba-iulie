@@ -25,8 +25,8 @@
       <!-- todo: loop through company locations -->
       <div class="form-group">
         <label for="location">Location</label>
-        <select name="location" value="{{ $job->location }}" class="form-control form-control-lg">
-          <option>- Select Location -</option>
+        <select name="location"  class="form-control form-control-lg">
+          <option>{{ $job->location }}</option>
           <option value="arizona">Arizona</option>
           <option value="california">California</option>
           <option value="romania">Romania</option>
