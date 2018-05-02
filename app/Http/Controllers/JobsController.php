@@ -62,11 +62,6 @@ class JobsController extends Controller {
     public function getJobId($id) {
 
         $job = Job::find($id);
-       
-        // old wday
-       // $job = new Job();
-        //$job = $job->getJobs($session, $id);
-        // the jobId here is what connects the edit job page!!!!
         return view('jobs.edit', ['job' => $job, 'jobId' => $id]);
     }
 
@@ -80,7 +75,6 @@ class JobsController extends Controller {
 		]);
       
         $job = Job::find($request->input('id'));
-
         $job->title =  $request->input('title');
         $job->location =  $request->input('location');
         $job->department =  $request->input('department');
@@ -93,28 +87,7 @@ class JobsController extends Controller {
         $job->qualifications =  $request->input('qualifications');
         $job->skills =  $request->input('skills');
         $job->isActive =  $request->input('isActive');
-
         $job->save();
-
-       //$job = new Job();
-
-        // OLD METHOD
-        // $job->editJob($session,
-        //     $request->input('id'),
-        //     $request->input('title'),
-        //     $request->input('location'),
-        //     $request->input('department'),
-        //     $request->input('duration'),
-        //     $request->input('compensationType'),
-        //     $request->input('compensationAmount'),
-        //     $request->input('closeDate'),
-        //     $request->input('description'),
-        //     $request->input('work'),
-        //     $request->input('qualifications'),
-        //     $request->input('skills'),
-        //     $request->input('filled'),
-        //     $request->input('isActive')
-        // );
 
         return redirect()->route('jobs.overview')->with('info', 'The job was updated');
     }
