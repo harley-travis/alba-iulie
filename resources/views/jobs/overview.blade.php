@@ -20,6 +20,10 @@
 		</ol>
 	</nav>
 
+	<div class="total-jobs">
+		{{ $jobs->total() }} Total Jobs
+	</div>
+
 	<table class="table table-striped table-hover">
 		<thead>
 			<tr>
@@ -45,7 +49,7 @@
 					<td>{{ $job->department}}</td>
 					<td>{{ $job->location}}</td>
 					<td><a href="{{ route('jobs.edit', ['id' => $job->id ]) }}" class="btn btn-purple-1">Edit Job</a></td> 
-					<td><a href="" class="btn btn-danger">Archive Job</a></td>
+					<td><a href="{{ route('jobs.archive', ['id' => $job->id ]) }}" class="btn btn-danger">Archive Job</a></td>
 				</tr>
 			@endforeach
 		</tbody>

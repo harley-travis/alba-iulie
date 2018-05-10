@@ -94,4 +94,15 @@ class JobsController extends Controller {
         return redirect()->route('jobs.overview')->with('info', 'The job was updated');
     }
     
+    public function archiveJob($id) {
+
+        $job = Job::find($request->input('id'));
+
+        if($job->isActive === 1) {
+            $job->isActive = 0;
+
+            $job->save();
+        }
+
+    }
 }

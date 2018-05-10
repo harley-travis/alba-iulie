@@ -112,12 +112,10 @@ Route::group(['prefix' => 'jobs'], function() {
 		'as'	=> 'jobs.update'
 	]);
 
-	Route::get('delete', [
-		'uses'	=> "$c@deleteJob",
-		'as'	=> 'jobs.delete'
+	Route::post('archive', [
+		'uses'	=> "$c@archiveJob",
+		'as'	=> 'jobs.archive'
 	]);
-
-	// learn basics WORKING WITH ROUTES -> CREATING AND USING POST ROUTES
 
 });
 
