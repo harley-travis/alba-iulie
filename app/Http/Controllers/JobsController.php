@@ -13,7 +13,9 @@ class JobsController extends Controller {
     
     public function getJobs() {
 
-        $jobs = Job::all();
+        // this is how you get all the things in the DB without pagination
+        // $jobs = Job::all();
+        $jobs = Job::paginate(15);
         return view('jobs.overview', ['jobs' => $jobs]);
 
     }

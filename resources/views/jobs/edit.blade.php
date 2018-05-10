@@ -19,29 +19,28 @@
 
       <div class="form-group">
         <label for="jobTitle">Job Title</label>
-        <input type="text" class="form-control form-control-lg" id="title" name="title" value="{{ $job->title }}">
+        <input type="text" class="form-control form-control-lg" id="title" name="title" value="{{ ucwords(trans( $job->title )) }}">
       </div>
 
       <!-- todo: loop through company locations -->
       <div class="form-group">
         <label for="location">Location</label>
-        <select name="location"  class="form-control form-control-lg">
-          <option>{{ $job->location }}</option>
-          <option value="arizona">Arizona</option>
-          <option value="california">California</option>
-          <option value="romania">Romania</option>
-          <option value="utah">Utah</option>
+        <select name="location" class="form-control form-control-lg">
+          <option {{ $job->location == 'Arizona' ? 'selected':'' }} >Arizona</option>
+          <option {{ $job->location == 'California' ? 'selected':'' }} >California</option>
+          <option {{ $job->location == 'Romania' ? 'selected':'' }} >Romania</option>
+          <option {{ $job->location == 'Utah' ? 'selected':'' }} >Utah</option>
         </select>
       </div>
 
       <!-- todo: loop through company departments -->
       <div class="form-group">
         <label for="department">Department</label>
-        <select name="department" value="{{ $job->department }}" class="form-control form-control-lg">
+        <select name="department" class="form-control form-control-lg">
           <option>- Select Department -</option>
-          <option value="tech_support">Tech Support</option>
-          <option value="engineering">Engineering</option>
-          <option value="product">Product</option>
+          <option {{ $job->department == 'Tech Support' ? 'selected':'' }}>Tech Support</option>
+          <option {{ $job->department == 'Engineering' ? 'selected':'' }}>Engineering</option>
+          <option {{ $job->department == 'Product' ? 'selected':'' }}>Product</option>
         </select>
       </div>
 
@@ -56,14 +55,31 @@
       </div>
 
       <div class="form-group">
-        <div class="form-check form-check-inline">
-          <input class="form-check-input" type="radio" name="compensationType" value="{{ $job->compensationType }}" id="salary" value="0" checked>
-          <label class="form-check-label" for="inlineRadio1">Salary</label>
-        </div>
-        <div class="form-check form-check-inline">
-          <input class="form-check-input" type="radio" name="compensationType" value="{{ $job->compensationType }}" id="hourly" value="1">
-          <label class="form-check-label" for="inlineRadio2">Hourly</label>
-        </div>
+
+        @if($job->compensationType === 0)
+
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="compensationType" value="{{ $job->compensationType }}" id="salary" value="0" checked>
+            <label class="form-check-label" for="inlineRadio1">Salary</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="compensationType" value="{{ $job->compensationType }}" id="hourly" value="1">
+            <label class="form-check-label" for="inlineRadio2">Hourly</label>
+          </div>
+
+        @elseif ($job->compensationType === 1)
+
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="compensationType" value="{{ $job->compensationType }}" id="salary" value="0">
+            <label class="form-check-label" for="inlineRadio1">Salary</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="compensationType" value="{{ $job->compensationType }}" id="hourly" value="1" checked>
+            <label class="form-check-label" for="inlineRadio2">Hourly</label>
+          </div>
+
+        @endif
+
       </div>
      
       <div class="form-group">
@@ -83,22 +99,22 @@
 
       <div class="form-group">
         <label for="description">Description</label>
-        <textarea name="description" id="description" value="{{ $job->description }}"></textarea>
+        <textarea name="description" id="description" value="">{{ $job->description }}</textarea>
       </div>
 
       <div class="form-group">
         <label for="work">What You'll Do</label>
-        <textarea name="work" id="work" value="{{ $job->work }}"></textarea>
+        <textarea name="work" id="work" value="">{{ $job->work }}</textarea>
       </div>
 
       <div class="form-group">
         <label for="qualifications">Qualifications</label>
-        <textarea name="qualifications" id="qualifications" value="{{ $job->qualifications }}"></textarea>
+        <textarea name="qualifications" id="qualifications" value="">{{ $job->qualifications }}</textarea>
       </div>
 
       <div class="form-group">
         <label for="skills">Preferred Skills</label>
-        <textarea name="skills" id="skills" value="{{ $job->skills }}"></textarea>
+        <textarea name="skills" id="skills" value="">{{ $job->skills }}</textarea>
       </div>
 
 
