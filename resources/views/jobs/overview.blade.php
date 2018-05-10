@@ -52,7 +52,6 @@
 	</table>
 
 	<div class="pagination-wrapper">
-		<!-- pagination -->
 		{{ $jobs->links() }}
 	</div>
 
