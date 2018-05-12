@@ -46,11 +46,11 @@
 
       <div class="form-group">
         <label for="duration">Duration</label>
-        <select name="duration" value="{{ $job->duration }}" class="form-control form-control-lg">
-          <option value="full-time">Full-Time</option>
-          <option value="part-time">Part-Time</option>
-          <option value="contract">Contract</option>
-          <option value="temporary">Temporary</option>
+        <select name="duration" class="form-control form-control-lg">
+          <option {{ $job->duration == 'Full-Time' ? 'selected':'' }}>Full-Time</option>
+          <option {{ $job->duration == 'Part-Time' ? 'selected':'' }}>Part-Time</option>
+          <option {{ $job->duration == 'Contract' ? 'selected':'' }}>Contract</option>
+          <option {{ $job->duration == 'Temporary' ? 'selected':'' }}>Temporary</option>
         </select>
       </div>
 
@@ -59,22 +59,22 @@
         @if($job->compensationType === 0)
 
           <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="compensationType" value="{{ $job->compensationType }}" id="salary" value="0" checked>
+            <input class="form-check-input" type="radio" name="compensationType" value="{{ $job->compensationType }}" id="salary" checked>
             <label class="form-check-label" for="inlineRadio1">Salary</label>
           </div>
           <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="compensationType" value="{{ $job->compensationType }}" id="hourly" value="1">
+            <input class="form-check-input" type="radio" name="compensationType" value="1" id="hourly">
             <label class="form-check-label" for="inlineRadio2">Hourly</label>
           </div>
 
         @elseif ($job->compensationType === 1)
 
           <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="compensationType" value="{{ $job->compensationType }}" id="salary" value="0">
+            <input class="form-check-input" type="radio" name="compensationType" value="0" id="salary">
             <label class="form-check-label" for="inlineRadio1">Salary</label>
           </div>
           <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="compensationType" value="{{ $job->compensationType }}" id="hourly" value="1" checked>
+            <input class="form-check-input" type="radio" name="compensationType" value="{{ $job->compensationType }}" id="hourly" checked>
             <label class="form-check-label" for="inlineRadio2">Hourly</label>
           </div>
 
