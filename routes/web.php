@@ -82,11 +82,11 @@ Route::group(['prefix' => 'employees'], function() {
 
 });
 
-Route::group(['prefix' => 'api'], function() {
+Route::group(['middleware' => ['cors']], function () {
 
-	Route::get('/jobs/getAllJobs', [
-		'uses'	=> "JobsController@getAllJobs"
-	]);
+    	Route::get('/api/jobs/getAllJobs', [
+			'uses'	=> "JobsController@getAllJobs"	
+		]);
 
 });
 
