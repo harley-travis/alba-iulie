@@ -14,8 +14,6 @@ class JobsController extends Controller {
     
     public function getJobs() {
 
-        // this is how you get all the things in the DB without pagination
-        // $jobs = Job::all();
         $jobs = Job::paginate(15);
         return view('jobs.overview', ['jobs' => $jobs]);
 
@@ -23,8 +21,11 @@ class JobsController extends Controller {
 
     // get all jobs and return json to test CORS
     public function getAllJobs() {
-        $jobs = Job::all()->toJson();
-        return response()->json([$jobs]);
+
+        $jobs = Job::all();
+        $jobs->toJson(JSON_PRETTY_PRINT);
+        return response()->json($jobs);
+        
     }
     
     public function createJob() {
