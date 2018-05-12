@@ -82,6 +82,13 @@ Route::group(['prefix' => 'employees'], function() {
 
 });
 
+Route::group(['prefix' => 'api'], function() {
+
+	Route::get('/jobs/getAllJobs', [
+		'uses'	=> "JobsController@getAllJobs"
+	]);
+
+});
 
 Route::group(['prefix' => 'jobs'], function() {
 	$c = 'JobsController';
@@ -119,6 +126,15 @@ Route::group(['prefix' => 'jobs'], function() {
 
 });
 
+Route::group(['prefix' => 'profile'], function() {
+	$c = 'Profile';
+
+	Route::get('', [
+		'uses'	=> "$c@getProfile",
+		'as'	=> 'profile.overview'
+	]);
+
+});
 
 Route::group(['prefix' => 'reports'], function() {
 	$c = 'ReportsController';

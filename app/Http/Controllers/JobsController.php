@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use Illuminate\Session\Store;
+use Symfony\Component\HttpFoundation\Response;
 
 class JobsController extends Controller {
     
@@ -18,6 +19,12 @@ class JobsController extends Controller {
         $jobs = Job::paginate(15);
         return view('jobs.overview', ['jobs' => $jobs]);
 
+    }
+
+    // get all jobs and return json to test CORS
+    public function getAllJobs() {
+        $jobs = Job::all()->toJson();
+        return response()->json([$jobs]);
     }
     
     public function createJob() {
