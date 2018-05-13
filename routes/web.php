@@ -124,6 +124,11 @@ Route::group(['prefix' => 'jobs'], function() {
 		'as'	=> 'jobs.archive'
 	]);
 
+	Route::get('view', [
+		'uses'	=> "$c@viewJob",
+		'as'	=> 'jobs.view'
+	]);
+
 });
 
 Route::group(['prefix' => 'profile'], function() {

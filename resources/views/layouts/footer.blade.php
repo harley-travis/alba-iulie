@@ -3,13 +3,6 @@
 
     <script src="https://unpkg.com/vue"></script>
     <script src="https://unpkg.com/vue-material@beta"></script>
-    <script>
-      Vue.use(VueMaterial.default)
-
-      new Vue({
-        el: '#app'
-      })
-    </script>
 
     <!-- register WYSIWYG editors -->
     <script>

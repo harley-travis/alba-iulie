@@ -8,7 +8,6 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use Illuminate\Session\Store;
-use Symfony\Component\HttpFoundation\Response;
 
 class JobsController extends Controller {
     
@@ -25,7 +24,7 @@ class JobsController extends Controller {
         $jobs = Job::all();
         $jobs->toJson(JSON_PRETTY_PRINT);
         return response()->json($jobs);
-        
+
     }
     
     public function createJob() {
@@ -39,7 +38,6 @@ class JobsController extends Controller {
 			'title'                 => 'required|min:5',
 			'compensationAmount'    => 'required|min:1'
 		]);
-
 
         // because we have our fillable variable set in our model, i can just call a var called $job and crate a new instance of the Job model to pass this data
 	    $job = new Job([
@@ -112,5 +110,9 @@ class JobsController extends Controller {
             $job->save();
         }
 
+    }
+
+    public function viewJob() {
+        return view('jobs.view');
     }
 }
