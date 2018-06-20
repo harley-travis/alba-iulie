@@ -1,35 +1,33 @@
-<!-- <div class="">
-    <div class="">
-      <div class="">
-        <nav class="">
-          <a class="" href="{{ route('dashboard.overview') }}"><i class="material-icons">home</i> Dashboard</a>
-          <a class="" href="{{ route('applicants.overview') }}"><i class="material-icons">people</i> Applicants</a>
-          <a class="" href="{{ route('jobs.overview') }}"><i class="material-icons">work</i> Positions</a>
-          <a class="" href="{{ route('employees.overview') }}"><i class="material-icons">assignment_ind</i> Employees</a>
-          <a class="" href=""><i class="material-icons">schedule</i> Exit Interview</a>
-          <a class="" href="{{ route('reports.overview') }}"><i class="material-icons">assessment</i> Reports</a>
+<!-- ============================================================== -->
+<!-- Left Sidebar - style you can find in sidebar.scss  -->
+<!-- ============================================================== -->
+<aside class="left-sidebar">
+    <!-- Sidebar scroll-->
+    <div class="scroll-sidebar">
+        <!-- Sidebar navigation-->
+        <nav class="sidebar-nav">
+            <ul id="sidebarnav">
+                <li> 
+                  <a class="waves-effect waves-dark" href="{{ route('dashboard.overview') }}" aria-expanded="false"><i class="fa fa-tachometer"></i><span class="hide-menu">Dashboard</span></a>
+                </li>
+                <li> 
+                  <a class="waves-effect waves-dark" href="{{ route('applicants.overview') }}" aria-expanded="false"><i class="fa fa-user-circle-o"></i><span class="hide-menu">Applicants</span></a>
+                </li>
+                <li> 
+                  <a class="waves-effect waves-dark" href="{{ route('jobs.overview') }}" aria-expanded="false"><i class="fa fa-table"></i><span class="hide-menu">Positions</span></a>
+                </li>
+                <li> 
+                  <a class="waves-effect waves-dark" href="{{ route('employees.overview') }}" aria-expanded="false"><i class="fa fa-smile-o"></i><span class="hide-menu">Employees</span></a>
+                </li>
+                <li> 
+                  <a class="waves-effect waves-dark" href="{{ route('reports.overview') }}" aria-expanded="false"><i class="fa fa-globe"></i><span class="hide-menu">Reports</span></a>
+                </li>
+            </ul>
         </nav>
-      </div>
+        <!-- End Sidebar navigation -->
     </div>
-</div> -->
-
-<ul class="nav flex-column">
-  <li class="nav-item">
-    <a class="nav-link active" href="{{ route('dashboard.overview') }}"><i class="material-icons">home</i> Dashboard</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="{{ route('applicants.overview') }}"><i class="material-icons">people</i> Applicants</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="{{ route('jobs.overview') }}"><i class="material-icons">work</i> Positions</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="{{ route('employees.overview') }}"><i class="material-icons">assignment_ind</i> Employees</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="#"><i class="material-icons">schedule</i> Exit Interview</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="{{ route('reports.overview') }}"><i class="material-icons">assessment</i> Reports</a>
-  </li>
-</ul>
+    <!-- End Sidebar scroll-->
+</aside>
+<!-- ============================================================== -->
+<!-- End Left Sidebar - style you can find in sidebar.scss  -->
+<!-- ============================================================== -->
