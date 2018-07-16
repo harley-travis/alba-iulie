@@ -9,11 +9,11 @@
 
     <title>White July</title>
 
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/perfect-scrollbar.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/morrisjs/morris.css') }}" rel="stylesheet">
     <link href="{{ asset('css/c3-master/c3.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/pages/dashboard1.css') }}" rel="stylesheet">
     <link href="{{ asset('css/colors/default.css') }}" id="theme" rel="stylesheet">
 
@@ -22,10 +22,10 @@
     <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-<![endif]-->
+    <![endif]-->
 
     <!-- todo: download this file and have a hard copy do not use CDN -->
-    <script src="https://cdn.ckeditor.com/4.9.1/standard/ckeditor.js"></script>
+    <script src="https://cdn.ckeditor.com/4.9.2/standard/ckeditor.js"></script>
 </head>
 
 <body class="fix-header fix-sidebar card-no-border">
@@ -35,7 +35,7 @@
     <div class="preloader">
         <div class="loader">
             <div class="loader__figure"></div>
-            <p class="loader__label">Admin Wrap</p>
+            <p class="loader__label">White July</p>
         </div>
     </div>
 

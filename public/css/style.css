@@ -49,9 +49,9 @@ File: scss
 /******************* 
 Global Styles 
 *******************/
-@import url(../scss/icons/font-awesome/css/font-awesome.min.css);
+/* @import url(../scss/icons/font-awesome/css/font-awesome.min.css);
 @import url(../css/spinners.css);
-@import url(../css/animate.css);
+@import url(../css/animate.css); */
 * {
   outline: none; }
 
@@ -5569,7 +5569,7 @@ File: scss
   color: #24d2b5; }
 
 .has-success .form-control-success {
-  background-image: url(../images/icon/success.svg); }
+  background-image: url('/assets/img/icon/success.svg'); }
 
 .has-success .form-control {
   border-color: #24d2b5; }
@@ -5578,7 +5578,7 @@ File: scss
   color: #ff9041; }
 
 .has-warning .form-control-warning {
-  background-image: url(../images/icon/warning.svg); }
+  background-image: url('/assets/img/icon/warning.svg'); }
 
 .has-warning .form-control {
   border-color: #ff9041; }
@@ -5587,7 +5587,7 @@ File: scss
   color: #ff5c6c; }
 
 .has-danger .form-control-danger {
-  background-image: url(../images/icon/danger.svg); }
+  background-image: url('/assets/img/icon/danger.svg'); }
 
 .has-danger .form-control {
   border-color: #ff5c6c; }

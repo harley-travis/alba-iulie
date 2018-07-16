@@ -1,5 +1,7 @@
 {
     "/js/app.js": "/js/app.js",
+    "/css/app.css": "/css/app.css",
+    "/css/bootstrap/css/bootstrap.min.css": "/css/bootstrap/css/bootstrap.min.css",
     "/css/perfect-scrollbar.min.css": "/css/perfect-scrollbar.min.css",
     "/css/morrisjs/morris.css": "/css/morrisjs/morris.css",
     "/css/c3-master/c3.min.css": "/css/c3-master/c3.min.css",
