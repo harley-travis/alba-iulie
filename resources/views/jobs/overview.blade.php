@@ -13,7 +13,7 @@
 			</ol>
 		</div>
 		<div class="col-md-7 align-self-center">
-			<a href="{{ route('jobs.add') }}" class="btn waves-effect waves-light btn-success">Add Position</a>
+			<a href="{{ route('jobs.create') }}" class="btn waves-effect waves-light btn-success">Add Position</a>
 		</div>
 	</div>
 	<!-- ============================================================== -->

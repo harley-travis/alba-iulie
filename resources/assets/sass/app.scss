@@ -20,9 +20,9 @@ File: scss
  @import 'variable'; 
  @import 'AdminWrapapp'; 
  @import 'sidebar';
- @import 'pages/pages'; 
+ @import './pages/pages'; 
  @import './icons/font-awesome/css/font-awesome.min.css';
- @import 'widgets/widgets';
+ @import './widgets/widgets';
  @import 'grid';
  @import 'responsive'; 
  @import 'spinners.css'; 

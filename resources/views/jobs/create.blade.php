@@ -1,9 +1,6 @@
-@extends('layouts.app')
+@extends('layouts.master')
 
 @section('content')
-<!-- <create-job></create-job> -->
-
-@include('layouts.errors')
 
   <h2>Add New Job</h2>
   
