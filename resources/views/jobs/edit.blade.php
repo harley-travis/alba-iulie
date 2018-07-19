@@ -14,7 +14,8 @@
 			</ol>
 		</div>
 		<div class="col-md-7 align-self-center">
-			<a href="{{ route('jobs.add') }}" class="btn waves-effect waves-light btn-success">Add Position</a>
+    <form action="{{ route('jobs.update') }}" method="post">
+    <button type="submit" class="btn btn-success btn-lg">Save Job</button>
 		</div>
 	</div>
 	<!-- ============================================================== -->
@@ -28,7 +29,7 @@
 			<div class="card">
 				<div class="card-body">
 
-          <form action="{{ route('jobs.update') }}" method="post">
+          
 
             <div class="form-group">
               <label for="jobTitle">Job Title</label>

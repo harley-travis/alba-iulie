@@ -79,7 +79,7 @@ class JobsController extends Controller {
         
         $this->validate($request, [
 			'title' => 'required|min:5',
-			'compensationAmount' => 'required|min:5'
+			'compensationAmount' => 'required|min:1'
 		]);
       
         $job = Job::find($request->input('id'));
