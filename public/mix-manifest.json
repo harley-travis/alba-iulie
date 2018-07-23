@@ -1,4 +1,15 @@
 {
     "/js/app.js": "/js/app.js",
-    "/css/app.css": "/css/app.css"
+    "/css/app.css": "/css/app.css",
+    "/css/bootstrap/css/bootstrap.min.css": "/css/bootstrap/css/bootstrap.min.css",
+    "/css/perfect-scrollbar.min.css": "/css/perfect-scrollbar.min.css",
+    "/css/morrisjs/morris.css": "/css/morrisjs/morris.css",
+    "/css/c3-master/c3.min.css": "/css/c3-master/c3.min.css",
+    "/js/jquery.3.2.0.min.js": "/js/jquery.3.2.0.min.js",
+    "/js/popper.min.js": "/js/popper.min.js",
+    "/js/bootstrap.min.js": "/js/bootstrap.min.js",
+    "/js/raphael/raphael-min.js": "/js/raphael/raphael-min.js",
+    "/js/morrisjs/morris.min.js": "/js/morrisjs/morris.min.js",
+    "/js/d3/d3.min.js": "/js/d3/d3.min.js",
+    "/js/c3-master/c3.min.js": "/js/c3-master/c3.min.js"
 }
