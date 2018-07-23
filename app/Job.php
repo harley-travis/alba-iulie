@@ -19,8 +19,10 @@ class Job extends Model {
         'work', 
         'qualifications',
         'skills', 
-        'filled', 
+        'filled', // is a date
         'isActive'
+
+        // might need to create a col to indicate wither the job has been filled or not. 0 or 1 
     ];
     
 }

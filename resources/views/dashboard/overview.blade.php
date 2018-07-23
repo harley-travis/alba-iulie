@@ -21,7 +21,13 @@
 	<!-- ============================================================== -->
 
 	<div class="row">
-		Welcome to the dashboard
+		<div class="col-12">
+			<div class="card">
+				<div class="card-body">
+					Welcome to the dashboard
+				</div>
+			</div>
+		</div>
 	</div><!-- row -->
 	
 
