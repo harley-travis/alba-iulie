@@ -24,5 +24,9 @@ class Job extends Model {
 
         // might need to create a col to indicate wither the job has been filled or not. 0 or 1 
     ];
+
+    public function user() {
+        return $this->belongsTo('App\User');
+    }
     
 }

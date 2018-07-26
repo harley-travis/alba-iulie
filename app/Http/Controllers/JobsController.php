@@ -13,8 +13,10 @@ class JobsController extends Controller {
     
     public function getJobs() {
 
-        $jobs = Job::paginate(15);
-        return view('jobs.overview', ['jobs' => $jobs]);
+        if(Auth::check()) {
+            $jobs = Job::where('user_id', '=', Auth::user()->id)->paginate(15);
+            return view('jobs.overview', ['jobs' => $jobs]);
+        } 
 
     }
 
@@ -37,7 +39,14 @@ class JobsController extends Controller {
         $this->validate($request, [
 			'title'                 => 'required|min:5',
 			'compensationAmount'    => 'required|min:1'
-		]);
+        ]);
+        
+        $user = Auth::user(); 
+        if(!$user) {
+            return redirect()->back();
+        }
+
+        // creating and authoenticaing users / demo: connecting users and psots
 
         // because we have our fillable variable set in our model, i can just call a var called $job and crate a new instance of the Job model to pass this data
 	    $job = new Job([
@@ -56,8 +65,10 @@ class JobsController extends Controller {
             'isActive'              => $request->input('isActive')
         ]);
 
-        $job->save(); // elqouent saves this to the db for us! 
-                
+        $user->jobs()->save($job);
+        //$job->save(); // elqouent saves this to the db for us! 
+             
+        
 		return redirect()
 			->route('jobs.overview')
 			->with('info', 'Good news, your job was added!');

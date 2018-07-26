@@ -22,6 +22,10 @@
                 <li> 
                   <a class="waves-effect waves-dark" href="{{ route('reports.overview') }}" aria-expanded="false"><i class="fa fa-globe"></i><span class="hide-menu">Reports</span></a>
                 </li>
+                <li>
+                  <a href="{{ url('/logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
+                  <form id="logout-form" action="{{ url('/logout') }}" method="POST">{{ csrf_field() }}</form>  
+                </li>
             </ul>
         </nav>
         <!-- End Sidebar navigation -->

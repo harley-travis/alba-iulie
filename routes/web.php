@@ -87,9 +87,9 @@ Route::group(['prefix' => 'employees'], function() {
 
 Route::group(['middleware' => ['cors']], function () {
 
-    	Route::get('/api/jobs/getAllJobs', [
-			'uses'	=> "JobsController@getAllJobs"
-		]);
+    Route::get('/api/jobs/getAllJobs', [
+		'uses'	=> "JobsController@getAllJobs"
+	]);
 
 });
 
@@ -175,12 +175,7 @@ Route::group(['prefix' => 'users'], function() {
 
 });
 
-
-Route::get('humans.txt', function () {
-    return view('humans');
-});
-
-
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+//Route::get('/', 'HomeController@index')->name('dashboard.overview');
+Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
