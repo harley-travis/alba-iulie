@@ -9,8 +9,11 @@ class JobTableSeeder extends Seeder
      *
      * @return void
      */
-    public function run()
-    {
+    public function run() {
+
+        // php artisan tinker
+        // factory(App\Job::class, 10)->create();
+
         DB::table('jobs')->insert([
             'title' => $faker->job, 
  

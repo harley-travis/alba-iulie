@@ -46,8 +46,6 @@ class JobsController extends Controller {
             return redirect()->back();
         }
 
-        // creating and authoenticaing users / demo: connecting users and psots
-
         // because we have our fillable variable set in our model, i can just call a var called $job and crate a new instance of the Job model to pass this data
 	    $job = new Job([
             'title'                 => $request->input('title'), 

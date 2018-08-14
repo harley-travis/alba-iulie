@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Carbon\Carbon;
 
 class DatabaseSeeder extends Seeder
 {
@@ -9,8 +10,126 @@ class DatabaseSeeder extends Seeder
      *
      * @return void
      */
-    public function run()
-    {
+    public function run() {
+
+        // php artisan migrate:refresh [update database columns]
+        // php artisan db:seed [insert this data below to the db]
+
         // $this->call(UsersTableSeeder::class);
+        DB::table('users')->insert([
+            'name' => 'Tony Stark',
+            'email' =>'tony@gmail.com',
+            'password' => bcrypt('test'),
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
+        ]);
+
+        DB::table('users')->insert([
+            'name' => 'Peter Parker',
+            'email' =>'peter@gmail.com',
+            'password' => bcrypt('test'),
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
+        ]);
+
+        // JOBS
+        DB::table('jobs')->insert([
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
+            'title' => 'Personal Assistant', 
+            'location' => 'California', 
+            'department' => 'Product', 
+            'duration' => 1, 
+            'compensationType' => 0, 
+            'compensationAmount' => 50000, 
+            'description' => 'good description', 
+            'work' => 'drive tony around', 
+            'qualifications' => 'high school grad',
+            'skills' => 'drive cars', 
+            'isActive' => '0',
+            'filled' => '2001-10-15',
+            'closeDate' => '2017-06-18',
+            'user_id' => '1',
+            'questions_id' => '1'
+        ]);
+
+        DB::table('jobs')->insert([
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
+            'title' => 'Head of Security', 
+            'location' => 'California', 
+            'department' => 'Product', 
+            'duration' => 1, 
+            'compensationType' => 0, 
+            'compensationAmount' => 405000, 
+            'description' => 'take on daily challenges of the office', 
+            'work' => 'protect avengers tower', 
+            'qualifications' => 'must be old enough to drive a limo',
+            'skills' => 'karate', 
+            'isActive' => '0',
+            'filled' => '2001-10-15',
+            'closeDate' => '2017-06-18',
+            'user_id' => '1',
+            'questions_id' => '1'
+        ]);
+
+        DB::table('jobs')->insert([
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
+            'title' => 'Iron Spider', 
+            'location' => 'Arizona', 
+            'department' => 'Product', 
+            'duration' => 2, 
+            'compensationType' => 1, 
+            'compensationAmount' => 20, 
+            'description' => 'good description', 
+            'work' => 'lots of work', 
+            'qualifications' => 'super powers',
+            'skills' => 'stick to walls or swing', 
+            'isActive' => '0',
+            'filled' => '2001-10-15',
+            'closeDate' => '2017-06-18',
+            'user_id' => '2',
+            'questions_id' => '2'
+        ]);
+
+        DB::table('jobs')->insert([
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
+            'title' => 'Suit Lady', 
+            'location' => 'Arizona', 
+            'department' => 'Product', 
+            'duration' => 2, 
+            'compensationType' => 1, 
+            'compensationAmount' => 20, 
+            'description' => 'Be a robot and work better than Siri', 
+            'work' => 'give me the data when needed', 
+            'qualifications' => 'must be a robot',
+            'skills' => 'quick google searching', 
+            'isActive' => '0',
+            'filled' => '2001-10-15',
+            'closeDate' => '2017-06-18',
+            'user_id' => '2',
+            'questions_id' => '2'
+        ]);
+
+        // QUESTIONS 
+        DB::table('questions')->insert([
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
+            'title' => 'Relocation', 
+            'question' => 'Are you willing to relocate?', 
+            'interview_stage' => '0', 
+            'job_id' => '1'
+        ]);
+        
+        DB::table('questions')->insert([
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
+            'title' => 'Experience', 
+            'question' => 'How many years of experience do you have?', 
+            'interview_stage' => '0', 
+            'job_id' => '2'
+        ]);
     }
 }

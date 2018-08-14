@@ -16,8 +16,18 @@
 // });
 
 Route::get('/', function () {
-    return view('dashboard.overview');
+	
+	if( auth()->check() == null ) {
+		return redirect('/login');
+	} else {
+		return view('dashboard.overview');
+	}
+    
 });
+
+Route::get('dashboard', function () {
+    return view('dashboard.overview');
+})->name('dashboard.overview');
 
 Route::group(['prefix' => 'applicants'], function() {
 	$c = 'ApplicantsController';
@@ -54,11 +64,6 @@ Route::group(['prefix' => 'billing'], function() {
 	]);
 
 });
-
-Route::get('dashboard', function () {
-    return view('dashboard.overview');
-})->name('dashboard.overview');
-
 
 Route::group(['prefix' => 'employees'], function() {
 	$c = 'EmployeesController';

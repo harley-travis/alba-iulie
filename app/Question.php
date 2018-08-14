@@ -9,6 +9,10 @@ class Question extends Model {
         'title', 
         'question', 
         'job', 
-        'stage'
+        'interview_stage'
     ];
+
+    public function job() {
+        return $this->belongsTo('App\Job');
+    }
 }

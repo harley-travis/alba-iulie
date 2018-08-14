@@ -22,6 +22,7 @@ $factory->define(App\Job::class, function (Faker $faker) {
         'qualifications' => $faker->realText,
         'skills' => $faker->realText, 
         'filled' => $faker->date, 
-        'isActive' => $faker->numberBetween(0, 1)
+        'isActive' => $faker->numberBetween(0, 1),
+        'user_id' => $faker->numberBetween(0, 1)
     ];
 });
