@@ -25,14 +25,15 @@ class CreateJobsTable extends Migration
             $table->longText('description');
             $table->longText('work');
             $table->longText('qualifications');
-            $table->longText('skills');
-            // $table->integer('counter');
+            $table->longText('skills');  
             $table->integer('isActive');
             $table->date('filled');
             $table->date('closeDate');
             $table->integer('user_id');
             $table->integer('companies_id');
-            $table->integer('questions_id');
+            //$table->integer('questions_id');
+            // $table->integer('counter');
+
 
             // date filled?
             // job filled??            

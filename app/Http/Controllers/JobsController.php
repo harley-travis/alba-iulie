@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Job;
+use App\Company;
 use Auth;
 use Illuminate\Http\Request;
 
@@ -45,8 +46,12 @@ class JobsController extends Controller {
         if(!$user) {
             return redirect()->back();
         }
+        
+        $company_id = Company::where('user_id', '=', $user->id)->value('id');
+        
 
-        // because we have our fillable variable set in our model, i can just call a var called $job and crate a new instance of the Job model to pass this data
+        // because we have our fillable variable set in our model, 
+        // i can just call a var called $job and crate a new instance of the Job model to pass this data
 	    $job = new Job([
             'title'                 => $request->input('title'), 
             'location'              => $request->input('location'),
@@ -60,7 +65,8 @@ class JobsController extends Controller {
             'qualifications'        => $request->input('qualifications'),
             'skills'                => $request->input('skills'),
             'filled'                => $request->input('closeDate'),
-            'isActive'              => $request->input('isActive')
+            'isActive'              => $request->input('isActive'),
+            'companies_id'          => $company_id
         ]);
 
         $user->jobs()->save($job);
@@ -123,5 +129,5 @@ class JobsController extends Controller {
     public function viewJob() {
         return view('jobs.view');
     }
-    
+
 }
