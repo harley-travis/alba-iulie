@@ -74,7 +74,7 @@ class JobsController extends Controller {
     }
 
     
-    // this function is triggered when the click teh button. grabs the id and returns the EDIT view with the id in place.
+    // this function is triggered when the click the button. grabs the id and returns the EDIT view with the id in place.
     // teh updateJob() actually updates the info
     public function getJobId($id) {
 
@@ -115,7 +115,6 @@ class JobsController extends Controller {
 
         if($job->isActive === 1) {
             $job->isActive = 0;
-
             $job->save();
         }
 
@@ -124,4 +123,5 @@ class JobsController extends Controller {
     public function viewJob() {
         return view('jobs.view');
     }
+    
 }

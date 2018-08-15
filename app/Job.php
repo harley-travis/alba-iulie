@@ -29,6 +29,10 @@ class Job extends Model {
         return $this->belongsTo('App\User');
     }
 
+    public function company() {
+        return $this->belongsTo('App\Company');
+    }
+
     public function questions() {
         return $this->hasMany('App\Question');
     }

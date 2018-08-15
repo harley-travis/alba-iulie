@@ -119,6 +119,7 @@
                 <div class="card card-body">
                 <h4>Adding a Question</h4>
                 <p>Creating questions for the job helps the team to stay consistent with the interview process. Click the 'Add Qustion' button below to create a new button. The question will display on the applicants profile page.  You can use the applicant profile page as an interviewing tool.</p>
+
                 <button class="btn btn-success">Add Question</button>
                 </div>
               </div>
@@ -127,9 +128,7 @@
           </div>
           
             <input type="hidden" name="isActive" value="1">
-
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
-
             <button type="submit" class="btn btn-success">Save Job</button>
 
           </form>

@@ -49,7 +49,7 @@ class DatabaseSeeder extends Seeder
             'isActive' => '0',
             'filled' => '2001-10-15',
             'closeDate' => '2017-06-18',
-            'user_id' => '1',
+            'companies_id' => '1',
             'questions_id' => '1'
         ]);
 
@@ -70,6 +70,7 @@ class DatabaseSeeder extends Seeder
             'filled' => '2001-10-15',
             'closeDate' => '2017-06-18',
             'user_id' => '1',
+            'companies_id' => '1',
             'questions_id' => '1'
         ]);
 
@@ -90,6 +91,7 @@ class DatabaseSeeder extends Seeder
             'filled' => '2001-10-15',
             'closeDate' => '2017-06-18',
             'user_id' => '2',
+            'companies_id' => '2',
             'questions_id' => '2'
         ]);
 
@@ -110,6 +112,7 @@ class DatabaseSeeder extends Seeder
             'filled' => '2001-10-15',
             'closeDate' => '2017-06-18',
             'user_id' => '2',
+            'companies_id' => '2',
             'questions_id' => '2'
         ]);
 
@@ -131,5 +134,24 @@ class DatabaseSeeder extends Seeder
             'interview_stage' => '0', 
             'job_id' => '2'
         ]);
+
+        // COMPANIES
+        DB::table('companies')->insert([
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
+            'company_name' => 'Avengers', 
+            'bio' => 'Earths Mightest Heros',
+            'user_id' => '2'
+        ]);
+    
+        DB::table('companies')->insert([
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
+            'company_name' => 'Netflix', 
+            'bio' => 'Streaming all the digital content',
+            'user_id' => '1'
+        ]);
+
+
     }
 }

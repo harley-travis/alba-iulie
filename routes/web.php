@@ -90,14 +90,6 @@ Route::group(['prefix' => 'employees'], function() {
 
 });
 
-Route::group(['middleware' => ['cors']], function () {
-
-    Route::get('/api/jobs/getAllJobs', [
-		'uses'	=> "JobsController@getAllJobs"
-	]);
-
-});
-
 Route::group(['prefix' => 'jobs'], function() {
 	$c = 'JobsController';
 
@@ -179,6 +171,14 @@ Route::group(['prefix' => 'users'], function() {
 	]);
 
 });
+
+//Route::group(['middleware' => ['cors']], function () {
+
+  //  Route::resource('/api/jobs/', [
+	//	'uses'	=> "Api@getJobByCompanyId"
+	//]);
+
+//});
 
 Auth::routes();
 

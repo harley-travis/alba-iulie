@@ -31,6 +31,7 @@ class CreateJobsTable extends Migration
             $table->date('filled');
             $table->date('closeDate');
             $table->integer('user_id');
+            $table->integer('companies_id');
             $table->integer('questions_id');
 
             // date filled?
