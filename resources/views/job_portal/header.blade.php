@@ -9,6 +9,7 @@
         <title>Job Page</title>
 
         <link href="{{ asset('css/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+        <link href="{{ asset('css/portal.css') }}" rel="stylesheet">
 
     </head>
     <body>
