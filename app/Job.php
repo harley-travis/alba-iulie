@@ -38,8 +38,14 @@ class Job extends Model {
         return $this->belongsTo('App\Company');
     }
 
+    public function applicant() {
+        return $this->belongsTo('App\Applicant');
+    }
+
     public function questions() {
         return $this->hasMany('App\Question');
     }
+
+
     
 }

@@ -1,4 +1,10 @@
 @include('job_portal.header')
+@if(Session::has('info'))
+		<div class="alert alert-success" role="alert">
+			<h4 class="alert-heading">Success!</h4>
+			<p>{{ Session::get('info') }}</p>
+		</div>
+	@endif
 @foreach($job as $job)
             <div class="container-fluid">
                 <div class="container">
@@ -30,7 +36,7 @@
                         </section>
                         <div class="bottom-cta">
                             <a href="#" class="btn btn-secondary">See More Jobs</a>
-                            <a href="#" class="btn btn-success">Apply</a>
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#apply">Apply</button>
                         </div>
                     </div><!-- left-container -->
                     <div class="right-container">
@@ -43,7 +49,7 @@
                             <div class="job-data-wrapper">
                                 <div class="sidebar-cta">
                                     <a href="#" class="btn btn-secondary">See More Jobs</a>
-                                    <a href="#" class="btn btn-success">Apply</a>
+                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#apply">Apply</button>
                                 </div>
                                 <div class="job-info">
                                     <ul>
@@ -60,5 +66,57 @@
                     </div><!-- right-container -->
                 </div>
             </div>
+
+            
+
+            <!-- modal -->
+            <div class="modal fade" id="apply" tabindex="-1" role="dialog" aria-labelledby="applylLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <form action="{{ route('apply.job') }}" method="POST">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="applyLabel">Apply to {{ $job->title }}</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+
+                                <div class="form-group">
+                                    <label for="first-name">First Name</label>
+                                    <input type="text" class="form-control" id="first-name" name="first-name" aria-describedby="first-name" placeholder="First Name">
+                                </div>
+                                <div class="form-group">
+                                    <label for="last-name">Last Name</label>
+                                    <input type="text" class="form-control" id="last-name" name="last-name" aria-describedby="last-name" placeholder="Last Name">
+                                </div>
+                                <div class="form-group">
+                                    <label for="email">Email</label>
+                                    <input type="email" class="form-control" id="email" name="email" aria-describedby="email" placeholder="Email">
+                                </div>
+                                <div class="form-group">
+                                    <label for="phone">Phone Number</label>
+                                    <input type="text" class="form-control" id="phone" name="phone" aria-describedby="phone" placeholder="Phone Number">
+                                </div>
+                                <div class="form-group">
+                                    <label for="resume">Upload Resume</label>
+                                    <input type="file" class="form-control-file" id="resume">
+                                </div>
+
+                                <input type="hidden" name="job_id" id="job_id" value="{{ $job->id }}">
+                                <input type="hidden" name="companies_id" id="companies_id" value="{{ $job->companies_id }}">
+
+                                <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-success">Apply</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            
             @endforeach
 @include('job_portal.footer')

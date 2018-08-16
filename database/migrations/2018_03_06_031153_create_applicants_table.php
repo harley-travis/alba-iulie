@@ -15,24 +15,23 @@ class CreateApplicantsTable extends Migration
     {
         Schema::create('applicants', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('firstName', 50);
-            $table->string('lastName', 50);
+            $table->timestamps();
+            $table->string('first-name', 50);
+            $table->string('last-name', 50);
             $table->string('email', 75);
             $table->string('phone', 10);
-            $table->integer('isActive');
+            $table->integer('is-active');
             $table->integer('stage');
-            $table->date('dateApplied');
-            
-            $table->integer('user_id');
+            $table->date('date-applied');        
+            $table->integer('companies_id');
+            $table->integer('job_id');
             
             // fk
-            // job
-            // company
-            // user
-            // score
+            // score 1 to 1 ? <-- think more about
             
             
-            // NOTE: I NEED TO FIGURE OUT HOW THE SCORE WILL WORK. THE RELATIONSHIP BY USERS AND COMPANY TO THE APPLICANT. also if it will be in it's own db and how to do taht by itself
+            // NOTE: I NEED TO FIGURE OUT HOW THE SCORE WILL WORK. THE RELATIONSHIP BY USERS AND COMPANY TO THE APPLICANT. 
+            // also if it will be in it's own db and how to do taht by itself
         });
     }
 

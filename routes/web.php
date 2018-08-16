@@ -181,6 +181,12 @@ Route::group(['prefix' => 'postings'], function() {
 	]);
 
 	// apply to job
+	Route::post('company/applied/success', [
+		'uses'	=> "$c@applyToJob",
+		'as'	=> 'apply.job'
+	]);
+
+
 
 });
 
