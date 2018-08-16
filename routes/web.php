@@ -172,6 +172,19 @@ Route::group(['prefix' => 'users'], function() {
 
 });
 
+Route::group(['prefix' => 'postings'], function() {
+	$c = 'JobPortalController';
+
+	Route::get('company/{company_id}/job/{job_id}', [
+		'uses'	=> "$c@getJob",
+		'as'	=> 'job_portal.job'
+	]);
+
+	// apply to job
+
+});
+
+// MIGHT NEED THIS FOR CORS API
 //Route::group(['middleware' => ['cors']], function () {
 
   //  Route::resource('/api/jobs/', [
@@ -181,20 +194,6 @@ Route::group(['prefix' => 'users'], function() {
 //});
 
 Auth::routes();
-
-// routes to view single external jobs
-Route::group(['prefix' => 'company'], function() {
-	$c = 'JobPortalController';
-
-	// get the job data
-	Route::get('{company_id}/job/{job_id}', [
-		'uses'	=> "$c@getJob",
-		'as'	=> 'job_portal.job'
-	]);
-
-	// apply to job 
-
-});
 
 //Route::get('/', 'HomeController@index')->name('dashboard.overview');
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
