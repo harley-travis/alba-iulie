@@ -47,9 +47,9 @@ class JobsController extends Controller {
             return redirect()->back();
         }
         
+        // grab the company assc to user
         $company_id = Company::where('user_id', '=', $user->id)->value('id');
         
-
         // because we have our fillable variable set in our model, 
         // i can just call a var called $job and crate a new instance of the Job model to pass this data
 	    $job = new Job([
