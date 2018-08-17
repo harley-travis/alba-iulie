@@ -157,30 +157,43 @@ class DatabaseSeeder extends Seeder
         DB::table('applicants')->insert([
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
-            'first-name' => 'Gob', 
-            'last-name' => 'Bluth', 
+            'first_name' => 'Gob', 
+            'last_name' => 'Bluth', 
             'email' => 'gob@bluth.com', 
             'phone' => '9855558741', 
-            'is-active' => '0', 
+            'is_active' => '0', 
             'stage' => '0', 
-            'date-applied' => Carbon::now(), 
-            'companies_id' => '1', 
-            'job_id' => '1', 
+            'date_applied' => Carbon::now(), 
+            'companies_id' => '1'
         ]);
-    
+            
         DB::table('applicants')->insert([
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
-            'first-name' => 'Buster', 
-            'last-name' => 'Bluth', 
+            'first_name' => 'Buster', 
+            'last_name' => 'Bluth', 
             'email' => 'buster@bluth.com', 
             'phone' => '9855556699', 
-            'is-active' => '0', 
+            'is_active' => '0', 
             'stage' => '0', 
-            'date-applied' => Carbon::now(), 
-            'companies_id' => '1', 
-            'job_id' => '1', 
+            'date_applied' => Carbon::now(), 
+            'companies_id' => '1'
         ]);
+
+        // APPLICANTS_JOBS PIVOT TABLE
+        DB::table('applicant_job')->insert([
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
+            'applicant_id' => '1',
+            'job_id' => '1'
+        ]); 
+
+        DB::table('applicant_job')->insert([
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
+            'applicant_id' => '2',
+            'job_id' => '2'
+        ]); 
 
 
     }

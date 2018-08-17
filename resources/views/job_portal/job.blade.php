@@ -83,12 +83,12 @@
                             <div class="modal-body">
 
                                 <div class="form-group">
-                                    <label for="first-name">First Name</label>
-                                    <input type="text" class="form-control" id="first-name" name="first-name" aria-describedby="first-name" placeholder="First Name">
+                                    <label for="first_name">First Name</label>
+                                    <input type="text" class="form-control" id="first_name" name="first_name" aria-describedby="first_name" placeholder="First Name">
                                 </div>
                                 <div class="form-group">
-                                    <label for="last-name">Last Name</label>
-                                    <input type="text" class="form-control" id="last-name" name="last-name" aria-describedby="last-name" placeholder="Last Name">
+                                    <label for="last_name">Last Name</label>
+                                    <input type="text" class="form-control" id="last_name" name="last_name" aria-describedby="last_name" placeholder="Last Name">
                                 </div>
                                 <div class="form-group">
                                     <label for="email">Email</label>

@@ -7,12 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 class Applicant extends Model {
 
     protected $fillable = [
-        'first-name', 
-        'last-name', 
+        'first_name', 
+        'last_name', 
         'email', 
         'phone', 
-        'is-active', 
-        'date-applied', 
+        'is_active', 
+        'date_applied', 
         'stage', 
         'companies_id',
         'job_id'
@@ -22,12 +22,12 @@ class Applicant extends Model {
         return $this->belongsTo('App\User');
     }
 
-    public function job() {
-        return $this->belongsTo('App\Job');
+    public function jobs() {
+        return $this->belongsToMany('App\Job')->withTimeStamps();
     }
 
     public function company() {
         return $this->hasMany('App\Company');
     }
-    
+        
 }

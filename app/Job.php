@@ -39,13 +39,11 @@ class Job extends Model {
     }
 
     public function applicant() {
-        return $this->belongsTo('App\Applicant');
+        return $this->belongsToMany('App\Applicant')->withTimeStamps();
     }
 
     public function questions() {
         return $this->hasMany('App\Question');
     }
-
-
     
 }

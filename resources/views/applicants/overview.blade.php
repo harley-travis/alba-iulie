@@ -42,11 +42,15 @@
 
                   <tr>
                     <td class="mdl-data-table__cell--non-numeric">{{ $applicant->id }}</td>
-                    <td>{{ $applicant->firstName }} {{ $applicant->lastName }}</td>
-                    <td>TBD</td>
+                    <td>{{ $applicant->first_name }} {{ $applicant->last_name }}</td>
+                    <td>
+                      @foreach($applicant->jobs as $job)
+                        {{ $job->title }}
+                      @endforeach
+                    </td>
                     <td>{{ $applicant->phone }}</td>
                     <td>{{ $applicant->email }}</td>
-                    <td>{{ $applicant->dateApplied }}</td>
+                    <td>{{ $applicant->date_applied }}</td>
                     <td><a href="#">Link</a></td>
                   </tr>
 

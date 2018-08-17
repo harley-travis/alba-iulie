@@ -16,15 +16,14 @@ class CreateApplicantsTable extends Migration
         Schema::create('applicants', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
-            $table->string('first-name', 50);
-            $table->string('last-name', 50);
+            $table->string('first_name', 50);
+            $table->string('last_name', 50);
             $table->string('email', 75);
             $table->string('phone', 10);
-            $table->integer('is-active');
+            $table->integer('is_active');
             $table->integer('stage');
-            $table->date('date-applied');        
+            $table->date('date_applied');        
             $table->integer('companies_id');
-            $table->integer('job_id');
             
             // fk
             // score 1 to 1 ? <-- think more about

@@ -32,19 +32,18 @@ class JobPortalController extends Controller {
             //]);
                         
             $applicant = new Applicant([
-                'first-name'            => $request->input('first-name'), 
-                'last-name'             => $request->input('last-name'), 
+                'first_name'            => $request->input('first_name'), 
+                'last_name'             => $request->input('last_name'), 
                 'email'                 => $request->input('email'), 
                 'phone'                 => $request->input('phone'), 
-                'is-active'             => 0, 
-                'date-applied'          => Carbon::now(), 
+                'is_active'             => 0, 
+                'date_applied'          => Carbon::now(), 
                 'stage'                 => 0, 
-                'companies_id'          => $request->input('companies_id'),
-                'job_id'                => $request->input('job_id')
-
+                'companies_id'          => $request->input('companies_id')
             ]);
     
             $applicant->save();
+            $applicant->jobs()->attach($request->input('job_id'));
          
             return redirect()
                 ->route('job_portal.job', ['company_id' => $request->input('companies_id'), 'job_id' => $request->input('job_id')])
