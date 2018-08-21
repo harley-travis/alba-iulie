@@ -8,6 +8,7 @@ use App\Job;
 use App\Company;
 
 use Carbon\Carbon;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 class JobPortalController extends Controller {
     
@@ -30,7 +31,12 @@ class JobPortalController extends Controller {
             //    'title'                 => 'required|min:5',
             //   'compensationAmount'    => 'required|min:1'
             //]);
-                        
+
+
+            // upload resume
+            $file = $request->file('resume');
+            $file->storePubliclyAs('companies/'.$request->input('companies_id').'/resumes', $request->input('last_name').'_'.$request->input('first_name').'_resume.pdf', 'public');
+     
             $applicant = new Applicant([
                 'first_name'            => $request->input('first_name'), 
                 'last_name'             => $request->input('last_name'), 

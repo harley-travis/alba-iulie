@@ -73,7 +73,7 @@
             <div class="modal fade" id="apply" tabindex="-1" role="dialog" aria-labelledby="applylLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
-                        <form action="{{ route('apply.job') }}" method="POST">
+                        <form action="{{ route('apply.job') }}" method="POST" enctype="multipart/form-data">
                             <div class="modal-header">
                                 <h5 class="modal-title" id="applyLabel">Apply to {{ $job->title }}</h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -100,7 +100,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="resume">Upload Resume</label>
-                                    <input type="file" class="form-control-file" id="resume">
+                                    <input type="file" class="form-control-file" id="resume" name="resume">
                                 </div>
 
                                 <input type="hidden" name="job_id" id="job_id" value="{{ $job->id }}">

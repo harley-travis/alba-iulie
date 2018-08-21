@@ -181,6 +181,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         // APPLICANTS_JOBS PIVOT TABLE
+        // TO-DO create data for second user
         DB::table('applicant_job')->insert([
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),

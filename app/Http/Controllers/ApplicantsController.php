@@ -15,13 +15,6 @@ class ApplicantsController extends Controller {
 
     public function getApplicants() {
         
-        // need to pass in the job id
-
-       // LOOK AT MANY TO MANY RELATIONSHIPS
-       // ONE APPLICANT CAN APPLY TO MANY JOBS TO MANY COMPANIES
-
-        // TRYING TO PULL THE DATA FROM TEH APPLCIATNS AND JOB
-
         // get all applicants
         //$applicants = Applicant::orderby('date-applied')->get();
 
@@ -35,6 +28,8 @@ class ApplicantsController extends Controller {
 
         $applicants = Applicant::where('companies_id', '=', $company_id)->get();
     
+        // return with the resume url 
+        // https://laravel.com/docs/5.3/responses#file-responses
         
         return view('applicants.overview', ['applicants' => $applicants]);
     }
