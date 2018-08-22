@@ -36,7 +36,7 @@
                         </section>
                         <div class="bottom-cta">
                             <a href="#" class="btn btn-secondary">See More Jobs</a>
-                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#apply">Apply</button>
+                            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#apply">Apply</button>
                         </div>
                     </div><!-- left-container -->
                     <div class="right-container">
@@ -49,7 +49,7 @@
                             <div class="job-data-wrapper">
                                 <div class="sidebar-cta">
                                     <a href="#" class="btn btn-secondary">See More Jobs</a>
-                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#apply">Apply</button>
+                                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#apply">Apply</button>
                                 </div>
                                 <div class="job-info">
                                     <ul>
@@ -98,6 +98,46 @@
                                     <label for="phone">Phone Number</label>
                                     <input type="text" class="form-control" id="phone" name="phone" aria-describedby="phone" placeholder="Phone Number">
                                 </div>
+
+                                <hr>
+                                <div class="form-group">
+                                    What Ethnicity Are You?
+                                    <select class="custom-select">
+                                        <option selected>N/A</option>
+                                        <option value="1">Asian</option>
+                                        <option value="2">Hispanic</option>
+                                        <option value="3">White</option>
+                                        <option value="4">Preferr Not To Say</option>
+                                    </select>
+                                    </div>
+
+                                <div class="form-group">
+                                    Are you Veteran?
+                                    <div class="custom-control custom-radio custom-control-inline">
+                                        <input type="radio" id="customRadioInline1" name="customRadioInline1" class="custom-control-input">
+                                        <label class="custom-control-label" for="customRadioInline1">No</label>
+                                    </div>
+                                    <div class="custom-control custom-radio custom-control-inline">
+                                        <input type="radio" id="customRadioInline2" name="customRadioInline1" class="custom-control-input">
+                                        <label class="custom-control-label" for="customRadioInline2">Yes</label>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    Are you Disabled?
+                                    <div class="custom-control custom-radio custom-control-inline">
+                                        <input type="radio" id="customRadioInline1" name="customRadioInline1" class="custom-control-input">
+                                        <label class="custom-control-label" for="customRadioInline1">No</label>
+                                    </div>
+                                    <div class="custom-control custom-radio custom-control-inline">
+                                        <input type="radio" id="customRadioInline2" name="customRadioInline1" class="custom-control-input">
+                                        <label class="custom-control-label" for="customRadioInline2">Yes</label>
+                                    </div>
+                                </div>
+
+                                <hr>
+
+
                                 <div class="form-group">
                                     <label for="resume">Upload Resume</label>
                                     <input type="file" class="form-control-file" id="resume" name="resume">
@@ -105,7 +145,6 @@
 
                                 <input type="hidden" name="job_id" id="job_id" value="{{ $job->id }}">
                                 <input type="hidden" name="companies_id" id="companies_id" value="{{ $job->companies_id }}">
-
                                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                 
                             </div>

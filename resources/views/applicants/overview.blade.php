@@ -41,7 +41,7 @@
                 @foreach($applicants as $applicant)
                   <tr>
                     <td class="mdl-data-table__cell--non-numeric">{{ $applicant->id }}</td>
-                    <td>{{ $applicant->first_name }} {{ $applicant->last_name }}</td>
+                    <td><a href="{{ route('applicants.profile', ['id' => $applicant->id ]) }}">{{ $applicant->first_name }} {{ $applicant->last_name }}</a></td>
                     <td>
                       @foreach($applicant->jobs as $job)
                         {{ $job->title }}

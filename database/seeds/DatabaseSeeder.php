@@ -117,6 +117,8 @@ class DatabaseSeeder extends Seeder
             //'questions_id' => '2'
         ]);
 
+        factory(App\Job::class, 50)->create();
+
         // QUESTIONS 
         DB::table('questions')->insert([
             'created_at' => Carbon::now(),
@@ -182,8 +184,9 @@ class DatabaseSeeder extends Seeder
             'companies_id' => '1'
         ]);
 
+        factory(App\Applicant::class, 50)->create();
+
         // APPLICANTS_JOBS PIVOT TABLE
-        // TO-DO create data for second user
         DB::table('applicant_job')->insert([
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
@@ -198,6 +201,14 @@ class DatabaseSeeder extends Seeder
             'job_id' => '2'
         ]); 
 
+        // seed the pivot table
+        $jobs = App\Job::all();
+
+        App\Applicant::all()->each(function ($applicant) use ($jobs) { 
+            $applicant->jobs()->attach(
+                $jobs->random(rand(1, 3))->pluck('id')->toArray()
+            ); 
+        });
 
     }
 }

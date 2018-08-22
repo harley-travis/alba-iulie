@@ -33,5 +33,10 @@ class ApplicantsController extends Controller {
         } 
         
     }
+
+    public function getApplicantById($id) {
+        $applicant = Applicant::find($id);
+        return view('applicants.profile', ['applicant' => $applicant, 'applicantId' => $id]);
+    }
     
 }

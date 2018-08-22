@@ -52,6 +52,11 @@ Route::group(['prefix' => 'applicants'], function() {
 		'as'	=> 'applicants.delete'
 	]);
 
+	Route::get('profile/{id}', [
+		'uses'	=> "$c@getApplicantById",
+		'as'	=> 'applicants.profile'
+	]);
+
 });
 
 
