@@ -19,7 +19,7 @@ class CreateApplicantsTable extends Migration
             $table->string('first_name', 50);
             $table->string('last_name', 50);
             $table->string('email', 75);
-            $table->string('phone', 10);
+            $table->string('phone', 22); // not sure if this is correct. having problems
             $table->integer('is_active');
             $table->integer('stage');
             $table->string('resume');

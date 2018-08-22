@@ -31,7 +31,6 @@
 		<div class="col-12">
 			<div class="card">
 				<div class="card-body">
-its 
 					<div class="total-jobs">
 						{{ $jobs->total() }} Total Jobs
 					</div>
@@ -53,14 +52,12 @@ its
 								@foreach($jobs as $job)
 									<tr>
 										<td>
-
-												<div class="form-group">
-													<div class="checkbox checkbox-success">
-														<input id="checkbox-{{$job->id}}" type="checkbox">
-														<label for="checkbox-{{$job->id}}">  </label>
-													</div>
+											<div class="form-group">
+												<div class="checkbox checkbox-success">
+													<input id="checkbox-{{$job->id}}" type="checkbox">
+													<label for="checkbox-{{$job->id}}">  </label>
 												</div>
-
+											</div>
 										</td>
 										<td>{{ $job->id}}</td>
 										<td>{{ ucwords(trans( $job->title )) }}</td>

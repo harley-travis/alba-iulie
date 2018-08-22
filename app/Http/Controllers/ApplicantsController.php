@@ -22,13 +22,16 @@ class ApplicantsController extends Controller {
         if(!$user) {
             return redirect()->back();
         }
-        
-        // grab the company assc to user
-        $company_id = Company::where('user_id', '=', $user->id)->value('id');
 
-        $applicants = Applicant::where('companies_id', '=', $company_id)->get();
+        if(Auth::check()) {
+            // grab the company assc to user
+            $company_id = Company::where('user_id', '=', $user->id)->value('id');
+
+            $applicants = Applicant::where('companies_id', '=', $company_id)->paginate(15);
+            
+            return view('applicants.overview', ['applicants' => $applicants]);
+        } 
         
-        return view('applicants.overview', ['applicants' => $applicants]);
     }
     
 }

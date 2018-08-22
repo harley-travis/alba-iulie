@@ -32,6 +32,9 @@ class JobPortalController extends Controller {
             //   'compensationAmount'    => 'required|min:1'
             //]);
 
+            // validate file contents
+            // https://www.5balloons.info/upload-profile-picture-avatar-laravel-5-authentication/ 
+
             // upload resume
             $file = $request->resume->storeAs('companies/'.$request->input('companies_id').'/resumes', $request->input('last_name').'_'.$request->input('first_name').'_'.time().'_resume.pdf', 'public');
 

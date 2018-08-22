@@ -61,4 +61,8 @@
 		</div><!-- col-12 -->
 	</div><!-- row -->
 
+  <div class="pagination-wrapper">
+		{{ $applicants->links() }}
+	</div>
+
 @endsection
