@@ -22,6 +22,7 @@ class CreateApplicantsTable extends Migration
             $table->string('phone', 10);
             $table->integer('is_active');
             $table->integer('stage');
+            $table->string('resume');
             $table->date('date_applied');        
             $table->integer('companies_id');
             

@@ -20,26 +20,25 @@
 	<!-- End Bread crumb and right sidebar toggle -->
 	<!-- ============================================================== -->
 
-	<div class="row">
+<div class="row">
 		<div class="col-12">
 			<div class="card">
 				<div class="card-body">
-          <table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp">
-            <thead>
-              <tr>
-                <th class="mdl-data-table__cell--non-numeric">ID</th>
-                <th>Applicant</th>
-                <th>Position</th>
-                <th>Phone</th>
-                <th>Email</th>
-                <th>Date</th>
-                <th>Resume</th>
-              </tr>
-            </thead>
-            <tbody>
-
+					<div class="table-responsive">
+						<table class="table">
+							<thead>
+                <tr>
+                  <th class="mdl-data-table__cell--non-numeric">ID</th>
+                  <th>Applicant</th>
+                  <th>Position</th>
+                  <th>Phone</th>
+                  <th>Email</th>
+                  <th>Date</th>
+                  <th>Resume</th>
+                </tr>
+							</thead>
+							<tbody>
                 @foreach($applicants as $applicant)
-
                   <tr>
                     <td class="mdl-data-table__cell--non-numeric">{{ $applicant->id }}</td>
                     <td>{{ $applicant->first_name }} {{ $applicant->last_name }}</td>
@@ -51,17 +50,15 @@
                     <td>{{ $applicant->phone }}</td>
                     <td>{{ $applicant->email }}</td>
                     <td>{{ $applicant->date_applied }}</td>
-                    <td><a href="#">Link</a></td>
+                    <td><a href="{{ $applicant->resume }}" target="_blank">Resume</a></td>
                   </tr>
-
-                @endforeach
-
-            </tbody>
-          </table>
-				</div>
-			</div>
-		</div>
+								@endforeach
+							</tbody>
+						</table>
+					</div><!-- table-responsive -->
+				</div><!-- card-body -->
+			</div><!-- card -->
+		</div><!-- col-12 -->
 	</div><!-- row -->
-	
 
 @endsection

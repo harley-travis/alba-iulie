@@ -32,11 +32,9 @@ class JobPortalController extends Controller {
             //   'compensationAmount'    => 'required|min:1'
             //]);
 
-
             // upload resume
-            $file = $request->file('resume');
-            $file->storePubliclyAs('companies/'.$request->input('companies_id').'/resumes', $request->input('last_name').'_'.$request->input('first_name').'_resume.pdf', 'public');
-     
+            $file = $request->resume->storeAs('companies/'.$request->input('companies_id').'/resumes', $request->input('last_name').'_'.$request->input('first_name').'_'.time().'_resume.pdf', 'public');
+
             $applicant = new Applicant([
                 'first_name'            => $request->input('first_name'), 
                 'last_name'             => $request->input('last_name'), 
@@ -45,6 +43,7 @@ class JobPortalController extends Controller {
                 'is_active'             => 0, 
                 'date_applied'          => Carbon::now(), 
                 'stage'                 => 0, 
+                'resume'                => $file,
                 'companies_id'          => $request->input('companies_id')
             ]);
     

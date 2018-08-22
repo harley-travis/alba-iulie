@@ -163,6 +163,7 @@ class DatabaseSeeder extends Seeder
             'phone' => '9855558741', 
             'is_active' => '0', 
             'stage' => '0', 
+            'resume' => 'companies/1/resumes/Harley_Travis_resume.pdf', 
             'date_applied' => Carbon::now(), 
             'companies_id' => '1'
         ]);
@@ -176,6 +177,7 @@ class DatabaseSeeder extends Seeder
             'phone' => '9855556699', 
             'is_active' => '0', 
             'stage' => '0', 
+            'resume' => 'companies/1/resumes/natalie_allio_resume.png',
             'date_applied' => Carbon::now(), 
             'companies_id' => '1'
         ]);

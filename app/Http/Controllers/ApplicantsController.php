@@ -27,9 +27,6 @@ class ApplicantsController extends Controller {
         $company_id = Company::where('user_id', '=', $user->id)->value('id');
 
         $applicants = Applicant::where('companies_id', '=', $company_id)->get();
-    
-        // return with the resume url 
-        // https://laravel.com/docs/5.3/responses#file-responses
         
         return view('applicants.overview', ['applicants' => $applicants]);
     }

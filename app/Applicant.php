@@ -14,6 +14,7 @@ class Applicant extends Model {
         'is_active', 
         'date_applied', 
         'stage', 
+        'resume',
         'companies_id',
         'job_id'
     ];
