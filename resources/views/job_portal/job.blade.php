@@ -99,43 +99,60 @@
                                     <input type="text" class="form-control" id="phone" name="phone" aria-describedby="phone" placeholder="Phone Number">
                                 </div>
 
-                                <hr>
+                                <div class="form-group">
+                                    Your Gender<br>
+                                    <div class="custom-control custom-radio custom-control-inline">
+                                        <input type="radio" id="gender" name="gender" class="custom-control-input" value="0">
+                                        <label class="custom-control-label" for="gender">Female</label>
+                                    </div>
+                                    <div class="custom-control custom-radio custom-control-inline">
+                                        <input type="radio" id="gender" name="gender" class="custom-control-input" value="1">
+                                        <label class="custom-control-label" for="gender">Male</label>
+                                    </div>
+                                    <div class="custom-control custom-radio custom-control-inline">
+                                        <input type="radio" id="gender" name="gender" class="custom-control-input" value="2">
+                                        <label class="custom-control-label" for="gender">Choose not to Identify</label>
+                                    </div>
+                                </div>
+
                                 <div class="form-group">
                                     What Ethnicity Are You?
-                                    <select class="custom-select">
-                                        <option selected>N/A</option>
+                                    <select class="custom-select" name="ethnicity">
+                                        <option selected>Select One</option>
+                                        <option value="0">American Indian or Alaska Native</option>
                                         <option value="1">Asian</option>
-                                        <option value="2">Hispanic</option>
-                                        <option value="3">White</option>
-                                        <option value="4">Preferr Not To Say</option>
+                                        <option value="2">Black or African American</option>
+                                        <option value="3">Hispanic or Latino</option>
+                                        <option value="4">Native Hawaiian or Other Pacific Islander</option>
+                                        <option value="5">White</option>
+                                        <option value="6">Other</option>
+                                        <option value="7">Choose not to Identify</option>
                                     </select>
-                                    </div>
-
-                                <div class="form-group">
-                                    Are you Veteran?
-                                    <div class="custom-control custom-radio custom-control-inline">
-                                        <input type="radio" id="customRadioInline1" name="customRadioInline1" class="custom-control-input">
-                                        <label class="custom-control-label" for="customRadioInline1">No</label>
-                                    </div>
-                                    <div class="custom-control custom-radio custom-control-inline">
-                                        <input type="radio" id="customRadioInline2" name="customRadioInline1" class="custom-control-input">
-                                        <label class="custom-control-label" for="customRadioInline2">Yes</label>
-                                    </div>
                                 </div>
 
-                                <div class="form-group">
-                                    Are you Disabled?
+                                <div class="form-group">     
+                                    Are you Veteran?<br>
                                     <div class="custom-control custom-radio custom-control-inline">
-                                        <input type="radio" id="customRadioInline1" name="customRadioInline1" class="custom-control-input">
-                                        <label class="custom-control-label" for="customRadioInline1">No</label>
+                                        <input type="radio" id="veteran" name="veteran" class="custom-control-input" value="0">
+                                        <label class="custom-control-label" for="veteran" >No</label>
                                     </div>
                                     <div class="custom-control custom-radio custom-control-inline">
-                                        <input type="radio" id="customRadioInline2" name="customRadioInline1" class="custom-control-input">
-                                        <label class="custom-control-label" for="customRadioInline2">Yes</label>
+                                        <input type="radio" id="veteran" name="veteran" class="custom-control-input" value="1">
+                                        <label class="custom-control-label" for="veteran" >Yes</label>
                                     </div>
                                 </div>
-
-                                <hr>
+                                
+                                <div class="form-group">
+                                    Are you Disabled?<br>
+                                    <div class="custom-control custom-radio custom-control-inline">
+                                        <input type="radio" id="disability" name="disability" class="custom-control-input" value="0">
+                                        <label class="custom-control-label" for="disability">No</label>
+                                    </div>
+                                    <div class="custom-control custom-radio custom-control-inline">
+                                        <input type="radio" id="disability" name="disability" class="custom-control-input" value="1">
+                                        <label class="custom-control-label" for="disability">Yes</label>
+                                    </div>
+                                </div>
 
 
                                 <div class="form-group">

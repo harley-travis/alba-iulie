@@ -16,16 +16,46 @@
                 <a class="btn btn-success" href="{{$applicant->resume}}" target="_blank">View Resume</a>
                 <a class="btn btn-info" href="#">Next Step</a>
 
+                <span class="">9.5</a>
+                <span>Interview Score</span>
+
                 <span class="text-danger">INTERVIEW STEP HERE </span>
                 <span>Applied {{ $applicant->date_applied }} </span>
                 <span>{{ $applicant->phone }} </span>
                 <span><a href="mailto:{{ $applicant->email }}">{{ $applicant->email }}</a></span>
-                <span class="text-danger">ETHNICITY</span>
-                <span class="text-danger">VETERAN</span>
-                <span class="text-danger">DISABILITY</span>
+                <span class="text-danger">{{ $applicant->ethnicity}}</span>
+                <span class="text-danger">
+                    @if (($applicant->gender) == 0)
+                        Female
+                    @elseif (($applicant->gender)  == 1)
+                        Male
+                    @elseif (($applicant->gender)  == 2)
+                        Gender not disclosed
+                    @else
+                        There was an error displaying the gender status
+                    @endif
+                </span>
+                <span class="text-danger">
+                    @if (($applicant->veteran) == 0)
+                        Not a Veteran
+                    @elseif (($applicant->veteran)  == 1)
+                        Veteran
+                    @else
+                        There was an error displaying veteran status
+                    @endif
+                </span>
+                <span class="text-danger">
+                    @if (($applicant->disability) == 0)
+                        Not Disabled
+                    @elseif (($applicant->disability)  == 1)
+                        Disabled
+                    @else
+                        There was an error displaying disability status
+                    @endif
+                </span>
 
                 <label for="customRange2">Example range</label>
-<input type="range" class="custom-range" min="0" max="5" id="customRange2">
+                <input type="range" class="custom-range" min="0" max="5" id="customRange2">
 
                 <!-- CREATE THE COMMENTERS HERE 
                 https://appdividend.com/2018/06/20/create-comment-nesting-in-laravel/ -->
