@@ -1377,6 +1377,11 @@ When click on sidebar toggler and also for tablet
   }
 }
 
+.logo {
+  width: 100%;
+  max-width: 200px;
+}
+
 /*
 Template Name: Admin pro Admin
 Author: Wrappixel

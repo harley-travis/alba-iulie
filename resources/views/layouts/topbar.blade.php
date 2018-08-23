@@ -14,7 +14,7 @@
                     <!-- <img src="images/logo-icon.png" alt="homepage" class="dark-logo" /> -->
                     <!-- Light Logo icon -->
                     <!-- <img src="images/logo-light-icon.png" alt="homepage" class="light-logo" /> -->
-                    White July
+                    <img src="{{ '/images/logo/logo.png' }}" alt="user" class="logo" /> 
                 </b>
                 <!--End Logo icon -->
                 <!-- Logo text --><span>

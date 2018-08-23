@@ -23,7 +23,27 @@
                 <span>Applied {{ $applicant->date_applied }} </span>
                 <span>{{ $applicant->phone }} </span>
                 <span><a href="mailto:{{ $applicant->email }}">{{ $applicant->email }}</a></span>
-                <span class="text-danger">{{ $applicant->ethnicity}}</span>
+                <span class="text-danger">
+                    @if (($applicant->ethnicity) == 0)
+                        American Indian or Alaska Native
+                    @elseif (($applicant->ethnicity)  == 1)
+                        Asian
+                    @elseif (($applicant->ethnicity)  == 2)
+                        Black or African American
+                    @elseif (($applicant->ethnicity)  == 3)
+                        Hispanic or Latino
+                    @elseif (($applicant->ethnicity)  == 4)
+                        Native Hawaiian or Other Pacific Islander
+                    @elseif (($applicant->ethnicity)  == 5)
+                        White
+                    @elseif (($applicant->ethnicity)  == 6)
+                        Other
+                    @elseif (($applicant->ethnicity)  == 7)
+                        Choose not to Identify
+                    @else
+                        There was an error displaying the ethnicity status
+                    @endif                
+                </span>
                 <span class="text-danger">
                     @if (($applicant->gender) == 0)
                         Female
