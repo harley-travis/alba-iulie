@@ -25,5 +25,10 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 //Route::get('jobs', 'ApiController@index');
 
 // get all jobs by companies_id
-Route::get('jobs/{id}', 'ApiController@show');
+Route::get('company/{id}', 'ApiController@show');
+
+//Route::get('jobs/{id}', 'ApiController@show');
+
+// get specific job by companies_id
+Route::get('jobs/{id}/{jobid}', 'ApiController@getJobByID');
 

@@ -19,7 +19,7 @@ class Applicant extends Model {
         'date_applied', 
         'stage', 
         'resume',
-        'companies_id',
+        'company_id',
         'job_id'
     ];
     

@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Job;
+use DB;
+use App\Company;
 use App\Http\Resources\Api as ApiResource;
 use Illuminate\Database\Query\Grammars\Grammar;
 use Illuminate\Database\Query\Processors\Processor;
@@ -48,8 +50,36 @@ class ApiController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function show($id) {
-        $jobs = Job::where('companies_id', '=', $id)->get();
+
+        $jobs = Company::find($id)
+            ->jobs()
+            ->orderBy('created_at', 'ASC')
+            ->paginate(15);
+
+        //dd($jobs);
+
+        //return view('jobs.overview', ['jobs' => $jobs]);
+        //$jobs = Job::where('company_id', '=', $id)->get();
+        //return response($jobs->jsonSerialize(), Response::HTTP_OK);
         return new ApiResource($jobs);
+    }
+
+
+    /**
+     * Display the specified job by job id after company id has been specificed
+     */
+    public function getJobByID($company_id, $job_id) {
+
+        $job = DB::table('jobs')->where('id', '=', $job_id)->get();
+
+        //return view('jobs.overview', ['jobs' => $jobs]);
+
+        // $job = Company::join('jobs', 'companies.id', '=', 'jobs.company_id' )
+        //             ->where('jobs.company_id', '=', $company_id)
+        //             ->where('jobs.id', '=', $job_id)
+        //             ->get();
+                    
+        return new ApiResource($job);
     }
 
     /**

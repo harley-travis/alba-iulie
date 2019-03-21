@@ -15,6 +15,7 @@ class CreateApplicantsTable extends Migration
     {
         Schema::create('applicants', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('job_id')->unsigned();
             $table->timestamps();
             $table->string('first_name', 50);
             $table->string('last_name', 50);
@@ -28,8 +29,8 @@ class CreateApplicantsTable extends Migration
             $table->integer('stage');
             $table->string('resume');
             $table->date('date_applied');        
-            $table->integer('companies_id');
-                        
+           
+            $table->foreign('job_id')->references('id')->on('jobs');
             
             // NOTE: I NEED TO FIGURE OUT HOW THE SCORE WILL WORK. THE RELATIONSHIP BY USERS AND COMPANY TO THE APPLICANT. 
             // also if it will be in it's own db and how to do taht by itself

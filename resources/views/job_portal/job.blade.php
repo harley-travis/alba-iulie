@@ -161,7 +161,7 @@
                                 </div>
 
                                 <input type="hidden" name="job_id" id="job_id" value="{{ $job->id }}">
-                                <input type="hidden" name="companies_id" id="companies_id" value="{{ $job->companies_id }}">
+                                <input type="hidden" name="company_id" id="company_id" value="{{ $job->company_id }}">
                                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                 
                             </div>
@@ -175,4 +175,5 @@
             </div>
             
             @endforeach
+
 @include('job_portal.footer')

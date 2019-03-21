@@ -108,22 +108,6 @@
               <label for="skills">Preferred Skills</label>
               <textarea name="skills" id="skills"></textarea>
             </div>
-
-            <div class="question-contaniner">
-              <p>
-                <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-                  Create Question
-                </a>
-              </p>
-              <div class="collapse" id="collapseExample">
-                <div class="card card-body">
-                <h4>Adding a Question</h4>
-                <p>Creating questions for the job helps the team to stay consistent with the interview process. Click the 'Add Qustion' button below to create a new button. The question will display on the applicants profile page.  You can use the applicant profile page as an interviewing tool.</p>
-
-                <button class="btn btn-success">Add Question</button>
-                </div>
-              </div>
-            </div>
             
           </div>
           

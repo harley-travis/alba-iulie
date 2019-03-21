@@ -6,16 +6,26 @@ use App\Job;
 use App\Company;
 use Auth;
 use Illuminate\Http\Request;
-
 use App\Http\Requests;
 use Illuminate\Session\Store;
 
 class JobsController extends Controller {
     
-    public function getJobs() {
+    public function getJobs(Company $company) {
 
         if(Auth::check()) {
-            $jobs = Job::where('user_id', '=', Auth::user()->id)->paginate(15);
+
+            /**
+             * For the hasManyThrough() you just need to find the assc to 
+             * user and then boom!
+             */
+
+            $company_id = Auth::user()->company_id;
+            $jobs = Company::find($company_id)
+                ->jobs()
+                ->orderBy('created_at', 'ASC')
+                ->paginate(15);
+
             return view('jobs.overview', ['jobs' => $jobs]);
         } 
 
@@ -46,12 +56,12 @@ class JobsController extends Controller {
         if(!$user) {
             return redirect()->back();
         }
+
+        $user_id = Auth::user()->id;
         
         // grab the company assc to user
-        $company_id = Company::where('user_id', '=', $user->id)->value('id');
+       // $company_id = Company::where('user_id', '=', $user->id)->value('id');
         
-        // because we have our fillable variable set in our model, 
-        // i can just call a var called $job and crate a new instance of the Job model to pass this data
 	    $job = new Job([
             'title'                 => $request->input('title'), 
             'location'              => $request->input('location'),
@@ -66,12 +76,10 @@ class JobsController extends Controller {
             'skills'                => $request->input('skills'),
             'filled'                => $request->input('closeDate'),
             'isActive'              => $request->input('isActive'),
-            'companies_id'          => $company_id
+            'user_id'               => $user_id,
         ]);
 
-        $user->jobs()->save($job);
-        //$job->save(); // elqouent saves this to the db for us! 
-             
+        $job->save();            
         
 		return redirect()
 			->route('jobs.overview')

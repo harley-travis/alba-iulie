@@ -104,12 +104,12 @@ Route::group(['prefix' => 'jobs'], function() {
 	]);
 
 	// send data to the db & redirect to the overview page
-    Route::post('add', [
+  Route::post('add', [
 		'uses' => "$c@addJob",
 		'as'   => 'jobs.add'
 	]);
     
-    Route::get('add', [
+  Route::get('add', [
 		'uses'	=> "$c@createJob",
 		'as'	=> 'jobs.create'
 	]);

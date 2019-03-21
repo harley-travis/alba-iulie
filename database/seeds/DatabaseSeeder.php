@@ -17,6 +17,7 @@ class DatabaseSeeder extends Seeder
 
         // $this->call(UsersTableSeeder::class);
         DB::table('users')->insert([
+            'company_id' => '1',
             'name' => 'Tony Stark',
             'email' =>'tony@gmail.com',
             'password' => bcrypt('test'),
@@ -25,6 +26,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         DB::table('users')->insert([
+            'company_id' => '2',
             'name' => 'Peter Parker',
             'email' =>'peter@gmail.com',
             'password' => bcrypt('test'),
@@ -32,8 +34,26 @@ class DatabaseSeeder extends Seeder
             'updated_at' => Carbon::now(),
         ]);
 
+        // COMPANIES
+        DB::table('companies')->insert([
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
+            'name' => 'Avengers', 
+            'bio' => 'Earths Mightest Heros',
+            
+        ]);
+    
+        DB::table('companies')->insert([
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
+            'name' => 'Netflix', 
+            'bio' => 'Streaming all the digital content',
+            
+        ]);
+
         // JOBS
         DB::table('jobs')->insert([
+            'user_id' => '1',
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
             'title' => 'Personal Assistant', 
@@ -49,12 +69,10 @@ class DatabaseSeeder extends Seeder
             'isActive' => '0',
             'filled' => '2001-10-15',
             'closeDate' => '2017-06-18',
-            'user_id' => '1',
-            'companies_id' => '1',
-           // 'questions_id' => '1'
         ]);
 
         DB::table('jobs')->insert([
+            'user_id' => '1',
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
             'title' => 'Head of Security', 
@@ -70,12 +88,10 @@ class DatabaseSeeder extends Seeder
             'isActive' => '0',
             'filled' => '2001-10-15',
             'closeDate' => '2017-06-18',
-            'user_id' => '1',
-            'companies_id' => '1',
-            //'questions_id' => '1'
         ]);
 
         DB::table('jobs')->insert([
+            'user_id' => '2',
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
             'title' => 'Iron Spider', 
@@ -91,12 +107,10 @@ class DatabaseSeeder extends Seeder
             'isActive' => '0',
             'filled' => '2001-10-15',
             'closeDate' => '2017-06-18',
-            'user_id' => '2',
-            'companies_id' => '2',
-           // 'questions_id' => '2'
         ]);
 
         DB::table('jobs')->insert([
+            'user_id' => '2',
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
             'title' => 'Suit Lady', 
@@ -112,9 +126,6 @@ class DatabaseSeeder extends Seeder
             'isActive' => '0',
             'filled' => '2001-10-15',
             'closeDate' => '2017-06-18',
-            'user_id' => '2',
-            'companies_id' => '2',
-            //'questions_id' => '2'
         ]);
 
         factory(App\Job::class, 50)->create();
@@ -138,22 +149,7 @@ class DatabaseSeeder extends Seeder
             'job_id' => '2'
         ]);
 
-        // COMPANIES
-        DB::table('companies')->insert([
-            'created_at' => Carbon::now(),
-            'updated_at' => Carbon::now(),
-            'company_name' => 'Avengers', 
-            'bio' => 'Earths Mightest Heros',
-            'user_id' => '1'
-        ]);
-    
-        DB::table('companies')->insert([
-            'created_at' => Carbon::now(),
-            'updated_at' => Carbon::now(),
-            'company_name' => 'Netflix', 
-            'bio' => 'Streaming all the digital content',
-            'user_id' => '2'
-        ]);
+        
 
         // APPLICANTS
         DB::table('applicants')->insert([
@@ -171,7 +167,7 @@ class DatabaseSeeder extends Seeder
             'stage' => '0', 
             'resume' => 'companies/1/resumes/Harley_Travis_resume.pdf', 
             'date_applied' => Carbon::now(), 
-            'companies_id' => '1'
+            'job_id' => '1'
         ]);
             
         DB::table('applicants')->insert([
@@ -189,7 +185,7 @@ class DatabaseSeeder extends Seeder
             'stage' => '0', 
             'resume' => 'companies/1/resumes/natalie_allio_resume.png',
             'date_applied' => Carbon::now(), 
-            'companies_id' => '1'
+            'job_id' => '1'
         ]);
 
         factory(App\Applicant::class, 50)->create();
@@ -209,7 +205,7 @@ class DatabaseSeeder extends Seeder
             'job_id' => '2'
         ]); 
 
-        // seed the pivot table
+        // seed the pivot table DON' DELETE!
         $jobs = App\Job::all();
 
         App\Applicant::all()->each(function ($applicant) use ($jobs) { 
@@ -217,6 +213,7 @@ class DatabaseSeeder extends Seeder
                 $jobs->random(rand(1, 3))->pluck('id')->toArray()
             ); 
         });
+      
 
     }
 }

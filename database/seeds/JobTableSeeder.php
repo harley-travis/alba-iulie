@@ -33,7 +33,8 @@ class JobTableSeeder extends Seeder
             'qualifications' => $faker->paragraph,
             'skills' => $faker->paragraph, 
             'filled' => $faker->numberBetween(0, 1), 
-            'isActive' => $faker->numberBetween(0, 1)
+            'isActive' => $faker->numberBetween(0, 1),
+            'user_id' => $faker->numberBetween(0, 4)
         ]);
     }
 }

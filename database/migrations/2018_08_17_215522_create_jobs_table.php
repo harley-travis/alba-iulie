@@ -15,6 +15,9 @@ class CreateJobsTable extends Migration
     {
         Schema::create('jobs', function (Blueprint $table) {
             $table->increments('id');
+         
+            $table->integer('user_id')->unsigned(); 
+
             $table->timestamps();
             $table->string('title');
             $table->string('location');
@@ -26,18 +29,13 @@ class CreateJobsTable extends Migration
             $table->longText('work');
             $table->longText('qualifications');
             $table->longText('skills');  
-            $table->integer('isActive');
+            $table->boolean('isActive');
             $table->date('filled');
             $table->date('closeDate');
-            $table->integer('user_id');
-            $table->integer('companies_id');
-            //$table->integer('questions_id');
-            // $table->integer('counter');
 
-
-            // date filled?
-            // job filled??            
-            // company id
+            $table->foreign('user_id')->references('id')->on('users');
+            
+            
             
         });
     }

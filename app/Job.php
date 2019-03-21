@@ -25,25 +25,18 @@ class Job extends Model {
         'skills', 
         'filled', // is a date
         'isActive',
-        'companies_id'
-
+        'user_id',
         // might need to create a col to indicate wither the job has been filled or not. 0 or 1 
     ];
 
-    public function user() {
-        return $this->belongsTo('App\User');
+    //protected $primaryKey = 'id';
+
+    public function applicant() {
+        return $this->belongsToMany('App\Applicant')->withTimeStamps();
     }
 
     public function company() {
         return $this->belongsTo('App\Company');
     }
 
-    public function applicant() {
-        return $this->belongsToMany('App\Applicant')->withTimeStamps();
-    }
-
-    public function questions() {
-        return $this->hasMany('App\Question');
-    }
-    
 }

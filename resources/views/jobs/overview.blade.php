@@ -12,7 +12,7 @@
 				<li class="breadcrumb-item active">Positions Overview</li>
 			</ol>
 		</div>
-		<div class="col-md-7 align-self-center">
+		<div class="col-md-7 align-self-center right">
 			<a href="{{ route('jobs.create') }}" class="btn waves-effect waves-light btn-success">Add Position</a>
 		</div>
 	</div>
@@ -32,7 +32,7 @@
 			<div class="card">
 				<div class="card-body">
 					<div class="total-jobs">
-						{{ $jobs->total() }} Total Jobs
+						
 					</div>
 
 					<div class="table-responsive">
@@ -44,11 +44,13 @@
 									<th>Position</th>
 									<th>Department</th>
 									<th>Location</th>
+									<th>Date Created</th>
 									<th>Edit Position</th>
 									<th>Archive Position</th>
 								</tr>
 							</thead>
 							<tbody>
+						
 								@foreach($jobs as $job)
 									<tr>
 										<td>
@@ -63,6 +65,7 @@
 										<td>{{ ucwords(trans( $job->title )) }}</td>
 										<td>{{ $job->department}}</td>
 										<td>{{ $job->location}}</td>
+										<td>{{ $job->created_at->format('m/d/Y')}}</td>
 										<td><a href="{{ route('jobs.edit', ['id' => $job->id ]) }}" class="btn waves-effect waves-light btn-info">Edit Job</a></td> 
 										<td><a href="{{ route('jobs.archive', ['id' => $job->id ]) }}" class="btn waves-effect waves-light btn-danger">Archive Job</a></td>
 									</tr>
@@ -76,9 +79,16 @@
 		</div><!-- col-12 -->
 	</div><!-- row -->
 
-
 	<div class="pagination-wrapper">
-		{{ $jobs->links() }}
+		{!! $jobs->links() !!}
 	</div>
 
+	<!-- REMOVE THIS WHEN YOU FIGURE OUT YOUR NPM PROBLEM -->
+	<style>
+
+		.right {
+			text-align: right;
+		}
+	</style>
+	
 @endsection

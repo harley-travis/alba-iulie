@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCompaniesTable extends Migration
+class CreateApplicantJobTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,14 @@ class CreateCompaniesTable extends Migration
      */
     public function up()
     {
-        Schema::create('companies', function (Blueprint $table) {
+        Schema::create('applicant_job', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('job_id')->unsigned();
+            $table->integer('applicant_id')->unsigned();
             $table->timestamps();
-            $table->string('company_name');
-            $table->string('bio');
-            $table->integer('user_id');
-
-            // NEED TO FIGURE OUT ABOUT THE EMAIL TEMPLAETS
-            
+    
+            $table->foreign('applicant_id')->references('id')->on('applicants');
+            $table->foreign('job_id')->references('id')->on('jobs');
         });
     }
 
@@ -32,6 +31,6 @@ class CreateCompaniesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('companies');
+        Schema::dropIfExists('applicant_job');
     }
 }
