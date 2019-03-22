@@ -5,9 +5,12 @@ namespace App\Http\Controllers;
 use DB;
 use App\Job;
 use App\Company;
+<<<<<<< HEAD
 use App\Http\Requests;
 use Illuminate\Http\Response;
 use Illuminate\Http\Request;
+=======
+>>>>>>> 6fc23609abe54c51bfbd55df6821f478e530f2c2
 use App\Http\Resources\Api as ApiResource;
 use Illuminate\Database\Query\Grammars\Grammar;
 use Illuminate\Database\Query\Processors\Processor;
@@ -80,6 +83,19 @@ class ApiController extends Controller {
         //             ->where('jobs.company_id', '=', $company_id)
         //             ->where('jobs.id', '=', $job_id)
         //             ->get();
+                    
+        return new ApiResource($job);
+    }
+
+
+    /**
+     * Display the specified job by job id after company id has been specificed
+     */
+    public function getJobByID($company_id, $job_id) {
+        $job = Company::join('jobs', 'companies.id', '=', 'jobs.companies_id' )
+                    ->where('jobs.companies_id', '=', $company_id)
+                    ->where('jobs.id', '=', $job_id)
+                    ->get();
                     
         return new ApiResource($job);
     }

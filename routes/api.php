@@ -32,3 +32,6 @@ Route::get('company/{id}', 'ApiController@show');
 // get specific job by companies_id
 Route::get('jobs/{id}/{jobid}', 'ApiController@getJobByID');
 
+// get specific job by companies_id
+Route::get('jobs/{id}/{jobid}', 'ApiController@getJobByID');
+
