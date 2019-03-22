@@ -1,0 +1,18 @@
+.external-main-wrapper{
+    height: 100vh !important;
+}
+.blue-purple-magenta {
+    background: #3356b5;
+    background: -moz-linear-gradient(-45deg, #3356b5 0%, #5638a8 48%, #9d33b5 100%);
+    background: -webkit-linear-gradient(-45deg, #3356b5 0%, #5638a8 48%, #9d33b5 100%);
+    background: linear-gradient(135deg, #3356b5 0%, #5638a8 48%, #9d33b5 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3356b5', endColorstr='#9d33b5',GradientType=1 );
+}
+
+.external-footer {
+    bottom: 0;
+    color: #fff;
+    padding: 17px 15px;
+    position: absolute;
+    right: 0;
+}

@@ -3,18 +3,31 @@
 namespace App\Http\Controllers;
 
 use App\Job;
+use App\Company;
 use Auth;
 use Illuminate\Http\Request;
-
 use App\Http\Requests;
 use Illuminate\Session\Store;
 
 class JobsController extends Controller {
     
-    public function getJobs() {
+    public function getJobs(Company $company) {
 
-        $jobs = Job::paginate(15);
-        return view('jobs.overview', ['jobs' => $jobs]);
+        if(Auth::check()) {
+
+            /**
+             * For the hasManyThrough() you just need to find the assc to 
+             * user and then boom!
+             */
+
+            $company_id = Auth::user()->company_id;
+            $jobs = Company::find($company_id)
+                ->jobs()
+                ->orderBy('created_at', 'ASC')
+                ->paginate(15);
+
+            return view('jobs.overview', ['jobs' => $jobs]);
+        } 
 
     }
 
@@ -37,9 +50,18 @@ class JobsController extends Controller {
         $this->validate($request, [
 			'title'                 => 'required|min:5',
 			'compensationAmount'    => 'required|min:1'
-		]);
+        ]);
+        
+        $user = Auth::user(); 
+        if(!$user) {
+            return redirect()->back();
+        }
 
-        // because we have our fillable variable set in our model, i can just call a var called $job and crate a new instance of the Job model to pass this data
+        $user_id = Auth::user()->id;
+        
+        // grab the company assc to user
+       // $company_id = Company::where('user_id', '=', $user->id)->value('id');
+        
 	    $job = new Job([
             'title'                 => $request->input('title'), 
             'location'              => $request->input('location'),
@@ -53,11 +75,12 @@ class JobsController extends Controller {
             'qualifications'        => $request->input('qualifications'),
             'skills'                => $request->input('skills'),
             'filled'                => $request->input('closeDate'),
-            'isActive'              => $request->input('isActive')
+            'isActive'              => $request->input('isActive'),
+            'user_id'               => $user_id,
         ]);
 
-        $job->save(); // elqouent saves this to the db for us! 
-                
+        $job->save();            
+        
 		return redirect()
 			->route('jobs.overview')
 			->with('info', 'Good news, your job was added!');
@@ -65,7 +88,7 @@ class JobsController extends Controller {
     }
 
     
-    // this function is triggered when the click teh button. grabs the id and returns the EDIT view with the id in place.
+    // this function is triggered when the click the button. grabs the id and returns the EDIT view with the id in place.
     // teh updateJob() actually updates the info
     public function getJobId($id) {
 
@@ -79,7 +102,7 @@ class JobsController extends Controller {
         
         $this->validate($request, [
 			'title' => 'required|min:5',
-			'compensationAmount' => 'required|min:5'
+			'compensationAmount' => 'required|min:1'
 		]);
       
         $job = Job::find($request->input('id'));
@@ -106,7 +129,6 @@ class JobsController extends Controller {
 
         if($job->isActive === 1) {
             $job->isActive = 0;
-
             $job->save();
         }
 
@@ -115,4 +137,5 @@ class JobsController extends Controller {
     public function viewJob() {
         return view('jobs.view');
     }
+
 }

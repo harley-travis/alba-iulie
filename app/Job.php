@@ -6,6 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Job extends Model {
 
+    protected $casts = [
+        'id' => 'integer',
+        'closeDate' => 'date:Y-m-d', 
+        'filled' => 'date:Y-m-d', 
+    ];
+
     // make these variables mass assignable
     protected $fillable = [
         'title', 
@@ -14,13 +20,23 @@ class Job extends Model {
         'duration', 
         'compensationType', 
         'compensationAmount', 
-        'closeDate', 
         'description', 
         'work', 
         'qualifications',
         'skills', 
-        'filled', 
-        'isActive'
+        'isActive',
+        'user_id',
+
     ];
-    
+
+    //protected $primaryKey = 'id';
+
+    public function applicant() {
+        return $this->belongsToMany('App\Applicant')->withTimeStamps();
+    }
+
+    public function company() {
+        return $this->belongsTo('App\Company');
+    }
+
 }

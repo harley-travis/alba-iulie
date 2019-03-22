@@ -11,10 +11,23 @@
 |
 */
 
+// Route::get('/', function () {
+//     return view('layouts.app');
+// });
+
 Route::get('/', function () {
-    return view('layouts.app');
+	
+	if( auth()->check() == null ) {
+		return redirect('/login');
+	} else {
+		return view('dashboard.overview');
+	}
+    
 });
 
+Route::get('dashboard', function () {
+    return view('dashboard.overview');
+})->name('dashboard.overview');
 
 Route::group(['prefix' => 'applicants'], function() {
 	$c = 'ApplicantsController';
@@ -39,6 +52,11 @@ Route::group(['prefix' => 'applicants'], function() {
 		'as'	=> 'applicants.delete'
 	]);
 
+	Route::get('profile/{id}', [
+		'uses'	=> "$c@getApplicantById",
+		'as'	=> 'applicants.profile'
+	]);
+
 });
 
 
@@ -52,11 +70,6 @@ Route::group(['prefix' => 'billing'], function() {
 
 });
 
-Route::get('dashboard', function () {
-    return view('dashboard.overview');
-})->name('dashboard.overview');
-
-
 Route::group(['prefix' => 'employees'], function() {
 	$c = 'EmployeesController';
 
@@ -65,7 +78,7 @@ Route::group(['prefix' => 'employees'], function() {
 		'as'	=> 'employees.overview'
 	]);
     
-    Route::get('add', [
+  Route::get('add', [
 		'uses'	=> "$c@addEmployee",
 		'as'	=> 'employees.create'
 	]);
@@ -80,13 +93,10 @@ Route::group(['prefix' => 'employees'], function() {
 		'as'	=> 'employees.delete'
 	]);
 
-});
-
-Route::group(['middleware' => ['cors']], function () {
-
-    	Route::get('/api/jobs/getAllJobs', [
-			'uses'	=> "JobsController@getAllJobs"
-		]);
+	Route::get('view', [
+		'uses'	=> "$c@viewEmployee",
+		'as'	=> 'employees.view'
+	]);
 
 });
 
@@ -99,12 +109,12 @@ Route::group(['prefix' => 'jobs'], function() {
 	]);
 
 	// send data to the db & redirect to the overview page
-    Route::post('add', [
+  Route::post('add', [
 		'uses' => "$c@addJob",
 		'as'   => 'jobs.add'
 	]);
     
-    Route::get('add', [
+  Route::get('add', [
 		'uses'	=> "$c@createJob",
 		'as'	=> 'jobs.create'
 	]);
@@ -172,12 +182,32 @@ Route::group(['prefix' => 'users'], function() {
 
 });
 
+Route::group(['prefix' => 'postings'], function() {
+	$c = 'JobPortalController';
 
-Route::get('humans.txt', function () {
-    return view('humans');
+	Route::get('company/{company_id}/job/{job_id}', [
+		'uses'	=> "$c@getJob",
+		'as'	=> 'job_portal.job'
+	]);
+
+	// apply to job
+	Route::post('company/applied/success', [
+		'uses'	=> "$c@applyToJob",
+		'as'	=> 'apply.job'
+	]);
+
 });
 
+// MIGHT NEED THIS FOR CORS API
+//Route::group(['middleware' => ['cors']], function () {
+
+  //  Route::resource('/api/jobs/', [
+	//	'uses'	=> "Api@getJobByCompanyId"
+	//]);
+
+//});
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+//Route::get('/', 'HomeController@index')->name('dashboard.overview');
+Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');

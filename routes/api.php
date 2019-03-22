@@ -16,3 +16,22 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+// Setup
+// Add route
+// Add function to ApiController
+
+// get all jobs
+//Route::get('jobs', 'ApiController@index');
+
+// get all jobs by companies_id
+Route::get('company/{id}', 'ApiController@show');
+
+//Route::get('jobs/{id}', 'ApiController@show');
+
+// get specific job by companies_id
+Route::get('jobs/{id}/{jobid}', 'ApiController@getJobByID');
+
+// get specific job by companies_id
+Route::get('jobs/{id}/{jobid}', 'ApiController@getJobByID');
+

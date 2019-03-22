@@ -1,23 +1,45 @@
 <!DOCTYPE html>
 <html lang="{{ app()->getLocale() }}">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>White July</title>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon.png">
 
-        <!-- Styles -->
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic|Material+Icons">
-        <!-- <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.deep_purple-pink.min.css" /> -->
-        <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <title>White July</title>
 
-        <!-- vue CDN -->
-        <!-- <link rel="stylesheet" href="https://unpkg.com/vue-material@beta/dist/vue-material.min.css">
-        <link rel="stylesheet" href="https://unpkg.com/vue-material@beta/dist/theme/default.css"> -->
+    <link href="{{ asset('css/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/perfect-scrollbar.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/morrisjs/morris.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/c3-master/c3.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/pages/dashboard1.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/colors/default.css') }}" id="theme" rel="stylesheet">
 
-        <!-- todo: download this file and have a hard copy do not use CDN -->
-        <script src="https://cdn.ckeditor.com/4.9.1/standard/ckeditor.js"></script>
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
 
-    </head>
-    <body>
+    <!-- todo: download this file and have a hard copy do not use CDN -->
+    <script src="https://cdn.ckeditor.com/4.9.2/standard/ckeditor.js"></script>
+</head>
+
+<body class="fix-header fix-sidebar card-no-border">
+    <!-- ============================================================== -->
+    <!-- Preloader - style you can find in spinners.css -->
+    <!-- ============================================================== -->
+    <div class="preloader">
+        <div class="loader">
+            <div class="loader__figure"></div>
+            <p class="loader__label">White July</p>
+        </div>
+    </div>
+
+    <!-- ============================================================== -->
+    <!-- Main wrapper - style you can find in pages.scss -->
+    <!-- ============================================================== -->
+    <div id="main-wrapper">
