@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Http\Requests;
-use App\Job;
 use DB;
+use App\Job;
 use App\Company;
+use App\Http\Requests;
+use Illuminate\Http\Response;
+use Illuminate\Http\Request;
 use App\Http\Resources\Api as ApiResource;
 use Illuminate\Database\Query\Grammars\Grammar;
 use Illuminate\Database\Query\Processors\Processor;
@@ -56,12 +57,13 @@ class ApiController extends Controller {
             ->orderBy('created_at', 'ASC')
             ->paginate(15);
 
-        //dd($jobs);
-
         //return view('jobs.overview', ['jobs' => $jobs]);
         //$jobs = Job::where('company_id', '=', $id)->get();
-        //return response($jobs->jsonSerialize(), Response::HTTP_OK);
-        return new ApiResource($jobs);
+
+
+        //return $jobs->jsonSerialize();
+        //return response()->json(['success' => 1, 'data' => $jobs]);
+         return response(Job::all()->jsonSerialize(), Response::HTTP_OK);
     }
 
 

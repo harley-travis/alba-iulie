@@ -20,6 +20,7 @@ $factory->define(App\Applicant::class, function (Faker $faker) {
         'stage' => '0', 
         'resume' => 'companies/1/resumes/natalie_allio_resume.png',
         'date_applied' => $faker->date, 
-        'job_id' => '1'
+        'job_id' => '1',
+        'company_id' => '1',
     ];
 });

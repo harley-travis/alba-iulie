@@ -132,34 +132,6 @@
             </div>
 
 
-            <ul class="nav nav-tabs" id="myTab" role="tablist">
-            <li class="nav-item">
-              <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Interview Questions</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">3rd Party Job Boards</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Social Media</a>
-            </li>
-            </ul>
-            <div class="tab-content" id="myTabContent">
-            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-            <h3>Create a question</h3>
-            <p>Creating questions for the job helps the team to stay consistent with the interview process. Click the 'Add Qustion' button below to create a new button. The question will display on the applicants profile page.  You can use the applicant profile page as an interviewing tool.</p>
-            <button class="btn btn-info">Add Question</button>
-            </div>
-            <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-            <h3>Publish Job To 3rd Party Job Boards</h3>
-            </div>
-            <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
-              <h3>Post To Social Media</h3>
-              <p>Check back soon!</p>
-            </div>
-            </div>
-
-
-
             <input type="hidden" name="isActive" value="1">
 
             <!-- this is how the edit form knows which id to target -->
@@ -167,7 +139,7 @@
 
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
-            <button type="submit" class="btn btn-success btn-lg">Save Job</button>
+            <button type="submit" class="btn btn-success">Save Job</button>
 
           </form>
 

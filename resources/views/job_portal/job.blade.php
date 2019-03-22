@@ -175,5 +175,4 @@
             </div>
             
             @endforeach
-
 @include('job_portal.footer')

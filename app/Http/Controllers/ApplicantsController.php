@@ -24,11 +24,8 @@ class ApplicantsController extends Controller {
         }
 
         if(Auth::check()) {
-            // grab the company assc to user
-            $company_id = Company::where('user_id', '=', $user->id)->value('id');
-
-            $applicants = Applicant::where('company_id)', '=', $company_id)->paginate(15);
             
+            $applicants = Applicant::where('company_id', '=', Auth::user()->company_id)->orderBy('created_at', 'ASC')->paginate(15);
             return view('applicants.overview', ['applicants' => $applicants]);
         } 
         

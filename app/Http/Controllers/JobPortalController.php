@@ -51,7 +51,8 @@ class JobPortalController extends Controller {
                 'date_applied'          => Carbon::now(), 
                 'stage'                 => 0, 
                 'resume'                => $file,
-                'company_id'          => $request->input('companies_id')
+                'job_id'                => $request->input('job_id'),
+                'company_id'            => $request->input('company_id')
             ]);
     
             $applicant->save();

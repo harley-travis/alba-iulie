@@ -7,7 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 class Job extends Model {
 
     protected $casts = [
-        'id' => 'integer'
+        'id' => 'integer',
+        'closeDate' => 'date:Y-m-d', 
+        'filled' => 'date:Y-m-d', 
     ];
 
     // make these variables mass assignable
@@ -18,15 +20,13 @@ class Job extends Model {
         'duration', 
         'compensationType', 
         'compensationAmount', 
-        'closeDate', 
         'description', 
         'work', 
         'qualifications',
         'skills', 
-        'filled', // is a date
         'isActive',
         'user_id',
-        // might need to create a col to indicate wither the job has been filled or not. 0 or 1 
+
     ];
 
     //protected $primaryKey = 'id';

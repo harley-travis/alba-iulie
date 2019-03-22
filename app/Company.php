@@ -16,5 +16,9 @@ class Company extends Model {
     public function jobs() {
         return $this->hasManyThrough('App\Job', 'App\User');
     }
+
+    public function employees() {
+        return $this->hasMany('App\Employee');
+    }
     
 }

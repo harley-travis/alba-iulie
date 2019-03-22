@@ -33,7 +33,7 @@
                   <th>Position</th>
                   <th>Phone</th>
                   <th>Email</th>
-                  <th>Date</th>
+                  <th>Date Applied</th>
                   <th>Resume</th>
                 </tr>
 							</thead>
@@ -50,7 +50,7 @@
                     <td>{{ $applicant->phone }}</td>
                     <td>{{ $applicant->email }}</td>
                     <td>{{ $applicant->date_applied }}</td>
-                    <td><a href="{{ $applicant->resume }}" target="_blank">Resume</a></td>
+                    <td><a href="{{ $applicant->resume }}" class="btn btn-info" target="_blank">View Resume</a></td>
                   </tr>
 								@endforeach
 							</tbody>

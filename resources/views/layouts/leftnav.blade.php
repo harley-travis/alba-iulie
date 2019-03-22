@@ -11,10 +11,10 @@
                   <a class="waves-effect waves-dark" href="{{ route('dashboard.overview') }}" aria-expanded="false"><i class="fa fa-tachometer"></i><span class="hide-menu">Dashboard</span></a>
                 </li>
                 <li> 
-                  <a class="waves-effect waves-dark" href="{{ route('applicants.overview') }}" aria-expanded="false"><i class="fa fa-user-circle-o"></i><span class="hide-menu">Applicants</span></a>
+                  <a class="waves-effect waves-dark" href="{{ route('jobs.overview') }}" aria-expanded="false"><i class="fa fa-table"></i><span class="hide-menu">Positions</span></a>
                 </li>
                 <li> 
-                  <a class="waves-effect waves-dark" href="{{ route('jobs.overview') }}" aria-expanded="false"><i class="fa fa-table"></i><span class="hide-menu">Positions</span></a>
+                  <a class="waves-effect waves-dark" href="{{ route('applicants.overview') }}" aria-expanded="false"><i class="fa fa-user-circle-o"></i><span class="hide-menu">Applicants</span></a>
                 </li>
                 <li> 
                   <a class="waves-effect waves-dark" href="{{ route('employees.overview') }}" aria-expanded="false"><i class="fa fa-smile-o"></i><span class="hide-menu">Employees</span></a>

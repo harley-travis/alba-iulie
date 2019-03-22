@@ -128,7 +128,7 @@ class DatabaseSeeder extends Seeder
             'closeDate' => '2017-06-18',
         ]);
 
-        factory(App\Job::class, 50)->create();
+        factory(App\Job::class, 20)->create();
 
         // QUESTIONS 
         DB::table('questions')->insert([
@@ -167,7 +167,8 @@ class DatabaseSeeder extends Seeder
             'stage' => '0', 
             'resume' => 'companies/1/resumes/Harley_Travis_resume.pdf', 
             'date_applied' => Carbon::now(), 
-            'job_id' => '1'
+            'job_id' => '1',
+            'company_id' => '1',
         ]);
             
         DB::table('applicants')->insert([
@@ -185,10 +186,11 @@ class DatabaseSeeder extends Seeder
             'stage' => '0', 
             'resume' => 'companies/1/resumes/natalie_allio_resume.png',
             'date_applied' => Carbon::now(), 
-            'job_id' => '1'
+            'job_id' => '1',
+            'company_id' => '2',
         ]);
 
-        factory(App\Applicant::class, 50)->create();
+        factory(App\Applicant::class, 20)->create();
 
         // APPLICANTS_JOBS PIVOT TABLE
         DB::table('applicant_job')->insert([
@@ -204,6 +206,35 @@ class DatabaseSeeder extends Seeder
             'applicant_id' => '2',
             'job_id' => '2'
         ]); 
+
+
+        // EMPLOYEES
+        DB::table('employees')->insert([
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
+            'company_id' => '1', 
+            'first_name' => 'Steve',
+            'last_name' => 'Rogers',  
+            'email' => 'steve@gmail.com', 
+            'work_email' => 'steve@avengers.com', 
+            'phone' => '4358018765', 
+            'work_phone' => '8885556543', 
+            'ext' => '234', 
+            'position' => 'Team Lead', 
+            'department' => 'Engineering',
+            'location' => 'New York', 
+            'duration' => 'Full-Time',
+            'gender' => '0',
+            'ethnicity' => '0',
+            'veteran' => '1',
+            'disability' => '0',
+            'compensationType' => '0',
+            'compensationAmount' => '100000',
+            'date_hired' => Carbon::now(),
+            'date_left' => '2001-10-15',
+            'active' => '0',
+        ]);
+        factory(App\Employee::class, 20)->create();
 
         // seed the pivot table DON' DELETE!
         $jobs = App\Job::all();

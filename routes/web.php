@@ -78,7 +78,7 @@ Route::group(['prefix' => 'employees'], function() {
 		'as'	=> 'employees.overview'
 	]);
     
-    Route::get('add', [
+  Route::get('add', [
 		'uses'	=> "$c@addEmployee",
 		'as'	=> 'employees.create'
 	]);
@@ -91,6 +91,11 @@ Route::group(['prefix' => 'employees'], function() {
 	Route::get('delete', [
 		'uses'	=> "$c@deleteEmployee",
 		'as'	=> 'employees.delete'
+	]);
+
+	Route::get('view', [
+		'uses'	=> "$c@viewEmployee",
+		'as'	=> 'employees.view'
 	]);
 
 });
@@ -190,8 +195,6 @@ Route::group(['prefix' => 'postings'], function() {
 		'uses'	=> "$c@applyToJob",
 		'as'	=> 'apply.job'
 	]);
-
-
 
 });
 
