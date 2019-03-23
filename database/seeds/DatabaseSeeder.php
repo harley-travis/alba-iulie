@@ -236,9 +236,29 @@ class DatabaseSeeder extends Seeder
         ]);
         factory(App\Employee::class, 20)->create();
 
+        DB::table('employee_infos')->insert([
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
+            'birthday' => '1989-11-11',
+            'married' => '0',
+            'spouse_name' => 'Natasha Romanoff',
+            'email' => 'steve@gmail.com',
+            'phone' => '4358014587',
+            'emergency_contact' => 'Natasha Romanoff',
+            'emergency_contact_phone' => '6669998547',
+            'address_1' => '123 W 432 S',
+            'address_2' => '',
+            'address_3' => '',
+            'state' => 'California',
+            'city' => 'Sacramento',
+            'zip' => '90210',
+            'country' => 'USA',
+            'employee_id' => '1',
+        ]);
+        factory(App\EmployeeInfo::class, 20)->create();
+
         // seed the pivot table DON' DELETE!
         $jobs = App\Job::all();
-
         App\Applicant::all()->each(function ($applicant) use ($jobs) { 
             $applicant->jobs()->attach(
                 $jobs->random(rand(1, 3))->pluck('id')->toArray()

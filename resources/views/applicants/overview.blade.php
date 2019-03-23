@@ -8,7 +8,7 @@
 		<div class="col-md-5 align-self-center">
 			<h3 class="text-themecolor">Applicants</h3>
 			<ol class="breadcrumb">
-				<li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
+				<li class="breadcrumb-item"><a href="{{ route('dashboard.overview') }}">Home</a></li>
 				<li class="breadcrumb-item active">Applicants</li>
 			</ol>
 		</div>
@@ -25,7 +25,7 @@
 			<div class="card">
 				<div class="card-body">
 					<div class="table-responsive">
-						<table class="table">
+						<table class="table table-hover">
 							<thead>
                 <tr>
                   <th class="mdl-data-table__cell--non-numeric">ID</th>

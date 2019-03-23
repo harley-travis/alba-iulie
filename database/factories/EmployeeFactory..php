@@ -26,7 +26,6 @@ $factory->define(App\Employee::class, function (Faker $faker) {
         'date_hired' => $faker->date, 
         'date_left' => $faker->date, 
         'active' => $faker->numberBetween(0, 1),
-        'active' => '0', 
         'company_id' => '1',
         
     ];

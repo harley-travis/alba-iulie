@@ -93,7 +93,7 @@ Route::group(['prefix' => 'employees'], function() {
 		'as'	=> 'employees.delete'
 	]);
 
-	Route::get('view', [
+	Route::get('profile/{id}', [
 		'uses'	=> "$c@viewEmployee",
 		'as'	=> 'employees.view'
 	]);

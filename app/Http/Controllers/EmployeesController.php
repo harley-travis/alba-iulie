@@ -20,8 +20,17 @@ class EmployeesController extends Controller {
 		return view('employees.overview', ['employees' => $employees]);
     }
     
-    public function viewEmployee() {
-        return view('employees.view');
+    public function viewEmployee($id) {
+        //$employee = Employee::find($id);
+
+        $employee = DB::table('employees')
+            ->leftJoin('employee_infos', 'employees.id', '=', 'employee_infos.employee_id')
+            ->where('employee_infos.employee_id', '=', $id)
+            ->first();
+
+                        
+
+        return view('employees.view', ['employee' => $employee, 'employeeId' => $id]);
     }
     
 }

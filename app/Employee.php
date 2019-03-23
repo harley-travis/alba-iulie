@@ -36,4 +36,8 @@ class Employee extends Model {
         return $this->belongsTo('App\Company');
     }
 
+    public function EmployeeInfo() {
+        return $this->hasOne('App\EmployeeInfo');
+    }
+
 }

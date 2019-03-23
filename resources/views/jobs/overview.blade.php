@@ -8,7 +8,7 @@
 		<div class="col-md-5 align-self-center">
 			<h3 class="text-themecolor">Positions</h3>
 			<ol class="breadcrumb">
-				<li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
+				<li class="breadcrumb-item"><a href="{{ route('dashboard.overview') }}">Home</a></li>
 				<li class="breadcrumb-item active">Positions Overview</li>
 			</ol>
 		</div>
@@ -36,7 +36,7 @@
 					</div>
 
 					<div class="table-responsive">
-						<table class="table">
+						<table class="table table-hover">
 							<thead>
 								<tr>
 									<th>Action</th>

@@ -36,7 +36,7 @@
 					</div>
 
 					<div class="table-responsive">
-						<table class="table">
+						<table class="table table-hover">
 							<thead>
 								<tr>
 									<th>Action</th>
@@ -61,7 +61,7 @@
 											</div>
 										</td>
 										<td>{{ $employee->id}}</td>
-										<td>{{ $employee->first_name }} {{ $employee->last_name}}</td>
+										<td><a href="{{ route('employees.view', ['id' => $employee->id ]) }}">{{ $employee->first_name }} {{ $employee->last_name}}<a/></td>
 										<td>{{ $employee->department}}</td>
 										<td>{{ $employee->position}}</td>
 										<td>{{ $employee->work_phone }} {{ $employee->ext}}</td>
