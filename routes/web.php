@@ -93,6 +93,16 @@ Route::group(['prefix' => 'employees'], function() {
 		'as'	=> 'employees.delete'
 	]);
 
+	Route::get('archive/{id}', [
+		'uses'	=> "$c@archiveEmployee",
+		'as'	=> 'employees.archive'
+	]);
+
+	Route::get('archived', [
+		'uses'	=> "$c@getArchivedEmployees",
+		'as'	=> 'employees.archived'
+	]);
+
 	Route::get('profile/{id}', [
 		'uses'	=> "$c@viewEmployee",
 		'as'	=> 'employees.view'

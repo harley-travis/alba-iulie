@@ -16,8 +16,11 @@
 				<li class="breadcrumb-item active">Employee Profile</li>
 			</ol>
 		</div>
-		<div class="col-md-7 align-self-center">
-		</div>
+		<div class="col-md-7 align-self-center right">
+            @if (($employee->married) == 1)   
+			    <a href="{{ route('employees.archive', ['id' => $employee->id ]) }}" class="btn waves-effect waves-light btn-danger">Employee Departure</a>
+            @endif
+        </div>
 	</div>
 
 	<!-- ============================================================== -->
@@ -75,7 +78,7 @@
             <div class="card-body">
                 <h2>Employee Information</h2>
 
-                @if (($employee->active) == 1)
+                @if (($employee->active) == 0)
                 <div class="employee-card">
                     <span class="employee-label red">Date Employee Left</span>
                     <span class="employee-info red">{{ $employee->date_left }}</span>
@@ -153,6 +156,11 @@ span.employee-label {
     color: red;
 }
 
+.right {
+    text-align: right;
+}
+
 </style>
+<!-- REMOVE THIS WHEN YOU FIGURE OUT YOUR NPM PROBLEM -->
 
 @endsection

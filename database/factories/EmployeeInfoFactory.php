@@ -28,7 +28,7 @@ $factory->define(App\EmployeeInfo::class, function (Faker $faker) use ($autoIncr
 });
 
 function autoIncrement() {
-    for ($i = 0; $i < 1000; $i++) {
+    for ($i = 1; $i < 1000; $i++) {
         yield $i;
     }
 }
