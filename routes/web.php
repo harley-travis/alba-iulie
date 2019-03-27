@@ -139,7 +139,7 @@ Route::group(['prefix' => 'jobs'], function() {
 		'as'	=> 'jobs.update'
 	]);
 
-	Route::post('archive', [
+	Route::get('archive/{id}', [
 		'uses'	=> "$c@archiveJob",
 		'as'	=> 'jobs.archive'
 	]);

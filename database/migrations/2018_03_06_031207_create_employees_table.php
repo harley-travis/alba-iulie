@@ -36,7 +36,7 @@ class CreateEmployeesTable extends Migration
             $table->integer('compensationAmount');
             $table->date('date_hired'); 
             $table->date('date_left')->nullable();  
-            $table->integer('active');  
+            $table->integer('active')->comment('0 is in inActive');  
 
             $table->foreign('company_id')->references('id')->on('companies');
         });

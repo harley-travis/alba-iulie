@@ -26,7 +26,7 @@ class CreateApplicantsTable extends Migration
             $table->integer('ethnicity');   
             $table->integer('veteran');     // 0 no 1 yes
             $table->integer('disability');  // 0 no 1 yes
-            $table->integer('is_active');
+            $table->integer('is_active')->comment('0 is in inActive');;
             $table->integer('stage');
             $table->string('resume');
             $table->date('date_applied');        

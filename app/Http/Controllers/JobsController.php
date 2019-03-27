@@ -23,6 +23,7 @@ class JobsController extends Controller {
             $company_id = Auth::user()->company_id;
             $jobs = Company::find($company_id)
                 ->jobs()
+                ->where('isActive', '=', '1')
                 ->orderBy('created_at', 'ASC')
                 ->paginate(15);
 
@@ -125,12 +126,16 @@ class JobsController extends Controller {
     
     public function archiveJob($id) {
 
-        $job = Job::find($request->input('id'));
+        $job = Job::find($id);
 
         if($job->isActive === 1) {
             $job->isActive = 0;
             $job->save();
         }
+
+        return redirect()
+                ->route('jobs.overview')
+                ->with('info', $job->title.' has been archived');
 
     }
 

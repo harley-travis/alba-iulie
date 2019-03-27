@@ -29,7 +29,7 @@ class CreateJobsTable extends Migration
             $table->longText('work');
             $table->longText('qualifications');
             $table->longText('skills');  
-            $table->boolean('isActive');
+            $table->boolean('isActive')->comment('0 is in inActive');
             $table->date('filled');
             $table->date('closeDate');
 
