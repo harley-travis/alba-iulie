@@ -11,15 +11,16 @@
 		<div class="col-md-5 align-self-center">
 			<h3 class="text-themecolor">{{ $employee->first_name }} {{ $employee->last_name }}</h3>
 			<ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="{{ route('dashboard.overview') }}">Home</a></li>
-        <li class="breadcrumb-item"><a href="{{ route('employees.overview') }}">Employees</a></li>
-				<li class="breadcrumb-item active">Employee Profile</li>
+                <li class="breadcrumb-item"><a href="{{ route('dashboard.overview') }}">Home</a></li>
+                <li class="breadcrumb-item"><a href="{{ route('employees.overview') }}">Employees</a></li>
+				<li class="breadcrumb-item active">{{ $employee->first_name }} {{ $employee->last_name }}</li>
 			</ol>
 		</div>
 		<div class="col-md-7 align-self-center right">
-            @if (($employee->married) == 1)   
-			    <a href="{{ route('employees.archive', ['id' => $employee->id ]) }}" class="btn waves-effect waves-light btn-danger">Employee Departure</a>
+            @if (($employee->married) == 0)   
+			    <a href="{{ route('employees.archive', ['id' => $employee->id ]) }}" class="btn waves-effect waves-light btn-danger">Remove Employee</a>
             @endif
+            <a href="{{ route('employees.edit', ['id' => $employee->id ]) }}" class="btn waves-effect waves-light btn-info">Edit Employee</a>
         </div>
 	</div>
 

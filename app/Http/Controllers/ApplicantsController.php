@@ -25,7 +25,10 @@ class ApplicantsController extends Controller {
 
         if(Auth::check()) {
             
-            $applicants = Applicant::where('company_id', '=', Auth::user()->company_id)->orderBy('created_at', 'ASC')->paginate(15);
+            $applicants = Applicant::where('company_id', '=', Auth::user()->company_id)
+                ->where('is_active', '=', '1')
+                ->orderBy('created_at', 'ASC')
+                ->paginate(15);
             return view('applicants.overview', ['applicants' => $applicants]);
         } 
         

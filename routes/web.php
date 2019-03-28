@@ -108,6 +108,16 @@ Route::group(['prefix' => 'employees'], function() {
 		'as'	=> 'employees.view'
 	]);
 
+	Route::get('edit/{id}', [
+		'uses'	=> "$c@getEmployeeById",
+		'as'	=> 'employees.edit'
+	]);
+	
+	Route::post('edit', [
+		'uses'	=> "$c@update", 
+		'as'	=> 'employees.update'
+	]);
+
 });
 
 Route::group(['prefix' => 'jobs'], function() {

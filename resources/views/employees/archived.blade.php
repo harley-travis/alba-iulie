@@ -9,6 +9,7 @@
 			<h3 class="text-themecolor">Archived Employees</h3>
 			<ol class="breadcrumb">
 				<li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
+				<li class="breadcrumb-item"><a href="{{ route('employees.overview') }}">Employees</a></li>
 				<li class="breadcrumb-item active">Archived Employees</li>
 			</ol>
 		</div>

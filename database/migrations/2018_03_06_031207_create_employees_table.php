@@ -28,10 +28,10 @@ class CreateEmployeesTable extends Migration
             $table->string('department'); 
             $table->string('location');
             $table->string('duration');
-            $table->integer('gender');      // 0 female 1 male 2 choose not to identify
+            $table->integer('gender')->comment('0 is female');      // 0 female 1 male 2 choose not to identify
             $table->integer('ethnicity');   
-            $table->integer('veteran');     // 0 no 1 yes
-            $table->integer('disability');  // 0 no 1 yes
+            $table->integer('veteran')->comment('0 is no');     // 0 no 1 yes
+            $table->integer('disability')->comment('0 is no');  // 0 no 1 yes
             $table->integer('compensationType');
             $table->integer('compensationAmount');
             $table->date('date_hired'); 

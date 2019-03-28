@@ -17,8 +17,8 @@ class CreateEmployeeInfosTable extends Migration
             $table->increments('id');
             $table->integer('employee_id')->unsigned();  
             $table->timestamps();
-            $table->boolean('married');
-            $table->string('spouse_name');
+            $table->boolean('married')->comment('0 is married');;
+            $table->string('spouse_name')->nullable();
             $table->string('email');
             $table->string('phone');  
             $table->date('birthday'); 
