@@ -57,6 +57,16 @@ Route::group(['prefix' => 'applicants'], function() {
 		'as'	=> 'applicants.profile'
 	]);
 
+	Route::get('archive/{id}', [
+		'uses'	=> "$c@archiveApplicant",
+		'as'	=> 'applicants.archive'
+	]);
+
+	Route::get('archived', [
+		'uses'	=> "$c@getArchivedApplicants",
+		'as'	=> 'applicants.archived'
+	]);
+
 });
 
 

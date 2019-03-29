@@ -5,12 +5,9 @@ namespace App\Http\Controllers;
 use DB;
 use App\Job;
 use App\Company;
-<<<<<<< HEAD
 use App\Http\Requests;
 use Illuminate\Http\Response;
 use Illuminate\Http\Request;
-=======
->>>>>>> 6fc23609abe54c51bfbd55df6821f478e530f2c2
 use App\Http\Resources\Api as ApiResource;
 use Illuminate\Database\Query\Grammars\Grammar;
 use Illuminate\Database\Query\Processors\Processor;

@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Applicant;
+use Auth;
+use DB;
 use App\Job;
 use App\Company;
-use Auth;
+use App\Applicant;
 use Illuminate\Http\Request;
 use Illuminate\Http\Requests;
 use Illuminate\Session\Store;
@@ -14,9 +15,6 @@ use Illuminate\Session\Store;
 class ApplicantsController extends Controller {
 
     public function getApplicants() {
-        
-        // get all applicants
-        //$applicants = Applicant::orderby('date-applied')->get();
 
         $user = Auth::user(); 
         if(!$user) {
@@ -35,8 +33,37 @@ class ApplicantsController extends Controller {
     }
 
     public function getApplicantById($id) {
+
         $applicant = Applicant::find($id);
         return view('applicants.profile', ['applicant' => $applicant, 'applicantId' => $id]);
+
+    }
+
+    public function getArchivedApplicants() {
+
+        $applicants = DB::table('applicants')
+            ->where('company_id', '=', Auth::user()->company_id)
+            ->where('is_active', '=', '0')
+            ->orderBy('date_applied', 'DSC')
+            ->paginate(15);
+
+        return view('applicants.archived', ['applicants' => $applicants]);
+        
     }
     
+    public function archiveApplicant($id) {
+
+        $applicant = Applicant::find($id);
+
+        if($applicant->active === 1) {
+            $applicant->active = 0;
+            $applicant->date_left = Carbon::now();
+            $applicant->save();
+        }
+
+        return redirect()
+                ->route('applicants.overview')
+                ->with('info', $applicant->first_name.' '.$applicant->last_name.' has been archived');
+    }
+
 }

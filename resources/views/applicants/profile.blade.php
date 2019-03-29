@@ -1,6 +1,33 @@
 @extends('layouts.master')
 
 @section('content')
+
+<!-- ============================================================== -->
+	<!-- Bread crumb and right sidebar toggle -->
+	<!-- ============================================================== -->
+	<div class="row page-titles">
+		<div class="col-md-5 align-self-center">
+			<h3 class="text-themecolor">{{ $applicant->first_name }} {{ $applicant->last_name }}</h3>
+			<ol class="breadcrumb">
+				<li class="breadcrumb-item"><a href="{{ route('dashboard.overview') }}">Home</a></li>
+				<li class="breadcrumb-item"><a href="{{ route('applicants.overview') }}">Applicants</a></li>
+                <li class="breadcrumb-item active">{{ $applicant->first_name }} {{ $applicant->last_name }}</li>
+			</ol>
+		</div>
+		<div class="col-md-7 align-self-center right">
+            
+		</div>
+	</div>
+	<!-- ============================================================== -->
+	<!-- End Bread crumb and right sidebar toggle -->
+	<!-- ============================================================== -->
+
+	@if(Session::has('info'))
+		<div class="alert alert-success" role="alert">
+			<h4 class="alert-heading">Success!</h4>
+			<p>{{ Session::get('info') }}</p>
+		</div>
+	@endif
 	
   <div class="row">
 		<div class="col-12">
