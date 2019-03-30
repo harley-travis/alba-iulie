@@ -3,33 +3,33 @@
 @section('content')
 
 <!-- ============================================================== -->
-	<!-- Bread crumb and right sidebar toggle -->
-	<!-- ============================================================== -->
-	<div class="row page-titles">
-		<div class="col-md-5 align-self-center">
-			<h3 class="text-themecolor">{{ $applicant->first_name }} {{ $applicant->last_name }}</h3>
-			<ol class="breadcrumb">
-				<li class="breadcrumb-item"><a href="{{ route('dashboard.overview') }}">Home</a></li>
-				<li class="breadcrumb-item"><a href="{{ route('applicants.overview') }}">Applicants</a></li>
-                <li class="breadcrumb-item active">{{ $applicant->first_name }} {{ $applicant->last_name }}</li>
-			</ol>
-		</div>
-		<div class="col-md-7 align-self-center right">
-            
-		</div>
-	</div>
-	<!-- ============================================================== -->
-	<!-- End Bread crumb and right sidebar toggle -->
-	<!-- ============================================================== -->
+<!-- Bread crumb and right sidebar toggle -->
+<!-- ============================================================== -->
+<div class="row page-titles">
+    <div class="col-md-5 align-self-center">
+        <h3 class="text-themecolor">{{ $applicant->first_name }} {{ $applicant->last_name }}</h3>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{{ route('dashboard.overview') }}">Home</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('applicants.overview') }}">Applicants</a></li>
+            <li class="breadcrumb-item active">{{ $applicant->first_name }} {{ $applicant->last_name }}</li>
+        </ol>
+    </div>
+    <div class="col-md-7 align-self-center right">
+        
+    </div>
+</div>
+<!-- ============================================================== -->
+<!-- End Bread crumb and right sidebar toggle -->
+<!-- ============================================================== -->
 
-	@if(Session::has('info'))
-		<div class="alert alert-success" role="alert">
-			<h4 class="alert-heading">Success!</h4>
-			<p>{{ Session::get('info') }}</p>
-		</div>
-	@endif
+@if(Session::has('info'))
+    <div class="alert alert-success" role="alert">
+        <h4 class="alert-heading">Success!</h4>
+        <p>{{ Session::get('info') }}</p>
+    </div>
+@endif
 	
-  <div class="row">
+    <div class="row">
 		<div class="col-12">
 			<div class="card">
 				<div class="card-body">
@@ -43,14 +43,13 @@
                 <a class="btn btn-success" href="{{$applicant->resume}}" target="_blank">View Resume</a>
                 <a class="btn btn-info" href="#">Next Step</a>
 
-                <span class="">9.5</a>
-                <span>Interview Score</span>
 
-                <span class="text-danger">INTERVIEW STEP HERE </span>
-                <span>Applied {{ $applicant->date_applied }} </span>
-                <span>{{ $applicant->phone }} </span>
-                <span><a href="mailto:{{ $applicant->email }}">{{ $applicant->email }}</a></span>
-                <span class="text-danger">
+
+                
+                <span><strong>Date Applied</strong>: {{ $applicant->date_applied }}</span>
+                <span><strong>Phone Number</strong>: {{ $applicant->phone }}</span>
+                <span><strong>Email</strong>: <a href="mailto:{{ $applicant->email }}">{{ $applicant->email }}</a></span>
+                <span class="text-danger"><strong>Ethnicity</strong>:
                     @if (($applicant->ethnicity) == 0)
                         American Indian or Alaska Native
                     @elseif (($applicant->ethnicity)  == 1)
@@ -72,6 +71,7 @@
                     @endif                
                 </span>
                 <span class="text-danger">
+                <strong>Gender</strong>:
                     @if (($applicant->gender) == 0)
                         Female
                     @elseif (($applicant->gender)  == 1)
@@ -83,6 +83,7 @@
                     @endif
                 </span>
                 <span class="text-danger">
+                <strong>Veteran</strong>:
                     @if (($applicant->veteran) == 0)
                         Not a Veteran
                     @elseif (($applicant->veteran)  == 1)
@@ -92,6 +93,7 @@
                     @endif
                 </span>
                 <span class="text-danger">
+                <strong>Disability</strong>:
                     @if (($applicant->disability) == 0)
                         Not Disabled
                     @elseif (($applicant->disability)  == 1)
@@ -100,9 +102,6 @@
                         There was an error displaying disability status
                     @endif
                 </span>
-
-                <label for="customRange2">Example range</label>
-                <input type="range" class="custom-range" min="0" max="5" id="customRange2">
 
                 <!-- CREATE THE COMMENTERS HERE 
                 https://appdividend.com/2018/06/20/create-comment-nesting-in-laravel/ -->

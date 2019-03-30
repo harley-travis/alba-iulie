@@ -26,5 +26,9 @@ class Applicant extends Model {
     public function jobs() {
         return $this->belongsToMany('App\Job')->withTimeStamps();
     }
+
+    public function applicantProfile() {
+        return $this->hasOne('App\ApplicantProfile')->withTimeStamps();
+    }
         
 }
