@@ -10,9 +10,12 @@ use App\Applicant;
 use Illuminate\Http\Request;
 use Illuminate\Http\Requests;
 use Illuminate\Session\Store;
+use Laravelista\Comments\Commentable;
 
 
 class ApplicantsController extends Controller {
+
+    use Commentable;
 
     public function getApplicants() {
 
@@ -34,7 +37,30 @@ class ApplicantsController extends Controller {
 
     public function getApplicantById($id) {
 
-        $applicant = Applicant::find($id);
+        /**
+         * need to pull in the applicant_profile id as well
+         */
+
+        //$applicant = Applicant::find($id);
+
+        // $applicant = DB::table('applicants')
+        //     ->leftJoin('applicant_profiles', 'applicants.id', '=', 'applicant_profiles.applicant_id')
+        //     ->where('applicant_profiles.applicant_id', '=', $id)
+        //     ->first();
+
+        //Applicant::find(1)->leftJoin('applicant_profiles', 'applicants.id', '=', 'applicant_profiles.applicant_id');
+
+            // $applicant = DB::table('applicants')
+            //     ->leftJoin('applicant_profiles', 'applicants.id', '=', 'applicant_profiles.applicant_id')
+            //     ->where('applicant_profiles.applicant_id', '=', $id)
+            //     ->first();
+
+
+        $applicant = Applicant::leftJoin('applicant_profiles', 'applicants.id', '=', 'applicant_profiles.applicant_id')->first();
+
+
+           // dd($applicant);
+
         return view('applicants.profile', ['applicant' => $applicant, 'applicantId' => $id]);
 
     }

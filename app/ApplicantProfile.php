@@ -2,9 +2,12 @@
 
 namespace App;
 
+use Laravelista\Comments\Commentable;
 use Illuminate\Database\Eloquent\Model;
 
 class ApplicantProfile extends Model {
+
+    use Commentable;
     
     protected $fillable = [
         'stage', 
@@ -13,8 +16,8 @@ class ApplicantProfile extends Model {
         'interview_three', 
     ];
 
+    // public function applicant() {
+    //     return $this->belongsTo('App\Applicant')->withTimeStamps();
+    // }
 
-    public function applicant() {
-        return $this->belongsTo('App\Applicant')->withTimeStamps();
-    }
 }

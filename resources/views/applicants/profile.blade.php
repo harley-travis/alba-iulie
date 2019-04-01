@@ -33,19 +33,17 @@
 		<div class="col-12">
 			<div class="card">
 				<div class="card-body">
-                <h3 class="text-themecolor">{{ $applicant->first_name }} {{ $applicant->last_name }}</h3>
-                <h4 class="text-success">
-                    @foreach($applicant->jobs as $job)
-                        {{ $job->title }}
-                      @endforeach</h4>
+                    <h3 class="text-themecolor">{{ $applicant->first_name }} {{ $applicant->last_name }}</h3>
+                    <h4 class="text-success">
+                        @foreach($applicant->jobs as $job)
+                            {{ $job->title }}
+                        @endforeach
+                    </h4>
                 </div>
 
                 <a class="btn btn-success" href="{{$applicant->resume}}" target="_blank">View Resume</a>
                 <a class="btn btn-info" href="#">Next Step</a>
-
-
-
-                
+                            
                 <span><strong>Date Applied</strong>: {{ $applicant->date_applied }}</span>
                 <span><strong>Phone Number</strong>: {{ $applicant->phone }}</span>
                 <span><strong>Email</strong>: <a href="mailto:{{ $applicant->email }}">{{ $applicant->email }}</a></span>
@@ -105,7 +103,8 @@
 
                 <!-- CREATE THE COMMENTERS HERE 
                 https://appdividend.com/2018/06/20/create-comment-nesting-in-laravel/ -->
-
+                @comments(['model' => $applicant])
+                @endcomments
 
             </div>
         </div>

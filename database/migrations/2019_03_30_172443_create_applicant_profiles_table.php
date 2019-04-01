@@ -15,8 +15,8 @@ class CreateApplicantProfilesTable extends Migration
     {
         Schema::create('applicant_profiles', function (Blueprint $table) {
             $table->increments('id');
-            $table->timestamps();
             $table->integer('applicant_id')->unsigned(); 
+            $table->timestamps();
             
             /**
              * STAGE
@@ -32,9 +32,9 @@ class CreateApplicantProfilesTable extends Migration
              */
             
             $table->integer('stage');
-            $table->date('interview_one');
-            $table->date('interview_two');
-            $table->date('interview_three');
+            $table->date('interview_one')->nullable();
+            $table->date('interview_two')->nullable();
+            $table->date('interview_three')->nullable();
 
             $table->foreign('applicant_id')->references('id')->on('applicants');
 

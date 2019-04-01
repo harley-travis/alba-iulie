@@ -207,6 +207,17 @@ class DatabaseSeeder extends Seeder
             'job_id' => '2'
         ]); 
 
+        // APPLICANT PROFILE
+        DB::table('applicant_profiles')->insert([
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
+            'stage' => '6', 
+            'interview_one' => '2019-03-30', 
+            'interview_two' => '2019-04-30', 
+            'interview_three' => '2019-05-30', 
+            'applicant_id' => '1',
+        ]); 
+        factory(App\ApplicantProfile::class, 20)->create();
 
         // EMPLOYEES
         DB::table('employees')->insert([

@@ -2,9 +2,12 @@
 
 namespace App;
 
+use Laravelista\Comments\Commentable;
 use Illuminate\Database\Eloquent\Model;
 
 class Applicant extends Model {
+
+    use Commentable;
 
     protected $fillable = [
         'first_name', 
@@ -27,8 +30,8 @@ class Applicant extends Model {
         return $this->belongsToMany('App\Job')->withTimeStamps();
     }
 
-    public function applicantProfile() {
-        return $this->hasOne('App\ApplicantProfile')->withTimeStamps();
-    }
+    // public function applicantProfile() {
+    //     return $this->hasOne('App\ApplicantProfile')->withTimeStamps();
+    // }
         
 }

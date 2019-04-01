@@ -26,9 +26,3 @@ $factory->define(App\EmployeeInfo::class, function (Faker $faker) use ($autoIncr
         'employee_id' => $autoIncrement->current(),
     ];
 });
-
-function autoIncrement() {
-    for ($i = 1; $i < 1000; $i++) {
-        yield $i;
-    }
-}
