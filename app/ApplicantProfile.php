@@ -8,6 +8,19 @@ use Illuminate\Database\Eloquent\Model;
 class ApplicantProfile extends Model {
 
     use Commentable;
+
+    /**
+     * STAGE
+     * ------------------------
+     * 0) PENDING
+     * 1) SCHEDULED FIRST INTERVIEW
+     * 2) COMPLETED FIRST INTERVIEW
+     * 3) SCHEDULED SECOND INTERVIEW
+     * 4) COMPLETED SECOND INTERVIEW
+     * 5) SCHEDULED THIRD INTERVIEW
+     * 6) COMPLETED THIRD INTERVIEW
+     * 7) HIRED
+     */
     
     protected $fillable = [
         'stage', 
@@ -16,8 +29,8 @@ class ApplicantProfile extends Model {
         'interview_three', 
     ];
 
-    // public function applicant() {
-    //     return $this->belongsTo('App\Applicant')->withTimeStamps();
-    // }
+    public function applicant() {
+        return $this->belongsTo('App\Applicant');
+    }
 
 }

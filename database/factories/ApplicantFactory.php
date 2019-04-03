@@ -17,7 +17,6 @@ $factory->define(App\Applicant::class, function (Faker $faker) {
         'veteran' => $faker->numberBetween(0, 1),
         'disability' => $faker->numberBetween(0, 1),
         'is_active' => $faker->numberBetween(0, 1), 
-        'stage' => $faker->numberBetween(0, 5), 
         'resume' => 'companies/1/resumes/natalie_allio_resume.png',
         'date_applied' => $faker->date, 
         'job_id' => '1',

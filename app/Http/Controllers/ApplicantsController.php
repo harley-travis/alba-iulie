@@ -7,6 +7,7 @@ use DB;
 use App\Job;
 use App\Company;
 use App\Applicant;
+use App\ApplicantProfile;
 use Illuminate\Http\Request;
 use Illuminate\Http\Requests;
 use Illuminate\Session\Store;
@@ -37,31 +38,14 @@ class ApplicantsController extends Controller {
 
     public function getApplicantById($id) {
 
-        /**
-         * need to pull in the applicant_profile id as well
-         */
-
-        //$applicant = Applicant::find($id);
-
-        // $applicant = DB::table('applicants')
-        //     ->leftJoin('applicant_profiles', 'applicants.id', '=', 'applicant_profiles.applicant_id')
-        //     ->where('applicant_profiles.applicant_id', '=', $id)
-        //     ->first();
-
-        //Applicant::find(1)->leftJoin('applicant_profiles', 'applicants.id', '=', 'applicant_profiles.applicant_id');
-
-            // $applicant = DB::table('applicants')
-            //     ->leftJoin('applicant_profiles', 'applicants.id', '=', 'applicant_profiles.applicant_id')
-            //     ->where('applicant_profiles.applicant_id', '=', $id)
-            //     ->first();
-
-
-        $applicant = Applicant::leftJoin('applicant_profiles', 'applicants.id', '=', 'applicant_profiles.applicant_id')->first();
-
-
-           // dd($applicant);
+        $applicant = Applicant::leftJoin('applicant_profiles', 'applicants.id', '=', 'applicant_profiles.applicant_id')
+            ->where('applicant_profiles.applicant_id', '=', $id)
+            ->firstOrFail();
 
         return view('applicants.profile', ['applicant' => $applicant, 'applicantId' => $id]);
+
+        // $applicant = Applicant::leftJoin('applicant_profiles', 'applicants.id', '=', 'applicant_profiles.applicant_id')->first();
+        // return view('applicants.profile', ['applicant' => $applicant, 'applicantId' => $id]);
 
     }
 
@@ -90,6 +74,16 @@ class ApplicantsController extends Controller {
         return redirect()
                 ->route('applicants.overview')
                 ->with('info', $applicant->first_name.' '.$applicant->last_name.' has been archived');
+    }
+
+    public function updateStage(Request $request) {
+
+        $applicant = ApplicantProfile::where('applicant_id', '=', $request->input('id'))->firstOrFail();
+        $applicant->stage = $request->input('stage');
+        $applicant->save();
+
+        return redirect()->route('applicants.overview')->with('info', 'Applicant updated');
+
     }
 
 }

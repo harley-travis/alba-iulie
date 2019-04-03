@@ -67,6 +67,11 @@ Route::group(['prefix' => 'applicants'], function() {
 		'as'	=> 'applicants.archived'
 	]);
 
+	Route::post('stage', [
+		'uses'	=> "$c@updateStage",
+		'as'	=> 'applicants.stage'
+	]);
+
 });
 
 
