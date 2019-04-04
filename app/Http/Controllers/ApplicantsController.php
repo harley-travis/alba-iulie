@@ -44,9 +44,6 @@ class ApplicantsController extends Controller {
 
         return view('applicants.profile', ['applicant' => $applicant, 'applicantId' => $id]);
 
-        // $applicant = Applicant::leftJoin('applicant_profiles', 'applicants.id', '=', 'applicant_profiles.applicant_id')->first();
-        // return view('applicants.profile', ['applicant' => $applicant, 'applicantId' => $id]);
-
     }
 
     public function getArchivedApplicants() {

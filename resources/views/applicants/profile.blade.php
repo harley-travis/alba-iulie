@@ -50,7 +50,7 @@
                                 <form action="{{ route('applicants.stage') }}" method="POST" class="form-inline">    
                                     <div class="form-group pr-2">
                                         <select name="stage" class="form-control custom-select">
-                                            <option >- Select Stage -</option>
+                                            <option>- Select Stage -</option>
                                             <option value="0">Pending</option>
                                             <option value="1">Scheduled First Interview</option>
                                             <option value="2">Completed First Interview</option>

@@ -13,6 +13,25 @@
 			</ol>
 		</div>
 		<div class="col-md-7 align-self-center right">
+			<form action="{{ route('applicants.filter') }}" method="POST" class="form-inline">    
+				<div class="form-group pr-2">
+						<select name="stage" class="form-control custom-select">
+								<option>- Filter Position -</option>
+								<option value="0">Pending</option>
+								<option value="1">Scheduled First Interview</option>
+								<option value="2">Completed First Interview</option>
+								<option value="3">Scheduled Second Interview</option>
+								<option value="4">Completed Second Interview</option>
+								<option value="5">Scheduled Third Interview</option>
+								<option value="6">Completed Third Interview</option>
+								<option value="7">Hired</option>
+						</select>
+				</div>
+				<input type="hidden" name="_token" value="{{ csrf_token() }}">
+				<input type="hidden" name="id" value="{{ $applicant->id }}">
+				<button type="submit" class="btn btn-success">Apply</button>
+			</form>
+
 			<a href="{{ route('applicants.archived') }}" class="btn waves-effect waves-light btn-warning">Archived Applicants</a>
 		</div>
 	</div>
