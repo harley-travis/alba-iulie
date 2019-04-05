@@ -35,8 +35,8 @@ class ApplicantsController extends Controller {
             $applicants = Applicant::leftJoin('applicant_profiles', 'applicants.id', '=', 'applicant_profiles.applicant_id')
                 ->where('company_id', '=', Auth::user()->company_id)
                 ->where('is_active', '=', '1')
-                ->orderBy('applicants.created_at', 'dsc')
                 ->where('stage', '<', '7')
+                ->orderBy('applicants.created_at', 'dsc')
                 ->paginate(15);
 
             return view('applicants.overview', ['applicants' => $applicants]);

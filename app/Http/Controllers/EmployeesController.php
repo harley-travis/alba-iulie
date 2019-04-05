@@ -80,9 +80,7 @@ class EmployeesController extends Controller {
         $employee = Employee::find($request->input('id'));
         $employee->first_name = $request->input('first_name');
         $employee->last_name = $request->input('last_name');
-        $employee->email = $request->input('email');
         $employee->work_email = $request->input('work_email');
-        $employee->phone = $request->input('phone');
         $employee->work_phone = $request->input('work_phone');
         $employee->ext = $request->input('ext');
         $employee->position = $request->input('position');
@@ -102,6 +100,8 @@ class EmployeesController extends Controller {
         // update the employee info table
         $employeeInfo = EmployeeInfo::find($request->input('id'));
         $employeeInfo->birthday = $request->input('birthday');
+        $employeeInfo->phone = $request->input('phone');
+        $employeeInfo->email = $request->input('email');
         $employeeInfo->married = $request->input('married');
         $employeeInfo->spouse_name = $request->input('spouse_name');
         $employeeInfo->emergency_contact = $request->input('emergency_contact');

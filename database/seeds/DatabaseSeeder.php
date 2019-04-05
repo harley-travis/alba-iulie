@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Database\Seeder;
 use Carbon\Carbon;
+use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
 {
@@ -11,9 +11,6 @@ class DatabaseSeeder extends Seeder
      * @return void
      */
     public function run() {
-
-        // php artisan migrate:refresh [update database columns]
-        // php artisan db:seed [insert this data below to the db]
 
         // $this->call(UsersTableSeeder::class);
         DB::table('users')->insert([
@@ -35,245 +32,34 @@ class DatabaseSeeder extends Seeder
         ]);
 
         // COMPANIES
-        DB::table('companies')->insert([
-            'created_at' => Carbon::now(),
-            'updated_at' => Carbon::now(),
-            'name' => 'Avengers', 
-            'bio' => 'Earths Mightest Heros',
-            
-        ]);
-    
-        DB::table('companies')->insert([
-            'created_at' => Carbon::now(),
-            'updated_at' => Carbon::now(),
-            'name' => 'Netflix', 
-            'bio' => 'Streaming all the digital content',
-            
-        ]);
+        $this->call(CompanyTableSeeder::class);
 
         // JOBS
-        DB::table('jobs')->insert([
-            'user_id' => '1',
-            'created_at' => Carbon::now(),
-            'updated_at' => Carbon::now(),
-            'title' => 'Personal Assistant', 
-            'location' => 'California', 
-            'department' => 'Product', 
-            'duration' => 1, 
-            'compensationType' => 0, 
-            'compensationAmount' => 50000, 
-            'description' => 'good description', 
-            'work' => 'drive tony around', 
-            'qualifications' => 'high school grad',
-            'skills' => 'drive cars', 
-            'isActive' => '0',
-            'filled' => '2001-10-15',
-            'closeDate' => '2017-06-18',
-        ]);
-
-        DB::table('jobs')->insert([
-            'user_id' => '1',
-            'created_at' => Carbon::now(),
-            'updated_at' => Carbon::now(),
-            'title' => 'Head of Security', 
-            'location' => 'California', 
-            'department' => 'Product', 
-            'duration' => 1, 
-            'compensationType' => 0, 
-            'compensationAmount' => 405000, 
-            'description' => 'take on daily challenges of the office', 
-            'work' => 'protect avengers tower', 
-            'qualifications' => 'must be old enough to drive a limo',
-            'skills' => 'karate', 
-            'isActive' => '0',
-            'filled' => '2001-10-15',
-            'closeDate' => '2017-06-18',
-        ]);
-
-        DB::table('jobs')->insert([
-            'user_id' => '2',
-            'created_at' => Carbon::now(),
-            'updated_at' => Carbon::now(),
-            'title' => 'Iron Spider', 
-            'location' => 'Arizona', 
-            'department' => 'Product', 
-            'duration' => 2, 
-            'compensationType' => 1, 
-            'compensationAmount' => 20, 
-            'description' => 'good description', 
-            'work' => 'lots of work', 
-            'qualifications' => 'super powers',
-            'skills' => 'stick to walls or swing', 
-            'isActive' => '0',
-            'filled' => '2001-10-15',
-            'closeDate' => '2017-06-18',
-        ]);
-
-        DB::table('jobs')->insert([
-            'user_id' => '2',
-            'created_at' => Carbon::now(),
-            'updated_at' => Carbon::now(),
-            'title' => 'Suit Lady', 
-            'location' => 'Arizona', 
-            'department' => 'Product', 
-            'duration' => 2, 
-            'compensationType' => 1, 
-            'compensationAmount' => 20, 
-            'description' => 'Be a robot and work better than Siri', 
-            'work' => 'give me the data when needed', 
-            'qualifications' => 'must be a robot',
-            'skills' => 'quick google searching', 
-            'isActive' => '0',
-            'filled' => '2001-10-15',
-            'closeDate' => '2017-06-18',
-        ]);
-
-        factory(App\Job::class, 20)->create();
-
-        // QUESTIONS 
-        DB::table('questions')->insert([
-            'created_at' => Carbon::now(),
-            'updated_at' => Carbon::now(),
-            'title' => 'Relocation', 
-            'question' => 'Are you willing to relocate?', 
-            'interview_stage' => '0', 
-            'job_id' => '1'
-        ]);
-        
-        DB::table('questions')->insert([
-            'created_at' => Carbon::now(),
-            'updated_at' => Carbon::now(),
-            'title' => 'Experience', 
-            'question' => 'How many years of experience do you have?', 
-            'interview_stage' => '0', 
-            'job_id' => '2'
-        ]);
-
-        
+        $this->call(JobTableSeeder::class);   
 
         // APPLICANTS
-        DB::table('applicants')->insert([
-            'created_at' => Carbon::now(),
-            'updated_at' => Carbon::now(),
-            'first_name' => 'Gob', 
-            'last_name' => 'Bluth', 
-            'email' => 'gob@bluth.com', 
-            'phone' => '6549871452', 
-            'gender' => '1',
-            'ethnicity' => '3',
-            'veteran'   => '0',
-            'disability'    => '0',
-            'is_active' => '0', 
-            'resume' => 'companies/1/resumes/Harley_Travis_resume.pdf', 
-            'date_applied' => Carbon::now(), 
-            'job_id' => '1',
-            'company_id' => '1',
-        ]);
-            
-        // DB::table('applicants')->insert([
-        //     'created_at' => Carbon::now(),
-        //     'updated_at' => Carbon::now(),
-        //     'first_name' => 'Buster', 
-        //     'last_name' => 'Bluth', 
-        //     'email' => 'buster@bluth.com', 
-        //     'phone' => '8004459874', 
-        //     'gender' => '1',
-        //     'ethnicity' => '1',
-        //     'veteran'   => '1',
-        //     'disability'    => '1',
-        //     'is_active' => '0', 
-        //     'resume' => 'companies/1/resumes/natalie_allio_resume.png',
-        //     'date_applied' => Carbon::now(), 
-        //     'job_id' => '1',
-        //     'company_id' => '2',
-        // ]);
-
-        factory(App\Applicant::class, 20)->create();
+        $this->call(ApplicantTableSeeder::class);
 
         // APPLICANTS_JOBS PIVOT TABLE
-        DB::table('applicant_job')->insert([
-            'created_at' => Carbon::now(),
-            'updated_at' => Carbon::now(),
-            'applicant_id' => '1',
-            'job_id' => '1'
-        ]); 
+        $this->call(ApplicantJobTableSeeder::class);
 
-        DB::table('applicant_job')->insert([
-            'created_at' => Carbon::now(),
-            'updated_at' => Carbon::now(),
-            'applicant_id' => '2',
-            'job_id' => '2'
-        ]); 
-
-        // APPLICANT PROFILE
-        DB::table('applicant_profiles')->insert([
-            'created_at' => Carbon::now(),
-            'updated_at' => Carbon::now(),
-            'stage' => '6', 
-            'interview_one' => '2019-03-30', 
-            'interview_two' => '2019-04-30', 
-            'interview_three' => '2019-05-30', 
-            'applicant_id' => '1',
-        ]); 
-        factory(App\ApplicantProfile::class, 20)->create();
+        // APPLICANT_PROFILE
+        $this->call(ApplicantProfileTableSeeder::class);
 
         // EMPLOYEES
-        DB::table('employees')->insert([
-            'created_at' => Carbon::now(),
-            'updated_at' => Carbon::now(),
-            'company_id' => '1', 
-            'first_name' => 'Steve',
-            'last_name' => 'Rogers',  
-            'email' => 'steve@gmail.com', 
-            'work_email' => 'steve@avengers.com', 
-            'phone' => '4358018765', 
-            'work_phone' => '8885556543', 
-            'ext' => '234', 
-            'position' => 'Team Lead', 
-            'department' => 'Engineering',
-            'location' => 'New York', 
-            'duration' => 'Full-Time',
-            'gender' => '0',
-            'ethnicity' => '0',
-            'veteran' => '1',
-            'disability' => '0',
-            'compensationType' => '0',
-            'compensationAmount' => '100000',
-            'date_hired' => Carbon::now(),
-            'date_left' => '2001-10-15',
-            'active' => '0',
-        ]);
-        factory(App\Employee::class, 20)->create();
+        $this->call(EmployeeTableSeeder::class);
 
-        DB::table('employee_infos')->insert([
-            'created_at' => Carbon::now(),
-            'updated_at' => Carbon::now(),
-            'birthday' => '1989-11-11',
-            'married' => '0',
-            'spouse_name' => 'Natasha Romanoff',
-            'email' => 'steve@gmail.com',
-            'phone' => '4358014587',
-            'emergency_contact' => 'Natasha Romanoff',
-            'emergency_contact_phone' => '6669998547',
-            'address_1' => '123 W 432 S',
-            'address_2' => '',
-            'address_3' => '',
-            'state' => 'California',
-            'city' => 'Sacramento',
-            'zip' => '90210',
-            'country' => 'USA',
-            'employee_id' => '1',
-        ]);
-        factory(App\EmployeeInfo::class, 20)->create();
+        // EMPLOYEE_INFO
+        $this->call(EmployeeInfoTableSeeder::class);
 
+    
         // seed the pivot table DON' DELETE!
-        $jobs = App\Job::all();
-        App\Applicant::all()->each(function ($applicant) use ($jobs) { 
-            $applicant->jobs()->attach(
-                $jobs->random(rand(1, 3))->pluck('id')->toArray()
-            ); 
-        });
+        // $jobs = App\Job::all();
+        // App\Applicant::all()->each(function ($applicant) use ($jobs) { 
+        //     $applicant->jobs()->attach(
+        //         $jobs->random(rand(1, 3))->pluck('id')->toArray()
+        //     ); 
+        // });
       
-
     }
 }
