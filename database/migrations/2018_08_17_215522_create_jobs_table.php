@@ -30,8 +30,8 @@ class CreateJobsTable extends Migration
             $table->longText('qualifications');
             $table->longText('skills');  
             $table->boolean('isActive')->comment('0 is inActive');
-            $table->date('filled');
-            $table->date('closeDate');
+            $table->date('filled')->nullable();
+            $table->date('closeDate')->nullable();
 
             $table->foreign('user_id')->references('id')->on('users');
             

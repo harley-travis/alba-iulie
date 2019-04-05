@@ -51,7 +51,6 @@
             <div class="form-group">
               <label for="department">Department</label>
               <select name="department" class="form-control form-control-lg">
-                <option>- Select Department -</option>
                 <option {{ $job->department == 'Tech Support' ? 'selected':'' }}>Tech Support</option>
                 <option {{ $job->department == 'Engineering' ? 'selected':'' }}>Engineering</option>
                 <option {{ $job->department == 'Product' ? 'selected':'' }}>Product</option>
