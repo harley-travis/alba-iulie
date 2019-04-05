@@ -170,23 +170,23 @@ class DatabaseSeeder extends Seeder
             'company_id' => '1',
         ]);
             
-        DB::table('applicants')->insert([
-            'created_at' => Carbon::now(),
-            'updated_at' => Carbon::now(),
-            'first_name' => 'Buster', 
-            'last_name' => 'Bluth', 
-            'email' => 'buster@bluth.com', 
-            'phone' => '8004459874', 
-            'gender' => '1',
-            'ethnicity' => '1',
-            'veteran'   => '1',
-            'disability'    => '1',
-            'is_active' => '0', 
-            'resume' => 'companies/1/resumes/natalie_allio_resume.png',
-            'date_applied' => Carbon::now(), 
-            'job_id' => '1',
-            'company_id' => '2',
-        ]);
+        // DB::table('applicants')->insert([
+        //     'created_at' => Carbon::now(),
+        //     'updated_at' => Carbon::now(),
+        //     'first_name' => 'Buster', 
+        //     'last_name' => 'Bluth', 
+        //     'email' => 'buster@bluth.com', 
+        //     'phone' => '8004459874', 
+        //     'gender' => '1',
+        //     'ethnicity' => '1',
+        //     'veteran'   => '1',
+        //     'disability'    => '1',
+        //     'is_active' => '0', 
+        //     'resume' => 'companies/1/resumes/natalie_allio_resume.png',
+        //     'date_applied' => Carbon::now(), 
+        //     'job_id' => '1',
+        //     'company_id' => '2',
+        // ]);
 
         factory(App\Applicant::class, 20)->create();
 

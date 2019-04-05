@@ -17,8 +17,3 @@ $factory->define(App\ApplicantProfile::class, function (Faker $faker) use ($auto
     ];
 });
 
-function autoIncrement() {
-    for ($i = 1; $i < 1000; $i++) {
-        yield $i;
-    }
-}

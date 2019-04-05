@@ -9,15 +9,32 @@
 			<h3 class="text-themecolor">Applicants</h3>
 			<ol class="breadcrumb">
 				<li class="breadcrumb-item"><a href="{{ route('dashboard.overview') }}">Home</a></li>
-				<li class="breadcrumb-item active">Applicants</li>
+				<li class="breadcrumb-item active"><a href="{{ route('applicants.overview') }}">Applicants</a></li>
 			</ol>
 		</div>
 		<div class="col-md-7 align-self-center right">
-			<form action="{{ route('applicants.filter') }}" method="POST" class="form-inline">    
+
+		<form action="{{ route('applicants.filterJob') }}" method="get" class="form-inline">    
+				<div class="form-group pr-2">
+						<select name="job_id" class="form-control custom-select">
+								<option>- Filter by Job -</option>
+									@foreach($applicants as $applicant)
+										@foreach($applicant->jobs as $job)
+											<option value="{{ $job->id }}">{{ $job->title }}</option>
+										@endforeach
+									@endforeach
+						</select>
+				</div>
+				<input type="hidden" name="_token" value="{{ csrf_token() }}">
+				<button type="submit" class="btn btn-success">Apply</button>
+			</form>
+
+
+			<form action="{{ route('applicants.filterStage') }}" method="get" class="form-inline">    
 				<div class="form-group pr-2">
 						<select name="stage" class="form-control custom-select">
-								<option>- Filter Position -</option>
-								<option value="0">Pending</option>
+								<option>- Filter by Stage -</option>
+								<option value="0">New Applicants</option>
 								<option value="1">Scheduled First Interview</option>
 								<option value="2">Completed First Interview</option>
 								<option value="3">Scheduled Second Interview</option>
@@ -28,7 +45,6 @@
 						</select>
 				</div>
 				<input type="hidden" name="_token" value="{{ csrf_token() }}">
-				<input type="hidden" name="id" value="{{ $applicant->id }}">
 				<button type="submit" class="btn btn-success">Apply</button>
 			</form>
 
@@ -51,7 +67,7 @@
                   <th>Applicant</th>
                   <th>Position</th>
                   <th>Phone</th>
-                  <th>Email</th>
+                  <th>Stage</th>
                   <th>Date Applied</th>
                   <th>Resume</th>
                 </tr>
@@ -67,7 +83,25 @@
                       @endforeach
                     </td>
                     <td>{{ $applicant->phone }}</td>
-                    <td>{{ $applicant->email }}</td>
+                    <td>
+											@if (($applicant->stage) == 0)
+												New Applicant
+											@elseif (($applicant->stage) == 1)
+												Scheduled First Interview
+											@elseif (($applicant->stage) == 2)
+												Completed First Interview
+											@elseif (($applicant->stage) == 3)
+												Scheduled Second Interview
+											@elseif (($applicant->stage) == 4)
+												Completed Second Interview
+											@elseif (($applicant->stage) == 5)
+												Scheduled Third Interview
+											@elseif (($applicant->stage) == 6)
+												Completed Third Interview
+											@else
+													There was an error displaying the stage status
+											@endif
+										</td>
                     <td>{{ $applicant->date_applied }}</td>
                     <td><a href="{{ $applicant->resume }}" class="btn btn-info" target="_blank">View Resume</a></td>
                   </tr>

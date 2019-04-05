@@ -72,6 +72,16 @@ Route::group(['prefix' => 'applicants'], function() {
 		'as'	=> 'applicants.stage'
 	]);
 
+	Route::get('filterStage', [
+		'uses'	=> "$c@filterStage",
+		'as'	=> 'applicants.filterStage'
+	]);
+
+	Route::get('filterJob', [
+		'uses'	=> "$c@filterJob",
+		'as'	=> 'applicants.filterJob'
+	]);
+
 });
 
 

@@ -27,13 +27,46 @@ class ApplicantsController extends Controller {
 
         if(Auth::check()) {
             
-            $applicants = Applicant::where('company_id', '=', Auth::user()->company_id)
+            // $applicants = Applicant::where('company_id', '=', Auth::user()->company_id)
+            //     ->where('is_active', '=', '1')
+            //     ->orderBy('created_at', 'ASC')
+            //     ->paginate(15);
+
+            $applicants = Applicant::leftJoin('applicant_profiles', 'applicants.id', '=', 'applicant_profiles.applicant_id')
+                ->where('company_id', '=', Auth::user()->company_id)
                 ->where('is_active', '=', '1')
-                ->orderBy('created_at', 'ASC')
+                ->orderBy('applicants.created_at', 'dsc')
+                ->where('stage', '<', '7')
                 ->paginate(15);
+
             return view('applicants.overview', ['applicants' => $applicants]);
         } 
         
+    }
+
+    public function filterStage(Request $request) {
+
+        $applicants = Applicant::leftJoin('applicant_profiles', 'applicants.id', '=', 'applicant_profiles.applicant_id')
+            ->where('company_id', '=', Auth::user()->company_id)
+            ->where('stage', '=', $request->input('stage'))
+            ->where('is_active', '=', '1')
+            ->orderBy('applicants.created_at', 'ASC')
+            ->paginate(15);
+
+        return view('applicants.overview', ['applicants' => $applicants]);
+
+    }
+
+    public function filterJob(Request $request) {
+
+        $applicants = Applicant::leftJoin('applicant_profiles', 'applicants.id', '=', 'applicant_profiles.applicant_id')
+            ->where('company_id', '=', Auth::user()->company_id)
+            ->where('job_id', '=', $request->input('job_id'))
+            ->where('is_active', '=', '1')
+            ->orderBy('applicants.created_at', 'ASC')
+            ->paginate(15);
+
+        return view('applicants.overview', ['applicants' => $applicants]);
     }
 
     public function getApplicantById($id) {
