@@ -45,12 +45,22 @@ class ApplicantsController extends Controller {
 
     public function filterStage(Request $request) {
 
-        $applicants = Applicant::leftJoin('applicant_profiles', 'applicants.id', '=', 'applicant_profiles.applicant_id')
-            ->where('company_id', '=', Auth::user()->company_id)
-            ->where('stage', '=', $request->input('stage'))
-            ->where('is_active', '=', '1')
-            ->orderBy('applicants.created_at', 'ASC')
-            ->paginate(15);
+        // 8 = search all applicants
+        if($request->input('stage') == 8) {
+            $applicants = Applicant::leftJoin('applicant_profiles', 'applicants.id', '=', 'applicant_profiles.applicant_id')
+                ->where('company_id', '=', Auth::user()->company_id)
+                ->where('is_active', '=', '1')
+                ->where('stage', '<', '7')
+                ->orderBy('applicants.created_at', 'dsc')
+                ->paginate(15);
+        } else {
+            $applicants = Applicant::leftJoin('applicant_profiles', 'applicants.id', '=', 'applicant_profiles.applicant_id')
+                ->where('company_id', '=', Auth::user()->company_id)
+                ->where('stage', '=', $request->input('stage'))
+                ->where('is_active', '=', '1')
+                ->orderBy('applicants.created_at', 'ASC')
+                ->paginate(15);
+        }
 
         $positions = Company::find(Auth::user()->company_id)
             ->jobs()
@@ -62,12 +72,22 @@ class ApplicantsController extends Controller {
 
     public function filterJob(Request $request) {
 
-        $applicants = Applicant::leftJoin('applicant_profiles', 'applicants.id', '=', 'applicant_profiles.applicant_id')
-            ->where('company_id', '=', Auth::user()->company_id)
-            ->where('job_id', '=', $request->input('job_id'))
-            ->where('is_active', '=', '1')
-            ->orderBy('applicants.created_at', 'ASC')
-            ->paginate(15);
+         // 000 = search all jobs
+         if($request->input('job_id') == 000) {
+            $applicants = Applicant::leftJoin('applicant_profiles', 'applicants.id', '=', 'applicant_profiles.applicant_id')
+                ->where('company_id', '=', Auth::user()->company_id)
+                ->where('is_active', '=', '1')
+                ->where('stage', '<', '7')
+                ->orderBy('applicants.created_at', 'dsc')
+                ->paginate(15);
+        } else {
+            $applicants = Applicant::leftJoin('applicant_profiles', 'applicants.id', '=', 'applicant_profiles.applicant_id')
+                ->where('company_id', '=', Auth::user()->company_id)
+                ->where('job_id', '=', $request->input('job_id'))
+                ->where('is_active', '=', '1')
+                ->orderBy('applicants.created_at', 'ASC')
+                ->paginate(15);
+        }
 
         $positions = Company::find(Auth::user()->company_id)
             ->jobs()
