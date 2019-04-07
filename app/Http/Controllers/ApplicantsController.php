@@ -27,11 +27,6 @@ class ApplicantsController extends Controller {
 
         if(Auth::check()) {
             
-            // $applicants = Applicant::where('company_id', '=', Auth::user()->company_id)
-            //     ->where('is_active', '=', '1')
-            //     ->orderBy('created_at', 'ASC')
-            //     ->paginate(15);
-
             $applicants = Applicant::leftJoin('applicant_profiles', 'applicants.id', '=', 'applicant_profiles.applicant_id')
                 ->where('company_id', '=', Auth::user()->company_id)
                 ->where('is_active', '=', '1')
@@ -39,7 +34,11 @@ class ApplicantsController extends Controller {
                 ->orderBy('applicants.created_at', 'dsc')
                 ->paginate(15);
 
-            return view('applicants.overview', ['applicants' => $applicants]);
+            $positions = Company::find(Auth::user()->company_id)
+                ->jobs()
+                ->get();
+
+            return view('applicants.overview', ['applicants' => $applicants, 'positions' => $positions]);
         } 
         
     }
@@ -53,7 +52,11 @@ class ApplicantsController extends Controller {
             ->orderBy('applicants.created_at', 'ASC')
             ->paginate(15);
 
-        return view('applicants.overview', ['applicants' => $applicants]);
+        $positions = Company::find(Auth::user()->company_id)
+            ->jobs()
+            ->get();
+
+        return view('applicants.overview', ['applicants' => $applicants, 'positions' => $positions]);
 
     }
 
@@ -66,7 +69,11 @@ class ApplicantsController extends Controller {
             ->orderBy('applicants.created_at', 'ASC')
             ->paginate(15);
 
-        return view('applicants.overview', ['applicants' => $applicants]);
+        $positions = Company::find(Auth::user()->company_id)
+            ->jobs()
+            ->get();
+
+        return view('applicants.overview', ['applicants' => $applicants, 'positions' => $positions]);
     }
 
     public function getApplicantById($id) {
@@ -87,7 +94,11 @@ class ApplicantsController extends Controller {
             ->orderBy('date_applied', 'DSC')
             ->paginate(15);
 
-        return view('applicants.archived', ['applicants' => $applicants]);
+        $positions = Company::find(Auth::user()->company_id)
+            ->jobs()
+            ->get();
+
+        return view('applicants.archived', ['applicants' => $applicants, 'positions' => $positions]);
         
     }
     

@@ -14,41 +14,41 @@
 		</div>
 		<div class="col-md-7 align-self-center right">
 
-		<form action="{{ route('applicants.filterJob') }}" method="get" class="form-inline">    
+
+			<form action="{{ route('applicants.filterJob') }}" method="get" class="form-inline">    
 				<div class="form-group pr-2">
-						<select name="job_id" class="form-control custom-select">
-								<option>- Filter by Job -</option>
-									@foreach($applicants as $applicant)
-										@foreach($applicant->jobs as $job)
-											<option value="{{ $job->id }}">{{ $job->title }}</option>
-										@endforeach
-									@endforeach
-						</select>
+							<select name="job_id" class="form-control custom-select">
+									<option>- Filter by Job -</option>
+											@foreach($positions as $position)
+												<option value="{{ $position->id }}">{{ $position->title }}</option>
+											@endforeach
+							</select>
+					</div>
+					<input type="hidden" name="_token" value="{{ csrf_token() }}">
+					<button type="submit" class="btn btn-success">Apply</button>
 				</div>
-				<input type="hidden" name="_token" value="{{ csrf_token() }}">
-				<button type="submit" class="btn btn-success">Apply</button>
 			</form>
 
 
-			<form action="{{ route('applicants.filterStage') }}" method="get" class="form-inline">    
-				<div class="form-group pr-2">
-						<select name="stage" class="form-control custom-select">
-								<option>- Filter by Stage -</option>
-								<option value="0">New Applicants</option>
-								<option value="1">Scheduled First Interview</option>
-								<option value="2">Completed First Interview</option>
-								<option value="3">Scheduled Second Interview</option>
-								<option value="4">Completed Second Interview</option>
-								<option value="5">Scheduled Third Interview</option>
-								<option value="6">Completed Third Interview</option>
-								<option value="7">Hired</option>
-						</select>
-				</div>
-				<input type="hidden" name="_token" value="{{ csrf_token() }}">
-				<button type="submit" class="btn btn-success">Apply</button>
-			</form>
+				<form action="{{ route('applicants.filterStage') }}" method="get" class="form-inline">    
+					<div class="form-group pr-2">
+							<select name="stage" class="form-control custom-select">
+									<option>- Filter by Stage -</option>
+									<option value="0">New Applicants</option>
+									<option value="1">Scheduled First Interview</option>
+									<option value="2">Completed First Interview</option>
+									<option value="3">Scheduled Second Interview</option>
+									<option value="4">Completed Second Interview</option>
+									<option value="5">Scheduled Third Interview</option>
+									<option value="6">Completed Third Interview</option>
+									<option value="7">Hired</option>
+							</select>
+					</div>
+					<input type="hidden" name="_token" value="{{ csrf_token() }}">
+					<button type="submit" class="btn btn-success">Apply</button>
+				</form>
 
-			<a href="{{ route('applicants.archived') }}" class="btn waves-effect waves-light btn-warning">Archived Applicants</a>
+				<a href="{{ route('applicants.archived') }}" class="btn waves-effect waves-light btn-warning">Archived Applicants</a>
 		</div>
 	</div>
 	<!-- ============================================================== -->
