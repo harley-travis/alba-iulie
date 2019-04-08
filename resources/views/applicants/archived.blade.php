@@ -14,7 +14,7 @@
 			</ol>
 		</div>
 		<div class="col-md-7 align-self-center right">
-        <a href="{{ route('applicants.overview') }}" class="btn waves-effect waves-light btn-success">Active Applicants</a>
+        	<a href="{{ route('applicants.overview') }}" class="btn waves-effect waves-light btn-success">Active Applicants</a>
 		</div>
 	</div>
 	<!-- ============================================================== -->

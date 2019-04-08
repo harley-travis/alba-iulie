@@ -57,6 +57,11 @@ Route::group(['prefix' => 'applicants'], function() {
 		'as'	=> 'applicants.profile'
 	]);
 
+	Route::get('activate/{id}', [
+		'uses'	=> "$c@activateApplicant",
+		'as'	=> 'applicants.activate'
+	]);
+
 	Route::get('archive/{id}', [
 		'uses'	=> "$c@archiveApplicant",
 		'as'	=> 'applicants.archive'
@@ -153,13 +158,12 @@ Route::group(['prefix' => 'jobs'], function() {
 		'as'	=> 'jobs.overview'
 	]);
 
-	// send data to the db & redirect to the overview page
-  Route::post('add', [
+  	Route::post('add', [
 		'uses' => "$c@addJob",
 		'as'   => 'jobs.add'
 	]);
     
-  Route::get('add', [
+  	Route::get('add', [
 		'uses'	=> "$c@createJob",
 		'as'	=> 'jobs.create'
 	]);
@@ -174,9 +178,19 @@ Route::group(['prefix' => 'jobs'], function() {
 		'as'	=> 'jobs.update'
 	]);
 
+	Route::get('activate/{id}', [
+		'uses'	=> "$c@activateJob",
+		'as'	=> 'jobs.activate'
+	]);
+
 	Route::get('archive/{id}', [
 		'uses'	=> "$c@archiveJob",
 		'as'	=> 'jobs.archive'
+	]);
+
+	Route::get('archived', [
+		'uses'	=> "$c@getArchivedJobs",
+		'as'	=> 'jobs.archived'
 	]);
 
 	Route::get('view', [

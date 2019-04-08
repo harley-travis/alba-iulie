@@ -45,7 +45,7 @@ class JobsController extends Controller {
         return view('jobs.create');
     }
     
-    public function addJob(Request $request){
+    public function addJob(Request $request) {
 
         // validate 
         $this->validate($request, [
@@ -123,7 +123,7 @@ class JobsController extends Controller {
 
         return redirect()->route('jobs.overview')->with('info', 'The job was updated');
     }
-    
+
     public function archiveJob($id) {
 
         $job = Job::find($id);
@@ -137,6 +137,34 @@ class JobsController extends Controller {
                 ->route('jobs.overview')
                 ->with('info', $job->title.' has been archived');
 
+    }
+    
+    public function activateJob($id) {
+
+        $job = Job::find($id);
+
+        if($job->isActive === 0) {
+            $job->isActive = 1;
+            $job->save();
+        }
+
+        return redirect()
+                ->route('jobs.overview')
+                ->with('info', $job->title.' has been activated');
+
+    }
+
+    public function getArchivedJobs() {
+
+        $company_id = Auth::user()->company_id;
+        $jobs = Company::find($company_id)
+            ->jobs()
+            ->where('isActive', '=', '0')
+            ->orderBy('created_at', 'ASC')
+            ->paginate(15);
+
+        return view('jobs.archived', ['jobs' => $jobs]);
+        
     }
 
     public function viewJob() {

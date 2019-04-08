@@ -67,6 +67,11 @@
                                 </form>
 
                                 <a class="btn btn-info mt-3" href="{{$applicant->resume}}" target="_blank">View Resume</a>
+                                @if (($applicant->is_active) == 1)
+                                <a class="btn mt-3 btn btn-danger" href="{{ route('applicants.archive', ['id' => $applicant->id ]) }}">Pass on Applicant</a>
+                                @elseif (($applicant->is_active)  == 0)
+                                <a class="btn mt-3 btn btn-success" href="{{ route('applicants.activate', ['id' => $applicant->id ]) }}">Activate Applicant</a>
+                                @endif
                             </div>
                         </div>
                     </div>

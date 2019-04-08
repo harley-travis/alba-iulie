@@ -121,14 +121,27 @@ class ApplicantsController extends Controller {
         return view('applicants.archived', ['applicants' => $applicants, 'positions' => $positions]);
         
     }
+
+    public function activateApplicant($id) {
+
+        $applicant = Applicant::find($id);
+
+        if($applicant->is_active === 0) {
+            $applicant->is_active = 1;
+            $applicant->save();
+        }
+
+        return redirect()
+                ->route('applicants.overview')
+                ->with('info', $applicant->first_name.' '.$applicant->last_name.' has been activated');
+    }
     
     public function archiveApplicant($id) {
 
         $applicant = Applicant::find($id);
 
-        if($applicant->active === 1) {
-            $applicant->active = 0;
-            $applicant->date_left = Carbon::now();
+        if($applicant->is_active === 1) {
+            $applicant->is_active = 0;
             $applicant->save();
         }
 

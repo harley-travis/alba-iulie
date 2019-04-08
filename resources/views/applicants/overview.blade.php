@@ -6,30 +6,14 @@
 	<!-- ============================================================== -->
 	<div class="row page-titles">
 
-		<div class="col-sm align-self-center">
+		<div class="col-sm-2 align-self-center">
 			<h3 class="text-themecolor">Applicants</h3>
 			<ol class="breadcrumb">
 				<li class="breadcrumb-item"><a href="{{ route('dashboard.overview') }}">Home</a></li>
 				<li class="breadcrumb-item active"><a href="{{ route('applicants.overview') }}">Applicants</a></li>
 			</ol>
 		</div>
-		<div class="col-sm right">
-			<form action="{{ route('applicants.filterJob') }}" method="get" class="form-inline">    
-				<div class="form-group pr-2">
-					<label class="mr-sm-2 sr-only" for="job_id">Position</label>
-					<select name="job_id" class="form-control custom-select">
-						<option>- Filter by Job -</option>
-						<option value="000">All Jobs</option>
-						@foreach($positions as $position)
-							<option value="{{ $position->id }}">{{ $position->title }}</option>
-						@endforeach
-					</select>
-					<input type="hidden" name="_token" value="{{ csrf_token() }}">
-				</div>
-				<button type="submit" class="btn btn-success">Apply</button>
-			</form>
-		</div>
-		<div class="col-sm right">
+		<div class="col-sm-3 right">
 			<form action="{{ route('applicants.filterStage') }}" method="get" class="form-inline">    
 				<div class="form-group pr-2">
 				<label class="mr-sm-2 sr-only" for="stage">Stage</label>
@@ -49,7 +33,23 @@
 				<button type="submit" class="btn btn-success">Apply</button>
 			</form>
 		</div>
-		<div class="col-sm right">
+		<div class="col-sm-5 right">
+			<form action="{{ route('applicants.filterJob') }}" method="get" class="form-inline">    
+				<div class="form-group pr-2">
+					<label class="mr-sm-2 sr-only" for="job_id">Position</label>
+					<select name="job_id" class="form-control custom-select">
+						<option>- Filter by Job -</option>
+						<option value="000">All Jobs</option>
+						@foreach($positions as $position)
+							<option value="{{ $position->id }}">{{ $position->title }}</option>
+						@endforeach
+					</select>
+					<input type="hidden" name="_token" value="{{ csrf_token() }}">
+				</div>
+				<button type="submit" class="btn btn-success">Apply</button>
+			</form>
+		</div>
+		<div class="col-sm-2 right">
 			<a href="{{ route('applicants.archived') }}" class="btn waves-effect waves-light btn-warning">Archived Applicants</a>
 		</div>
 	</div>
