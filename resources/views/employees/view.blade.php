@@ -92,6 +92,23 @@
                 </div>
 
                 <div class="employee-card">
+                    <span class="employee-label">Employment Duration</span>
+                    <span class="employee-info">
+                        @if (($employee->duration) == 0)
+                            Full-Time
+                        @elseif (($employee->duration) == 1)
+                            Part-Time
+                        @elseif (($employee->duration) == 2)
+                            Contract
+                        @elseif (($employee->duration) == 3)
+                            Temporary
+                        @else
+                            There was an error displaying the salary information
+                        @endif     
+                    </span>
+                </div>
+
+                <div class="employee-card">
                     <span class="employee-label">Work Email</span>
                     <span class="employee-info">{{ $employee->work_email }}</span>
                 </div>
