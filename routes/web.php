@@ -37,7 +37,7 @@ Route::group(['prefix' => 'applicants'], function() {
 		'as'	=> 'applicants.overview'
 	]);
     
-    Route::get('add', [
+  Route::get('add', [
 		'uses'	=> "$c@addApplicant",
 		'as'	=> 'applicants.create'
 	]);
@@ -89,7 +89,6 @@ Route::group(['prefix' => 'applicants'], function() {
 
 });
 
-
 Route::group(['prefix' => 'billing'], function() {
 	$c = 'EmployeeController';
 
@@ -109,8 +108,13 @@ Route::group(['prefix' => 'employees'], function() {
 	]);
     
   Route::get('add', [
-		'uses'	=> "$c@addEmployee",
+		'uses'	=> "$c@createEmployee",
 		'as'	=> 'employees.create'
+	]);
+    
+  Route::post('add', [
+		'uses'	=> "$c@addEmployee",
+		'as'	=> 'employees.add'
 	]);
 
 	Route::get('edit', [
@@ -158,12 +162,12 @@ Route::group(['prefix' => 'jobs'], function() {
 		'as'	=> 'jobs.overview'
 	]);
 
-  	Route::post('add', [
+  Route::post('add', [
 		'uses' => "$c@addJob",
 		'as'   => 'jobs.add'
 	]);
     
-  	Route::get('add', [
+  Route::get('add', [
 		'uses'	=> "$c@createJob",
 		'as'	=> 'jobs.create'
 	]);

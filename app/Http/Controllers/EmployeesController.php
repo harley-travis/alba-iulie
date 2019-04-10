@@ -7,6 +7,7 @@ use Auth;
 use Carbon\Carbon;
 use App\Employee;
 use App\EmployeeInfo;
+use App\Company;
 use Illuminate\Http\Request;
 use Illuminate\Http\Requests;
 use Illuminate\Session\Store;
@@ -29,6 +30,66 @@ class EmployeesController extends Controller {
             ->first();
 
         return view('employees.view', ['employee' => $employee, 'employeeId' => $id]);
+    }
+
+    public function createEmployee() {
+        return view('employees.create');
+    }
+
+    public function addEmployee(Request $request) {
+
+        // validate 
+        // $this->validate($request, [
+		// 	'title'                 => 'required|min:5',
+		// 	'compensationAmount'    => 'required|min:1'
+        // ]);
+
+        $company =  Company::find(Auth::user()->company_id)->firstOrFail();
+
+        $employee = new Employee([
+            'company_id'            => $company->id, 
+            'first_name'            => $request->input('first_name'),
+            'last_name'             => $request->input('last_name'),  
+            'work_email'            => $request->input('work_email'), 
+            'work_phone'            => $request->input('work_phone'), 
+            'ext'                   => $request->input('ext'), 
+            'position'              => $request->input('position'), 
+            'department'            => $request->input('department'),
+            'location'              => $request->input('location'), 
+            'duration'              => $request->input('duration'),
+            'gender'                => $request->input('gender'),
+            'ethnicity'             => $request->input('ethnicity'),
+            'veteran'               => $request->input('veteran'),
+            'disability'            => $request->input('disability'),
+            'compensationType'      => $request->input('compensationType'),
+            'compensationAmount'    => $request->input('compensationAmount'),
+            'date_hired'            => $request->input('date_hired'),
+            'date_left'             => null,
+            'active'                => $request->input('active'),
+        ]);
+        $employee->save();   
+
+        $employeeInfo = new EmployeeInfo([
+            'employee_id'               => $employee->id, 
+            'married'                   => $request->input('married'),
+            'spouse_name'               => $request->input('spouse_name'),
+            'email'                     => $request->input('email'),
+            'phone'                     => $request->input('phone'),
+            'birthday'                  => $request->input('birthday'),
+            'emergency_contact'         => $request->input('emergency_contact'),
+            'emergency_contact_phone'   => $request->input('emergency_contact_phone'),
+            'address_1'                 => $request->input('address_1'),
+            'address_2'                 => $request->input('address_2'),
+            'address_3'                 => $request->input('address_3'),
+            'state'                     => $request->input('state'),
+            'city'                      => $request->input('city'),
+            'zip'                       => $request->input('zip'),
+            'country'                   => $request->input('country'),
+        ]);
+        $employeeInfo->save();   
+
+        return redirect()->route('employees.overview')->with('info', 'Congratulations! '.$employee->first_name.' has joined the roster');
+
     }
 
     public function getArchivedEmployees() {

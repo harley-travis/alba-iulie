@@ -14,6 +14,7 @@
 		</div>
 		<div class="col-md-7 align-self-center right">
 			<a href="{{ route('employees.archived') }}" class="btn waves-effect waves-light btn-warning">Archived Employees</a>
+			<a href="{{ route('employees.create') }}" class="btn waves-effect waves-light btn-success">Add Employee</a>
 		</div>
 	</div>
 	<!-- ============================================================== -->

@@ -58,7 +58,7 @@
                 
                 <div class="form-group">
                     <label for="email">Personal Email</label>
-                    <input type="text" class="form-control form-control-lg" name="email" value="{{ $employee->email }}">
+                    <input type="email" class="form-control form-control-lg" name="email" value="{{ $employee->email }}">
                 </div>
 
                 <div class="form-group">
@@ -155,7 +155,7 @@
 
                 <div class="form-group">
                     <label for="work_email">Work Email</label>
-                    <input type="text" class="form-control form-control-lg" name="work_email" value="{{ $employee->work_email }}">
+                    <input type="email" class="form-control form-control-lg" name="work_email" value="{{ $employee->work_email }}">
                 </div>
 
                 <div class="form-group">
