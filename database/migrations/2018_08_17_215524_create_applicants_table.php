@@ -30,8 +30,8 @@ class CreateApplicantsTable extends Migration
             $table->string('resume');
             $table->date('date_applied');        
            
-            $table->foreign('job_id')->references('id')->on('jobs');
-            $table->foreign('company_id')->references('id')->on('companies');
+            $table->foreign('job_id')->references('id')->on('jobs')->onDelete('cascade');;
+            $table->foreign('company_id')->references('id')->on('companies')->onDelete('cascade');;
             
             // NOTE: I NEED TO FIGURE OUT HOW THE SCORE WILL WORK. THE RELATIONSHIP BY USERS AND COMPANY TO THE APPLICANT. 
             // also if it will be in it's own db and how to do taht by itself

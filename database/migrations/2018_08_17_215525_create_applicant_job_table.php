@@ -19,8 +19,8 @@ class CreateApplicantJobTable extends Migration
             $table->integer('applicant_id')->unsigned();
             $table->timestamps();
     
-            $table->foreign('applicant_id')->references('id')->on('applicants');
-            $table->foreign('job_id')->references('id')->on('jobs');
+            $table->foreign('applicant_id')->references('id')->on('applicants')->onDelete('cascade');;
+            $table->foreign('job_id')->references('id')->on('jobs')->onDelete('cascade');;
         });
     }
 

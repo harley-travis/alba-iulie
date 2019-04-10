@@ -21,6 +21,7 @@ class EmployeeInfo extends Model {
         'city',
         'zip',
         'country',
+        'employee_id'
     ];
 
     public function employee() {

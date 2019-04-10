@@ -24,7 +24,7 @@ class EmployeeTableSeeder extends Seeder
             'position' => 'Team Lead', 
             'department' => 'Engineering',
             'location' => 'New York', 
-            'duration' => 'Full-Time',
+            'duration' => '0',
             'gender' => '0',
             'ethnicity' => '0',
             'veteran' => '1',

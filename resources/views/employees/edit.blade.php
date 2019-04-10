@@ -252,10 +252,10 @@
                 <div class="form-group">
                     <label for="duration">Duration</label>
                     <select name="duration" class="form-control form-control-lg">
-                        <option {{ $employee->duration == 'Full-Time' ? 'selected':'' }}>Full-Time</option>
-                        <option {{ $employee->duration == 'Part-Time' ? 'selected':'' }}>Part-Time</option>
-                        <option {{ $employee->duration == 'Contract' ? 'selected':'' }}>Contract</option>
-                        <option {{ $employee->duration == 'Temporary' ? 'selected':'' }}>Temporary</option>
+                        <option {{ $employee->duration == '0' ? 'selected':'' }}>Full-Time</option>
+                        <option {{ $employee->duration == '1' ? 'selected':'' }}>Part-Time</option>
+                        <option {{ $employee->duration == '2' ? 'selected':'' }}>Contract</option>
+                        <option {{ $employee->duration == '3' ? 'selected':'' }}>Temporary</option>
                     </select>
                 </div>
 

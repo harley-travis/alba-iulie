@@ -6,8 +6,11 @@ use Auth;
 use DB;
 use App\Job;
 use App\Company;
+use App\Employee;
+use App\EmployeeInfo;
 use App\Applicant;
 use App\ApplicantProfile;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Http\Requests;
 use Illuminate\Session\Store;
@@ -152,11 +155,72 @@ class ApplicantsController extends Controller {
 
     public function updateStage(Request $request) {
 
-        $applicant = ApplicantProfile::where('applicant_id', '=', $request->input('id'))->firstOrFail();
-        $applicant->stage = $request->input('stage');
-        $applicant->save();
+        // if the stage is 7, then move the data into the employees table 
+        // else update the applicant stage
 
-        return redirect()->route('applicants.overview')->with('info', 'Applicant updated');
+        if( $request->input('stage') == 7 ) {
+
+            $company =  Company::find(Auth::user()->company_id)->firstOrFail();
+            $applicant = Applicant::where('id', '=', $request->input('id'))->firstOrFail();
+            $job = Job::where('id', '=', $applicant->job_id)->firstOrFail();
+
+            $employee = new Employee([
+                'company_id'            => $company->id, 
+                'first_name'            => $applicant->first_name,
+                'last_name'             => $applicant->last_name,  
+                'work_email'            => null, 
+                'work_phone'            => null, 
+                'ext'                   => null, 
+                'position'              => $job->title,
+                'department'            => $job->department,
+                'location'              => $job->location, 
+                'duration'              => $job->duration,
+                'gender'                => $applicant->gender,
+                'ethnicity'             => $applicant->ethnicity,
+                'veteran'               => $applicant->veteran,
+                'disability'            => $applicant->disability,
+                'compensationType'      => null,
+                'compensationAmount'    => null,
+                'date_hired'            => Carbon::now()->format('Y-m-d'),
+                'date_left'             => null,
+                'active'                => '1',
+            ]);
+            $employee->save();   
+
+            $employeeInfo = new EmployeeInfo([
+                'employee_id'               => $employee->id, 
+                'married'                   => null,
+                'spouse_name'               => null,
+                'email'                     => $applicant->email,
+                'phone'                     => $applicant->phone,
+                'birthday'                  => null,
+                'emergency_contact'         => null,
+                'emergency_contact_phone'   => null,
+                'address_1'                 => null,
+                'address_2'                 => null,
+                'address_3'                 => null,
+                'state'                     => null,
+                'city'                      => null,
+                'zip'                       => null,
+                'country'                   => null,
+            ]);
+            $employeeInfo->save();   
+            
+            // delete the applicant from the database
+            Applicant::where('id', '=', $request->input('id'))->delete();
+            ApplicantProfile::where('applicant_id', '=', $request->input('id'))->delete();
+            
+            return redirect()->route('employees.overview')->with('info', 'Congratulations! '.$applicant->first_name.' has joined the roster');
+            
+        } else {
+
+            $applicant = ApplicantProfile::where('applicant_id', '=', $request->input('id'))->firstOrFail();
+            $applicant->stage = $request->input('stage');
+            $applicant->save();
+
+            return redirect()->route('applicants.overview')->with('info', 'Applicant updated');
+
+        }
 
     }
 

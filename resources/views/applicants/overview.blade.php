@@ -58,6 +58,13 @@
 	<!-- End Bread crumb and right sidebar toggle -->
 	<!-- ============================================================== -->
 
+	@if(Session::has('info'))
+		<div class="alert alert-success" role="alert">
+			<h4 class="alert-heading">Success!</h4>
+			<p>{{ Session::get('info') }}</p>
+		</div>
+	@endif
+
 	<div class="row">
 		<div class="col-12">
 			<div class="card">

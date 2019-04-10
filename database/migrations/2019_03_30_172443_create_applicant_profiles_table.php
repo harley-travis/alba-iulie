@@ -36,7 +36,7 @@ class CreateApplicantProfilesTable extends Migration
             $table->date('interview_two')->nullable();
             $table->date('interview_three')->nullable();
 
-            $table->foreign('applicant_id')->references('id')->on('applicants');
+            $table->foreign('applicant_id')->references('id')->on('applicants')->onDelete('cascade');;
 
         });
     }

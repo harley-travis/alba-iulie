@@ -22,7 +22,7 @@ class CreateJobsTable extends Migration
             $table->string('title');
             $table->string('location');
             $table->string('department');
-            $table->string('duration');
+            $table->integer('duration')->comment('0 = full 1 = part 2 = contract 3 = temp');
             $table->integer('compensationType');
             $table->integer('compensationAmount');
             $table->longText('description');

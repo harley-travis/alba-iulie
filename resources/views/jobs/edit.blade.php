@@ -60,10 +60,10 @@
             <div class="form-group">
               <label for="duration">Duration</label>
               <select name="duration" class="form-control form-control-lg">
-                <option {{ $job->duration == 'Full-Time' ? 'selected':'' }}>Full-Time</option>
-                <option {{ $job->duration == 'Part-Time' ? 'selected':'' }}>Part-Time</option>
-                <option {{ $job->duration == 'Contract' ? 'selected':'' }}>Contract</option>
-                <option {{ $job->duration == 'Temporary' ? 'selected':'' }}>Temporary</option>
+                <option {{ $job->duration == '0' ? 'selected':'' }}>Full-Time</option>
+                <option {{ $job->duration == '1' ? 'selected':'' }}>Part-Time</option>
+                <option {{ $job->duration == '2' ? 'selected':'' }}>Contract</option>
+                <option {{ $job->duration == '3' ? 'selected':'' }}>Temporary</option>
               </select>
             </div>
 

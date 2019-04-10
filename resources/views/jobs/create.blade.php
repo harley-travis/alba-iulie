@@ -56,10 +56,10 @@
             <div class="form-group">
               <label for="duration">Duration</label>
               <select name="duration" class="form-control form-control-lg">
-                <option value="full-time">Full-Time</option>
-                <option value="part-time">Part-Time</option>
-                <option value="contract">Contract</option>
-                <option value="temporary">Temporary</option>
+                <option value="0">Full-Time</option>
+                <option value="1">Part-Time</option>
+                <option value="2">Contract</option>
+                <option value="3">Temporary</option>
               </select>
             </div>
 
