@@ -23,7 +23,7 @@ class CreateApplicantsTable extends Migration
             $table->string('email');
             $table->string('phone');    // not sure if this is correct. having problems
             $table->integer('gender');      // 0 female 1 male 2 choose not to identify
-            $table->integer('ethnicity');   
+            $table->integer('ethnicity')->comment('see migration for legend');   
             $table->integer('veteran');     // 0 no 1 yes
             $table->integer('disability');  // 0 no 1 yes
             $table->integer('is_active')->comment('0 is inActive');
@@ -33,10 +33,21 @@ class CreateApplicantsTable extends Migration
             $table->foreign('job_id')->references('id')->on('jobs')->onDelete('cascade');;
             $table->foreign('company_id')->references('id')->on('companies')->onDelete('cascade');;
             
-            // NOTE: I NEED TO FIGURE OUT HOW THE SCORE WILL WORK. THE RELATIONSHIP BY USERS AND COMPANY TO THE APPLICANT. 
-            // also if it will be in it's own db and how to do taht by itself
         });
     }
+
+    /**
+     * ETHNICITY LEGEND
+     * --------------------------------------
+     * 0 = American Indian or Alaska Native
+     * 1 = Asian
+     * 2 = Black or African American
+     * 3 = Hispanic or Latino
+     * 4 = Native Hawaiian or Other Pacific Islander
+     * 5 = White
+     * 6 = Other
+     * 7 = Choose not to Identify
+     */
 
     /**
      * Reverse the migrations.

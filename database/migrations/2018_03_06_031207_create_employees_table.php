@@ -27,7 +27,7 @@ class CreateEmployeesTable extends Migration
             $table->string('location');
             $table->integer('duration')->comment('0 = full 1 = part 2 = contract 3 = temp');
             $table->integer('gender')->comment('0 is female');      // 0 female 1 male 2 choose not to identify
-            $table->integer('ethnicity');   
+            $table->integer('ethnicity')->comment('see migration for legend');   
             $table->integer('veteran')->comment('0 is no');     // 0 no 1 yes
             $table->integer('disability')->comment('0 is no');  // 0 no 1 yes
             $table->integer('compensationType')->nullable();
@@ -39,6 +39,19 @@ class CreateEmployeesTable extends Migration
             $table->foreign('company_id')->references('id')->on('companies');
         });
     }
+
+    /**
+     * ETHNICITY LEGEND
+     * --------------------------------------
+     * 0 = American Indian or Alaska Native
+     * 1 = Asian
+     * 2 = Black or African American
+     * 3 = Hispanic or Latino
+     * 4 = Native Hawaiian or Other Pacific Islander
+     * 5 = White
+     * 6 = Other
+     * 7 = Choose not to Identify
+     */
 
     /**
      * Reverse the migrations.
