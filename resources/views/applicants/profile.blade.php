@@ -65,107 +65,128 @@
                                     <input type="hidden" name="id" value="{{ $applicant->id }}">
                                     <button type="submit" class="btn btn-success">Apply</button>
                                 </form>
-
-                                <a class="btn btn-info mt-3" href="{{$applicant->resume}}" target="_blank">View Resume</a>
-                                @if (($applicant->is_active) == 1)
-                                <a class="btn mt-3 btn btn-danger" href="{{ route('applicants.archive', ['id' => $applicant->id ]) }}">Pass on Applicant</a>
-                                @elseif (($applicant->is_active)  == 0)
-                                <a class="btn mt-3 btn btn-success" href="{{ route('applicants.activate', ['id' => $applicant->id ]) }}">Activate Applicant</a>
-                                @endif
                             </div>
                         </div>
                     </div>
                 </div><!-- card body -->
 
                 <div class="card-body">
-                                
-                    <span><strong>Date Applied</strong>: {{ $applicant->date_applied }}</span>
-                    <span><strong>Phone Number</strong>: {{ $applicant->phone }}</span>
-                    <span><strong>Email</strong>: <a href="mailto:{{ $applicant->email }}">{{ $applicant->email }}</a></span>
-                    <span class="text-danger"><strong>Ethnicity</strong>:
-                        @if (($applicant->ethnicity) == 0)
-                            American Indian or Alaska Native
-                        @elseif (($applicant->ethnicity)  == 1)
-                            Asian
-                        @elseif (($applicant->ethnicity)  == 2)
-                            Black or African American
-                        @elseif (($applicant->ethnicity)  == 3)
-                            Hispanic or Latino
-                        @elseif (($applicant->ethnicity)  == 4)
-                            Native Hawaiian or Other Pacific Islander
-                        @elseif (($applicant->ethnicity)  == 5)
-                            White
-                        @elseif (($applicant->ethnicity)  == 6)
-                            Other
-                        @elseif (($applicant->ethnicity)  == 7)
-                            Choose not to Identify
-                        @else
-                            There was an error displaying the ethnicity status
-                        @endif                
-                    </span>
-                    <span class="text-danger">
-                    <strong>Gender</strong>:
-                        @if (($applicant->gender) == 0)
-                            Female
-                        @elseif (($applicant->gender)  == 1)
-                            Male
-                        @elseif (($applicant->gender)  == 2)
-                            Gender not disclosed
-                        @else
-                            There was an error displaying the gender status
-                        @endif
-                    </span>
-                    <span class="text-danger">
-                    <strong>Veteran</strong>:
-                        @if (($applicant->veteran) == 0)
-                            Not a Veteran
-                        @elseif (($applicant->veteran)  == 1)
-                            Veteran
-                        @else
-                            There was an error displaying veteran status
-                        @endif
-                    </span>
-                    <span class="text-danger">
-                    <strong>Disability</strong>:
-                        @if (($applicant->disability) == 0)
-                            Not Disabled
-                        @elseif (($applicant->disability)  == 1)
-                            Disabled
-                        @else
-                            There was an error displaying disability status
-                        @endif
-                    </span>
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <h5>
+                                <strong>
+                                    @if (($applicant->stage) == 0)
+                                        PENDING
+                                    @elseif (($applicant->stage) == 1)
+                                        SCHEDULED FIRST INTERVIEW
+                                    @elseif (($applicant->stage) == 2)
+                                        COMPLETED FIRST INTERVIEW
+                                    @elseif (($applicant->stage) == 3)
+                                        SCHEDULED SECOND INTERVIEW
+                                    @elseif (($applicant->stage) == 4)
+                                        COMPLETED SECOND INTERVIEW
+                                    @elseif (($applicant->stage) == 5)
+                                        SCHEDULED THIRD INTERVIEW
+                                    @elseif (($applicant->stage) == 6)
+                                        COMPLETED THIRD INTERVIEW
+                                    @else
+                                        There was an error displaying the stage status
+                                    @endif
+                                </strong>
+                            </h5>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item"><strong>Date Applied</strong>: {{ $applicant->date_applied }}</li>
+                                <li class="list-group-item"><strong>Phone:</strong> {{ $applicant->phone }}</li>
+                                <li class="list-group-item"><strong>Email:</strong> <a href="mailto:{{ $applicant->email }}">{{ $applicant->email }}</a></li>
+                                <li class="list-group-item">
+                                    <strong>Ethnicity</strong>:
+                                    @if (($applicant->ethnicity) == 0)
+                                        American Indian or Alaska Native
+                                    @elseif (($applicant->ethnicity)  == 1)
+                                        Asian
+                                    @elseif (($applicant->ethnicity)  == 2)
+                                        Black or African American
+                                    @elseif (($applicant->ethnicity)  == 3)
+                                        Hispanic or Latino
+                                    @elseif (($applicant->ethnicity)  == 4)
+                                        Native Hawaiian or Other Pacific Islander
+                                    @elseif (($applicant->ethnicity)  == 5)
+                                        White
+                                    @elseif (($applicant->ethnicity)  == 6)
+                                        Other
+                                    @elseif (($applicant->ethnicity)  == 7)
+                                        Choose not to Identify
+                                    @else
+                                        There was an error displaying the ethnicity status
+                                    @endif                
+                                </li>
+                                <li class="list-group-item">
+                                    <strong>Gender</strong>:
+                                    @if (($applicant->gender) == 0)
+                                        Female
+                                    @elseif (($applicant->gender)  == 1)
+                                        Male
+                                    @elseif (($applicant->gender)  == 2)
+                                        Gender not disclosed
+                                    @else
+                                        There was an error displaying the gender status
+                                    @endif
+                                </li>
+                                <li class="list-group-item">
+                                    <strong>Veteran</strong>:
+                                    @if (($applicant->veteran) == 0)
+                                        Not a Veteran
+                                    @elseif (($applicant->veteran)  == 1)
+                                        Veteran
+                                    @else
+                                        There was an error displaying veteran status
+                                    @endif
+                                </li>
+                                <li class="list-group-item">
+                                    <strong>Disability</strong>:
+                                    @if (($applicant->disability) == 0)
+                                        Not Disabled
+                                    @elseif (($applicant->disability)  == 1)
+                                        Disabled
+                                    @else
+                                        There was an error displaying disability status
+                                    @endif
+                                </li>
+                            </ul>     
+                        </div>
+                        <div class="col-sm-8 right">
+                            <a class="btn btn-info mt-3" href="{{$applicant->resume}}" target="_blank">View Resume</a> <br />
+                            @if (($applicant->is_active) == 1)
+                            <a class="btn mt-3 btn btn-danger" href="{{ route('applicants.archive', ['id' => $applicant->id ]) }}">Pass on Applicant</a>
+                            @elseif (($applicant->is_active)  == 0)
+                            <a class="btn mt-3 btn btn-success" href="{{ route('applicants.activate', ['id' => $applicant->id ]) }}">Activate Applicant</a>
+                            @endif
+                        </div>
 
-
-                    @if (($applicant->stage) == 0)
-                        PENDING
-                    @elseif (($applicant->stage) == 1)
-                        SCHEDULED FIRST INTERVIEW
-                    @elseif (($applicant->stage) == 2)
-                        COMPLETED FIRST INTERVIEW
-                    @elseif (($applicant->stage) == 3)
-                        SCHEDULED SECOND INTERVIEW
-                    @elseif (($applicant->stage) == 4)
-                        COMPLETED SECOND INTERVIEW
-                    @elseif (($applicant->stage) == 5)
-                        SCHEDULED THIRD INTERVIEW
-                    @elseif (($applicant->stage) == 6)
-                        COMPLETED THIRD INTERVIEW
-                    @else
-                        There was an error displaying the stage status
-                    @endif
-
+                        
+                    </div>
                     
-                
-
                     <!-- COMMENTS SECTION 
                         https://github.com/laravelista/comments
                     -->
-                    @comments(['model' => $applicant])
-                    @endcomments
+                    <div class="page-comments">
+                        @comments(['model' => $applicant])
+                        @endcomments
+                    </div>
                 </div><!-- card body -->
             </div>
         </div>
   </div>
+
+  <style>
+		.right {
+            text-align: right;
+            float: right;
+            clear: both;
+        }
+        .page-comments {
+            padding: 60px 0;
+        }
+	</style>
 
 @endsection
