@@ -155,7 +155,7 @@
                             </ul>     
                         </div>
                         <div class="col-sm-8 right">
-                            <a class="btn btn-info mt-3" href="{{$applicant->resume}}" target="_blank">View Resume</a> <br />
+                            <a class="btn btn-info mt-3" href="/{{$applicant->resume}}" target="_blank">View Resume</a> <br />
                             @if (($applicant->is_active) == 1)
                             <a class="btn mt-3 btn btn-danger" href="{{ route('applicants.archive', ['id' => $applicant->id ]) }}">Pass on Applicant</a>
                             @elseif (($applicant->is_active)  == 0)

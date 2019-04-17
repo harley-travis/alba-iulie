@@ -2,28 +2,27 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Applicant;
-use App\Job;
 use DB;
+use App\Applicant;
+use App\ApplicantProfile;
+use App\Job;
 use App\Company;
-
 use Carbon\Carbon;
+use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 class JobPortalController extends Controller {
-    
-    public function getJob($company_id, $job_id) {
+
+    public function show($company_id, $job_id) {
 
         // to-do IF THAT JOB/PAGE DOES NOT EXIST THROUGH 404
-      
+
         $job = Company::find($company_id)->jobs->where('id', '=', $job_id);
         $company = DB::table('companies')->where('id', '=', $company_id)->get();
         
         return view('job_portal.job', ['company' => $company, 'job' => $job]);
-
     }
-                                                                                                                                                                                                                                                                                  
+                                                                                                                                                                                                                                                                                      
     public function applyToJob(Request $request) {
 
             // validate 
@@ -47,19 +46,27 @@ class JobPortalController extends Controller {
                 'ethnicity'             => $request->input('ethnicity'),
                 'veteran'               => $request->input('veteran'),
                 'disability'            => $request->input('disability'), 
-                'is_active'             => 0, 
+                'is_active'             => 1, 
                 'date_applied'          => Carbon::now(), 
-                'stage'                 => 0, 
                 'resume'                => $file,
                 'job_id'                => $request->input('job_id'),
-                'company_id'            => $request->input('company_id')
+                'company_id'            => $request->input('company_id'),
             ]);
     
             $applicant->save();
             $applicant->jobs()->attach($request->input('job_id'));
+
+            $applicant_profile = new ApplicantProfile ([
+                'applicant_id'          => $applicant->id,
+                'stage'                 => 0, 
+                'interview_one'         => null,
+                'interview_two'         => null,
+                'interview_three'       => null,
+            ]);
+            $applicant_profile->save();
          
             return redirect()
-                ->route('job_portal.job', ['company_id' => $request->input('company_id'), 'job_id' => $request->input('job_id')])
+                ->back()
                 ->with('info', 'Good news, you applied!');
 
     }

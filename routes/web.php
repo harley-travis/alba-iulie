@@ -197,11 +197,6 @@ Route::group(['prefix' => 'jobs'], function() {
 		'as'	=> 'jobs.archived'
 	]);
 
-	Route::get('view', [
-		'uses'	=> "$c@viewJob",
-		'as'	=> 'jobs.view'
-	]);
-
 });
 
 Route::group(['prefix' => 'profile'], function() {
@@ -223,7 +218,6 @@ Route::group(['prefix' => 'reports'], function() {
 	]);
 
 });
-
 
 Route::group(['prefix' => 'users'], function() {
 	$c = 'UsersController';
@@ -248,12 +242,11 @@ Route::group(['prefix' => 'users'], function() {
 Route::group(['prefix' => 'postings'], function() {
 	$c = 'JobPortalController';
 
-	Route::get('company/{company_id}/job/{job_id}', [
-		'uses'	=> "$c@getJob",
-		'as'	=> 'job_portal.job'
+	Route::get('view/{company_id}/{id}', [
+		'uses'	=> "$c@show",
+		'as'	=> 'job.view'
 	]);
 
-	// apply to job
 	Route::post('company/applied/success', [
 		'uses'	=> "$c@applyToJob",
 		'as'	=> 'apply.job'

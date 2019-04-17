@@ -55,15 +55,9 @@ class ApiController extends Controller {
         $jobs = Company::find($id)
             ->jobs()
             ->orderBy('created_at', 'ASC')
-            ->paginate(15);
-
-        //return view('jobs.overview', ['jobs' => $jobs]);
-        //$jobs = Job::where('company_id', '=', $id)->get();
-
-
-        //return $jobs->jsonSerialize();
-        //return response()->json(['success' => 1, 'data' => $jobs]);
-         return response(Job::all()->jsonSerialize(), Response::HTTP_OK);
+            ->get();
+            
+         return response($jobs->jsonSerialize(), Response::HTTP_OK);
     }
 
 
@@ -88,14 +82,14 @@ class ApiController extends Controller {
     /**
      * Display the specified job by job id after company id has been specificed
      */
-    public function getJobByID($company_id, $job_id) {
-        $job = Company::join('jobs', 'companies.id', '=', 'jobs.companies_id' )
-                    ->where('jobs.companies_id', '=', $company_id)
-                    ->where('jobs.id', '=', $job_id)
-                    ->get();
+    // public function getJobByID($company_id, $job_id) {
+    //     $job = Company::join('jobs', 'companies.id', '=', 'jobs.companies_id' )
+    //                 ->where('jobs.companies_id', '=', $company_id)
+    //                 ->where('jobs.id', '=', $job_id)
+    //                 ->get();
                     
-        return new ApiResource($job);
-    }
+    //     return new ApiResource($job);
+    // }
 
     /**
      * Show the form for editing the specified resource.

@@ -23,6 +23,7 @@ class ApplicantProfile extends Model {
      */
     
     protected $fillable = [
+        'applicant_id',
         'stage', 
         'interview_one', 
         'interview_two', 
