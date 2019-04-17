@@ -173,9 +173,7 @@
                             </div>
 
                             <input type="hidden" name="job_id" value="{{ $job->id }}">
-                         
                             <input type="hidden" name="company_id" value="{{ $company->id }}">
-                            
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
                             
                         </div>

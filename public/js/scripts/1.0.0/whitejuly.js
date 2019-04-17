@@ -2,16 +2,16 @@ var WJ = {
     Init: function() {
     },
     Widget: { 
-        GetJobs: function() {
-			// figure out how to put in this company_id dynamcially 
-			var company_id = 1;
+        GetJobs: function(c) {
+            var company_id = c;
+            console.log(company_id)
             $.ajax({
                 url: 'http://localhost:8000/api/company/'+company_id,
                 dataType: "json",
                 crossDomain: true,
                 success: function(data) {
 
-                    $('#wj').html('<table id="wj-table" class="table table-hover"><tr><th scope="col">Position</th><th scope="col">Department</th><th scope="col">Location</th><th scope="col"></th></tr>');
+                    $('#wj-app').html('<table id="wj-table" class="table table-hover"><tr><th scope="col">Position</th><th scope="col">Department</th><th scope="col">Location</th><th scope="col"></th></tr>');
                         
                     for(var i = 0; i < data.length; i++) {
                         var job = data[i];
@@ -20,7 +20,7 @@ var WJ = {
                     }
                 },
                 error: function() {
-                    console.log('nope');
+                    console.log('There was an error loading the data from White July');
                 }
             });
         },
@@ -28,5 +28,7 @@ var WJ = {
 }
 
 $(document).ready(function(){
-    WJ.Widget.GetJobs();
+    var id = document.getElementById('wj-app').className;
+    var c = id.replace('wj-','');
+    WJ.Widget.GetJobs(c);
 });
