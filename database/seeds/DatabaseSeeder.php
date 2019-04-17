@@ -12,6 +12,9 @@ class DatabaseSeeder extends Seeder
      */
     public function run() {
 
+        // COMPANIES
+        $this->call(CompanyTableSeeder::class);
+
         // $this->call(UsersTableSeeder::class);
         DB::table('users')->insert([
             'company_id' => '1',
@@ -30,9 +33,6 @@ class DatabaseSeeder extends Seeder
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
         ]);
-
-        // COMPANIES
-        $this->call(CompanyTableSeeder::class);
 
         // JOBS
         $this->call(JobTableSeeder::class);   

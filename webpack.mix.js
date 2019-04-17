@@ -15,6 +15,8 @@ mix.js('resources/assets/js/app.js', 'public/js')
    .sass('resources/assets/sass/app.scss', 'public/css')
    .sass('resources/assets/sass/portal.scss', 'public/css');
 
+mix.js('resources/assets/wj-app.js', 'public/js');
+
 
 // ADMINWRAP LITE PACKAGES CSS
 mix.copy('node_modules/bootstrap/css/bootstrap.min.css', 'public/css/bootstrap/css/bootstrap.min.css');
