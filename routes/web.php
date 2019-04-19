@@ -227,8 +227,8 @@ Route::group(['prefix' => 'tickets'], function() {
 		'as'	=> 'tickets.overview'
 	]);
 	
-	Route::get('view', [
-		'uses'	=> "$c@view",
+	Route::get('view/{id}', [
+		'uses'	=> "$c@show",
 		'as'	=> 'tickets.view'
 	]);
 

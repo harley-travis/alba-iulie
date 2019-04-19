@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
+use App\User; 
 use App\Ticket;
 use Illuminate\Http\Request;
 
@@ -12,9 +14,15 @@ class TicketController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        //
+    public function index() {
+        
+        //$tickets = Ticket::all()->paginate(15);
+        $tickets = User::leftJoin('tickets', 'users.id', '=', 'user_id')
+            ->where('status', '<', '2')
+            ->paginate(20);
+
+        return view('tickets.overview', ['tickets' => $tickets]);
+
     }
 
     /**
@@ -32,9 +40,28 @@ class TicketController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        //
+    public function store(Request $request) {
+
+        // validate 
+        // $this->validate($request, [
+		// 	'title'                 => 'required|min:5',
+		// 	'compensationAmount'    => 'required|min:1'
+        // ]);
+
+        $user_id = Auth::user()->id;
+
+        $ticket = new Ticket([
+            'subject'              => $request->input('subject'), 
+            'issue'                => $request->input('issue'), 
+            'status'               => 0,
+            'user_id'              => $user_id,
+        ]);
+
+        $ticket->save();            
+        
+		return redirect()
+			->back()
+			->with('info', 'Your ticket has been submitted! If we have any questions, we will contact you for more information.');
     }
 
     /**
@@ -43,9 +70,11 @@ class TicketController extends Controller
      * @param  \App\Ticket  $ticket
      * @return \Illuminate\Http\Response
      */
-    public function show(Ticket $ticket)
-    {
-        //
+    public function show(Ticket $ticket, $id) {
+        $tickets = User::leftJoin('tickets', 'users.id', '=', 'user_id')
+            ->where('tickets.id', '=', $id)
+            ->get();
+        return view('tickets.view', ['tickets' => $tickets]);
     }
 
     /**

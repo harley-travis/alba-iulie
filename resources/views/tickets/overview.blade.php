@@ -35,9 +35,18 @@
 				<div class="card-body">
                     <div class="ticket-wrapper">
 
-                        <span class="ticket-name">First Last Name</span><br/>
-                        <span class="">Date </span> <span class="ticket-status">Dot Icons green/yellow/red</span>
-                        <span class="ticket-subject"><a href="#">subject goes here</a></span>
+						<span class="ticket-status">
+							@if( $ticket->status === 1 )
+								<span class="status bg-warning"></span>
+							@elseif( $ticket->status === 2 )
+								<span class="status bg-success"></span>
+							@else
+								<span class="status bg-primary"></span>
+							@endif		
+						</span>
+                        <span class="ticket-name">{{ $ticket->name }}</span> | <span class="ticket-date"> {{ $ticket->created_at }} </span> <br/><br/>
+						
+                        <span class="ticket-subject"><a href="{{ route('tickets.view', ['id' => $ticket->id ]) }}">{{ $ticket->subject }}</a></span>
                         
                     </div><!-- ticket-wrapper -->
 				</div><!-- card-body -->
@@ -48,11 +57,23 @@
 	</div><!-- row -->
 
 	<div class="pagination-wrapper">
-
+		{!! $tickets->links() !!}
 	</div>
 
 	<!-- REMOVE THIS WHEN YOU FIGURE OUT YOUR NPM PROBLEM -->
 	<style>
+		.status {
+			height: 10px;
+			width: 10px;
+			border-radius: 50%;
+			display: inline-block;
+			margin-right: 20px;
+		}
+
+		.ticket-subject {
+			margin-left: 35px;
+		}
+
 		.right {
 			text-align: right;
 		}
