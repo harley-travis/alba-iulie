@@ -12,6 +12,7 @@ class CompanyTableSeeder extends Seeder
      */
     public function run()
     {
+        
         DB::table('companies')->insert([
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
@@ -24,6 +25,13 @@ class CompanyTableSeeder extends Seeder
             'updated_at' => Carbon::now(),
             'name' => 'Netflix', 
             'bio' => 'Streaming all the digital content',
+        ]);
+
+        DB::table('companies')->insert([
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
+            'name' => 'White July', 
+            'bio' => 'The App Creator',
         ]);
     }
 }

@@ -34,6 +34,15 @@ class DatabaseSeeder extends Seeder
             'updated_at' => Carbon::now(),
         ]);
 
+        DB::table('users')->insert([
+            'company_id' => '3',
+            'name' => 'Travis Harley',
+            'email' =>'travis@gmail.com',
+            'password' => bcrypt('test'),
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
+        ]);
+
         // JOBS
         $this->call(JobTableSeeder::class);   
 
@@ -51,6 +60,9 @@ class DatabaseSeeder extends Seeder
 
         // EMPLOYEE_INFO
         $this->call(EmployeeInfoTableSeeder::class);
+
+        // TICKET
+        $this->call(TicketTableSeeder::class);
 
     
         // seed the pivot table DON' DELETE!

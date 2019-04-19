@@ -26,11 +26,20 @@
 		<div class="col-12">
 			<div class="card">
 				<div class="card-body">
-				@foreach($tickets as $ticket)
+					@foreach($tickets as $ticket)
 					<h2>{{ $ticket->subject }}</h2>
 
 					<p class="subject">{{ $ticket->issue }}</p>
 					@endforeach
+
+
+					<!-- COMMENTS SECTION 
+                        https://github.com/laravelista/comments
+                    -->
+                    <div class="page-comments">
+                        @comments(['model' => $ticket])
+                        @endcomments
+                    </div>
 				</div>	
 			</div>
 		</div>

@@ -7,8 +7,8 @@ use App\User;
 use App\Ticket;
 use Illuminate\Http\Request;
 
-class TicketController extends Controller
-{
+class TicketController extends Controller {
+
     /**
      * Display a listing of the resource.
      *
