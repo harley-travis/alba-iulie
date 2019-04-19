@@ -209,6 +209,42 @@ Route::group(['prefix' => 'profile'], function() {
 
 });
 
+Route::group(['prefix' => 'settings'], function() {
+	$c = 'SettingController';
+
+	Route::get('embed', [
+		'uses'	=> "$c@showEmbed",
+		'as'	=> 'settings.embed'
+	]);
+
+});
+
+Route::group(['prefix' => 'tickets'], function() {
+	$c = 'TicketController';
+
+	Route::get('', [
+		'uses'	=> "$c@index",
+		'as'	=> 'tickets.overview'
+	]);
+	
+	Route::get('view', [
+		'uses'	=> "$c@view",
+		'as'	=> 'tickets.view'
+	]);
+
+	Route::get('submit', [
+		'uses'	=> "$c@create",
+		'as'	=> 'tickets.submit'
+	]);
+
+	Route::post('submit', [
+		'uses'	=> "$c@store",
+		'as'	=> 'tickets.create'
+	]);
+
+
+});
+
 Route::group(['prefix' => 'reports'], function() {
 	$c = 'ReportsController';
 

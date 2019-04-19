@@ -53,6 +53,30 @@
                         <img src="{{ '/images/users/1.jpg' }}" alt="user" class="" /> 
                         <span class="hidden-md-down"> {{auth()->user()->name}} &nbsp;</span> 
                     </a>
+
+                    <div class="dropdown-menu dropdown-menu-right animated flipInY">
+                        <ul class="dropdown-user">
+                            <li>
+                                <div class="dw-user-box">
+                                    <div class="u-img"><img src="../assets/images/users/1.jpg" alt="user"></div>
+                                    <div class="u-text">
+                                        <h4> {{auth()->user()->name}}</h4>
+                                        <p class="text-muted"> {{auth()->user()->email}} </p><a href="pages-profile.html" class="btn btn-rounded btn-danger btn-sm">View Profile</a></div>
+                                </div>
+                            </li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="#"><i class="ti-user"></i> My Profile</a></li>
+                            <li><a href="#"><i class="ti-settings"></i> Billing</a></li>
+                            <li><a href="{{ route('settings.embed') }}"><i class="ti-email"></i> Embed Job Postings</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="{{ route('tickets.submit') }}"><i class="ti-email"></i> Submit a Ticket</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li>
+                                <a href="{{ url('/logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
+                                <form id="logout-form" action="{{ url('/logout') }}" method="POST">{{ csrf_field() }}</form>  
+                            </li>
+                        </ul>
+                    </div>
                 </li>
             </ul>
         </div>

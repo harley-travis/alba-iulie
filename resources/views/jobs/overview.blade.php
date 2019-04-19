@@ -13,8 +13,8 @@
 			</ol>
 		</div>
 		<div class="col-md-7 align-self-center right">
-			<a href="{{ route('jobs.archived') }}" class="btn waves-effect waves-light btn-warning">Archived Positions</a>
-			<a href="{{ route('jobs.create') }}" class="btn waves-effect waves-light btn-success">Add Position</a>
+			<a href="{{ route('jobs.archived') }}" class="btn waves-effect waves-light btn-warning"><i class="fa fa-scroll-old"></i> Archived Positions</a>
+			<a href="{{ route('jobs.create') }}" class="btn waves-effect waves-light btn-success"><i class="far fa-plus-circle"></i> Add Position</a>
 		</div>
 	</div>
 	<!-- ============================================================== -->
