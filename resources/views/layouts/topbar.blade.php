@@ -66,8 +66,8 @@
                             </li>
                             <li role="separator" class="divider"></li>
                             <li><a href="#"><i class="ti-user"></i> My Profile</a></li>
+                            <li><a href="{{ route('settings.overview') }}"><i class="ti-user"></i> Settings</a></li>
                             <li><a href="#"><i class="ti-settings"></i> Billing</a></li>
-                            <li><a href="{{ route('settings.embed') }}"><i class="ti-email"></i> Embed Job Postings</a></li>
                             <li role="separator" class="divider"></li>
                             <li><a href="{{ route('tickets.submit') }}"><i class="ti-email"></i> Submit a Ticket</a></li>
                             <li role="separator" class="divider"></li>

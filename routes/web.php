@@ -212,9 +212,19 @@ Route::group(['prefix' => 'profile'], function() {
 Route::group(['prefix' => 'settings'], function() {
 	$c = 'SettingController';
 
-	Route::get('embed', [
-		'uses'	=> "$c@showEmbed",
-		'as'	=> 'settings.embed'
+	Route::get('', [
+		'uses'	=> "$c@index",
+		'as'	=> 'settings.overview'
+	]);
+
+	Route::post('add', [
+		'uses' => "$c@storeIPAddress",
+		'as'   => 'settings.add'
+	]);
+    
+  Route::get('add', [
+		'uses'	=> "$c@createIPBlock",
+		'as'	=> 'settings.store'
 	]);
 
 });
