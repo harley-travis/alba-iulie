@@ -15,7 +15,11 @@ class CreateReportsTable extends Migration
     {
         Schema::create('reports', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('job_id')->unsigned();  
             $table->timestamps();
+            $table->integer('visits');
+
+            $table->foreign('job_id')->references('id')->on('jobs');
           
         });
     }

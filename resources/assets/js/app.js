@@ -21,6 +21,12 @@ Vue.component(
 );
 
 
+// Reports
+Vue.component(
+	'reports-component', 
+	require('./components/reports/Reports.vue')
+);
+
 // Jobs
 Vue.component(
 	'jobs-overview',

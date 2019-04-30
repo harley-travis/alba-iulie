@@ -14,7 +14,7 @@
                     <!-- <img src="images/logo-icon.png" alt="homepage" class="dark-logo" /> -->
                     <!-- Light Logo icon -->
                     <!-- <img src="images/logo-light-icon.png" alt="homepage" class="light-logo" /> -->
-                    <img src="{{ '/images/logo.png' }}" alt="white july" class="logo" /> 
+                    <img src="{{ '/images/logo.png' }}" alt="white july" class="logo" style="padding-left:20px;" /> 
                     <!-- <h1>WJ</h1> -->
                 </b>
                 <!--End Logo icon -->

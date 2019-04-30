@@ -11,11 +11,35 @@ use Illuminate\Session\Store;
 
 class ReportsController extends Controller {
 
-  public function getReports() {
-
-    // add your code then return the view 
-        
+  public function getReports() {        
     return view('reports.overview');
+  }
+
+  public function filterReports(Request $request) {
+    /**
+     * This function acts as a filter to run the proper report based 
+     * on the users selction 
+     * 
+     * LEGEND
+     * ---------------------------
+     * 0 = Time to fill jobs
+     * 1 = Job page visits
+     */
+
+     if($request->input('0')) {
+
+        return $this->getTimeToFillJobsReport();
+
+     } elseif ($request->input('1')) {
+
+        return $this->getPageVisits();
+
+     } else {
+
+       echo "There was an error gathering the data";
+
+     }
+
   }
 
   public function updateTimeToFillJobsReport() {
@@ -40,6 +64,8 @@ class ReportsController extends Controller {
      */
 
 
+    return view('reports.report', ['title' => "Time to Fill Jobs"]);
+
   }
 
   public function getPageVisits() {
@@ -48,6 +74,9 @@ class ReportsController extends Controller {
      * get all jobs where the company id = id and where column.
      * return the view
      */
+
+
+    return view('reports.report', ['title' => "Page Visits"]);
 
   }
 

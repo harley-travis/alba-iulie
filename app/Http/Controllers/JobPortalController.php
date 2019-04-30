@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use DB;
 use App\Applicant;
 use App\ApplicantProfile;
+use App\Report;
 use App\Job;
 use App\Company;
 use Carbon\Carbon;
@@ -19,6 +20,11 @@ class JobPortalController extends Controller {
 
         $job = Company::find($company_id)->jobs->where('id', '=', $job_id);
         $company = DB::table('companies')->where('id', '=', $company_id)->get();
+
+        //add a view to the job
+        $report = App\Report::find($job_id);
+        $report->visits = $report->visits + 1;
+        $report->save();
         
         return view('job_portal.job', ['company' => $company, 'job' => $job]);
     }

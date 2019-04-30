@@ -24,7 +24,10 @@
 		<div class="col-12">
 			<div class="card">
 				<div class="card-body">
-					Welcome to the Reports
+					
+					<!-- Load the VueJS -->
+					<reports-component></reports-component>
+
 				</div>
 			</div>
 		</div>
