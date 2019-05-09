@@ -18,9 +18,9 @@
 		</div>
 		<div class="col-md-7 align-self-center right">
             @if (($employee->married) == 0)   
-			    <a href="{{ route('employees.archive', ['id' => $employee->id ]) }}" class="btn waves-effect waves-light btn-danger">Remove Employee</a>
+			    <a href="{{ route('employees.archive', ['id' => $employee->id ]) }}" class="btn waves-effect waves-light btn-outline-danger">Remove Employee</a>
             @endif
-            <a href="{{ route('employees.edit', ['id' => $employee->id ]) }}" class="btn waves-effect waves-light btn-info">Edit Employee</a>
+            <a href="{{ route('employees.edit', ['id' => $employee->id ]) }}" class="btn waves-effect waves-light btn-outline-info">Edit Employee</a>
         </div>
 	</div>
 

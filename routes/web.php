@@ -229,32 +229,6 @@ Route::group(['prefix' => 'settings'], function() {
 
 });
 
-Route::group(['prefix' => 'tickets'], function() {
-	$c = 'TicketController';
-
-	Route::get('', [
-		'uses'	=> "$c@index",
-		'as'	=> 'tickets.overview'
-	]);
-	
-	Route::get('view/{id}', [
-		'uses'	=> "$c@show",
-		'as'	=> 'tickets.view'
-	]);
-
-	Route::get('submit', [
-		'uses'	=> "$c@create",
-		'as'	=> 'tickets.submit'
-	]);
-
-	Route::post('submit', [
-		'uses'	=> "$c@store",
-		'as'	=> 'tickets.create'
-	]);
-
-
-});
-
 Route::group(['prefix' => 'reports'], function() {
 	$c = 'ReportsController';
 
