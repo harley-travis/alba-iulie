@@ -15,7 +15,7 @@
 		</div>
 		<div class="col-md-7 align-self-center">
     <form action="{{ route('jobs.update') }}" method="post">
-    <button type="submit" class="btn btn-success btn-lg">Save Job</button>
+    <button type="submit" class="btn btn-success">Save Job</button>
 		</div>
 	</div>
 	<!-- ============================================================== -->

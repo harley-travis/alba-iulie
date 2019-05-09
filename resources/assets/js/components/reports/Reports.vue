@@ -3,7 +3,7 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card card-default">
-                    <div class="card-header">Example Component</div>
+                    <div class="card-header"></div>
 
                     <div class="card-body">
 
@@ -19,8 +19,6 @@
 							<input type="submit" value="Run Report" class="btn btn-primary">
 						</form>
 
-
-                        Reports dude!
                     </div>
                 </div>
             </div>
@@ -30,8 +28,37 @@
 
 <script>
     export default {
-        mounted() {
-            console.log('Component mounted.')
-        }
-    }
+
+	data: function() {
+		return {
+			// id: this.$route.params.id,
+			// streams: [],
+			// live: [],
+			// loading: true,
+			// img: {
+			// 	gif: require('../assets/img/loader.gif')
+			// }
+		}
+	},
+	created() {
+		// this.getLiveStreams()
+	},
+	watch: {
+		// in order to use the same componenet with different data points
+		// we need to create a watch to see if there is a change in the code
+		// the id is referenced in the data()
+		// '$route' (to, from) {
+		// this.id = to.params.id
+		// this.getLiveStreams()
+		// }
+	},
+	methods: {
+		getPageVisits(){
+		
+		},
+		getTimeToFillJobsReport() {
+
+		},
+	}
+}
 </script>

@@ -22,7 +22,7 @@ class JobPortalController extends Controller {
         $company = DB::table('companies')->where('id', '=', $company_id)->get();
 
         //add a view to the job
-        $report = App\Report::find($job_id);
+        $report = Report::find($job_id);
         $report->visits = $report->visits + 1;
         $report->save();
         

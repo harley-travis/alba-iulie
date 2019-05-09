@@ -14,7 +14,7 @@
 			</ol>
 		</div>
 		<div class="col-md-7 align-self-center right">
-			<a href="{{ route('employees.overview') }}" class="btn waves-effect waves-light btn-success">Current Employees</a>
+			<a href="{{ route('employees.overview') }}" class="btn waves-effect waves-light btn-outline-success">Current Employees</a>
 		</div>
 	</div>
 	<!-- ============================================================== -->
@@ -66,7 +66,7 @@
 										<td>{{ $employee->department}}</td>
 										<td>{{ $employee->position}}</td>
 										<td>{{ $employee->work_phone }} {{ $employee->ext}}</td>
-										<td><a href="{{ route('employees.view', ['id' => $employee->id ]) }}" class="btn waves-effect waves-light btn-info">View Employee</a></td>
+										<td><a href="{{ route('employees.view', ['id' => $employee->id ]) }}" class="btn waves-effect waves-light btn-outline-info">View Employee</a></td>
 									</tr>
 								@endforeach
 								

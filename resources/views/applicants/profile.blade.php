@@ -155,11 +155,11 @@
                             </ul>     
                         </div>
                         <div class="col-sm-8 right">
-                            <a class="btn btn-info mt-3" href="/{{$applicant->resume}}" target="_blank">View Resume</a> <br />
+                            <a class="btn btn-outline-info mt-3" href="/{{$applicant->resume}}" target="_blank">View Resume</a> <br />
                             @if (($applicant->is_active) == 1)
-                            <a class="btn mt-3 btn btn-danger" href="{{ route('applicants.archive', ['id' => $applicant->id ]) }}">Pass on Applicant</a>
+                            <a class="btn mt-3 btn btn-outline-danger" href="{{ route('applicants.archive', ['id' => $applicant->id ]) }}">Pass on Applicant</a>
                             @elseif (($applicant->is_active)  == 0)
-                            <a class="btn mt-3 btn btn-success" href="{{ route('applicants.activate', ['id' => $applicant->id ]) }}">Activate Applicant</a>
+                            <a class="btn mt-3 btn btn-outline-success" href="{{ route('applicants.activate', ['id' => $applicant->id ]) }}">Activate Applicant</a>
                             @endif
                         </div>
 

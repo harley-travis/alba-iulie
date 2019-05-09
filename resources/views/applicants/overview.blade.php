@@ -50,7 +50,7 @@
 			</form>
 		</div>
 		<div class="col-sm-2 right">
-			<a href="{{ route('applicants.archived') }}" class="btn waves-effect waves-light btn-warning">Archived Applicants</a>
+			<a href="{{ route('applicants.archived') }}" class="btn waves-effect waves-light btn-outline-warning">Archived Applicants</a>
 		</div>
 	</div>
 
@@ -113,7 +113,7 @@
 										@endif
 									</td>
 									<td>{{ $applicant->date_applied }}</td>
-									<td><a href="{{ $applicant->resume }}" class="btn btn-info" target="_blank">View Resume</a></td>
+									<td><a href="{{ $applicant->resume }}" class="btn btn-outline-info" target="_blank">View Resume</a></td>
 								</tr>
 								@endforeach
 							</tbody>

@@ -13,8 +13,8 @@
 			</ol>
 		</div>
 		<div class="col-md-7 align-self-center right">
-			<a href="{{ route('jobs.overview') }}" class="btn waves-effect waves-light btn-info">Active Positions</a>
-			<a href="{{ route('jobs.create') }}" class="btn waves-effect waves-light btn-success">Add Position</a>
+			<a href="{{ route('jobs.overview') }}" class="btn waves-effect waves-light btn-outline-info">Active Positions</a>
+			<a href="{{ route('jobs.create') }}" class="btn waves-effect waves-light btn-outline-success">Add Position</a>
 		</div>
 	</div>
 	<!-- ============================================================== -->
@@ -67,8 +67,8 @@
 										<td>{{ $job->department}}</td>
 										<td>{{ $job->location}}</td>
 										<td>{{ $job->created_at->format('m/d/Y')}}</td>
-										<td><a href="{{ route('jobs.edit', ['id' => $job->id ]) }}" class="btn waves-effect waves-light btn-info">Edit Job</a></td> 
-										<td><a href="{{ route('jobs.activate', ['id' => $job->id ]) }}" class="btn waves-effect waves-light btn-success">Activate Job</a></td>
+										<td><a href="{{ route('jobs.edit', ['id' => $job->id ]) }}" class="btn waves-effect waves-light btn-outline-info">Edit Job</a></td> 
+										<td><a href="{{ route('jobs.activate', ['id' => $job->id ]) }}" class="btn waves-effect waves-light btn-outline-success">Activate Job</a></td>
 									</tr>
 								@endforeach
 								
