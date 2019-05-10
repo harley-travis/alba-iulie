@@ -22,6 +22,7 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
+            $table->integer('permissions')->default('3')->comment('0 = employee, 1 = manager, 2 = executive, 3 = account owner, 4 = super admin ');
 
             $table->foreign('company_id')->references('id')->on('companies');
         });
