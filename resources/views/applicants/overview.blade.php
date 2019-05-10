@@ -13,7 +13,7 @@
 				<li class="breadcrumb-item active"><a href="{{ route('applicants.overview') }}">Applicants</a></li>
 			</ol>
 		</div>
-		<div class="col-sm-3 right">
+		<!-- <div class="col-sm-3 right">
 			<form action="{{ route('applicants.filterStage') }}" method="get" class="form-inline">    
 				<div class="form-group pr-2">
 				<label class="mr-sm-2 sr-only" for="stage">Stage</label>
@@ -32,7 +32,7 @@
 				</div>
 				<button type="submit" class="btn btn-success">Apply</button>
 			</form>
-		</div>
+		</div> -->
 		<div class="col-sm-5 right">
 			<form action="{{ route('applicants.filterJob') }}" method="get" class="form-inline">    
 				<div class="form-group pr-2">
@@ -50,7 +50,7 @@
 			</form>
 		</div>
 		<div class="col-sm-2 right">
-			<a href="{{ route('applicants.archived') }}" class="btn waves-effect waves-light btn-outline-warning">Archived Applicants</a>
+			<a href="{{ route('applicants.archived') }}" class="btn waves-effect waves-light btn-outline-dark">Archived Applicants</a>
 		</div>
 	</div>
 
