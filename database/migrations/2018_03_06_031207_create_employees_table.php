@@ -15,7 +15,8 @@ class CreateEmployeesTable extends Migration
     {
         Schema::create('employees', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('company_id')->unsigned();  
+            $table->integer('company_id')->unsigned(); 
+            $table->integer('user_id')->unsigned();  
             $table->timestamps();
             $table->string('first_name');
             $table->string('last_name');
@@ -37,6 +38,7 @@ class CreateEmployeesTable extends Migration
             $table->integer('active')->comment('0 is in inActive');  
 
             $table->foreign('company_id')->references('id')->on('companies');
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 

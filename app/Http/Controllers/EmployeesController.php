@@ -4,10 +4,12 @@ namespace App\Http\Controllers;
 
 use DB;
 use Auth;
+use App\User;
 use Carbon\Carbon;
 use App\Employee;
 use App\EmployeeInfo;
 use App\Company;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use Illuminate\Http\Requests;
 use Illuminate\Session\Store;
@@ -46,8 +48,21 @@ class EmployeesController extends Controller {
 
         $company =  Company::find(Auth::user()->company_id)->firstOrFail();
 
+        // add user then add FK
+        $user = new User([
+            'name' => $request->input('first_name').' '.$request->input('last_name'),
+            'email' => $request->input('work_email'),
+            'company_id' => $company->id,
+            'password' => Hash::make($request->input('last_name').$request->input('first_name').'616'.$company->id),
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
+            'permissions' => '0',
+        ]);
+        $user->save();
+
         $employee = new Employee([
             'company_id'            => $company->id, 
+            'user_id'               => $user->id,
             'first_name'            => $request->input('first_name'),
             'last_name'             => $request->input('last_name'),  
             'work_email'            => $request->input('work_email'), 
@@ -68,6 +83,10 @@ class EmployeesController extends Controller {
             'active'                => $request->input('active'),
         ]);
         $employee->save();   
+
+        /**
+         * DOESN'T SEEM TO BE ADDING HERE
+         */
 
         $employeeInfo = new EmployeeInfo([
             'employee_id'               => $employee->id, 

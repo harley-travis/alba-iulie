@@ -9,6 +9,7 @@ class Employee extends Model {
     protected $fillable = [
 
         'company_id', 
+        'user_id',
         'first_name',
         'last_name',  
         'work_email', 
@@ -36,6 +37,10 @@ class Employee extends Model {
 
     public function EmployeeInfo() {
         return $this->hasOne('App\EmployeeInfo');
+    }
+
+    public function user() {
+        return $this->belongsTo('App/User');
     }
 
 }

@@ -43,6 +43,15 @@ class DatabaseSeeder extends Seeder
             'updated_at' => Carbon::now(),
         ]);
 
+        DB::table('users')->insert([
+            'company_id' => '1',
+            'name' => 'Steve Rogers',
+            'email' =>'steve@gmail.com',
+            'password' => bcrypt('test'),
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
+        ]);
+
         // JOBS
         $this->call(JobTableSeeder::class);   
 
