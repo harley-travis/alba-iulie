@@ -24,10 +24,10 @@ class EmployeesController extends Controller {
     }
     
     public function viewEmployee($id) {
-        //$employee = Employee::find($id);
 
         $employee = DB::table('employees')
             ->leftJoin('employee_infos', 'employees.id', '=', 'employee_infos.employee_id')
+            ->leftJoin('users', 'employees.user_id', '=', 'users.id')
             ->where('employee_infos.employee_id', '=', $id)
             ->first();
 
@@ -48,15 +48,14 @@ class EmployeesController extends Controller {
 
         $company =  Company::find(Auth::user()->company_id)->firstOrFail();
 
-        // add user then add FK
         $user = new User([
             'name' => $request->input('first_name').' '.$request->input('last_name'),
             'email' => $request->input('work_email'),
             'company_id' => $company->id,
-            'password' => Hash::make($request->input('last_name').$request->input('first_name').'616'.$company->id),
+            'password' => Hash::make($request->input('last_name').'1234'),
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
-            'permissions' => '0',
+            'permissions' => $request->input('permissions'),
         ]);
         $user->save();
 
@@ -83,10 +82,6 @@ class EmployeesController extends Controller {
             'active'                => $request->input('active'),
         ]);
         $employee->save();   
-
-        /**
-         * DOESN'T SEEM TO BE ADDING HERE
-         */
 
         $employeeInfo = new EmployeeInfo([
             'employee_id'               => $employee->id, 
@@ -142,6 +137,7 @@ class EmployeesController extends Controller {
 
         $employee = DB::table('employees')
             ->leftJoin('employee_infos', 'employees.id', '=', 'employee_infos.employee_id')
+            ->leftJoin('users', 'employees.user_id', '=', 'users.id')
             ->where('employee_infos.employee_id', '=', $id)
             ->first();
 
@@ -176,6 +172,16 @@ class EmployeesController extends Controller {
         $employee->active = $request->input('active');
 
         $employee->save();
+
+        /**
+         * LEFT HERE. GETTING A PROBLEM WHEN EDITING THE USER PERMISSIONS ON THE EMPLOYEE EDIT USER PAGE
+         */
+
+        // update the users table
+        $user = User::find($employee->user_id);
+        $user->permissions = $request->input('permissions');
+        
+        $user->save();
 
         // update the employee info table
         $employeeInfo = EmployeeInfo::find($request->input('id'));

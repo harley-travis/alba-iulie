@@ -66,10 +66,12 @@
                             </li>
                             <li role="separator" class="divider"></li>
                             <li><a href="#"><i class="ti-user"></i> My Profile</a></li>
+                            @if(auth()->user()->permissions === 3)
                             <li><a href="{{ route('settings.overview') }}"><i class="ti-user"></i> Settings</a></li>
                             <li><a href="#"><i class="ti-settings"></i> Billing</a></li>
                             <li role="separator" class="divider"></li>
                             <li><a href="#"><i class="ti-email"></i> Submit a Ticket</a></li>
+                            @endif
                             <li role="separator" class="divider"></li>
                             <li>
                                 <a href="{{ url('/logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
@@ -80,7 +82,7 @@
                 </li>
             </ul>
         </div>
-    </nav>
+    </nav> 
 </header>
 <!-- ============================================================== -->
 <!-- End Topbar header -->

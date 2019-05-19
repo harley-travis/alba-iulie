@@ -134,6 +134,16 @@
                 </div>
 
                 <div class="form-group">
+                    <label for="permissions">Employee Permissions</label>
+                    <select name="permissions" class="form-control form-control-lg">
+                        <option value="0">Employee</option>
+                        <option value="1">Manager</option>
+                        <option value="2">Executive</option>
+                        <option value="3">Admin</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
                     <label for="work_email">Work Email</label>
                     <input type="text" class="form-control form-control-lg" name="work_email">
                 </div>

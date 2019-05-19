@@ -17,10 +17,16 @@
 			</ol>
 		</div>
 		<div class="col-md-7 align-self-center right">
-            @if (($employee->married) == 0)   
-			    <a href="{{ route('employees.archive', ['id' => $employee->id ]) }}" class="btn waves-effect waves-light btn-outline-danger">Remove Employee</a>
-            @endif
-            <a href="{{ route('employees.edit', ['id' => $employee->id ]) }}" class="btn waves-effect waves-light btn-outline-info">Edit Employee</a>
+
+        @if(auth()->user()->permissions === 3)
+            <a href="{{ route('employees.archive', ['id' => $employee->user_id ]) }}" class="btn waves-effect waves-light btn-outline-danger">Remove Employee</a>
+        @endif
+
+        @if($employee->work_email === auth()->user()->email || auth()->user()->permissions === 3)
+            <a href="{{ route('employees.edit', ['id' => $employee->user_id ]) }}" class="btn waves-effect waves-light btn-outline-info">Edit Information</a>
+        @endif
+             
+        
         </div>
 	</div>
 
@@ -29,7 +35,6 @@
 	<!-- ============================================================== -->
 
 @include('layouts.errors')
-
 
 <div class="row">
     <div class="col-12">
@@ -55,7 +60,7 @@
 
                 <div class="employee-card">
                     <span class="employee-label">Address</span>
-                    <span class="employee-info">{{ $employee->address_1 }} {{ $employee->address_2 }} {{ $employee->address_3 }} {{ $employee->city }}, {{ $employee->zip }}</span>
+                    <span class="employee-info">{{ $employee->address_1 }} {{ $employee->address_2 }} {{ $employee->address_3 }} {{ $employee->city }}, {{ $employee->state }}, {{ $employee->zip }}</span>
                 </div>
 
                 @if (($employee->married) == 0)
@@ -90,6 +95,25 @@
                     <span class="employee-label">Date Hired</span>
                     <span class="employee-info">{{ $employee->date_hired }}</span>
                 </div>
+
+                @if ( auth()->user()->permissions > 2 )
+                <div class="employee-card">
+                    <span class="employee-label">Employee Permissions</span>
+                    <span class="employee-info">
+                        @if (($employee->permissions) == 0)
+                            Employee
+                        @elseif (($employee->permissions) == 1)
+                            Manager
+                        @elseif (($employee->permissions) == 2)
+                            Executive
+                        @elseif (($employee->permissions) == 3)
+                            Admin
+                        @else
+                            There was an error displaying the salary information
+                        @endif 
+                    </span>
+                </div>
+                @endif
 
                 <div class="employee-card">
                     <span class="employee-label">Employment Duration</span>

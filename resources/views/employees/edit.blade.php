@@ -154,6 +154,16 @@
                 </div>
 
                 <div class="form-group">
+                    <label for="permissions">Employee Permissions</label>
+                    <select name="permissions" class="form-control form-control-lg">
+                        <option value="0" {{ $employee->permissions == '0' ? 'selected':'' }}>Employee</option>
+                        <option value="1" {{ $employee->permissions == '1' ? 'selected':'' }}>Manager</option>
+                        <option value="2" {{ $employee->permissions == '2' ? 'selected':'' }}>Executive</option>
+                        <option value="3" {{ $employee->permissions == '3' ? 'selected':'' }}>Admin</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
                     <label for="work_email">Work Email</label>
                     <input type="email" class="form-control form-control-lg" name="work_email" value="{{ $employee->work_email }}">
                 </div>

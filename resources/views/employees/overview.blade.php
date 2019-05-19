@@ -6,15 +6,19 @@
 	<!-- ============================================================== -->
 	<div class="row page-titles">
 		<div class="col-md-5 align-self-center">
-			<h3 class="text-themecolor">Employees</h3>
+			<h3 class="text-themecolor">Employee Directory</h3>
 			<ol class="breadcrumb">
 				<li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
 				<li class="breadcrumb-item active">Employees</li>
 			</ol>
 		</div>
 		<div class="col-md-7 align-self-center right">
+
+			@if(auth()->user()->permissions >= 3)
 			<a href="{{ route('employees.archived') }}" class="btn waves-effect waves-light btn-outline-dark">Archived Employees</a>
 			<a href="{{ route('employees.create') }}" class="btn waves-effect waves-light btn-outline-success">Add Employee</a>
+			@endif
+
 		</div>
 	</div>
 	<!-- ============================================================== -->
@@ -65,7 +69,7 @@
 										<td><a href="{{ route('employees.view', ['id' => $employee->id ]) }}">{{ $employee->first_name }} {{ $employee->last_name}}</a></td>
 										<td>{{ $employee->department}}</td>
 										<td>{{ $employee->position}}</td>
-										<td>{{ $employee->work_phone }} {{ $employee->ext}}</td>
+										<td>{{ $employee->work_phone }} ext:{{ $employee->ext}}</td>
 										<td><a href="{{ route('employees.view', ['id' => $employee->id ]) }}" class="btn waves-effect waves-light btn-outline-info">View Employee</a></td>
 									</tr>
 								@endforeach
