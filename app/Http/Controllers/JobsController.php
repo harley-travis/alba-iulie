@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Job;
 use App\Company;
+use App\Report;
 use Auth;
 use Illuminate\Http\Request;
 use App\Http\Requests;
@@ -79,9 +80,16 @@ class JobsController extends Controller {
             'isActive'              => $request->input('isActive'),
             'user_id'               => $user_id,
         ]);
-
         $job->save();            
         
+        // create the report table
+        $report = new Report([
+            'job_id'        => $job->id,
+            'visits'        => 0,
+            'date_filled'    => null
+        ]);
+        $report->save(); 
+
 		return redirect()
 			->route('jobs.overview')
 			->with('info', 'Good news, your job was added!');

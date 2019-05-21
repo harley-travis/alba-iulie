@@ -18,9 +18,9 @@ class CreateReportsTable extends Migration
             $table->integer('job_id')->unsigned();  
             $table->timestamps();
             $table->integer('visits');
+            $table->date('date_filled')->nullable();
 
             $table->foreign('job_id')->references('id')->on('jobs');
-          
         });
     }
 

@@ -8,6 +8,7 @@ class Report extends Model {
     
     protected $fillable = [
         'visits',
+        'date_filled',
         'job_id',
     ];
 

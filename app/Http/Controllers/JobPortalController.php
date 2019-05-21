@@ -21,7 +21,10 @@ class JobPortalController extends Controller {
         $job = Company::find($company_id)->jobs->where('id', '=', $job_id);
         $company = DB::table('companies')->where('id', '=', $company_id)->get();
 
-        //add a view to the job
+        // add a view to the job
+        /**
+         * TODO : only mark the IP address once in a session. PHASE 2
+         */
         $report = Report::find($job_id);
         $report->visits = $report->visits + 1;
         $report->save();

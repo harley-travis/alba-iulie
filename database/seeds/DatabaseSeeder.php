@@ -69,7 +69,10 @@ class DatabaseSeeder extends Seeder
 
         // EMPLOYEE_INFO
         $this->call(EmployeeInfoTableSeeder::class);
-    
+
+        // REPORTS
+        $this->call(ReportTableSeeder::class);
+        
         // seed the pivot table DON' DELETE!
         // $jobs = App\Job::all();
         // App\Applicant::all()->each(function ($applicant) use ($jobs) { 

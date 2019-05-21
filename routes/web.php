@@ -117,11 +117,6 @@ Route::group(['prefix' => 'employees'], function() {
 		'as'	=> 'employees.add'
 	]);
 
-	// Route::get('edit', [
-	// 	'uses'	=> "$c@editEmployee",
-	// 	'as'	=> 'employees.edit'
-	// ]);
-
 	Route::get('delete', [
 		'uses'	=> "$c@deleteEmployee",
 		'as'	=> 'employees.delete'

@@ -47500,13 +47500,37 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    mounted: function mounted() {
-        console.log('Component mounted.');
-    }
+
+	data: function data() {
+		return {
+			// id: this.$route.params.id,
+			// streams: [],
+			// live: [],
+			// loading: true,
+			// img: {
+			// 	gif: require('../assets/img/loader.gif')
+			// }
+		};
+	},
+	created: function created() {
+		// this.getLiveStreams()
+	},
+
+	watch: {
+		// in order to use the same componenet with different data points
+		// we need to create a watch to see if there is a change in the code
+		// the id is referenced in the data()
+		// '$route' (to, from) {
+		// this.id = to.params.id
+		// this.getLiveStreams()
+		// }
+	},
+	methods: {
+		getPageVisits: function getPageVisits() {},
+		getTimeToFillJobsReport: function getTimeToFillJobsReport() {}
+	}
 });
 
 /***/ }),
@@ -47528,9 +47552,7 @@ var staticRenderFns = [
       _c("div", { staticClass: "row justify-content-center" }, [
         _c("div", { staticClass: "col-md-8" }, [
           _c("div", { staticClass: "card card-default" }, [
-            _c("div", { staticClass: "card-header" }, [
-              _vm._v("Example Component")
-            ]),
+            _c("div", { staticClass: "card-header" }),
             _vm._v(" "),
             _c("div", { staticClass: "card-body" }, [
               _c("p", [_vm._v("Select a report to run")]),
@@ -47565,9 +47587,6 @@ var staticRenderFns = [
                     attrs: { type: "submit", value: "Run Report" }
                   })
                 ]
-              ),
-              _vm._v(
-                "\n\n\n                        Reports dude!\n                    "
               )
             ])
           ])
