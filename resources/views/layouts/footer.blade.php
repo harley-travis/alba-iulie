@@ -17,6 +17,7 @@
     <script src="{{ asset('js/d3/d3.min.js') }}"></script>
     <script src="{{ asset('js/c3-master/c3.min.js') }}"></script>
     <script src="{{ asset('js/dashboard1.js') }}"></script>
+    <script src="{{ asset('js/app.js') }}"></script>
 
     <!-- register WYSIWYG editors -->
     <script>

@@ -24,7 +24,7 @@
 		<div class="col-12">
 			<div class="card">
 				<div class="card-body">
-					
+					hey
 					<!-- Load the VueJS -->
 					<reports-component></reports-component>
 
