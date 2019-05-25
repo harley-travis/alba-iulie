@@ -19,7 +19,12 @@ class EmployeesController extends Controller {
     
     public function getEmployees() {
 
-        $employees = DB::table('employees')->where('company_id', '=', Auth::user()->company_id)->where('active', '=', '1')->orderBy('created_at', 'ASC')->paginate(15);
+        $employees = DB::table('employees')
+            ->where('company_id', '=', Auth::user()->company_id)
+            ->where('active', '=', '1')
+            ->orderBy('created_at', 'ASC')
+            ->paginate(15);
+            
 		return view('employees.overview', ['employees' => $employees]);
     }
     

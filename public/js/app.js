@@ -48278,26 +48278,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
 
 	data: function data() {
-		return {
-			// id: this.$route.params.id,
-			// streams: [],
-			// live: [],
-			// loading: true,
-			// img: {
-			// 	gif: require('../assets/img/loader.gif')
-			// }
-		};
+		return {};
 	},
+	props: ['company'],
 	created: function created() {
 		// this.getLiveStreams()
 	},
@@ -48327,13 +48314,13 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: "container" },
+    {},
     [
       _c("p", [_vm._v("Select a report to run")]),
       _vm._v(" "),
       _vm._m(0),
       _vm._v(" "),
-      _c("pagevisits-component")
+      _c("pagevisits-component", { attrs: { company: _vm.company } })
     ],
     1
   )
@@ -48478,9 +48465,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 		};
 	},
 	created: function created() {
-		// this.getLiveStreams()
+		this.getPageVisits();
+		console.log('hey dude');
+		console.log(this.company);
 	},
 
+	props: ['company'],
 	watch: {
 		// in order to use the same componenet with different data points
 		// we need to create a watch to see if there is a change in the code
@@ -48491,7 +48481,23 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 		// }
 	},
 	methods: {
-		getPageVisits: function getPageVisits() {}
+		getPageVisits: function getPageVisits() {
+			var _this = this;
+
+			window.axios.get('/api/reports/jobVisits/' + this.company).then(function (_ref) {
+				var data = _ref.data;
+
+				console.log(data, 'get the data');
+				_this.visits = data;
+			});
+
+			// return new Promise((res) => {
+			// 	axios.get('reports/jobVisits').then(res => {
+			// 		resolve(res.data)
+			// 		console.log(res.data, 'data')
+			// 	})
+			// })
+		}
 	}
 });
 
@@ -48503,44 +48509,47 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", {}, [
+    _c("section", { attrs: { id: "job-visits" } }, [
+      _c("table", { staticClass: "table table-borderless table-hover" }, [
+        _vm._m(0),
+        _vm._v(" "),
+        _c(
+          "tbody",
+          _vm._l(_vm.visits, function(visit) {
+            return _c("tr", [
+              _c("td", [_vm._v(_vm._s(visit.id))]),
+              _vm._v(" "),
+              _c("td", [_vm._v(_vm._s(visit.title))]),
+              _vm._v(" "),
+              _c("td", [_vm._v(_vm._s(visit.visits))]),
+              _vm._v(" "),
+              _c("td", [_vm._v(_vm._s(visit.created_at))]),
+              _vm._v(" "),
+              _c("td", [_vm._v(_vm._s(visit.date_filled))])
+            ])
+          })
+        )
+      ])
+    ])
+  ])
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "container" }, [
-      _c("section", { attrs: { id: "job-visits" } }, [
-        _c("table", { staticClass: "table table-borderless" }, [
-          _c("thead", [
-            _c("tr", [
-              _c("th", { attrs: { scope: "col" } }, [_vm._v("ID")]),
-              _vm._v(" "),
-              _c("th", { attrs: { scope: "col" } }, [_vm._v("Position")]),
-              _vm._v(" "),
-              _c("th", { attrs: { scope: "col" } }, [_vm._v("Visits")]),
-              _vm._v(" "),
-              _c("th", { attrs: { scope: "col" } }, [_vm._v("Date Created")]),
-              _vm._v(" "),
-              _c("th", { attrs: { scope: "col" } }, [_vm._v("Date Filled")])
-            ])
-          ]),
-          _vm._v(" "),
-          _c("tbody", [
-            _c("tr", [
-              _c("th", { attrs: { scope: "row" } }, [_vm._v("1")]),
-              _vm._v(" "),
-              _c("td"),
-              _vm._v(" "),
-              _c("td"),
-              _vm._v(" "),
-              _c("td"),
-              _vm._v(" "),
-              _c("td")
-            ])
-          ])
-        ])
+    return _c("thead", [
+      _c("tr", [
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("ID")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Position")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Visits")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Date Created")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Date Filled")])
       ])
     ])
   }

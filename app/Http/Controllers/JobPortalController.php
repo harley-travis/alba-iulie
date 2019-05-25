@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use DB;
 use App\Applicant;
 use App\ApplicantProfile;
-use App\Report;
+use App\JobVisits;
 use App\Job;
 use App\Company;
 use Carbon\Carbon;
@@ -25,7 +25,7 @@ class JobPortalController extends Controller {
         /**
          * TODO : only mark the IP address once in a session. PHASE 2
          */
-        $report = Report::find($job_id);
+        $report = JobVisits::find($job_id);
         $report->visits = $report->visits + 1;
         $report->save();
         

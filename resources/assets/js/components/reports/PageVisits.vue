@@ -1,9 +1,9 @@
 <template>
-    <div class="container">
-    
+    <div class="">
+
 		<!-- JOB VISITS -->
 		<section id="job-visits">
-			<table class="table table-borderless">
+			<table class="table table-borderless table-hover">
 				<thead>
 					<tr>
 						<th scope="col">ID</th>
@@ -15,12 +15,12 @@
 				</thead>
 				<tbody>
 
-					<tr>
-						<th scope="row">1</th>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
+					<tr v-for="visit in visits">
+						<td>{{visit.id}}</td>
+						<td>{{visit.title}}</td>
+						<td>{{visit.visits}}</td>
+						<td>{{visit.created_at}}</td>
+						<td>{{visit.date_filled}}</td>
 					</tr>
 
 				</tbody>
@@ -43,8 +43,11 @@
 			}
 		},
 		created() {
-			// this.getLiveStreams()
+			this.getPageVisits()
+			console.log('hey dude')
+			console.log(this.company)
 		},
+		props: ['company'],
 		watch: {
 			// in order to use the same componenet with different data points
 			// we need to create a watch to see if there is a change in the code
@@ -56,7 +59,18 @@
 		},
 		methods: {
 			getPageVisits(){
-			
+
+				window.axios.get('/api/reports/jobVisits/'+this.company).then(({ data }) => {
+					 console.log(data, 'get the data')
+					 this.visits = data
+				});
+
+				// return new Promise((res) => {
+				// 	axios.get('reports/jobVisits').then(res => {
+				// 		resolve(res.data)
+				// 		console.log(res.data, 'data')
+				// 	})
+				// })
 			},
 		}
 	}

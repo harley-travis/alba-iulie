@@ -26,7 +26,7 @@
 				<div class="card-body">
 					
 					<!-- Load the VueJS -->
-					<reports-component></reports-component>
+					<reports-component company="{{$company_id}}"></reports-component>
 
 				</div>
 			</div>

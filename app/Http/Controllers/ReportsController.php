@@ -4,15 +4,19 @@ namespace App\Http\Controllers;
 
 use Auth;
 use App\Company;
-use App\Report;
+use App\JobVisits;
+use App\Job;
+use DB;
+use Illuminate\Http\Response;
 use Illuminate\Http\Request;
 use Illuminate\Http\Requests;
 use Illuminate\Session\Store;
 
 class ReportsController extends Controller {
 
-  public function getReports() {        
-    return view('reports.overview');
+  public function getReports() {      
+    $company_id = Auth::user()->company_id;  
+    return view('reports.overview', ['company_id' => $company_id]);
   }
 
   public function filterReports(Request $request) {
@@ -68,17 +72,25 @@ class ReportsController extends Controller {
 
   }
 
-  public function getPageVisits() {
+  public function getPageVisits($id) {
 
-    /**
-     * get all jobs where the company id = id and where column.
-     * return the view
-     */
+    // $visits = JobVisits::where('company_id', '=', $id)
+    //   ->where('date_filled', '!=', null)
+    //   ->orderBy('created_at')
+    //   ->paginate(15);
+
+    $visits = DB::table('jobs')->leftJoin('job_visits', 'jobs.id', '=', 'job_visits.job_id')->where('job_visits.company_id', '=', '1')->get();
 
 
-    return view('reports.report', ['title' => "Page Visits"]);
+    return response($visits->jsonSerialize(), Response::HTTP_OK);
 
   }
+
+  // $employee = DB::table('employees')
+  // ->leftJoin('employee_infos', 'employees.id', '=', 'employee_infos.employee_id')
+  // ->leftJoin('users', 'employees.user_id', '=', 'users.id')
+  // ->where('employee_infos.employee_id', '=', $id)
+  // ->first();
 
   public function updatePageVisits($id) {
 

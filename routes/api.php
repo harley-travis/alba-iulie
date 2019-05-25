@@ -35,3 +35,5 @@ Route::get('jobs/{id}/{jobid}', 'ApiController@getJobByID');
 // get specific job by companies_id
 Route::get('jobs/{id}/{jobid}', 'ApiController@getJobByID');
 
+// REPORTS
+Route::get('reports/jobVisits/{id}', 'ReportsController@getPageVisits');

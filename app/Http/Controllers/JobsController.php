@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Job;
 use App\Company;
-use App\Report;
+use App\JobVisits;
 use Auth;
 use Illuminate\Http\Request;
 use App\Http\Requests;
@@ -83,7 +83,7 @@ class JobsController extends Controller {
         $job->save();            
         
         // create the report table
-        $report = new Report([
+        $report = new JobVisits([
             'job_id'        => $job->id,
             'visits'        => 0,
             'date_filled'    => null
