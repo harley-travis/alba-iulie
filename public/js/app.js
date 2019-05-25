@@ -14467,6 +14467,7 @@ Vue.component('example-component', __webpack_require__(42));
 // Reports
 Vue.component('reports-component', __webpack_require__(45));
 Vue.component('pagevisits-component', __webpack_require__(48));
+Vue.component('timetofilljob-component', __webpack_require__(78));
 
 // Jobs
 Vue.component('jobs-overview', __webpack_require__(51));
@@ -48210,17 +48211,21 @@ if (false) {
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(81)
+}
 var normalizeComponent = __webpack_require__(2)
 /* script */
 var __vue_script__ = __webpack_require__(46)
 /* template */
-var __vue_template__ = __webpack_require__(47)
+var __vue_template__ = __webpack_require__(83)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
-var __vue_styles__ = null
+var __vue_styles__ = injectStyle
 /* scopeId */
-var __vue_scopeId__ = null
+var __vue_scopeId__ = "data-v-2959497b"
 /* moduleIdentifier (server only) */
 var __vue_module_identifier__ = null
 var Component = normalizeComponent(
@@ -48278,96 +48283,29 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
 
 	data: function data() {
-		return {};
+		return {
+			selected: ''
+		};
 	},
 	props: ['company'],
-	created: function created() {
-		// this.getLiveStreams()
-	},
+	created: function created() {},
 
-	watch: {
-		// in order to use the same componenet with different data points
-		// we need to create a watch to see if there is a change in the code
-		// the id is referenced in the data()
-		// '$route' (to, from) {
-		// this.id = to.params.id
-		// this.getLiveStreams()
-		// }
-	},
-	methods: {
-		getPageVisits: function getPageVisits() {},
-		getTimeToFillJobsReport: function getTimeToFillJobsReport() {}
-	}
+	watch: {},
+	methods: {}
 });
 
 /***/ }),
-/* 47 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    {},
-    [
-      _c("p", [_vm._v("Select a report to run")]),
-      _vm._v(" "),
-      _vm._m(0),
-      _vm._v(" "),
-      _c("pagevisits-component", { attrs: { company: _vm.company } })
-    ],
-    1
-  )
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "form",
-      { staticClass: "form-inline", attrs: { action: "", method: "post" } },
-      [
-        _c(
-          "select",
-          { staticClass: "form-control", attrs: { name: "action" } },
-          [
-            _c("option", { attrs: { value: "" } }, [
-              _vm._v("-- Select Report --")
-            ]),
-            _vm._v(" "),
-            _c("option", { attrs: { value: "0" } }, [
-              _vm._v("Time To Fill Job")
-            ]),
-            _vm._v(" "),
-            _c("option", { attrs: { value: "1" } }, [_vm._v("Job Visits")])
-          ]
-        ),
-        _vm._v(" "),
-        _c("input", {
-          staticClass: "btn btn-primary",
-          attrs: { type: "submit", value: "Run Report" }
-        })
-      ]
-    )
-  }
-]
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-2959497b", module.exports)
-  }
-}
-
-/***/ }),
+/* 47 */,
 /* 48 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -48466,20 +48404,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 	},
 	created: function created() {
 		this.getPageVisits();
-		console.log('hey dude');
-		console.log(this.company);
 	},
 
 	props: ['company'],
-	watch: {
-		// in order to use the same componenet with different data points
-		// we need to create a watch to see if there is a change in the code
-		// the id is referenced in the data()
-		// '$route' (to, from) {
-		// this.id = to.params.id
-		// this.getLiveStreams()
-		// }
-	},
 	methods: {
 		getPageVisits: function getPageVisits() {
 			var _this = this;
@@ -48490,13 +48417,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 				console.log(data, 'get the data');
 				_this.visits = data;
 			});
-
-			// return new Promise((res) => {
-			// 	axios.get('reports/jobVisits').then(res => {
-			// 		resolve(res.data)
-			// 		console.log(res.data, 'data')
-			// 	})
-			// })
 		}
 	}
 });
@@ -48545,7 +48465,7 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("th", { attrs: { scope: "col" } }, [_vm._v("Position")]),
         _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Visits")]),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Page Visits")]),
         _vm._v(" "),
         _c("th", { attrs: { scope: "col" } }, [_vm._v("Date Created")]),
         _vm._v(" "),
@@ -49226,6 +49146,235 @@ if (false) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 64 */,
+/* 65 */,
+/* 66 */,
+/* 67 */,
+/* 68 */,
+/* 69 */,
+/* 70 */,
+/* 71 */,
+/* 72 */,
+/* 73 */,
+/* 74 */,
+/* 75 */,
+/* 76 */,
+/* 77 */,
+/* 78 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(2)
+/* script */
+var __vue_script__ = __webpack_require__(79)
+/* template */
+var __vue_template__ = __webpack_require__(80)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\reports\\TimeToFillJob.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-1f69332e", Component.options)
+  } else {
+    hotAPI.reload("data-v-1f69332e", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 79 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+
+	data: function data() {
+		return {};
+	},
+	created: function created() {
+		this.getPageVisits();
+	},
+
+	props: ['company'],
+	methods: {
+		getPageVisits: function getPageVisits() {}
+	}
+});
+
+/***/ }),
+/* 80 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", {}, [_vm._v("\n\n\they\n\n    ")])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-1f69332e", module.exports)
+  }
+}
+
+/***/ }),
+/* 81 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(82);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(13)("693eb5af", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-2959497b\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Reports.vue", function() {
+     var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-2959497b\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Reports.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 82 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(12)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.custom-select[data-v-2959497b] {\r\n    -webkit-appearance: menulist-button !important;\n}\r\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 83 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    {},
+    [
+      _c("p", [_vm._v("Select a report to run")]),
+      _vm._v(" "),
+      _c("div", { staticClass: "form-group" }, [
+        _c(
+          "select",
+          {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.selected,
+                expression: "selected"
+              }
+            ],
+            staticClass: "custom-select custom-select-lg mb-3",
+            on: {
+              change: function($event) {
+                var $$selectedVal = Array.prototype.filter
+                  .call($event.target.options, function(o) {
+                    return o.selected
+                  })
+                  .map(function(o) {
+                    var val = "_value" in o ? o._value : o.value
+                    return val
+                  })
+                _vm.selected = $event.target.multiple
+                  ? $$selectedVal
+                  : $$selectedVal[0]
+              }
+            }
+          },
+          [
+            _c("option", { attrs: { disabled: "", value: "" } }, [
+              _vm._v("Please select one")
+            ]),
+            _vm._v(" "),
+            _c("option", [_vm._v("Time To Fill Job")]),
+            _vm._v(" "),
+            _c("option", [_vm._v("Job Visits")])
+          ]
+        )
+      ]),
+      _vm._v(" "),
+      _c("h2", { staticClass: "text-success" }, [_vm._v(_vm._s(_vm.selected))]),
+      _vm._v(" "),
+      _vm.selected === "Time To Fill Job"
+        ? _c("timetofilljob-component", { attrs: { company: _vm.company } })
+        : _vm._e(),
+      _vm._v(" "),
+      _vm.selected === "Job Visits"
+        ? _c("pagevisits-component", { attrs: { company: _vm.company } })
+        : _vm._e()
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-2959497b", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);

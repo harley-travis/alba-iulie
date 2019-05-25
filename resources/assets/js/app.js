@@ -30,6 +30,10 @@ Vue.component(
 	'pagevisits-component', 
 	require('./components/reports/PageVisits.vue')
 );
+Vue.component(
+	'timetofilljob-component', 
+	require('./components/reports/TimeToFillJob.vue')
+);
 
 // Jobs
 Vue.component(

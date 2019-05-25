@@ -74,23 +74,14 @@ class ReportsController extends Controller {
 
   public function getPageVisits($id) {
 
-    // $visits = JobVisits::where('company_id', '=', $id)
-    //   ->where('date_filled', '!=', null)
-    //   ->orderBy('created_at')
-    //   ->paginate(15);
-
-    $visits = DB::table('jobs')->leftJoin('job_visits', 'jobs.id', '=', 'job_visits.job_id')->where('job_visits.company_id', '=', '1')->get();
-
+    $visits = DB::table('jobs')
+      ->leftJoin('job_visits', 'jobs.id', '=', 'job_visits.job_id')
+      ->where('job_visits.company_id', '=', '1')
+      ->get();
 
     return response($visits->jsonSerialize(), Response::HTTP_OK);
 
   }
-
-  // $employee = DB::table('employees')
-  // ->leftJoin('employee_infos', 'employees.id', '=', 'employee_infos.employee_id')
-  // ->leftJoin('users', 'employees.user_id', '=', 'users.id')
-  // ->where('employee_infos.employee_id', '=', $id)
-  // ->first();
 
   public function updatePageVisits($id) {
 

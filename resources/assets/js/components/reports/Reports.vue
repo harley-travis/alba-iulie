@@ -1,51 +1,43 @@
 <template>
     <div class="">
 
-			<p>Select a report to run</p>
+		<p>Select a report to run</p>
 
-			<form action="" method="post" class="form-inline">
-				<select name="action" class="form-control">		
-					<option value="">-- Select Report --</option>
-					<option value="0">Time To Fill Job</option>
-					<option value="1">Job Visits</option>
-				</select>
-				
-				<input type="submit" value="Run Report" class="btn btn-primary">
-			</form>
+		<div class="form-group">
+			<select class="custom-select custom-select-lg mb-3" v-model="selected">
+				<option disabled value="">Please select one</option>
+				<option>Time To Fill Job</option>
+				<option>Job Visits</option>
+			</select>
+		</div>
+		<h2 class="text-success">{{ selected }}</h2>
 
-			<pagevisits-component :company="company"></pagevisits-component>
+		<timetofilljob-component v-if="selected === 'Time To Fill Job'" :company="company"></timetofilljob-component>
+		<pagevisits-component v-if="selected === 'Job Visits'" :company="company"></pagevisits-component>
 
     </div>
 </template>
+
+<style scoped>
+.custom-select {
+    -webkit-appearance: menulist-button !important;
+}
+</style>
 
 <script>
     export default {
 
 	data: function() {
 		return {
-
+			selected: ''
 		}
 	},
 	props: ['company'],
 	created() {
-		// this.getLiveStreams()
 	},
 	watch: {
-		// in order to use the same componenet with different data points
-		// we need to create a watch to see if there is a change in the code
-		// the id is referenced in the data()
-		// '$route' (to, from) {
-		// this.id = to.params.id
-		// this.getLiveStreams()
-		// }
 	},
 	methods: {
-		getPageVisits(){
-		
-		},
-		getTimeToFillJobsReport() {
-
-		},
 	}
 }
 </script>
