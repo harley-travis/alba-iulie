@@ -2,15 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use DB;
 use Auth;
 use App\Company;
 use App\JobVisits;
 use App\Job;
-use DB;
 use Illuminate\Http\Response;
-use Illuminate\Http\Request;
-use Illuminate\Http\Requests;
-use Illuminate\Session\Store;
 
 class ReportsController extends Controller {
 
@@ -19,43 +16,7 @@ class ReportsController extends Controller {
     return view('reports.overview', ['company_id' => $company_id]);
   }
 
-  public function filterReports(Request $request) {
-    /**
-     * This function acts as a filter to run the proper report based 
-     * on the users selction 
-     * 
-     * LEGEND
-     * ---------------------------
-     * 0 = Time to fill jobs
-     * 1 = Job page visits
-     */
-
-     if($request->input('0')) {
-
-        return $this->getTimeToFillJobsReport();
-
-     } elseif ($request->input('1')) {
-
-        return $this->getPageVisits();
-
-     } else {
-
-       echo "There was an error gathering the data";
-
-     }
-
-  }
-
-  public function updateTimeToFillJobsReport() {
-
-    /**
-     * 
-     * 
-     */
-
-  }
-
-  public function getTimeToFillJobsReport() {
+  public function getTimeToFillJobsReport($id) {
 
     // get all jobs where the company id = company id and active == 1 AND FILLED
 
@@ -67,8 +28,13 @@ class ReportsController extends Controller {
      * 
      */
 
+    $time = DB::table('jobs')
+      ->leftJoin('job_visits', 'jobs.id', '=', 'job_visits.job_id')
+      ->where('job_visits.company_id', '=', '1')
+      ->where('job_visits.date_filled', '!=', null)
+      ->get();
 
-    return view('reports.report', ['title' => "Time to Fill Jobs"]);
+    return response($time->jsonSerialize(), Response::HTTP_OK);
 
   }
 
@@ -77,6 +43,8 @@ class ReportsController extends Controller {
     $visits = DB::table('jobs')
       ->leftJoin('job_visits', 'jobs.id', '=', 'job_visits.job_id')
       ->where('job_visits.company_id', '=', '1')
+      ->where('jobs.isActive', '=', '1')
+      ->where('job_visits.date_filled', '=', null)
       ->get();
 
     return response($visits->jsonSerialize(), Response::HTTP_OK);

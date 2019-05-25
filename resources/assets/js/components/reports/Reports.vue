@@ -22,7 +22,7 @@
 .custom-select {
     -webkit-appearance: menulist-button !important;
 }
-</style>
+</style> 
 
 <script>
     export default {

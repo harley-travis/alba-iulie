@@ -48389,17 +48389,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
 
 	data: function data() {
 		return {
-			id: [],
-			position: [],
-			visits: [],
-			date_created: [],
-			date_filled: []
+			visits: []
 		};
 	},
 	created: function created() {
@@ -48414,7 +48409,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			window.axios.get('/api/reports/jobVisits/' + this.company).then(function (_ref) {
 				var data = _ref.data;
 
-				console.log(data, 'get the data');
 				_this.visits = data;
 			});
 		}
@@ -48430,7 +48424,11 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", {}, [
-    _c("section", { attrs: { id: "job-visits" } }, [
+    _c("p", [
+      _vm._v("This report shows you the page visits for each active job")
+    ]),
+    _vm._v(" "),
+    _c("section", [
       _c("table", { staticClass: "table table-borderless table-hover" }, [
         _vm._m(0),
         _vm._v(" "),
@@ -48444,9 +48442,7 @@ var render = function() {
               _vm._v(" "),
               _c("td", [_vm._v(_vm._s(visit.visits))]),
               _vm._v(" "),
-              _c("td", [_vm._v(_vm._s(visit.created_at))]),
-              _vm._v(" "),
-              _c("td", [_vm._v(_vm._s(visit.date_filled))])
+              _c("td", [_vm._v(_vm._s(visit.created_at))])
             ])
           })
         )
@@ -48467,9 +48463,7 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("th", { attrs: { scope: "col" } }, [_vm._v("Page Visits")]),
         _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Date Created")]),
-        _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Date Filled")])
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Date Created")])
       ])
     ])
   }
@@ -49222,19 +49216,54 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
 
 	data: function data() {
-		return {};
+		return {
+			times: []
+		};
 	},
 	created: function created() {
-		this.getPageVisits();
+		this.getTimeToFillJobs();
 	},
 
 	props: ['company'],
 	methods: {
-		getPageVisits: function getPageVisits() {}
+		getTimeToFillJobs: function getTimeToFillJobs() {
+			var _this = this;
+
+			window.axios.get('/api/reports/time-to-fill-jobs/' + this.company).then(function (_ref) {
+				var data = _ref.data;
+
+				_this.times = data;
+			});
+		}
 	}
 });
 
@@ -49246,9 +49275,57 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", {}, [_vm._v("\n\n\they\n\n    ")])
+  return _c("div", {}, [
+    _c("p", [
+      _vm._v(
+        "This report shows you how long it took to fill the position of previous jobs"
+      )
+    ]),
+    _vm._v(" "),
+    _c("section", [
+      _c("table", { staticClass: "table table-borderless table-hover" }, [
+        _vm._m(0),
+        _vm._v(" "),
+        _c(
+          "tbody",
+          _vm._l(_vm.times, function(time) {
+            return _c("tr", [
+              _c("td", [_vm._v(_vm._s(time.id))]),
+              _vm._v(" "),
+              _c("td", [_vm._v(_vm._s(time.title))]),
+              _vm._v(" "),
+              _c("td", [_vm._v(_vm._s(time.created_at))]),
+              _vm._v(" "),
+              _c("td", [_vm._v(_vm._s(time.date_filled))]),
+              _vm._v(" "),
+              _c("td", [_vm._v(_vm._s(time.created_at - time.date_filled))])
+            ])
+          })
+        )
+      ])
+    ])
+  ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("tr", [
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("ID")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Position")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Date Posted")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Date Filled")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Time to Fill")])
+      ])
+    ])
+  }
+]
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {

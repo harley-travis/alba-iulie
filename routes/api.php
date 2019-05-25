@@ -37,3 +37,5 @@ Route::get('jobs/{id}/{jobid}', 'ApiController@getJobByID');
 
 // REPORTS
 Route::get('reports/jobVisits/{id}', 'ReportsController@getPageVisits');
+
+Route::get('reports/time-to-fill-jobs/{id}', 'ReportsController@getTimeToFillJobsReport');
