@@ -14466,13 +14466,14 @@ Vue.component('example-component', __webpack_require__(42));
 
 // Reports
 Vue.component('reports-component', __webpack_require__(45));
+Vue.component('pagevisits-component', __webpack_require__(75));
 
 // Jobs
 Vue.component('jobs-overview', __webpack_require__(48));
 Vue.component('create-job', __webpack_require__(54));
 
 var app = new Vue({
-  el: '#app'
+	el: '#app'
 });
 
 /***/ }),
@@ -48284,7 +48285,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
 
@@ -48326,58 +48326,50 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c(
+    "div",
+    { staticClass: "container" },
+    [
+      _c("p", [_vm._v("Select a report to run")]),
+      _vm._v(" "),
+      _vm._m(0),
+      _vm._v(" "),
+      _c("pagevisits-component")
+    ],
+    1
+  )
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "container" }, [
-      _c("div", { staticClass: "row justify-content-center" }, [
-        _c("div", { staticClass: "col-md-8" }, [
-          _c("div", { staticClass: "card card-default" }, [
-            _c("div", { staticClass: "card-header" }),
+    return _c(
+      "form",
+      { staticClass: "form-inline", attrs: { action: "", method: "post" } },
+      [
+        _c(
+          "select",
+          { staticClass: "form-control", attrs: { name: "action" } },
+          [
+            _c("option", { attrs: { value: "" } }, [
+              _vm._v("-- Select Report --")
+            ]),
             _vm._v(" "),
-            _c("div", { staticClass: "card-body" }, [
-              _c("p", [_vm._v("Select a report to run")]),
-              _vm._v(" "),
-              _c(
-                "form",
-                {
-                  staticClass: "form-inline",
-                  attrs: { action: "", method: "post" }
-                },
-                [
-                  _c(
-                    "select",
-                    { staticClass: "form-control", attrs: { name: "action" } },
-                    [
-                      _c("option", { attrs: { value: "" } }, [
-                        _vm._v("-- Select Report --")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "0" } }, [
-                        _vm._v("Time To Fill Job")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "1" } }, [
-                        _vm._v("Job Visits")
-                      ])
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c("input", {
-                    staticClass: "btn btn-primary",
-                    attrs: { type: "submit", value: "Run Report" }
-                  })
-                ]
-              )
-            ])
-          ])
-        ])
-      ])
-    ])
+            _c("option", { attrs: { value: "0" } }, [
+              _vm._v("Time To Fill Job")
+            ]),
+            _vm._v(" "),
+            _c("option", { attrs: { value: "1" } }, [_vm._v("Job Visits")])
+          ]
+        ),
+        _vm._v(" "),
+        _c("input", {
+          staticClass: "btn btn-primary",
+          attrs: { type: "submit", value: "Run Report" }
+        })
+      ]
+    )
   }
 ]
 render._withStripped = true
@@ -49052,6 +49044,194 @@ if (false) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 61 */,
+/* 62 */,
+/* 63 */,
+/* 64 */,
+/* 65 */,
+/* 66 */,
+/* 67 */,
+/* 68 */,
+/* 69 */,
+/* 70 */,
+/* 71 */,
+/* 72 */,
+/* 73 */,
+/* 74 */,
+/* 75 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(2)
+/* script */
+var __vue_script__ = __webpack_require__(76)
+/* template */
+var __vue_template__ = __webpack_require__(77)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\reports\\PageVisits.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-4ff1f3eb", Component.options)
+  } else {
+    hotAPI.reload("data-v-4ff1f3eb", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 76 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+
+	data: function data() {
+		return {
+			id: [],
+			position: [],
+			visits: [],
+			date_created: [],
+			date_filled: []
+		};
+	},
+	created: function created() {
+		// this.getLiveStreams()
+	},
+
+	watch: {
+		// in order to use the same componenet with different data points
+		// we need to create a watch to see if there is a change in the code
+		// the id is referenced in the data()
+		// '$route' (to, from) {
+		// this.id = to.params.id
+		// this.getLiveStreams()
+		// }
+	},
+	methods: {
+		getPageVisits: function getPageVisits() {}
+	}
+});
+
+/***/ }),
+/* 77 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _vm._m(0)
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "container" }, [
+      _c("section", { attrs: { id: "job-visits" } }, [
+        _c("table", { staticClass: "table table-borderless" }, [
+          _c("thead", [
+            _c("tr", [
+              _c("th", { attrs: { scope: "col" } }, [_vm._v("ID")]),
+              _vm._v(" "),
+              _c("th", { attrs: { scope: "col" } }, [_vm._v("Position")]),
+              _vm._v(" "),
+              _c("th", { attrs: { scope: "col" } }, [_vm._v("Visits")]),
+              _vm._v(" "),
+              _c("th", { attrs: { scope: "col" } }, [_vm._v("Date Created")]),
+              _vm._v(" "),
+              _c("th", { attrs: { scope: "col" } }, [_vm._v("Date Filled")])
+            ])
+          ]),
+          _vm._v(" "),
+          _c("tbody", [
+            _c("tr", [
+              _c("th", { attrs: { scope: "row" } }, [_vm._v("1")]),
+              _vm._v(" "),
+              _c("td"),
+              _vm._v(" "),
+              _c("td"),
+              _vm._v(" "),
+              _c("td"),
+              _vm._v(" "),
+              _c("td")
+            ])
+          ])
+        ])
+      ])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-4ff1f3eb", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);

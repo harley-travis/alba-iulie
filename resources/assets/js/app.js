@@ -26,6 +26,10 @@ Vue.component(
 	'reports-component', 
 	require('./components/reports/Reports.vue')
 );
+Vue.component(
+	'pagevisits-component', 
+	require('./components/reports/PageVisits.vue')
+);
 
 // Jobs
 Vue.component(
