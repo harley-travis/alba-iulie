@@ -19,9 +19,8 @@
 			2) pull in the component with that report
 			2)a) how to import a component if something is selected
 
-
 		-->
-		
+
     </div>
 </template>
 
