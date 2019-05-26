@@ -12,7 +12,7 @@
 				<li class="breadcrumb-item active">Positions Overview</li>
 			</ol>
 		</div>
-		<div class="col-md-7 align-self-center right">
+		<div class="col-md-7 align-self-center text-right">
 			<a href="{{ route('jobs.overview') }}" class="btn waves-effect waves-light btn-outline-info">Active Positions</a>
 			<a href="{{ route('jobs.create') }}" class="btn waves-effect waves-light btn-outline-success">Add Position</a>
 		</div>

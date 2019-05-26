@@ -13,7 +13,7 @@
 				<li class="breadcrumb-item active">Edit Position</li>
 			</ol>
 		</div>
-		<div class="col-md-7 align-self-center">
+		<div class="col-md-7 align-self-center text-right">
     <form action="{{ route('jobs.update') }}" method="post">
     <button type="submit" class="btn btn-success">Save Job</button>
 		</div>

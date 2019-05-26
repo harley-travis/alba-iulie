@@ -16,7 +16,7 @@
 				<li class="breadcrumb-item active">Edit Employee Profile</li>
 			</ol>
 		</div>
-		<div class="col-md-7 align-self-center right">
+		<div class="col-md-7 align-self-center text-right">
         <form action="{{ route('employees.update') }}" method="post">
             <button type="submit" class="btn btn-success">Save</button>
         </div>

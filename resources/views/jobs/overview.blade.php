@@ -12,9 +12,9 @@
 				<li class="breadcrumb-item active">Positions Overview</li>
 			</ol>
 		</div>
-		<div class="col-md-7 align-self-center right">
-			<a href="{{ route('jobs.archived') }}" class="btn waves-effect waves-light btn-outline-dark"><i class="fa fa-scroll-old"></i> Archived Positions</a>
-			<a href="{{ route('jobs.create') }}" class="btn waves-effect waves-light btn-outline-success"><i class="far fa-plus-circle"></i> Add Position</a>
+		<div class="col-md-7 align-self-center text-right">
+			<a href="{{ route('jobs.archived') }}" class="btn waves-effect waves-light btn-outline-dark">Archived Positions</a>
+			<a href="{{ route('jobs.create') }}" class="btn waves-effect waves-light btn-outline-success">Add Position</a>
 		</div>
 	</div>
 	<!-- ============================================================== -->
@@ -83,12 +83,5 @@
 	<div class="pagination-wrapper">
 		{!! $jobs->links() !!}
 	</div>
-
-	<!-- REMOVE THIS WHEN YOU FIGURE OUT YOUR NPM PROBLEM -->
-	<style>
-		.right {
-			text-align: right;
-		}
-	</style>
 	
 @endsection

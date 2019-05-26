@@ -13,7 +13,7 @@
                 <li class="breadcrumb-item active">Archived Applicants</li>
 			</ol>
 		</div>
-		<div class="col-md-7 align-self-center right">
+		<div class="col-md-7 align-self-center text-right">
         	<a href="{{ route('applicants.overview') }}" class="btn waves-effect waves-light btn-success">Active Applicants</a>
 		</div>
 	</div>
@@ -67,14 +67,9 @@
 		</div><!-- col-12 -->
 	</div><!-- row -->
 
-  <div class="pagination-wrapper">
+    <div class="pagination-wrapper">
 		{{ $applicants->links() }}
 	</div>
 
-	<style>
-		.right {
-			text-align: right;
-		}
-	</style>
 
 @endsection

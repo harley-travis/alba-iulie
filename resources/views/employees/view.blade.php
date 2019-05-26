@@ -16,7 +16,7 @@
 				<li class="breadcrumb-item active">{{ $employee->first_name }} {{ $employee->last_name }}</li>
 			</ol>
 		</div>
-		<div class="col-md-7 align-self-center right">
+		<div class="col-md-7 align-self-center text-right">
 
         @if(auth()->user()->permissions === 3)
             <a href="{{ route('employees.archive', ['id' => $employee->user_id ]) }}" class="btn waves-effect waves-light btn-outline-danger">Remove Employee</a>

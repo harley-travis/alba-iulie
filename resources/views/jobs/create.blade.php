@@ -113,6 +113,7 @@
           
             <input type="hidden" name="isActive" value="1">
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
+            
             <button type="submit" class="btn btn-success">Save Job</button>
 
           </form>

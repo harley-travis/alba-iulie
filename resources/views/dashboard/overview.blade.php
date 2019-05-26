@@ -12,7 +12,7 @@
 				<li class="breadcrumb-item active">Dashboard</li>
 			</ol>
 		</div>
-		<div class="col-md-7 align-self-center">
+		<div class="col-md-7 align-self-center text-right">
 			
 		</div>
 	</div>

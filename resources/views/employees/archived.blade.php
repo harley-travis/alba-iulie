@@ -13,7 +13,7 @@
 				<li class="breadcrumb-item active">Archived Employees</li>
 			</ol>
 		</div>
-		<div class="col-md-7 align-self-center right">
+		<div class="col-md-7 align-self-center text-right">
 			<a href="{{ route('employees.overview') }}" class="btn waves-effect waves-light btn-outline-success">Current Employees</a>
 		</div>
 	</div>

@@ -33,7 +33,7 @@
 				<button type="submit" class="btn btn-success">Apply</button>
 			</form>
 		</div> -->
-		<div class="col-sm-5 right">
+		<div class="col-sm-5 text-right">
 			<form action="{{ route('applicants.filterJob') }}" method="get" class="form-inline">    
 				<div class="form-group pr-2">
 					<label class="mr-sm-2 sr-only" for="job_id">Position</label>
@@ -49,7 +49,7 @@
 				<button type="submit" class="btn btn-success">Apply</button>
 			</form>
 		</div>
-		<div class="col-sm-2 right">
+		<div class="col-sm-2 text-right">
 			<a href="{{ route('applicants.archived') }}" class="btn waves-effect waves-light btn-outline-dark">Archived Applicants</a>
 		</div>
 	</div>

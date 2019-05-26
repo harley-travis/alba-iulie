@@ -12,7 +12,7 @@
 				<li class="breadcrumb-item active">Employees</li>
 			</ol>
 		</div>
-		<div class="col-md-7 align-self-center right">
+		<div class="col-md-7 align-self-center text-right">
 
 			@if(auth()->user()->permissions >= 3)
 			<a href="{{ route('employees.archived') }}" class="btn waves-effect waves-light btn-outline-dark">Archived Employees</a>

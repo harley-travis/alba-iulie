@@ -14,7 +14,7 @@
             <li class="breadcrumb-item active">{{ $applicant->first_name }} {{ $applicant->last_name }}</li>
         </ol>
     </div>
-    <div class="col-md-7 align-self-center right">
+    <div class="col-md-7 align-self-center text-right">
         
     </div>
 </div>
@@ -179,11 +179,6 @@
   </div>
 
   <style>
-		.right {
-            text-align: right;
-            float: right;
-            clear: both;
-        }
         .page-comments {
             padding: 60px 0;
         }
