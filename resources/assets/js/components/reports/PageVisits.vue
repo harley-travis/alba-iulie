@@ -10,6 +10,7 @@
 							<th scope="col">ID</th>
 							<th scope="col">Position</th>
 							<th scope="col">Page Visits</th>
+							<th scope="col">Last Date Viewed</th>
 							<th scope="col">Date Created</th>
 						</tr>
 					</thead>
@@ -19,7 +20,8 @@
 							<td>{{visit.id}}</td>
 							<td>{{visit.title}}</td>
 							<td>{{visit.visits}}</td>
-							<td>{{visit.created_at}}</td>
+							<td>{{ moment(visit.updated_at).format('MM-DD-YYYY') }}</td>
+							<td>{{ moment(visit.created_at).format('MM-DD-YYYY') }}</td>
 						</tr>
 
 					</tbody>
@@ -30,10 +32,14 @@
 </template>
 
 <script>
+
+	var moment = require('moment')
+
   export default {
 
 		data: function() {
 			return {
+				moment:moment,
 				visits: [],
 			}
 		},

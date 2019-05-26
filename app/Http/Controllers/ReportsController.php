@@ -30,7 +30,7 @@ class ReportsController extends Controller {
 
     $time = DB::table('jobs')
       ->leftJoin('job_visits', 'jobs.id', '=', 'job_visits.job_id')
-      ->where('job_visits.company_id', '=', '1')
+      ->where('job_visits.company_id', '=', $id)
       ->where('job_visits.date_filled', '!=', null)
       ->get();
 
@@ -42,7 +42,7 @@ class ReportsController extends Controller {
 
     $visits = DB::table('jobs')
       ->leftJoin('job_visits', 'jobs.id', '=', 'job_visits.job_id')
-      ->where('job_visits.company_id', '=', '1')
+      ->where('job_visits.company_id', '=', $id)
       ->where('jobs.isActive', '=', '1')
       ->where('job_visits.date_filled', '=', null)
       ->get();

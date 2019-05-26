@@ -19,9 +19,9 @@
 					<tr v-for="time in times">
 						<td>{{time.id}}</td>
 						<td>{{time.title}}</td>
-						<td>{{time.created_at}}</td>
-						<td>{{time.date_filled}}</td>
-                        <td>{{ time.created_at - time.date_filled }}</td>
+						<td>{{ moment(time.created_at).format('MM-DD-YYYY') }}</td>
+						<td>{{ moment(time.date_filled).format('MM-DD-YYYY') }}</td>
+                        <td>{{ moment([time.created_at]).diff(moment([time.date_filled]), 'days')  }} days</td>
 					</tr>
 
 				</tbody>
@@ -32,11 +32,16 @@
 </template>
 
 <script>
-  export default {
+
+    var moment = require('moment')
+
+    export default {
 
 		data: function() {
 			return {
-                times: []
+                moment:moment,
+                times: [],
+                timeToFill: '',
 			}
 		},
 		created() {
@@ -46,7 +51,7 @@
 		methods: {
 			getTimeToFillJobs(){
 				window.axios.get('/api/reports/time-to-fill-jobs/'+this.company).then(({ data }) => {
-					 this.times = data
+                    this.times = data                  
 				});
 			},
 		}
