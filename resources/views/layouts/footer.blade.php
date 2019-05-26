@@ -7,7 +7,7 @@
     <!-- Scripts -->
     <script src="{{ asset('js/jquery.3.2.0.min.js') }}"></script>
     <script src="{{ asset('js/popper.min.js') }}"></script>
-    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+    <!-- <script src="{{ asset('js/bootstrap.min.js') }}"></script> -->
     <script src="{{ asset('js/perfect-scrollbar.jquery.min.js') }}"></script>
     <script src="{{ asset('js/waves.js') }}"></script>
     <script src="{{ asset('js/sidebarmenu.js') }}"></script>
@@ -21,7 +21,6 @@
 
     <!-- register WYSIWYG editors -->
     <script>
-      // jobs
       CKEDITOR.replace( 'description' );
       CKEDITOR.replace( 'work' );
       CKEDITOR.replace( 'qualifications' );
