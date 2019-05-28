@@ -33,7 +33,7 @@
         <div class="card">
             <div class="card-body">
                 <h2>Personal Information</h2>
-
+                
                 <div class="form-group">
                     <label for="avatar">Upload Picture</label>
                     <input type="file" class="form-control-file" id="avatar" name="avatar">

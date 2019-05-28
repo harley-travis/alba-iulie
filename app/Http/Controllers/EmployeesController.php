@@ -112,7 +112,7 @@ class EmployeesController extends Controller {
         ]);
         $employeeInfo->save();   
 
-        return redirect()->route('employees.overview')->with('info', 'Congratulations! '.$employee->first_name.' has joined the roster');
+        return redirect()->route('employees.overview')->with('info', 'Congratulations! '.$employee->first_name.' has joined the roster. Their password will be their lastname + 1234. EX: "Stark1234". Encourge the user to change their password when they first sign in.');
 
     }
 
