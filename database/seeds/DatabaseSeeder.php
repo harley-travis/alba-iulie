@@ -23,24 +23,7 @@ class DatabaseSeeder extends Seeder
             'password' => bcrypt('test'),
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
-        ]);
-
-        DB::table('users')->insert([
-            'company_id' => '2',
-            'name' => 'Peter Parker',
-            'email' =>'peter@gmail.com',
-            'password' => bcrypt('test'),
-            'created_at' => Carbon::now(),
-            'updated_at' => Carbon::now(),
-        ]);
-
-        DB::table('users')->insert([
-            'company_id' => '3',
-            'name' => 'Travis Harley',
-            'email' =>'travis@gmail.com',
-            'password' => bcrypt('test'),
-            'created_at' => Carbon::now(),
-            'updated_at' => Carbon::now(),
+            'avatar' => '/companies/1/employees/tony-stark.jpg',
         ]);
 
         DB::table('users')->insert([
@@ -50,7 +33,29 @@ class DatabaseSeeder extends Seeder
             'password' => bcrypt('test'),
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
+            'avatar' => '/companies/1/employees/steve-rogers.jpg',
         ]);
+
+        DB::table('users')->insert([
+            'company_id' => '2',
+            'name' => 'Peter Parker',
+            'email' =>'peter@gmail.com',
+            'password' => bcrypt('test'),
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
+            'avatar' => '/companies/2/employees/peter-parker.jpg',
+        ]);
+
+        DB::table('users')->insert([
+            'company_id' => '3',
+            'name' => 'Travis Harley',
+            'email' =>'travis@gmail.com',
+            'password' => bcrypt('test'),
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
+            'avatar' => '/companies/3/employees/travis-harley.jpg',
+        ]);
+
 
         // JOBS
         $this->call(JobTableSeeder::class);   

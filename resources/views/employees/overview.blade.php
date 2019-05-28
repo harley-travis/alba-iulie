@@ -44,8 +44,7 @@
 						<table class="table table-hover">
 							<thead>
 								<tr>
-									<th>Action</th>
-									<th>Employee ID</th>
+									<th></th>
 									<th>Name</th>
 									<th>Department</th>
 									<th>Position</th>
@@ -57,20 +56,16 @@
 						
 								@foreach($employees as $employee)
 									<tr>
-										<td>
-											<div class="form-group">
-												<div class="checkbox checkbox-success">
-													<input id="checkbox-{{$employee->id}}" type="checkbox">
-													<label for="checkbox-{{$employee->id}}">  </label>
-												</div>
-											</div>
+										<td class="align-middle">
+											<a href="{{ route('employees.view', ['id' => $employee->id ]) }}">
+												<div class="employee-avatar-overview" style="background-image:url({{ $employee->avatar }})"></div>
+											</a>
 										</td>
-										<td>{{ $employee->id}}</td>
-										<td><a href="{{ route('employees.view', ['id' => $employee->id ]) }}">{{ $employee->first_name }} {{ $employee->last_name}}</a></td>
-										<td>{{ $employee->department}}</td>
-										<td>{{ $employee->position}}</td>
-										<td>{{ $employee->work_phone }} ext:{{ $employee->ext}}</td>
-										<td><a href="{{ route('employees.view', ['id' => $employee->id ]) }}" class="btn waves-effect waves-light btn-outline-info">View Employee</a></td>
+										<td class="align-middle"><a href="{{ route('employees.view', ['id' => $employee->id ]) }}">{{ $employee->first_name }} {{ $employee->last_name}}</a></td>
+										<td class="align-middle">{{ $employee->department}}</td>
+										<td class="align-middle">{{ $employee->position}}</td>
+										<td class="align-middle">{{ $employee->work_phone }} ext:{{ $employee->ext}}</td>
+										<td class="align-middle"><a href="{{ route('employees.view', ['id' => $employee->id ]) }}" class="btn waves-effect waves-light btn-outline-info">View Employee</a></td>
 									</tr>
 								@endforeach
 								
@@ -86,10 +81,4 @@
 		{!! $employees->links() !!}
 	</div>
 	
-	<style>
-		.right {
-			text-align: right;
-		}
-	</style>
-
 @endsection

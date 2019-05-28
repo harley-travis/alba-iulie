@@ -75,14 +75,14 @@
             </div>
           
             <div class="form-group">
-            <label for="compensationAmount">Compensation Amount</label>
-              <div class="input-group">
-                <div class="input-group-prepend">
-                  <div class="input-group-text">$</div>
+              <label for="compensationAmount">Compensation Amount</label>
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <div class="input-group-text">$</div>
+                  </div>
+                  <input type="text" class="form-control form-control-lg" id="compensationAmount" name="compensationAmount" placeholder="65,000">
                 </div>
-                <input type="text" class="form-control form-control-lg" id="compensationAmount" name="compensationAmount" placeholder="65,000">
               </div>
-            </div>
 
             <div class="form-group">
               <label for="closeDate">Close Date</label>
@@ -109,7 +109,7 @@
               <textarea name="skills" id="skills"></textarea>
             </div>
             
-          </div>
+          
           
             <input type="hidden" name="isActive" value="1">
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
@@ -117,6 +117,7 @@
             <button type="submit" class="btn btn-success">Save Job</button>
 
           </form>
+          </div>
         </div>
       </div>
     </div>
@@ -124,14 +125,7 @@
 
 <!-- todo: style the tabs section -->
 <style>
-.nav-tabs .nav-link.active {
-    background-color: #eee;
-    border-color: transparent;
-}
-#myTabContent {
-    background: #EEE !important;
-    padding: 20PX;
-}
+
 </style>
 
 

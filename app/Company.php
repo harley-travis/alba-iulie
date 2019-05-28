@@ -8,7 +8,8 @@ class Company extends Model {
 
      protected $fillable = [
         'name', 
-        'bio'
+        'bio',
+        'logo',
     ];
 
     //protected $primaryKey = 'id';

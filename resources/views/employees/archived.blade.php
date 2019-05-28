@@ -82,11 +82,4 @@
 		{!! $employees->links() !!}
 	</div>
 
-	<style>
-		.right {
-			text-align: right;
-		}
-	</style>
-	
-
 @endsection

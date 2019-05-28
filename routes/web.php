@@ -89,16 +89,6 @@ Route::group(['prefix' => 'applicants'], function() {
 
 });
 
-Route::group(['prefix' => 'billing'], function() {
-	$c = 'EmployeeController';
-
-	Route::get('', [
-		'uses'	=> "$c@getEmployees",
-		'as'	=> 'employees.overview'
-	]);
-
-});
-
 Route::group(['prefix' => 'employees'], function() {
 	$c = 'EmployeesController';
 
@@ -194,16 +184,6 @@ Route::group(['prefix' => 'jobs'], function() {
 
 });
 
-Route::group(['prefix' => 'profile'], function() {
-	$c = 'Profile';
-
-	Route::get('', [
-		'uses'	=> "$c@getProfile",
-		'as'	=> 'profile.overview'
-	]);
-
-});
-
 Route::group(['prefix' => 'settings'], function() {
 	$c = 'SettingController';
 
@@ -220,6 +200,26 @@ Route::group(['prefix' => 'settings'], function() {
   Route::get('add', [
 		'uses'	=> "$c@createIPBlock",
 		'as'	=> 'settings.store'
+	]);
+
+	Route::get('profile', [
+		'uses'	=> "$c@getProfile",
+		'as'	=> 'settings.profile'
+	]);
+
+	Route::post('company', [
+		'uses' => "$c@updateCompanySettings",
+		'as'   => 'settings.company'
+	]);
+
+});
+
+Route::group(['prefix' => 'billing'], function() {
+	$c = 'SettingController';
+
+	Route::get('', [
+		'uses'	=> "$c@getBilling",
+		'as'	=> 'billing.overview'
 	]);
 
 });

@@ -178,10 +178,4 @@
         </div>
   </div>
 
-  <style>
-        .page-comments {
-            padding: 60px 0;
-        }
-	</style>
-
 @endsection

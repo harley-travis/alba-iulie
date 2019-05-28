@@ -50,7 +50,9 @@
                 <!-- ============================================================== -->
                 <li class="nav-item dropdown u-pro">
                     <a class="nav-link dropdown-toggle waves-effect waves-dark profile-pic" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <img src="{{ '/images/users/1.jpg' }}" alt="user" class="" /> 
+                        <div class="top-avatar-wrapper align-middle">
+                            <div class="employee-avatar-overview" style="background-image:url({{ auth()->user()->avatar }})"></div>
+                        </div>
                         <span class="hidden-md-down"> {{auth()->user()->name}} &nbsp;</span> 
                     </a>
 
@@ -58,17 +60,17 @@
                         <ul class="dropdown-user">
                             <li>
                                 <div class="dw-user-box">
-                                    <div class="u-img"><img src="../assets/images/users/1.jpg" alt="user"></div>
+                                    <div class="u-img"><div class="employee-avatar-overview" style="background-image:url({{ auth()->user()->avatar }})"></div></div>
                                     <div class="u-text">
                                         <h4> {{auth()->user()->name}}</h4>
-                                        <p class="text-muted"> {{auth()->user()->email}} </p><a href="pages-profile.html" class="btn btn-rounded btn-danger btn-sm">View Profile</a></div>
+                                        <p class="text-muted"> {{auth()->user()->email}} </p><a href="{{  route('employees.view', ['id' => auth()->user()->id ]) }}" class="btn btn-rounded btn-danger btn-sm">View Profile</a></div>
                                 </div>
                             </li>
                             <li role="separator" class="divider"></li>
-                            <li><a href="#"><i class="ti-user"></i> My Profile</a></li>
+                            <li><a href="{{  route('employees.view', ['id' => auth()->user()->id ]) }}"><i class="ti-user"></i> My Profile</a></li>
                             @if(auth()->user()->permissions === 3)
                             <li><a href="{{ route('settings.overview') }}"><i class="ti-user"></i> Settings</a></li>
-                            <li><a href="#"><i class="ti-settings"></i> Billing</a></li>
+                            <li><a href="{{ route('billing.overview') }}"><i class="ti-settings"></i> Billing</a></li>
                             <li role="separator" class="divider"></li>
                             <li><a href="#"><i class="ti-email"></i> Submit a Ticket</a></li>
                             @endif

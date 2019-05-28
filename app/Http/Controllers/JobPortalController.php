@@ -34,49 +34,49 @@ class JobPortalController extends Controller {
                                                                                                                                                                                                                                                                                       
     public function applyToJob(Request $request) {
 
-            // validate 
-            //$this->validate($request, [
-            //    'title'                 => 'required|min:5',
-            //   'compensationAmount'    => 'required|min:1'
-            //]);
+        // validate 
+        //$this->validate($request, [
+        //    'title'                 => 'required|min:5',
+        //   'compensationAmount'    => 'required|min:1'
+        //]);
 
-            // validate file contents
-            // https://www.5balloons.info/upload-profile-picture-avatar-laravel-5-authentication/ 
+        // validate file contents
+        // https://www.5balloons.info/upload-profile-picture-avatar-laravel-5-authentication/ 
 
-            // upload resume
-            $file = $request->resume->storeAs('companies/'.$request->input('company_id').'/resumes', $request->input('last_name').'_'.$request->input('first_name').'_'.time().'_resume.pdf', 'public');
+        // upload resume
+        $file = $request->resume->storeAs('companies/'.$request->input('company_id').'/resumes', $request->input('last_name').'_'.$request->input('first_name').'_'.time().'_resume.pdf', 'public');
 
-            $applicant = new Applicant([
-                'first_name'            => $request->input('first_name'), 
-                'last_name'             => $request->input('last_name'), 
-                'email'                 => $request->input('email'), 
-                'phone'                 => $request->input('phone'),
-                'gender'                => $request->input('gender'),
-                'ethnicity'             => $request->input('ethnicity'),
-                'veteran'               => $request->input('veteran'),
-                'disability'            => $request->input('disability'), 
-                'is_active'             => 1, 
-                'date_applied'          => Carbon::now(), 
-                'resume'                => $file,
-                'job_id'                => $request->input('job_id'),
-                'company_id'            => $request->input('company_id'),
-            ]);
-    
-            $applicant->save();
-            $applicant->jobs()->attach($request->input('job_id'));
+        $applicant = new Applicant([
+            'first_name'            => $request->input('first_name'), 
+            'last_name'             => $request->input('last_name'), 
+            'email'                 => $request->input('email'), 
+            'phone'                 => $request->input('phone'),
+            'gender'                => $request->input('gender'),
+            'ethnicity'             => $request->input('ethnicity'),
+            'veteran'               => $request->input('veteran'),
+            'disability'            => $request->input('disability'), 
+            'is_active'             => 1, 
+            'date_applied'          => Carbon::now(), 
+            'resume'                => $file,
+            'job_id'                => $request->input('job_id'),
+            'company_id'            => $request->input('company_id'),
+        ]);
 
-            $applicant_profile = new ApplicantProfile ([
-                'applicant_id'          => $applicant->id,
-                'stage'                 => 0, 
-                'interview_one'         => null,
-                'interview_two'         => null,
-                'interview_three'       => null,
-            ]);
-            $applicant_profile->save();
-         
-            return redirect()
-                ->back()
-                ->with('info', 'Good news, you applied!');
+        $applicant->save();
+        $applicant->jobs()->attach($request->input('job_id'));
+
+        $applicant_profile = new ApplicantProfile ([
+            'applicant_id'          => $applicant->id,
+            'stage'                 => 0, 
+            'interview_one'         => null,
+            'interview_two'         => null,
+            'interview_three'       => null,
+        ]);
+        $applicant_profile->save();
+        
+        return redirect()
+            ->back()
+            ->with('info', 'Good news, you applied!');
 
     }
 

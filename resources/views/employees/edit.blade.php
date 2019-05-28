@@ -2,10 +2,8 @@
 
 @section('content')
 <!-- ============================================================== -->
-	<!-- Bread crumb and right sidebar toggle -->
-	<!-- ============================================================== -->
-
-    
+<!-- Bread crumb and right sidebar toggle -->
+<!-- ============================================================== -->
 
 	<div class="row page-titles">
 		<div class="col-md-5 align-self-center">
@@ -17,8 +15,7 @@
 			</ol>
 		</div>
 		<div class="col-md-7 align-self-center text-right">
-        <form action="{{ route('employees.update') }}" method="post">
-            <button type="submit" class="btn btn-success">Save</button>
+
         </div>
 	</div>
 
@@ -28,13 +25,17 @@
 
 @include('layouts.errors')
 
-
 <div class="row">
     <div class="col-12">
-
+    <form action="{{ route('employees.update') }}" method="post" enctype="multipart/form-data">
         <div class="card">
             <div class="card-body">
                 <h2>Personal Information</h2>
+
+                <div class="form-group">
+                    <label for="avatar">Upload Picture</label>
+                    <input type="file" class="form-control-file" id="avatar" name="avatar">
+                </div>
 
                 <div class="form-group">
                     <label for="first_name">First Name</label>
@@ -325,36 +326,13 @@
                     <input type="hidden" name="active" value="1">
                     <input type="hidden" name="id" value="{{ $employee->id }}">
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                </form>
+                    <button type="submit" class="btn btn-success">Save Job</button>
 
             </div><!-- card-body -->
         </div><!-- card -->
-
+        </form>
     </div><!-- col-12 -->
 </div><!-- row -->
 
-
-<style>
-
-.employee-card {
-    display: block;
-    padding: 15px 0;
-}
-
-span.employee-label {
-    font-weight: bold;
-    display: block;
-}
-
-.red {
-    color: red;
-}
-
-.right {
-    text-align: right;
-}
-
-</style>
-<!-- REMOVE THIS WHEN YOU FIGURE OUT YOUR NPM PROBLEM -->
 
 @endsection

@@ -30,6 +30,28 @@ class EmployeeInfoTableSeeder extends Seeder
             'zip' => '705412',
             'country' => 'USA',
             'employee_id' => '1',
+            
+        ]);
+
+        DB::table('employee_infos')->insert([
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
+            'birthday' => '1989-11-11',
+            'married' => '0',
+            'spouse_name' => 'Natasha Romanoff',
+            'email' => 'steve@gmail.com',
+            'phone' => '4358014587',
+            'emergency_contact' => 'Natasha Romanoff',
+            'emergency_contact_phone' => '6669998547',
+            'address_1' => '123 W 432 S',
+            'address_2' => '',
+            'address_3' => '',
+            'state' => 'California',
+            'city' => 'Sacramento',
+            'zip' => '90210',
+            'country' => 'USA',
+            'employee_id' => '2',
+            
         ]);
 
         DB::table('employee_infos')->insert([
@@ -49,7 +71,8 @@ class EmployeeInfoTableSeeder extends Seeder
             'city' => 'Queens',
             'zip' => '705687',
             'country' => 'USA',
-            'employee_id' => '2',
+            'employee_id' => '3',
+            
         ]);
 
 
@@ -70,29 +93,9 @@ class EmployeeInfoTableSeeder extends Seeder
             'city' => 'Hyrule city',
             'zip' => '458745',
             'country' => 'USA',
-            'employee_id' => '3',
-        ]);
-
-        DB::table('employee_infos')->insert([
-            'created_at' => Carbon::now(),
-            'updated_at' => Carbon::now(),
-            'birthday' => '1989-11-11',
-            'married' => '0',
-            'spouse_name' => 'Natasha Romanoff',
-            'email' => 'steve@gmail.com',
-            'phone' => '4358014587',
-            'emergency_contact' => 'Natasha Romanoff',
-            'emergency_contact_phone' => '6669998547',
-            'address_1' => '123 W 432 S',
-            'address_2' => '',
-            'address_3' => '',
-            'state' => 'California',
-            'city' => 'Sacramento',
-            'zip' => '90210',
-            'country' => 'USA',
             'employee_id' => '4',
+            
         ]);
-
         
         //factory(App\EmployeeInfo::class, 20)->create();
 

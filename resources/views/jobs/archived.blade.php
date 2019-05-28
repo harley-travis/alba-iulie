@@ -84,11 +84,4 @@
 		{!! $jobs->links() !!}
 	</div>
 
-	<!-- REMOVE THIS WHEN YOU FIGURE OUT YOUR NPM PROBLEM -->
-	<style>
-		.right {
-			text-align: right;
-		}
-	</style>
-	
 @endsection

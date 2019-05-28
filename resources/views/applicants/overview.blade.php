@@ -128,12 +128,4 @@
 		{{ $applicants->links() }}
 	</div>	
 
-	<style>
-		.right {
-			text-align: right;
-			float: right;
-			clear: both;
-		}
-	</style>
-
 @endsection

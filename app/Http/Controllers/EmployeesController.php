@@ -5,14 +5,14 @@ namespace App\Http\Controllers;
 use DB;
 use Auth;
 use App\User;
-use Carbon\Carbon;
 use App\Employee;
 use App\EmployeeInfo;
 use App\Company;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
-use Illuminate\Http\Requests;
 use Illuminate\Session\Store;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 
 class EmployeesController extends Controller {
@@ -51,16 +51,20 @@ class EmployeesController extends Controller {
 		// 	'compensationAmount'    => 'required|min:1'
         // ]);
 
+        $company_id = Auth::user()->company_id;
         $company =  Company::find(Auth::user()->company_id)->firstOrFail();
+        
+        $avatar = $request->avatar->storeAs('companies/'.$company_id.'/employees', $request->input('last_name').'_'.$request->input('first_name').'_avatar_'.time().'.png', 'public');
 
         $user = new User([
-            'name' => $request->input('first_name').' '.$request->input('last_name'),
-            'email' => $request->input('work_email'),
-            'company_id' => $company->id,
-            'password' => Hash::make($request->input('last_name').'1234'),
-            'created_at' => Carbon::now(),
-            'updated_at' => Carbon::now(),
-            'permissions' => $request->input('permissions'),
+            'name'           => $request->input('first_name').' '.$request->input('last_name'),
+            'email'         => $request->input('work_email'),
+            'company_id'    => $company->id,
+            'password'      => Hash::make($request->input('last_name').'1234'),
+            'created_at'    => Carbon::now(),
+            'updated_at'    => Carbon::now(),
+            'permissions'   => $request->input('permissions'),
+            'avatar'        => '/'.$avatar,
         ]);
         $user->save();
 
@@ -85,6 +89,7 @@ class EmployeesController extends Controller {
             'date_hired'            => $request->input('date_hired'),
             'date_left'             => null,
             'active'                => $request->input('active'),
+            'avatar'                => '/'.$avatar,
         ]);
         $employee->save();   
 
@@ -103,7 +108,7 @@ class EmployeesController extends Controller {
             'state'                     => $request->input('state'),
             'city'                      => $request->input('city'),
             'zip'                       => $request->input('zip'),
-            'country'                   => $request->input('country'),
+            'country'                   => $request->input('country'), 
         ]);
         $employeeInfo->save();   
 
@@ -156,6 +161,8 @@ class EmployeesController extends Controller {
         //     'title' => 'required|min:5',
         //     'compensationAmount' => 'required|min:1'
         // ]);
+
+        $company_id = Auth::user()->company_id;
     
         // update the employee table
         $employee = Employee::find($request->input('id'));
@@ -175,6 +182,8 @@ class EmployeesController extends Controller {
         $employee->date_hired = $request->input('date_hired');
         $employee->date_left = $request->input('date_left');
         $employee->active = $request->input('active');
+        $avatar = $request->avatar->storeAs('companies/'.$company_id.'/employees', $request->input('last_name').'_'.$request->input('first_name').'_avatar_'.time().'.png', 'public');
+        $employee->avatar = '/'.$avatar;
 
         $employee->save();
 
@@ -185,7 +194,8 @@ class EmployeesController extends Controller {
         // update the users table
         $user = User::find($employee->user_id);
         $user->permissions = $request->input('permissions');
-        
+        $user->avatar = '/'.$avatar;
+
         $user->save();
 
         // update the employee info table

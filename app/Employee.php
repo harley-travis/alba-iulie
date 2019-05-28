@@ -28,7 +28,7 @@ class Employee extends Model {
         'date_hired',
         'date_left',
         'active',
-
+        'avatar',
     ];
 
     public function company() {
