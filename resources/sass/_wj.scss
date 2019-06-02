@@ -1,0 +1,85 @@
+.current-logo {
+    width: 100%;
+    max-width: 150px;
+}
+
+xmp {
+    color: red;
+    background-color: #fafafa;
+    -webkit-box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.1);
+    box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.1);
+}
+
+.right {
+    text-align: right;
+    float: right;
+    clear: both;
+}
+
+.page-comments {
+    padding: 60px 0;
+}
+
+.employee-card {
+    display: block;
+    padding: 15px 0;
+}
+
+span.employee-label {
+    font-weight: bold;
+    display: block;
+}
+
+.red {
+    color: red;
+}
+
+.right {
+    text-align: right;
+}
+
+.nav-tabs .nav-link.active {
+    background-color: #eee;
+    border-color: transparent;
+}
+#myTabContent {
+    background: #EEE !important;
+    padding: 20PX;
+}
+
+.employee-avatar {
+    width: 100%;
+    max-width: 300px;
+    border-radius: 50%;
+}
+
+.employee-avatar-profile {
+    vertical-align: middle;
+    width: 300px;
+    height: 300px;
+    background-position: 50% center;
+    border-radius: 50%;
+    background-size: cover;
+}
+
+.employee-avatar-overview {
+    vertical-align: middle;
+    width: 50px;
+    height: 50px;
+    background-position: 50% center;
+    border-radius: 50%;
+    background-size: cover;
+}
+
+ul.employee-data {
+    list-style: none;
+    padding-left: 0;
+}
+
+li.employee-info {
+    padding-bottom: 5px;
+}
+
+.top-avatar-wrapper {
+    display: inline-block;
+}

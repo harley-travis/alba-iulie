@@ -17,10 +17,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-// Setup
-// Add route
-// Add function to ApiController
-
 // get all jobs
 //Route::get('jobs', 'ApiController@index');
 

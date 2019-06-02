@@ -27,7 +27,7 @@
 					
 					<!-- Load the VueJS -->
 					<reports-component company="{{$company_id}}"></reports-component>
-
+					
 				</div>
 			</div>
 		</div>

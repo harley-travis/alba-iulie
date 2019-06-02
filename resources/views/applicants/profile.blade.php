@@ -34,7 +34,7 @@
 			<div class="card">
 				<div class="card-body">
 
-                    <div class="row mx-md-n5">
+                    <div class="row">
                         <div class="col md-5">
                             <div class="">
                                 <h3 class="text-themecolor">{{ $applicant->first_name }} {{ $applicant->last_name }}</h3>

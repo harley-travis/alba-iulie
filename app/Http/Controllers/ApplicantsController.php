@@ -34,7 +34,7 @@ class ApplicantsController extends Controller {
                 ->where('company_id', '=', Auth::user()->company_id)
                 ->where('is_active', '=', '1')
                 ->where('stage', '<', '7')
-                ->orderBy('applicants.created_at', 'dsc')
+                ->orderBy('applicants.created_at', 'desc')
                 ->paginate(15);
 
             $positions = Company::find(Auth::user()->company_id)

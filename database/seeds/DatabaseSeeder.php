@@ -3,10 +3,10 @@
 use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 
-class DatabaseSeeder extends Seeder
-{
+class DatabaseSeeder extends Seeder {
+
     /**
-     * Run the database seeds.
+     * Seed the application's database.
      *
      * @return void
      */
@@ -77,7 +77,7 @@ class DatabaseSeeder extends Seeder
 
         // REPORTS
         $this->call(ReportTableSeeder::class);
-        
+
         // seed the pivot table DON' DELETE!
         // $jobs = App\Job::all();
         // App\Applicant::all()->each(function ($applicant) use ($jobs) { 
@@ -85,6 +85,7 @@ class DatabaseSeeder extends Seeder
         //         $jobs->random(rand(1, 3))->pluck('id')->toArray()
         //     ); 
         // });
-      
+
+        // $this->call(UsersTableSeeder::class);
     }
 }
