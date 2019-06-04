@@ -20,6 +20,7 @@ class User extends Authenticatable
         'name', 
         'email', 
         'password', 
+        'stripe_id',
         'company_id', 
         'permissions', 
         'avatar'

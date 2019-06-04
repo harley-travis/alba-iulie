@@ -27,6 +27,8 @@
 
     <!-- todo: download this file and have a hard copy do not use CDN -->
     <script src="https://cdn.ckeditor.com/4.9.2/standard/ckeditor.js"></script>
+    <script src="https://js.stripe.com/v3/"></script>
+    
 </head>
 
 <body class="fix-header fix-sidebar card-no-border">

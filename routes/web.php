@@ -212,11 +212,16 @@ Route::group(['prefix' => 'settings'], function() {
 });
 
 Route::group(['prefix' => 'billing'], function() {
-	$c = 'SettingController';
+	$c = 'BillingController';
 
 	Route::get('', [
-		'uses'	=> "$c@getBilling",
+		'uses'	=> "$c@index",
 		'as'	=> 'billing.overview'
+	]);
+
+	Route::post('subscribe', [
+		'uses' => "$c@createCustomer",
+		'as'	=> 'billing.subscribe'
 	]);
 
 });

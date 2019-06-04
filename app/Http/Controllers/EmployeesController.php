@@ -187,10 +187,6 @@ class EmployeesController extends Controller {
 
         $employee->save();
 
-        /**
-         * LEFT HERE. GETTING A PROBLEM WHEN EDITING THE USER PERMISSIONS ON THE EMPLOYEE EDIT USER PAGE
-         */
-
         // update the users table
         $user = User::find($employee->user_id);
         $user->permissions = $request->input('permissions');
