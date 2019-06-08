@@ -34,4 +34,7 @@ Route::get('jobs/{id}/{jobid}', 'ApiController@getJobByID');
 // REPORTS
 Route::get('reports/jobVisits/{id}', 'ReportsController@getPageVisits');
 
+// RETREIVE CC NUMBERS
+Route::get('billing/retrieveCards/{id}', 'BillingController@listCards');
+
 Route::get('reports/time-to-fill-jobs/{id}', 'ReportsController@getTimeToFillJobsReport');

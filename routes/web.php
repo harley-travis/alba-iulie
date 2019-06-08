@@ -224,6 +224,16 @@ Route::group(['prefix' => 'billing'], function() {
 		'as'	=> 'billing.subscribe'
 	]);
 
+	Route::post('createCard', [
+		'uses' => "$c@createCard",
+		'as'	=> 'billing.createCard'
+	]);
+
+	Route::post('createACH', [
+		'uses' => "$c@createACH",
+		'as'	=> 'billing.createACH'
+	]);
+
 });
 
 Route::group(['prefix' => 'reports'], function() {
