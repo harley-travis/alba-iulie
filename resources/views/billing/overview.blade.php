@@ -56,14 +56,14 @@
 
 					<h2 class="text-themecolor py-4">Payment Information</h2>
 
-					@foreach( $cards as $card)
+					@foreach( $cards as $card )
 
 						****{{ $card->last4 }}
 						{{ $card->brand }}
 
 					@endforeach
 
-					<a href="{{ route('billing.payment') }}" class="btn btn-primary">Change Plan</a>
+					<a href="{{ route('billing.payment') }}" class="btn btn-primary">Manage Payments</a>
 
 				</div>
 			</div>
@@ -77,7 +77,26 @@
 
 					<h2 class="text-themecolor py-4">Billing Information</h2>
 
-
+					<table class="table table-borderless">
+						<thead>
+							<tr>
+								<th scope="col">Date</th>
+								<th scope="col">Type</th>
+								<th scope="col">Amount</th>
+								<th scope="col">Receipt</th>
+							</tr>
+						</thead>
+						<tbody>
+							@foreach( $invoices as $invoice )
+							<tr>
+								<th scope="row">{{ \Carbon\Carbon::createFromTimestamp($invoice->created)->subDays(1)->toFormattedDateString() }}</th>
+								<td>Invoice</td>
+								<td>${{ $invoice->amount_paid / 100 }}</td>
+								<td><a href="{{ $invoice->invoice_pdf }}" target="_blank">View PDF</a></td>
+							</tr>
+							@endforeach
+						</tbody>
+					</table>
 				</div>
 			</div>
 		</div>

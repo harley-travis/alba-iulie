@@ -23,10 +23,17 @@ class BillingController extends Controller {
             [
                 'limit' => 3,
                 'object' => 'card',
-              ]
+            ]
         );
 
-        return view('billing.overview', ['user' => $user, 'cards' => $cards]);
+        $invoices = \Stripe\Invoice::all(
+            [
+                "limit" => 15,
+                "customer" => $user->stripe_id,
+            ]
+        );
+
+        return view('billing.overview', ['user' => $user, 'cards' => $cards, 'invoices' => $invoices]);
     }
 
     public function getPlan() {
@@ -73,6 +80,11 @@ class BillingController extends Controller {
     }
 
     public function getInvoices() {
+        
+        $user = User::find(Auth::user()->id);
+        \Stripe\Stripe::setApiKey(config('services.stripe.secret'));
+
+        \Stripe\Invoice::all(["limit" => 15]);
 
     }
 
