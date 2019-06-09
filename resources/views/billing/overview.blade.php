@@ -29,11 +29,19 @@
 	@endif
 
 	<div class="row">
-		<div class="col-12">
+		<div class="col-6">
 			<div class="card">
 				<div class="card-body">
 
 					<h2 class="text-themecolor py-4">Plan Information</h2>
+					<span>Monthly plan Annual plan</span><br />
+					<span>Renews automatically 1st of each month</span><br />
+					<span>Next payment scheduled for 
+						@foreach( $subscriptions as $subscription ) 
+							<strong>{{ \Carbon\Carbon::createFromTimestamp($subscription->current_period_end)->subDays(1)->toFormattedDateString() }}</strong>
+						@endforeach
+					</span><br />
+					<small>Need to cancel? Call us at 1-800-555-1234.</small>
 
 					<!-- current plan and other plan options 
 						 and button to CHANGE PLAN
@@ -41,29 +49,28 @@
 						 build out later
 					-->
 
-					<small>Need to cancel? Call us at 1-800-555-1234.</small>
-					<a href="{{ route('billing.plan') }}" class="btn btn-primary">Change Plan</a>
-
+					<div class="mt-5">
+						<a href="{{ route('billing.plan') }}" class="btn btn-primary">Change Plan</a>
+					</div>
 				</div>
 			</div>
 		</div>
-	</div><!-- row -->
 
-	<div class="row">
-		<div class="col-12">
+		<div class="col-6">
 			<div class="card">
 				<div class="card-body">
 
 					<h2 class="text-themecolor py-4">Payment Information</h2>
 
-					@foreach( $cards as $card )
+					<ul class="list-group">
+						@foreach( $cards as $card )
+						<li class="list-group-item">{{ $card->brand }} ****{{ $card->last4 }}</li>
+						@endforeach
+					</ul>
 
-						****{{ $card->last4 }}
-						{{ $card->brand }}
-
-					@endforeach
-
-					<a href="{{ route('billing.payment') }}" class="btn btn-primary">Manage Payments</a>
+					<div class="mt-5">
+						<a href="{{ route('billing.payment') }}" class="btn btn-primary">Manage Payments</a>
+					</div>
 
 				</div>
 			</div>
@@ -83,6 +90,7 @@
 								<th scope="col">Date</th>
 								<th scope="col">Type</th>
 								<th scope="col">Amount</th>
+								<th scope="col">Paid</th>
 								<th scope="col">Receipt</th>
 							</tr>
 						</thead>
@@ -92,6 +100,13 @@
 								<th scope="row">{{ \Carbon\Carbon::createFromTimestamp($invoice->created)->subDays(1)->toFormattedDateString() }}</th>
 								<td>Invoice</td>
 								<td>${{ $invoice->amount_paid / 100 }}</td>
+								<td>
+									@if($invoice->attempted == 1)
+										<span class="text-success">Success</span>
+									@else
+										<span class="text-danger">Failed</span>
+									@endif
+								</td>
 								<td><a href="{{ $invoice->invoice_pdf }}" target="_blank">View PDF</a></td>
 							</tr>
 							@endforeach
@@ -101,83 +116,5 @@
 			</div>
 		</div>
 	</div><!-- row -->
-
-	<script type="application/javascript">
-
-		// Grab API key
-		var apiKey = '{{ env('STRIPE_KEY') }}';
-
-		// Create a Stripe client.
-		var stripe = Stripe(apiKey);
-
-		// Create an instance of Elements.
-		var elements = stripe.elements();
-
-		// Custom styling can be passed to options when creating an Element.
-		// (Note that this demo uses a wider set of styles than the guide below.)
-		var style = {
-			base: {
-				color: '#32325d',
-				fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
-				fontSmoothing: 'antialiased',
-				fontSize: '16px',
-				'::placeholder': {
-				color: '#aab7c4'
-				}
-			},
-			invalid: {
-				color: '#fa755a',
-				iconColor: '#fa755a'
-			}
-		};
-
-		// Create an instance of the card Element.
-		var card = elements.create('card', {style: style});
-
-		// Add an instance of the card Element into the `card-element` <div>.
-		card.mount('#card-element');
-
-		// Handle real-time validation errors from the card Element.
-		card.addEventListener('change', function(event) {
-			var displayError = document.getElementById('card-errors');
-			if (event.error) {
-				displayError.textContent = event.error.message;
-			} else {
-				displayError.textContent = '';
-			}
-		});
-
-		// Handle form submission.
-		var form = document.getElementById('payment-form');
-		form.addEventListener('submit', function(event) {
-			event.preventDefault();
-
-			stripe.createToken(card).then(function(result) {
-				if (result.error) {
-					// Inform the user if there was an error.
-					var errorElement = document.getElementById('card-errors');
-					errorElement.textContent = result.error.message;
-				} else {
-					// Send the token to your server.
-					stripeTokenHandler(result.token);
-				}
-			});
-		});
-
-		// Submit the form with the token ID.
-		function stripeTokenHandler(token) {
-			// Insert the token ID into the form so it gets submitted to the server
-			var form = document.getElementById('payment-form');
-			var hiddenInput = document.createElement('input');
-			hiddenInput.setAttribute('type', 'hidden');
-			hiddenInput.setAttribute('name', 'stripeToken');
-			hiddenInput.setAttribute('value', token.id);
-			form.appendChild(hiddenInput);
-
-			// Submit the form
-			form.submit();
-		}
-
-	</script>
 
 @endsection

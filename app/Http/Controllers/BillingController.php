@@ -33,7 +33,17 @@ class BillingController extends Controller {
             ]
         );
 
-        return view('billing.overview', ['user' => $user, 'cards' => $cards, 'invoices' => $invoices]);
+        $subscriptions = \Stripe\Subscription::all([
+            "customer" => $user->stripe_id,
+
+        ]);
+
+        return view('billing.overview', [
+            'user' => $user, 
+            'cards' => $cards, 
+            'invoices' => $invoices,
+            'subscriptions' => $subscriptions,
+        ]);
     }
 
     public function getPlan() {
