@@ -50,7 +50,7 @@
 			</form>
 		</div>
 		<div class="col-sm-2 text-right">
-			<a href="{{ route('applicants.archived') }}" class="btn waves-effect waves-light btn-outline-dark">Archived Applicants</a>
+			<a href="{{ route('applicants.archived') }}" class="btn waves-effect waves-light btn-outline-dark"><i class="fas fa-archive"></i> Archived Applicants</a>
 		</div>
 	</div>
 
@@ -92,7 +92,7 @@
 										{{ $job->title }}
 									@endforeach
 									</td>
-									<td>{{ $applicant->phone }}</td>
+									<td>{{ preg_replace("/\d{3}/", "$0-", str_replace(".", null, trim($applicant->phone)), 2) }}</td>
 									<td>
 										@if (($applicant->stage) == 0)
 											New Applicant
@@ -113,7 +113,7 @@
 										@endif
 									</td>
 									<td>{{ $applicant->date_applied }}</td>
-									<td><a href="{{ $applicant->resume }}" class="btn btn-outline-info" target="_blank">View Resume</a></td>
+									<td><a href="{{ $applicant->resume }}" class="btn btn-outline-info" target="_blank"><i class="far fa-folder-open"></i> View Resume</a></td>
 								</tr>
 								@endforeach
 							</tbody>

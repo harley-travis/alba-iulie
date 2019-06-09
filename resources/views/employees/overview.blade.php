@@ -15,8 +15,8 @@
 		<div class="col-md-7 align-self-center text-right">
 
 			@if(auth()->user()->permissions >= 3)
-			<a href="{{ route('employees.archived') }}" class="btn waves-effect waves-light btn-outline-dark">Archived Employees</a>
-			<a href="{{ route('employees.create') }}" class="btn waves-effect waves-light btn-outline-success">Add Employee</a>
+			<a href="{{ route('employees.archived') }}" class="btn waves-effect waves-light btn-outline-dark"><i class="fas fa-archive"></i> Archived Employees</a>
+			<a href="{{ route('employees.create') }}" class="btn waves-effect waves-light btn-outline-success"><i class="fas fa-plus-circle"></i> Add Employee</a>
 			@endif
 
 		</div>
@@ -64,8 +64,8 @@
 										<td class="align-middle"><a href="{{ route('employees.view', ['id' => $employee->id ]) }}">{{ $employee->first_name }} {{ $employee->last_name}}</a></td>
 										<td class="align-middle">{{ $employee->department}}</td>
 										<td class="align-middle">{{ $employee->position}}</td>
-										<td class="align-middle">{{ $employee->work_phone }} ext:{{ $employee->ext}}</td>
-										<td class="align-middle"><a href="{{ route('employees.view', ['id' => $employee->id ]) }}" class="btn waves-effect waves-light btn-outline-info">View Employee</a></td>
+										<td class="align-middle">{{ preg_replace("/\d{3}/", "$0-", str_replace(".", null, trim($employee->work_phone)), 2) }} ext:{{ $employee->ext}}</td>
+										<td class="align-middle"><a href="{{ route('employees.view', ['id' => $employee->id ]) }}" class="btn waves-effect waves-light btn-outline-info"><i class="fas fa-id-card"></i> View Employee</a></td>
 									</tr>
 								@endforeach
 								

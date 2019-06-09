@@ -121,7 +121,7 @@ class EmployeesController extends Controller {
         $employees = DB::table('employees')
             ->where('company_id', '=', Auth::user()->company_id)
             ->where('active', '=', '0')
-            ->orderBy('date_left', 'DSC')
+            ->orderBy('date_left', 'desc')
             ->paginate(15);
             
         return view('employees.archived', ['employees' => $employees]);

@@ -96,7 +96,7 @@
                             </h5>
                             <ul class="list-group list-group-flush">
                                 <li class="list-group-item"><strong>Date Applied</strong>: {{ $applicant->date_applied }}</li>
-                                <li class="list-group-item"><strong>Phone:</strong> {{ $applicant->phone }}</li>
+                                <li class="list-group-item"><strong>Phone:</strong> {{ preg_replace("/\d{3}/", "$0-", str_replace(".", null, trim($applicant->phone)), 2) }}</li>
                                 <li class="list-group-item"><strong>Email:</strong> <a href="mailto:{{ $applicant->email }}">{{ $applicant->email }}</a></li>
                                 <li class="list-group-item">
                                     <strong>Ethnicity</strong>:
@@ -155,11 +155,11 @@
                             </ul>     
                         </div>
                         <div class="col-sm-8 right">
-                            <a class="btn btn-outline-info mt-3" href="/{{$applicant->resume}}" target="_blank">View Resume</a> <br />
+                            <a class="btn btn-outline-info mt-3" href="/{{$applicant->resume}}" target="_blank"><i class="far fa-folder-open"></i> View Resume</a> <br />
                             @if (($applicant->is_active) == 1)
-                            <a class="btn mt-3 btn btn-outline-danger" href="{{ route('applicants.archive', ['id' => $applicant->id ]) }}">Pass on Applicant</a>
+                            <a class="btn mt-3 btn btn-outline-danger" href="{{ route('applicants.archive', ['id' => $applicant->id ]) }}"><i class="fas fa-ban"></i> Pass on Applicant</a>
                             @elseif (($applicant->is_active)  == 0)
-                            <a class="btn mt-3 btn btn-outline-success" href="{{ route('applicants.activate', ['id' => $applicant->id ]) }}">Activate Applicant</a>
+                            <a class="btn mt-3 btn btn-outline-success" href="{{ route('applicants.activate', ['id' => $applicant->id ]) }}"><i class="fas fa-toggle-off"></i> Activate Applicant</a>
                             @endif
                         </div>
 

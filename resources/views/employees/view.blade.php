@@ -17,11 +17,11 @@
 		<div class="col-md-7 align-self-center text-right">
 
         @if(auth()->user()->permissions === 3)
-            <a href="{{ route('employees.archive', ['id' => $employee->user_id ]) }}" class="btn waves-effect waves-light btn-outline-danger">Remove Employee</a>
+            <a href="{{ route('employees.archive', ['id' => $employee->user_id ]) }}" class="btn waves-effect waves-light btn-outline-danger"><i class="fas fa-archive"></i> Remove Employee</a>
         @endif
 
         @if($employee->work_email === auth()->user()->email || auth()->user()->permissions === 3)
-            <a href="{{ route('employees.edit', ['id' => $employee->user_id ]) }}" class="btn waves-effect waves-light btn-outline-info">Edit Information</a>
+            <a href="{{ route('employees.edit', ['id' => $employee->user_id ]) }}" class="btn waves-effect waves-light btn-outline-info"><i class="fas fa-edit"></i> Edit Information</a>
         @endif
              
         
@@ -45,7 +45,7 @@
                 <ul class="employee-data mt-5">
                     <li class="employee-info">{{ $employee->first_name }} {{ $employee->last_name }}</li>
                     <hr/>
-                    <li class="employee-info">Phone:{{ $employee->work_phone }} EXT: {{ $employee->ext }}</li>
+                    <li class="employee-info">Phone: {{ preg_replace("/\d{3}/", "$0-", str_replace(".", null, trim($employee->work_phone)), 2) }} EXT: {{ $employee->ext }}</li>
                     <li class="employee-info">Email: {{ $employee->email }}</li>
                     <li class="employee-info">Date Hired: {{ $employee->date_hired }}</li>
                 </ul>
@@ -81,7 +81,7 @@
 
                         <div class="employee-card">
                             <span class="employee-label">Personal Phone</span>
-                            <span class="employee-info">{{ $employee->phone }}</span>
+                            <span class="employee-info">{{ preg_replace("/\d{3}/", "$0-", str_replace(".", null, trim($employee->phone)), 2) }}</span>
                         </div>
 
                         <div class="employee-card">
@@ -156,7 +156,7 @@
 
                         <div class="employee-card">
                             <span class="employee-label">Work Phone</span>
-                            <span class="employee-info">{{ $employee->work_phone }} EXT: {{ $employee->ext }}</span>
+                            <span class="employee-info">{{ preg_replace("/\d{3}/", "$0-", str_replace(".", null, trim($employee->work_phone)), 2) }} EXT: {{ $employee->ext }}</span>
                         </div>
 
                         <div class="employee-card">
@@ -200,7 +200,7 @@
                         <div class="employee-card">
                             <span class="employee-label">Emergency Contact</span>
                             <span class="employee-info">{{ $employee->emergency_contact }}</span><br>
-                            <span class="employee-info">{{ $employee->emergency_contact_phone }}</span>
+                            <span class="employee-info">{{  preg_replace("/\d{3}/", "$0-", str_replace(".", null, trim($employee->emergency_contact_phone)), 2) }}</span>
                         </div>
 
                     </div>
