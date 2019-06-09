@@ -21,7 +21,6 @@ class BillingController extends Controller {
         $cards = \Stripe\Customer::allSources(
             $user->stripe_id,
             [
-                'limit' => 3,
                 'object' => 'card',
             ]
         );
@@ -133,9 +132,32 @@ class BillingController extends Controller {
             ]
         );
 
+        $cards = \Stripe\Customer::allSources(
+            $user->stripe_id,
+            [
+                'object' => 'card',
+            ]
+        );
+
+        $invoices = \Stripe\Invoice::all(
+            [
+                "limit" => 15,
+                "customer" => $user->stripe_id,
+            ]
+        );
+
+        $subscriptions = \Stripe\Subscription::all([
+            "customer" => $user->stripe_id,
+
+        ]);
+
         return redirect()
-            ->back()
-            ->with('info', 'Your card was added successfully!');
+            ->route('billing.overview', [
+            'user' => $user, 
+            'cards' => $cards, 
+            'invoices' => $invoices,
+            'subscriptions' => $subscriptions,
+        ])->with('info', 'Your card was added successfully!');                   
 
     }
 
@@ -160,15 +182,42 @@ class BillingController extends Controller {
         return view('billing.overview', ['cards' => $cards]);
     }
 
-    public function destoryCard() {
+    public function destroyCard($card) {
 
         $user = User::find(Auth::user()->id);
         \Stripe\Stripe::setApiKey(config('services.stripe.secret'));
 
         \Stripe\Customer::deleteSource(
-        $user->stripe_id,
-          'card_1EhV36I9snLjUymFb8NZnnoQ'
+            $user->stripe_id,
+            $card
         );
+
+        $cards = \Stripe\Customer::allSources(
+            $user->stripe_id,
+            [
+                'object' => 'card',
+            ]
+        );
+
+        $invoices = \Stripe\Invoice::all(
+            [
+                "limit" => 15,
+                "customer" => $user->stripe_id,
+            ]
+        );
+
+        $subscriptions = \Stripe\Subscription::all([
+            "customer" => $user->stripe_id,
+
+        ]);
+
+        return redirect()
+            ->route('billing.overview', [
+            'user' => $user, 
+            'cards' => $cards, 
+            'invoices' => $invoices,
+            'subscriptions' => $subscriptions,
+        ])->with('info', 'Your card was successfully removed!');
 
     }
 

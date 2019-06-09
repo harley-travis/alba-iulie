@@ -30,7 +30,7 @@
 	@endif
 
 	<div class="row">
-		<div class="col-12">
+		<div class="col-6">
 			<div class="card">
 				<div class="card-body">
 
@@ -56,16 +56,17 @@
 						</div>
 
 						<input type="hidden" name="_token" value="{{ csrf_token() }}">
-						<button class="col btn btn-primary">Add Card</button>
+
+                        <div class="mt-5">
+						    <button class="btn btn-primary">Add Card</button>
+                        </div>
 					</form>
 
 				</div>
 			</div>
 		</div>
-	</div><!-- row -->
 
-	<div class="row">
-		<div class="col-12">
+		<div class="col-6">
 			<div class="card">
 				<div class="card-body">
 
@@ -99,7 +100,10 @@
 						</div>
 
 						<input type="hidden" name="_token" value="{{ csrf_token() }}">
-						<button class="col btn btn-primary">Add ACH</button>
+
+                        <div class="mt-5">
+						    <button class="btn btn-primary">Add ACH</button>
+                        </div>
 					</form>
 
 				</div>

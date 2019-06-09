@@ -239,6 +239,11 @@ Route::group(['prefix' => 'billing'], function() {
 		'as'	=> 'billing.createCard'
 	]);
 
+	Route::get('destroyCard/{id}', [
+		'uses' => "$c@destroyCard",
+		'as'	=> 'billing.destroyCard'
+	]);
+
 	Route::post('createACH', [
 		'uses' => "$c@createACH",
 		'as'	=> 'billing.createACH'

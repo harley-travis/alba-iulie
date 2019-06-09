@@ -43,12 +43,6 @@
 					</span><br />
 					<small>Need to cancel? Call us at 1-800-555-1234.</small>
 
-					<!-- current plan and other plan options 
-						 and button to CHANGE PLAN
-						 for now, for cancellations have them call in.
-						 build out later
-					-->
-
 					<div class="mt-5">
 						<a href="{{ route('billing.plan') }}" class="btn btn-primary">Change Plan</a>
 					</div>
@@ -64,7 +58,22 @@
 
 					<ul class="list-group">
 						@foreach( $cards as $card )
-						<li class="list-group-item">{{ $card->brand }} ****{{ $card->last4 }}</li>
+						<li class="list-group-item">
+							<span class="col-6">
+							
+								@if($card->brand == 'Visa')
+									<i class="fab fa-cc-visa pr-1"></i>
+								@elseif($card->brand == 'MasterCard')
+									<i class="fab fa-cc-mastercard pr-1"></i>
+								@elseif($card->brand == 'Discover')
+									<i class="fab fa-cc-discover pr-1"></i>
+								@elseif($card->brand == 'American Express')
+									<i class="fab fa-cc-amex pr-1"></i>
+								@endif
+							
+							 {{ $card->brand }} <span class="pl-3">****{{ $card->last4 }}</span></span>
+							<span class="col-6 float-right text-right"><a href="{{ route('billing.destroyCard', ['id' => $card->id ]) }}" class="text-danger">Delete Card</a></span>
+						</li>
 						@endforeach
 					</ul>
 
@@ -97,7 +106,7 @@
 						<tbody>
 							@foreach( $invoices as $invoice )
 							<tr>
-								<th scope="row">{{ \Carbon\Carbon::createFromTimestamp($invoice->created)->subDays(1)->toFormattedDateString() }}</th>
+								<td scope="row">{{ \Carbon\Carbon::createFromTimestamp($invoice->created)->subDays(1)->toFormattedDateString() }}</td>
 								<td>Invoice</td>
 								<td>${{ $invoice->amount_paid / 100 }}</td>
 								<td>

@@ -18,6 +18,7 @@
     <script src="{{ asset('js/c3-master/c3.min.js') }}"></script>
     <script src="{{ asset('js/dashboard1.js') }}"></script>
     <script src="{{ asset('js/app.js') }}"></script>
+    <script src="https://kit.fontawesome.com/ccf6b1345f.js"></script>
 
     <!-- register WYSIWYG editors -->
     <script>
