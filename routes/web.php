@@ -219,6 +219,16 @@ Route::group(['prefix' => 'billing'], function() {
 		'as'	=> 'billing.overview'
 	]);
 
+	Route::get('plan', [
+		'uses'	=> "$c@getPlan",
+		'as'	=> 'billing.plan'
+	]);
+
+	Route::get('payment', [
+		'uses'	=> "$c@getPayment",
+		'as'	=> 'billing.payment'
+	]);
+
 	Route::post('subscribe', [
 		'uses' => "$c@createCustomer",
 		'as'	=> 'billing.subscribe'

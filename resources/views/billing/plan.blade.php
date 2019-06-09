@@ -10,7 +10,8 @@
 			<ol class="breadcrumb">
 				<li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
 				<li class="breadcrumb-item">Settings</li>
-				<li class="breadcrumb-item active">Billing</li>
+				<li class="breadcrumb-item"><a href="{{ route('billing.overview') }}">Billing</a></li>
+                <li class="breadcrumb-item active">Manage Plan</li>
 			</ol>
 		</div>
 		<div class="col-md-7 align-self-center text-right">
@@ -33,55 +34,15 @@
 			<div class="card">
 				<div class="card-body">
 
-					<h2 class="text-themecolor py-4">Plan Information</h2>
+					<h2 class="text-themecolor py-4">Manage Plan</h2>
 
-					<!-- current plan and other plan options 
-						 and button to CHANGE PLAN
-						 for now, for cancellations have them call in.
-						 build out later
-					-->
-
-					<small>Need to cancel? Call us at 1-800-555-1234.</small>
-					<a href="{{ route('billing.plan') }}" class="btn btn-primary">Change Plan</a>
+					
 
 				</div>
 			</div>
 		</div>
 	</div><!-- row -->
 
-	<div class="row">
-		<div class="col-12">
-			<div class="card">
-				<div class="card-body">
-
-					<h2 class="text-themecolor py-4">Payment Information</h2>
-
-					@foreach( $cards as $card)
-
-						****{{ $card->last4 }}
-						{{ $card->brand }}
-
-					@endforeach
-
-					<a href="{{ route('billing.payment') }}" class="btn btn-primary">Change Plan</a>
-
-				</div>
-			</div>
-		</div>
-	</div><!-- row -->
-
-	<div class="row">
-		<div class="col-12">
-			<div class="card">
-				<div class="card-body">
-
-					<h2 class="text-themecolor py-4">Billing Information</h2>
-
-
-				</div>
-			</div>
-		</div>
-	</div><!-- row -->
 
 	<script type="application/javascript">
 

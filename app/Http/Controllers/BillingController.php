@@ -29,6 +29,14 @@ class BillingController extends Controller {
         return view('billing.overview', ['user' => $user, 'cards' => $cards]);
     }
 
+    public function getPlan() {
+        return view('billing.plan');
+    }
+
+    public function getPayment() {
+        return view('billing.payments');
+    }
+
     public function createCustomer(Store $session, Request $request) {
 
         \Stripe\Stripe::setApiKey(config('services.stripe.secret'));
@@ -252,6 +260,15 @@ class BillingController extends Controller {
 
     public function desputeCCCharge() {
 
+    }
+
+    public function addCoupon() {
+        /**
+         * THIS FUNCTION IS FOR ME ONLY
+         * I NEED TO CREATE A SUPER ADMIN LEVEL PERMISSIONS (AND WHITEJULY EMPLOYEES) 
+         * WHERE THIS DATA WOULD ONLY SHOW FOR ME
+         * THEN GIVE THEM AN OPTION TO ADD THIS INFORMATION
+         */
     }
 
 }

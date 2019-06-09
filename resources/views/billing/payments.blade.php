@@ -10,7 +10,8 @@
 			<ol class="breadcrumb">
 				<li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
 				<li class="breadcrumb-item">Settings</li>
-				<li class="breadcrumb-item active">Billing</li>
+				<li class="breadcrumb-item"><a href="{{ route('billing.overview') }}">Billing</a></li>
+                <li class="breadcrumb-item active">Manage Payments</li>
 			</ol>
 		</div>
 		<div class="col-md-7 align-self-center text-right">
@@ -33,37 +34,30 @@
 			<div class="card">
 				<div class="card-body">
 
-					<h2 class="text-themecolor py-4">Plan Information</h2>
+				<h2 class="text-themecolor py-4">Add Credit Card</h2>
+					
+					<form action="{{ route('billing.createCard') }}" method="post" id="payment-form">
 
-					<!-- current plan and other plan options 
-						 and button to CHANGE PLAN
-						 for now, for cancellations have them call in.
-						 build out later
-					-->
+						<div class="form-row">
+							<div class="col">
+								<input type="text" class="form-control" placeholder="Number" name="number">
+							</div>
+						</div>
+						<div class="form-row">
+							<div class="col">
+								<input type="text" class="form-control" placeholder="Month" name="month">
+							</div>
+							<div class="col">
+								<input type="text" class="form-control" placeholder="Year" name="year">
+							</div>
+							<div class="col">
+								<input type="text" class="form-control" placeholder="CVC" name="cvc">
+							</div>
+						</div>
 
-					<small>Need to cancel? Call us at 1-800-555-1234.</small>
-					<a href="{{ route('billing.plan') }}" class="btn btn-primary">Change Plan</a>
-
-				</div>
-			</div>
-		</div>
-	</div><!-- row -->
-
-	<div class="row">
-		<div class="col-12">
-			<div class="card">
-				<div class="card-body">
-
-					<h2 class="text-themecolor py-4">Payment Information</h2>
-
-					@foreach( $cards as $card)
-
-						****{{ $card->last4 }}
-						{{ $card->brand }}
-
-					@endforeach
-
-					<a href="{{ route('billing.payment') }}" class="btn btn-primary">Change Plan</a>
+						<input type="hidden" name="_token" value="{{ csrf_token() }}">
+						<button class="col btn btn-primary">Add Card</button>
+					</form>
 
 				</div>
 			</div>
@@ -75,13 +69,44 @@
 			<div class="card">
 				<div class="card-body">
 
-					<h2 class="text-themecolor py-4">Billing Information</h2>
+				<h2 class="text-themecolor py-4">Add ACH</h2>
+				<small>At this time, we only support ACH accounts in the United States.</small>
+				<span>NOTE: You must verify your ACH account before you can use it. Follow the instructions below:</span>
+				<ul>
+					<li>2 small deposits will be deposited into your account in 1-2 business days. The statement will say AMTS.</li>
+					<li>You will need to verify those amounts.</li>
+					<li>There is a limit of 10 attempts.</li>
+				</ul>
+					
+					<form action="{{ route('billing.createACH') }}" method="post" id="payment-form">
 
+						<div class="form-row">
+							<div class="col">
+								<input type="text" class="form-control" placeholder="name on account" name="account_holder_name">
+							</div>
+							<div class="col">
+								<input type="password" class="form-control" placeholder="routing number" name="routing_number">
+							</div>
+							<div class="col">
+								<input type="password" class="form-control" placeholder="account number">
+							</div>
+							<div class="col">
+								<input type="password" class="form-control" placeholder="confirm account number" name="account_number">
+							</div>
+							<div class="col">
+								<input type="text" class="form-control" placeholder="account holder type: IE: company" name="account_holder_type">
+							</div>
+						</div>
+
+						<input type="hidden" name="_token" value="{{ csrf_token() }}">
+						<button class="col btn btn-primary">Add ACH</button>
+					</form>
 
 				</div>
 			</div>
 		</div>
 	</div><!-- row -->
+
 
 	<script type="application/javascript">
 
