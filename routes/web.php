@@ -239,6 +239,16 @@ Route::group(['prefix' => 'billing'], function() {
 		'as'	=> 'billing.createCard'
 	]);
 
+	Route::get('editCard/{id}', [
+		'uses'	=> "$c@viewUpdateCard",
+		'as'	=> 'billing.editCard'
+	]);
+	
+	Route::post('updateCard', [
+		'uses'	=> "$c@updateCard", 
+		'as'	=> 'billing.updateCard'
+	]);
+
 	Route::get('destroyCard/{id}', [
 		'uses' => "$c@destroyCard",
 		'as'	=> 'billing.destroyCard'

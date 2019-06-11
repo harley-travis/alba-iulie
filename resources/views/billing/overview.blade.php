@@ -22,9 +22,12 @@
 	<!-- ============================================================== -->
 
 	@if(Session::has('info'))
-		<div class="alert alert-success" role="alert">
+		<div class="alert alert-success alert-dismissible fade show" role="alert">
 			<h4 class="alert-heading">Success!</h4>
 			<p>{{ Session::get('info') }}</p>
+			<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+			</button>
 		</div>
 	@endif
 
@@ -71,8 +74,11 @@
 									<i class="fab fa-cc-amex pr-1"></i>
 								@endif
 							
-							 {{ $card->brand }} <span class="pl-3">****{{ $card->last4 }}</span></span>
-							<span class="col-6 float-right text-right"><a href="{{ route('billing.destroyCard', ['id' => $card->id ]) }}" class="text-danger">Delete Card</a></span>
+							{{ $card->brand }} <span class="pl-3">****{{ $card->last4 }}</span></span>
+							<span class="col-6 float-right text-right">
+								<a href="{{ route('billing.editCard', ['id' => $card->id ]) }}" class="text-info">Update Card</a>  
+								<a href="{{ route('billing.destroyCard', ['id' => $card->id ]) }}" class="text-danger">Delete Card</a>
+							</span>
 						</li>
 						@endforeach
 					</ul>

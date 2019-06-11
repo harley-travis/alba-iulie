@@ -15,7 +15,6 @@ class BillingController extends Controller {
     public function index() {
         
         $user = User::find(Auth::user()->id);
-
         \Stripe\Stripe::setApiKey(config('services.stripe.secret'));
 
         $cards = \Stripe\Customer::allSources(
@@ -56,9 +55,7 @@ class BillingController extends Controller {
     public function createCustomer(Store $session, Request $request) {
 
         \Stripe\Stripe::setApiKey(config('services.stripe.secret'));
-
         $token = $request->request->get('stripeToken');
-
         $user = User::find(Auth::user()->id);
 
         $customer = \Stripe\Customer::create([
@@ -163,9 +160,7 @@ class BillingController extends Controller {
 
     public function listCards($u) {
 
-        //$user = User::find($u);
         $user = User::find(Auth::user()->id);
-
         \Stripe\Stripe::setApiKey(config('services.stripe.secret'));
 
         $cards = \Stripe\Customer::listSources(
@@ -176,9 +171,6 @@ class BillingController extends Controller {
               ]
         );
 
-        // dd($cards->jsonSerialize());
-
-        // return response($cards->jsonSerialize(), Response::HTTP_OK);
         return view('billing.overview', ['cards' => $cards]);
     }
 
@@ -221,7 +213,20 @@ class BillingController extends Controller {
 
     }
 
-    public function updateCard() {
+    public function viewUpdateCard($id, Request $request) {
+
+        $user = User::find(Auth::user()->id);
+        \Stripe\Stripe::setApiKey(config('services.stripe.secret'));    
+        $customer = \Stripe\Customer::retrieve($user->stripe_id);
+
+        //dd($customer);
+
+        $card = $customer->sources->retrieve($id);
+
+        return view('billing.UpdateCard', ['user' => $user, 'card' => $card]);
+    }
+
+    public function updateCard(Request $request) {
 
         $user = User::find(Auth::user()->id);
         \Stripe\Stripe::setApiKey(config('services.stripe.secret'));
@@ -230,11 +235,39 @@ class BillingController extends Controller {
 
         \Stripe\Customer::updateSource(
             $user->stripe_id,
-            'card_1EhV36I9snLjUymFYddfZwhI',
+            $request->input('number'),
             [
-                'metadata' => ['order_id' => '6735'],
+                'exp_month' => $request->input('month'),
+                'exp_year' => $request->input('year'),
             ]
         );
+
+        $cards = \Stripe\Customer::allSources(
+            $user->stripe_id,
+            [
+                'object' => 'card',
+            ]
+        );
+
+        $invoices = \Stripe\Invoice::all(
+            [
+                "limit" => 15,
+                "customer" => $user->stripe_id,
+            ]
+        );
+
+        $subscriptions = \Stripe\Subscription::all([
+            "customer" => $user->stripe_id,
+
+        ]);
+
+        return redirect()
+            ->route('billing.overview', [
+            'user' => $user, 
+            'cards' => $cards, 
+            'invoices' => $invoices,
+            'subscriptions' => $subscriptions,
+        ])->with('info', 'Your card was successfully updated!');
 
     }
 

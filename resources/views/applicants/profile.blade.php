@@ -23,9 +23,11 @@
 <!-- ============================================================== -->
 
 @if(Session::has('info'))
-    <div class="alert alert-success" role="alert">
-        <h4 class="alert-heading">Success!</h4>
-        <p>{{ Session::get('info') }}</p>
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <strong>Success!</strong> {{ Session::get('info') }}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
     </div>
 @endif
 	
