@@ -264,6 +264,11 @@ Route::group(['prefix' => 'billing'], function() {
 		'as'	=> 'billing.createACH'
 	]);
 
+	Route::get('destroyACH/{id}', [
+		'uses' => "$c@destroyACH",
+		'as'	=> 'billing.destroyACH'
+	]);
+
 });
 
 Route::group(['prefix' => 'reports'], function() {

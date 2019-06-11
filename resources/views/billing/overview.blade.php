@@ -59,6 +59,7 @@
 
 					<h2 class="text-themecolor py-4">Payment Information</h2>
 
+					<h3>Credit Cards</h3>
 					<ul class="list-group">
 						@foreach( $cards as $card )
 						<li class="list-group-item">
@@ -77,17 +78,35 @@
 							{{ $card->brand }} <span class="pl-3">****{{ $card->last4 }}</span></span>
 
 							@if($card->id == $customer->default_source)
-										<span class="badge badge-primary">Default</span>
+								<span class="badge badge-primary">Default</span>
 							@endif
 
 							<span class="col-6 float-right text-right">
 								<a href="{{ route('billing.setDefault', ['id' => $card->id ]) }}" class="text-primary">Set Default</a>  
-								<a href="{{ route('billing.editCard', ['id' => $card->id ]) }}" class="text-info">Update Card</a>  
-								<a href="{{ route('billing.destroyCard', ['id' => $card->id ]) }}" class="text-danger">Delete Card</a>
+								<a href="{{ route('billing.editCard', ['id' => $card->id ]) }}" class="text-info"><i class="fas fa-edit"></i></a>  
+								<a href="{{ route('billing.destroyCard', ['id' => $card->id ]) }}" class="text-danger"><i class="far fa-trash-alt"></i></a>
 							</span>
 						</li>
 						@endforeach
 					</ul>
+
+					<h3>ACH Accounts</h3>
+					<ul class="list-group">
+						@foreach( $bank_accounts as $bank_account )
+						<li class="list-group-item">
+							<span class="col-6">
+							<i class="fas fa-university"></i> {{ $bank_account->bank_name }}
+								<span class="pl-3">**** {{ $bank_account->last4 }} </span>
+							</span>
+							@if($bank_accounts->id == $customer->default_source)
+								<span class="badge badge-primary">Default</span>
+							@endif
+							<span class="col-6 float-right text-right">
+								<a href="{{ route('billing.setDefault', ['id' => $bank_account->id ]) }}" class="text-primary">Set Default</a>
+								<a href="{{ route('billing.destroyACH', ['id' => $bank_account->id ]) }}" class="text-danger"><i class="far fa-trash-alt"></i></a>
+							</span>
+						</li>
+						@endforeach 
 
 					<div class="mt-5">
 						<a href="{{ route('billing.payment') }}" class="btn btn-primary">Add Payment Methods</a>

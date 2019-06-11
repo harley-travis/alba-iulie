@@ -38,7 +38,16 @@ class BillingController extends Controller {
 
         ]);
 
+        $bank_accounts = \Stripe\Customer::allSources(
+            $user->stripe_id,
+            [
+              'limit' => 3,
+              'object' => 'bank_account',
+            ]
+          );
+
         return view('billing.overview', [
+            'bank_accounts' => $bank_accounts, 
             'customer' => $customer, 
             'user' => $user, 
             'cards' => $cards, 
@@ -312,6 +321,27 @@ class BillingController extends Controller {
 
     }
 
+    public function listPaymentMethods() {
+        // USE THIS TO GRAB BOTH CC AND ACH ACCOUNTS
+    }
+
+    public function listACHAccounts() {
+
+        $user = User::find(Auth::user()->id);
+        \Stripe\Stripe::setApiKey(config('services.stripe.secret'));
+
+        $bank_accounts = \Stripe\Customer::allSources(
+            $user->stripe_id,
+            [
+              'limit' => 15,
+              'object' => 'bank_account',
+            ]
+          );
+
+
+    }
+
+
     public function createACH(Request $request) {
 
         /**
@@ -344,9 +374,34 @@ class BillingController extends Controller {
           ]
         );
 
+        $customer = \Stripe\Customer::retrieve($user->stripe_id);
+
+        $cards = \Stripe\Customer::allSources(
+            $user->stripe_id,
+            [
+                'object' => 'card',
+            ]
+        );
+
+        $invoices = \Stripe\Invoice::all(
+            [
+                "limit" => 15,
+                "customer" => $user->stripe_id,
+            ]
+        );
+
+        $subscriptions = \Stripe\Subscription::all([
+            "customer" => $user->stripe_id,
+
+        ]);
+
         return redirect()
-            ->back()
-            ->with('info', 'Your ACH was added successfully!');
+            ->route('billing.overview', [
+            'customer' => $customer, 
+            'cards' => $cards, 
+            'invoices' => $invoices,
+            'subscriptions' => $subscriptions,
+        ])->with('info', 'Your default payment has be set successfully!');
     }
 
     public function verifyACH(Request $request) {
