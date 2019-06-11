@@ -254,6 +254,11 @@ Route::group(['prefix' => 'billing'], function() {
 		'as'	=> 'billing.destroyCard'
 	]);
 
+	Route::get('setDefault/{id}', [
+		'uses'	=> "$c@setDefaultPaymentMethod", 
+		'as'	=> 'billing.setDefault'
+	]);
+
 	Route::post('createACH', [
 		'uses' => "$c@createACH",
 		'as'	=> 'billing.createACH'

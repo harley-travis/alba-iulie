@@ -75,7 +75,13 @@
 								@endif
 							
 							{{ $card->brand }} <span class="pl-3">****{{ $card->last4 }}</span></span>
+
+							@if($card->id == $customer->default_source)
+										<span class="badge badge-primary">Default</span>
+							@endif
+
 							<span class="col-6 float-right text-right">
+								<a href="{{ route('billing.setDefault', ['id' => $card->id ]) }}" class="text-primary">Set Default</a>  
 								<a href="{{ route('billing.editCard', ['id' => $card->id ]) }}" class="text-info">Update Card</a>  
 								<a href="{{ route('billing.destroyCard', ['id' => $card->id ]) }}" class="text-danger">Delete Card</a>
 							</span>
@@ -84,7 +90,7 @@
 					</ul>
 
 					<div class="mt-5">
-						<a href="{{ route('billing.payment') }}" class="btn btn-primary">Manage Payments</a>
+						<a href="{{ route('billing.payment') }}" class="btn btn-primary">Add Payment Methods</a>
 					</div>
 
 				</div>

@@ -17,6 +17,8 @@ class BillingController extends Controller {
         $user = User::find(Auth::user()->id);
         \Stripe\Stripe::setApiKey(config('services.stripe.secret'));
 
+        $customer = \Stripe\Customer::retrieve($user->stripe_id);
+
         $cards = \Stripe\Customer::allSources(
             $user->stripe_id,
             [
@@ -37,6 +39,7 @@ class BillingController extends Controller {
         ]);
 
         return view('billing.overview', [
+            'customer' => $customer, 
             'user' => $user, 
             'cards' => $cards, 
             'invoices' => $invoices,
@@ -231,8 +234,6 @@ class BillingController extends Controller {
         $user = User::find(Auth::user()->id);
         \Stripe\Stripe::setApiKey(config('services.stripe.secret'));
 
-        // SELECT CARD AS DEFAULT
-
         \Stripe\Customer::updateSource(
             $user->stripe_id,
             $request->input('number'),
@@ -271,7 +272,43 @@ class BillingController extends Controller {
 
     }
 
-    public function setDefaultPaymentMethod() {
+    public function setDefaultPaymentMethod($payment) {
+
+        $user = User::find(Auth::user()->id);
+        \Stripe\Stripe::setApiKey(config('services.stripe.secret'));
+
+        $update = \Stripe\Customer::update(
+            $user->stripe_id,
+            [
+              'default_source' => $payment,
+            ]
+        );
+
+        $cards = \Stripe\Customer::allSources(
+            $user->stripe_id,
+            [
+                'object' => 'card',
+            ]
+        );
+
+        $invoices = \Stripe\Invoice::all(
+            [
+                "limit" => 15,
+                "customer" => $user->stripe_id,
+            ]
+        );
+
+        $subscriptions = \Stripe\Subscription::all([
+            "customer" => $user->stripe_id,
+
+        ]);
+
+        return redirect()
+            ->route('billing.overview', [
+            'cards' => $cards, 
+            'invoices' => $invoices,
+            'subscriptions' => $subscriptions,
+        ])->with('info', 'Your default payment has be set successfully!');
 
     }
 
