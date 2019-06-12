@@ -18,7 +18,7 @@ class DatabaseSeeder extends Seeder {
         // $this->call(UsersTableSeeder::class);
         DB::table('users')->insert([
             'company_id' => '1',
-            'stripe_id' => null,
+            'stripe_id' => 'cus_FBVzPkjrGS7QlW',
             'name' => 'Tony Stark',
             'email' =>'tony@gmail.com',
             'password' => bcrypt('test'),
@@ -40,7 +40,7 @@ class DatabaseSeeder extends Seeder {
 
         DB::table('users')->insert([
             'company_id' => '2',
-            'stripe_id' => null,
+            'stripe_id' => 'cus_FBsfZD3ZNZLbCT',
             'name' => 'Peter Parker',
             'email' =>'peter@gmail.com',
             'password' => bcrypt('test'),
@@ -51,7 +51,7 @@ class DatabaseSeeder extends Seeder {
 
         DB::table('users')->insert([
             'company_id' => '3',
-            'stripe_id' => null,
+            'stripe_id' => 'cus_FBsgor8FBC43EN',
             'name' => 'Travis Harley',
             'email' =>'travis@gmail.com',
             'password' => bcrypt('test'),

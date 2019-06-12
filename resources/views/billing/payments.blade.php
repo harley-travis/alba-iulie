@@ -99,6 +99,13 @@
 							</div>
 						</div>
 
+						<div class="form-row">
+							<div class="form-group form-check">
+								<input type="checkbox" class="form-check-input" id="exampleCheck1">
+								<label class="form-check-label" for="exampleCheck1">I authorize White July to electronically debit my account and, if necessary, electronically credit my account to correct erroneous debits.</label>
+							</div>
+						</div>
+
 						<input type="hidden" name="_token" value="{{ csrf_token() }}">
 
                         <div class="mt-5">

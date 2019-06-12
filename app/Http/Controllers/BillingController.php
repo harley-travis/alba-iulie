@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use DB;
 use Auth;
 use App\User;
+use App\PaymentDetail;
 use Illuminate\Http\Response;
 use Illuminate\Session\Store;
 use Illuminate\Http\Request;
@@ -58,6 +59,26 @@ class BillingController extends Controller {
 
     public function getPlan() {
         return view('billing.plan');
+    }
+
+    public function listPlan() {
+
+        $user = User::find(Auth::user()->id);
+        \Stripe\Stripe::setApiKey(config('services.stripe.secret'));
+
+
+        /**
+         * 
+         * need to find the plan
+         * 
+         * need to create a function that will find the users plan and return the data
+         * 
+         * need to create functions for all the data and return those so i'm not copy/pasting a 
+         * bunch of hte same code
+         */
+
+        $plan = \Stripe\Plan::retrieve('plan_FBTp293i4AKiuy');
+
     }
 
     public function getPayment() {
@@ -341,8 +362,12 @@ class BillingController extends Controller {
 
     }
 
-
     public function createACH(Request $request) {
+
+        /**
+         * NEED TO FIND OUT ABOUT THE TOKENS AND HOW TO USE THEM. 
+         * DO I ONLY USE THEM WHEN CREATING THE CUSTOMER?
+         */
 
         /**
          * There is a work flow for adding an ACH Account
@@ -359,6 +384,7 @@ class BillingController extends Controller {
 
         $user = User::find(Auth::user()->id);
         \Stripe\Stripe::setApiKey(config('services.stripe.secret'));
+        //$token = $request->request->get('stripeToken');
 
         $bank_account = \Stripe\Customer::createSource(
             $user->stripe_id,
@@ -373,6 +399,17 @@ class BillingController extends Controller {
             ],
           ]
         );
+
+        // store payment details and consent
+        $account_setup = new PaymentDetail([
+            'name' => $user->name, 
+            'consent' => $request->input('first_name'), 
+            'ip' => request()->ip(), 
+            'country' => 'US', 
+            'frequency' , 
+            'user_id' => $user->id, 
+        ]);
+        $account_setup->save(); 
 
         $customer = \Stripe\Customer::retrieve($user->stripe_id);
 
@@ -416,6 +453,10 @@ class BillingController extends Controller {
             $user->stripe_id,
             'ba_1EhV38I9snLjUymF7188MI9B'
         );
+
+        /**
+         * SET UP 10 ATTEMPTS TO CHARGE THE ACCOUNT AND THEN BLOCK IT
+         */
 
         // verify the account
         $bank_account->verify(

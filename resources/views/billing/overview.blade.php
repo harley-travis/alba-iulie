@@ -89,6 +89,7 @@
 						</li>
 						@endforeach
 					</ul>
+					
 
 					<h3>ACH Accounts</h3>
 					<ul class="list-group">
@@ -98,7 +99,7 @@
 							<i class="fas fa-university"></i> {{ $bank_account->bank_name }}
 								<span class="pl-3">**** {{ $bank_account->last4 }} </span>
 							</span>
-							@if($bank_accounts->id == $customer->default_source)
+							@if($bank_account->id == $customer->default_source)
 								<span class="badge badge-primary">Default</span>
 							@endif
 							<span class="col-6 float-right text-right">
