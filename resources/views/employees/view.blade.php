@@ -67,7 +67,23 @@
                 <div class="tab-content" id="nav-tabContent">
                     <div class="tab-pane fade show active" id="personal-info" role="tabpanel" aria-labelledby="personal-info-tab">
                     
-                    <h2 class="text-themecolor py-4">Personal Information</h2>
+
+                    <h3 class="box-title py-4">Personal Information</h3>
+
+
+                    <!-- WHEN POLISH MAKE THIS PAGE LOOK LIKE THIS https://wrappixel.com/demos/admin-templates/admin-wrap/main/form-layout.html -->
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="row">
+                                <label class="control-label text-right col-md-3">Birthday:</label>
+                                <div class="col-md-9">
+                                    {{ $employee->birthday }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+             
                     
                         <div class="employee-card">
                             <span class="employee-label">Birthday</span>
